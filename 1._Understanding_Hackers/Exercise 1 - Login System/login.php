@@ -1,27 +1,32 @@
 <?php 
+print "0";
 
-    if( isset($_POST["email"]) 
-        && isset($_POST["password"]) 
-        && strlen($_POST["password"]) >= 8 
-        && filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
-
+if( isset($_POST["email"]) 
+&& isset($_POST["password"]) 
+&& strlen($_POST["password"]) >= 8 
+&& filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
+    print "1";
+    
     $email = $_POST["email"];
     $password = $_POST["password"];
-
-        try{
-            require_once './database.php';
-
-            $query = $connection->prepare('SELECT * FROM users WHERE email = :email AND password = :password');
-
-            $query->bindValue(':email', $email);
-            $query->bindValue(':password', $password);
-            $query->execute();
+    
+    try{
+        require_once './database.php';
+        print "2";
+        
+        $query = $connection->prepare('SELECT * FROM users WHERE email = :email AND password = :password');
+        
+        $query->bindValue(':email', $email);
+        $query->bindValue(':password', $password);
+        $query->execute();
+        print "4";
 
             $users = $query->fetchAll();
 
             $log = $connection->prepare('INSERT INTO login_attempts(user_email, timestamp, success) VALUES(:email, DATETIME("now"), :success)');
 
             $log->bindValue(':email', $email);
+            echo count($users);
             $log->bindValue(':success', count($users));
             $log->execute();
 

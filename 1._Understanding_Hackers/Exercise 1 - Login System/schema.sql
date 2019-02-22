@@ -11,6 +11,6 @@ CREATE TABLE `login_attempts` (
 );
 
 
-INSERT INTO users VALUES('anders@gmail.com', "password");
-INSERT INTO users VALUES('cosmin@gmail.com', "admin123");
-INSERT INTO users VALUES('pedro@gmail.com', "book1234");
+INSERT INTO USERS(email, password) VALUES('anders@gmail.com', "password");
+INSERT INTO USERS(email, password) VALUES('cosmin@gmail.com', "admin123");
+INSERT INTO USERS(email, password) VALUES('pedro@gmail.com', "book1234");
