@@ -19,7 +19,7 @@
 
             $users = $query->fetchAll();
 
-            $log = $connection->prepare('INSERT INTO login_attempts(user_email, timestamp, success) VALUES(:email, now, :success)');
+            $log = $connection->prepare('INSERT INTO login_attempts(user_email, timestamp, success) VALUES(:email, DATETIME("now"), :success)');
 
             $log->bindValue(':email', $email);
             $log->bindValue(':success', count($users));
