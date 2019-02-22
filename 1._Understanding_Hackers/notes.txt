@@ -1,0 +1,15 @@
+Command and control (DDOS)
+
+Access to data
+--------------
+Authentication
+Session Management
+Access Control
+
+Input Sanitation
+----------------
+Approach 1: Make sure to encode/escape special characters
+
+Approach 2: Remove special characters
+
+
