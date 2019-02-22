@@ -1,12 +1,12 @@
 <?php 
-    
+
+    if( isset($_POST["email"]) 
+        && isset($_POST["password"]) 
+        && strlen($_POST["password"]) >= 8 
+        && filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
+
     $email = $_POST["email"];
     $password = $_POST["password"];
-
-    if( isset($email) 
-        && isset($password) 
-        && strlen($password) >= 8 
-        && filter_var($email, FILTER_VALIDATE_EMAIL)) {
 
         try{
             require_once './database.php';
@@ -42,6 +42,10 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <form method="POST" action="login.php" >
+        <input type="text" placeholder="Email" name="email">
+        <input type="password" placeholder="Password" name="password">
+        <input type="submit" value="Submit">
+    </form>
 </body>
 </html>
