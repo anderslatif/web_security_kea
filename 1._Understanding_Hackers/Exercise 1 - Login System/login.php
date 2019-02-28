@@ -45,12 +45,28 @@ if( isset($_POST["email"])
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <form method="POST" action="login.php" >
-        <input type="text" placeholder="Email" name="email">
-        <input type="password" placeholder="Password" name="password">
-        <input type="submit" value="Submit">
-    </form>
+    <div class="base__division">
+    <div class="main__division">
+        <div class="main__division--forms">
+            <form method="POST" action="login.php" class="form__login">
+                <input type="text" placeholder="Email" name="email" class="email">
+                <input type="password" placeholder="Password" name="password" class="password">
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+        <div class="main__division--datas">
+            <div class="datas__wrapper">
+                <h2>Login</h2>
+                <p>Web Security - Exercise</p>
+            </div>
+        </div>
+    </div>
+    </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="./script.js"></script>
 </body>
 </html>

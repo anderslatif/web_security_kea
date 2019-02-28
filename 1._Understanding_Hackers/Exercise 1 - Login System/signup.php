@@ -25,14 +25,14 @@ if( isset($_POST["email"])
         $query->execute();
 
 
-        SELECT * FROM login_attempts WHERE email='email@.something.dk' AND timestamp > date('now', '-1 hours')  DESC LIMIT 3
-            CASE trynumber === 1 
-                return trynumber + 1
-            case tynumber === 2
-                return trynumber + 1
-            case trynumber >= 3
-                return 0
-        ;
+        // SELECT * FROM login_attempts WHERE email=':email' AND timestamp > date('now', '-1 hours')  DESC LIMIT 3
+        //     CASE trynumber === 1 
+        //         return trynumber + 1
+        //     case tynumber === 2
+        //         return trynumber + 1
+        //     case trynumber >= 3
+        //         return 0
+        // ;
 
         $success = $query->fetchAll();
 
@@ -41,4 +41,5 @@ if( isset($_POST["email"])
           exit();  
     }
 }
+?>
 
