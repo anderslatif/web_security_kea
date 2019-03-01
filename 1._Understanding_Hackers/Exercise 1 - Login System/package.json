@@ -1,14 +1,22 @@
 {
-  "name": "web_security",
+  "name": "banfail",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "compile:sass": "node-sass ./style.scss style.css -w"
+    "compile:sass": "node-sass css/style.scss css/style.css -w"
   },
-  "author": "Pedro, Anders, Cosmin",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pedr0189/banfail.git"
+  },
+  "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pedr0189/banfail/issues"
+  },
+  "homepage": "https://github.com/pedr0189/banfail#readme",
   "dependencies": {
     "node-sass": "^4.11.0"
   }

@@ -16,3 +16,30 @@ How to defeat it:
 
 - Blacklisting (Problems: SeLeCt or 1=1... 2=2)
 
+
+Login Page, ways to approach
+----------------------------
+
+Block based on username
+Block based on IP
+Block using cookie/localstorage
+Block until email/mobile confirmation occurs, 2-step verificatin
+CAPTCHA
+
+
+Economy of mechanism
+Keep it simple,
+Complex design leads to more errors
+
+Least Privilege
+Applying the most restrictive set of rules
+
+Psychological Acceptability
+You need to convince the users that the added security is necessary
+or else they will try to circumvent it
+
+
+
+
+
+
