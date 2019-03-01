@@ -1,0 +1,15 @@
+{
+  "name": "web_security",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile:sass": "node-sass ./style.scss style.css -w"
+  },
+  "author": "Pedro, Anders, Cosmin",
+  "license": "ISC",
+  "dependencies": {
+    "node-sass": "^4.11.0"
+  }
+}
