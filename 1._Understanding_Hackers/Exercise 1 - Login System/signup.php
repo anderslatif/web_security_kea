@@ -31,7 +31,7 @@ if( isset($_POST["email"])
             case tynumber === 2
                 return trynumber + 1
             case trynumber >= 3
-                return 0
+                return
         ;
 
         $success = $query->fetchAll();
