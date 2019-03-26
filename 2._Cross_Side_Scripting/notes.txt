@@ -1,0 +1,45 @@
+
+OWASP top 10, great for risk analysis
+https://www.owasp.org/images/7/72/OWASP_Top_10-2017_%28en%29.pdf.pdf
+
+
+The difference between http 1.0 and 1.1 is that you can have multiple host names (domain names) on the same server
+
+----------
+HTTP Headers
+
+Host - Hostnaame requested
+
+in HTTP 1.1 the cookie is retransmitted with every request
+
+Origin - used by AJAX for cros domain request
+
+Referer [optional] - The page form where the request originates
+
+User-Agent - What browser or application that acts as a client
+    You can store the session there. if the user uses the same browser then....
+
+---------
+HTTP Response headers
+
+Server - Information about the server (OS, webserver etc.)
+
+Location - Used for redirecting client to a new location
+
+Access-Control-Allow-Origin - Used for Ajax
+
+Set Cookie -  Issues a cookie to client
+
+--------
+
+HTTP Status code
+Some browsers don't send the text with the code. So some attackers use this to check info about what browser the user is using or more info.
+
+--------
+
+Encryption takes a plain text and converts it to an encrypted text using a key and an encryption algorithm. The resulting encrypted text can later be decrypted (by using the same key and algorithm).
+
+A digest takes a plain text and generates a hashcode which can be used to verify if the plain text is unmodified but cannot be used to decrypt the original text from the hash value.
+
+
+

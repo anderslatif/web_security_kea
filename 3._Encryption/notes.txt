@@ -1,0 +1,56 @@
+air gapping (network)
+
+Security goals (CIA) - Confidentiality Integrity Availability
+
+Confidentiality: Prevent anauthorised access to information
+
+Integrity: Prevent unauthorised altering of information
+
+Availability: Ensure the availability of the system for authorised uses
+
+-------
+Hashing strength
+
+Time to generate (cycles to cost)
+
+Preimage resistance
+
+Collision
+
+------
+
+CrackStation.net -> rainbow tables
+
+Hashed password and Salt is stored in the db
+Pepper is stored in the code (like a key)
+
+type.cost.salt.password
+
+Algorithms available: Blowfish, twofish, AES (rijdael), 3DES
+
+------
+
+Block encryption modes
+
+ECB - electronic codebook mode
+
+CBC - cipher block chaining mode (Initialization Vector, see it as a salt) cyclic block chaining
+
+OFB - output feedback mode (similar to CBC but more error rsistant)
+
+-----
+
+In order to decrypt message the following is needed:
+
+* Cyphertext
+* Key
+* IV (not required)
+* encryption algorithm and block encryption mode
+
+-----
+
+OpenSSL - heartbleed bug
+
+-----
+
+
