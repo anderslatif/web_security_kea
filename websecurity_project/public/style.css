@@ -1,0 +1,199 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+html {
+  font-size: 62.5%; }
+
+.page__login {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: #f7f7f7;
+  display: grid;
+  align-items: center;
+  justify-items: center; }
+  .page__login--wrapper {
+    width: 70vw;
+    height: 45rem;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    border-radius: 0.45rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    background-color: #ffffff; }
+    @media (max-width: 900px) {
+      .page__login--wrapper {
+        width: 80vw; } }
+    @media (max-width: 700px) {
+      .page__login--wrapper {
+        width: 90vw; } }
+    @media (max-width: 545px) {
+      .page__login--wrapper {
+        width: 100vw; } }
+    @media (max-width: 445px) {
+      .page__login--wrapper {
+        width: 100vw;
+        height: 100vh;
+        grid-template-columns: 1fr;
+        align-items: center; } }
+
+.left__areaAuths {
+  height: 100%;
+  padding: 2.1rem 0 2.1rem 0; }
+  @media (max-width: 445px) {
+    .left__areaAuths {
+      height: auto; } }
+  .left__areaAuths--logos {
+    width: 80%;
+    margin: 0 auto;
+    height: 4.5rem; }
+    .left__areaAuths--logos a {
+      font-size: 1.9rem;
+      text-decoration: none;
+      font-weight: 900;
+      color: #000000;
+      font-family: "utopia-std-headline", serif; }
+  .left__areaAuths--informations {
+    width: 80%;
+    margin: 0 auto;
+    height: 6.5rem; }
+    .left__areaAuths--informations h2 {
+      font-size: 2.2rem;
+      color: darkgrey;
+      font-family: "utopia-std-headline", serif; }
+      .left__areaAuths--informations h2 span {
+        color: black; }
+    .left__areaAuths--informations p {
+      font-size: 1.4rem;
+      color: #000000;
+      font-family: "utopia-std-headline", serif;
+      margin-top: 0.70rem; }
+  .left__areaAuths .formLogin {
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 3.2rem; }
+    .left__areaAuths .formLogin--forms {
+      height: 9.5rem;
+      display: grid;
+      grid-template-rows: repeat(2, 1fr);
+      grid-row-gap: 2px; }
+      .left__areaAuths .formLogin--forms input {
+        width: 100%;
+        position: relative;
+        outline: none;
+        font-size: 1.4rem;
+        border-radius: 0.45rem;
+        border: 2px solid lightgrey;
+        transition: all 0.45s ease-in-out;
+        padding-left: 0.21rem;
+        font-weight: 900;
+        font-family: "utopia-std-headline", serif; }
+        .left__areaAuths .formLogin--forms input:focus {
+          border-left: 0.45rem solid #f62459;
+          padding-left: 0.45rem; }
+    .left__areaAuths .formLogin--remember-forget {
+      width: 100%;
+      margin: 0 auto;
+      height: 4.5rem;
+      margin-top: 1.4rem;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center; }
+      .left__areaAuths .formLogin--remember-forget .formgroup__checkbox {
+        display: grid;
+        align-items: center;
+        grid-template-columns: 2.1rem 1fr; }
+        .left__areaAuths .formLogin--remember-forget .formgroup__checkbox input[type="checkbox"] {
+          width: 1.4rem;
+          height: 1.4rem; }
+        .left__areaAuths .formLogin--remember-forget .formgroup__checkbox label {
+          font-size: 1.2rem;
+          font-weight: 445;
+          color: darkgrey;
+          font-family: "utopia-std-headline", serif; }
+      .left__areaAuths .formLogin--remember-forget a {
+        text-decoration: none;
+        font-size: 1.2rem;
+        color: dodgerblue;
+        font-weight: 445;
+        cursor: pointer; }
+        .left__areaAuths .formLogin--remember-forget a:hover {
+          text-decoration: underline; }
+    .left__areaAuths .formLogin--submit {
+      width: 100%;
+      height: 4.5rem;
+      margin-top: 0.45rem; }
+      .left__areaAuths .formLogin--submit button {
+        color: #ffffff;
+        background-color: #000000;
+        transition: all 0.21s ease-in-out;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        font-size: 1.4rem;
+        font-weight: 445;
+        text-transform: uppercase;
+        padding: 0.45rem 0.80rem 0.45rem 0.80rem;
+        border-radius: 0.45rem; }
+        .left__areaAuths .formLogin--submit button:hover {
+          background-color: #2e3131; }
+  .left__areaAuths--terms-and-conditions {
+    width: 80%;
+    margin: 0 auto;
+    height: 4.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; }
+    .left__areaAuths--terms-and-conditions p {
+      font-size: 1.2rem; }
+      .left__areaAuths--terms-and-conditions p a {
+        margin-left: 0.32rem;
+        margin-right: 0.32rem; }
+    .left__areaAuths--terms-and-conditions a.register__links {
+      text-decoration: none;
+      color: #ffffff;
+      background-color: #000000;
+      transition: all 0.21s ease-in-out;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      font-size: 1.4rem;
+      font-weight: 445;
+      text-transform: uppercase;
+      padding: 0.45rem 0.80rem 0.45rem 0.80rem;
+      border-radius: 0.45rem;
+      height: 3.2rem; }
+      .left__areaAuths--terms-and-conditions a.register__links:hover {
+        background-color: #2e3131; }
+
+.right__areaAuths {
+  background-image: url("./image/authentications__background.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: grid;
+  align-items: center;
+  justify-items: center; }
+  @media (max-width: 445px) {
+    .right__areaAuths {
+      display: none; } }
+  .right__areaAuths--content {
+    width: 14rem;
+    height: 14rem; }
+    .right__areaAuths--content .Tilt {
+      width: 100% !important;
+      height: 100% !important;
+      background-color: rgba(255, 255, 255, 0.45);
+      display: grid;
+      align-items: center;
+      justify-items: center; }
+      .right__areaAuths--content .Tilt-inner {
+        display: grid;
+        align-items: center;
+        text-align: center;
+        font-size: 2.2rem;
+        font-weight: 900;
+        font-family: "utopia-std-headline", serif !important; }
