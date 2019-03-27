@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import PageLogin from "../pages/PageLogin";
 import PageRegister from "../pages/PageRegister";
-
+// import { Provider } from "react-redux";
 
 class AppRouter extends Component {
     render() {

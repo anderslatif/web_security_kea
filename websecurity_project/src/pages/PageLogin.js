@@ -1,10 +1,32 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-import Tilt from 'react-tilt'
+import Tilt from 'react-tilt';
+import { loginAuthAction } from "../actions/authActions";
+import { connect } from "react-redux";
 
 class PageLogin extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            emailLogin: "",
+            passwordLogin: ""
+        }
+        this.onChangeStoreDatas = this.onChangeStoreDatas.bind(this);
+        this.onSubmitStoreDatas = this.onSubmitStoreDatas.bind(this);
+    }
+
+    onChangeStoreDatas = (ev) => {
+        let inputType = ev.target.name;
+        let inputValue = ev.target.value;
+        this.setState({[inputType]:inputValue});
+    }
+
+    onSubmitStoreDatas = (ev) => {
+        ev.preventDefault();
+        console.log(this.state)
+    }
     render() {
-        return (
+    return (
         <div className="page__login">
             <div className="page__login--wrapper">
                 <div className="left__areaAuths">
@@ -15,10 +37,10 @@ class PageLogin extends Component {
                         <h2>Get your <span>Book</span></h2>
                         <p>Login to access the book streaming system</p>
                     </div>
-                    <form className="formLogin">
+                    <form className="formLogin" onSubmit={this.onSubmitStoreDatas}>
                         <div className="formLogin--forms">
-                            <input type="text" placeholder="Your Email" />
-                            <input type="password" placeholder="Your Password" />
+                            <input type="text" placeholder="Your Email" name="emailLogin" onChange={this.onChangeStoreDatas} />
+                            <input type="password" placeholder="Your Password" name="passwordLogin" onChange={this.onChangeStoreDatas} />
                         </div>
                         <div className="formLogin--remember-forget">
                             <div className="formgroup__checkbox">
@@ -52,7 +74,12 @@ class PageLogin extends Component {
             {/* PageLogin */}
         </div>
     )
-  }
+}
 }
 
+// const mapStateToProps = (state) => {
+//     return {
+//         login: state.login
+//     }
+// }
 export default PageLogin;

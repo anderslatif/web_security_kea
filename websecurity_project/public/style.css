@@ -6,7 +6,8 @@
 html {
   font-size: 62.5%; }
 
-.page__login {
+.page__login,
+.page__register {
   width: 100%;
   height: 100vh;
   overflow: hidden;
@@ -16,25 +17,29 @@ html {
   display: grid;
   align-items: center;
   justify-items: center; }
-  .page__login--wrapper {
+  .page__login--wrapper,
+  .page__register--wrapper {
     width: 70vw;
-    height: 45rem;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
     border-radius: 0.45rem;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     background-color: #ffffff; }
     @media (max-width: 900px) {
-      .page__login--wrapper {
+      .page__login--wrapper,
+      .page__register--wrapper {
         width: 80vw; } }
     @media (max-width: 700px) {
-      .page__login--wrapper {
+      .page__login--wrapper,
+      .page__register--wrapper {
         width: 90vw; } }
     @media (max-width: 545px) {
-      .page__login--wrapper {
+      .page__login--wrapper,
+      .page__register--wrapper {
         width: 100vw; } }
     @media (max-width: 445px) {
-      .page__login--wrapper {
+      .page__login--wrapper,
+      .page__register--wrapper {
         width: 100vw;
         height: 100vh;
         grid-template-columns: 1fr;
@@ -71,16 +76,19 @@ html {
       color: #000000;
       font-family: "utopia-std-headline", serif;
       margin-top: 0.70rem; }
-  .left__areaAuths .formLogin {
+  .left__areaAuths .formLogin,
+  .left__areaAuths .formRegister {
     width: 80%;
     margin: 0 auto;
     margin-top: 3.2rem; }
-    .left__areaAuths .formLogin--forms {
+    .left__areaAuths .formLogin--forms,
+    .left__areaAuths .formRegister--forms {
       height: 9.5rem;
       display: grid;
       grid-template-rows: repeat(2, 1fr);
       grid-row-gap: 2px; }
-      .left__areaAuths .formLogin--forms input {
+      .left__areaAuths .formLogin--forms input,
+      .left__areaAuths .formRegister--forms input {
         width: 100%;
         position: relative;
         outline: none;
@@ -91,10 +99,12 @@ html {
         padding-left: 0.21rem;
         font-weight: 900;
         font-family: "utopia-std-headline", serif; }
-        .left__areaAuths .formLogin--forms input:focus {
+        .left__areaAuths .formLogin--forms input:focus,
+        .left__areaAuths .formRegister--forms input:focus {
           border-left: 0.45rem solid #f62459;
           padding-left: 0.45rem; }
-    .left__areaAuths .formLogin--remember-forget {
+    .left__areaAuths .formLogin--remember-forget,
+    .left__areaAuths .formRegister--remember-forget {
       width: 100%;
       margin: 0 auto;
       height: 4.5rem;
@@ -103,31 +113,38 @@ html {
       flex-direction: row;
       justify-content: space-between;
       align-items: center; }
-      .left__areaAuths .formLogin--remember-forget .formgroup__checkbox {
+      .left__areaAuths .formLogin--remember-forget .formgroup__checkbox,
+      .left__areaAuths .formRegister--remember-forget .formgroup__checkbox {
         display: grid;
         align-items: center;
         grid-template-columns: 2.1rem 1fr; }
-        .left__areaAuths .formLogin--remember-forget .formgroup__checkbox input[type="checkbox"] {
+        .left__areaAuths .formLogin--remember-forget .formgroup__checkbox input[type="checkbox"],
+        .left__areaAuths .formRegister--remember-forget .formgroup__checkbox input[type="checkbox"] {
           width: 1.4rem;
           height: 1.4rem; }
-        .left__areaAuths .formLogin--remember-forget .formgroup__checkbox label {
+        .left__areaAuths .formLogin--remember-forget .formgroup__checkbox label,
+        .left__areaAuths .formRegister--remember-forget .formgroup__checkbox label {
           font-size: 1.2rem;
           font-weight: 445;
           color: darkgrey;
           font-family: "utopia-std-headline", serif; }
-      .left__areaAuths .formLogin--remember-forget a {
+      .left__areaAuths .formLogin--remember-forget a,
+      .left__areaAuths .formRegister--remember-forget a {
         text-decoration: none;
         font-size: 1.2rem;
         color: dodgerblue;
         font-weight: 445;
         cursor: pointer; }
-        .left__areaAuths .formLogin--remember-forget a:hover {
+        .left__areaAuths .formLogin--remember-forget a:hover,
+        .left__areaAuths .formRegister--remember-forget a:hover {
           text-decoration: underline; }
-    .left__areaAuths .formLogin--submit {
+    .left__areaAuths .formLogin--submit,
+    .left__areaAuths .formRegister--submit {
       width: 100%;
       height: 4.5rem;
       margin-top: 0.45rem; }
-      .left__areaAuths .formLogin--submit button {
+      .left__areaAuths .formLogin--submit button,
+      .left__areaAuths .formRegister--submit button {
         color: #ffffff;
         background-color: #000000;
         transition: all 0.21s ease-in-out;
@@ -139,7 +156,8 @@ html {
         text-transform: uppercase;
         padding: 0.45rem 0.80rem 0.45rem 0.80rem;
         border-radius: 0.45rem; }
-        .left__areaAuths .formLogin--submit button:hover {
+        .left__areaAuths .formLogin--submit button:hover,
+        .left__areaAuths .formRegister--submit button:hover {
           background-color: #2e3131; }
   .left__areaAuths--terms-and-conditions {
     width: 80%;
@@ -153,7 +171,8 @@ html {
       .left__areaAuths--terms-and-conditions p a {
         margin-left: 0.32rem;
         margin-right: 0.32rem; }
-    .left__areaAuths--terms-and-conditions a.register__links {
+    .left__areaAuths--terms-and-conditions a.register__links,
+    .left__areaAuths--terms-and-conditions a.login__links {
       text-decoration: none;
       color: #ffffff;
       background-color: #000000;
@@ -167,7 +186,8 @@ html {
       padding: 0.45rem 0.80rem 0.45rem 0.80rem;
       border-radius: 0.45rem;
       height: 3.2rem; }
-      .left__areaAuths--terms-and-conditions a.register__links:hover {
+      .left__areaAuths--terms-and-conditions a.register__links:hover,
+      .left__areaAuths--terms-and-conditions a.login__links:hover {
         background-color: #2e3131; }
 
 .right__areaAuths {
@@ -197,3 +217,27 @@ html {
         font-size: 2.2rem;
         font-weight: 900;
         font-family: "utopia-std-headline", serif !important; }
+
+.formRegister {
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 3.2rem; }
+  .formRegister--forms {
+    height: 14rem !important;
+    display: grid;
+    grid-template-rows: repeat(3, 1fr) !important;
+    grid-row-gap: 2px; }
+    .formRegister--forms input {
+      width: 100%;
+      position: relative;
+      outline: none;
+      font-size: 1.4rem;
+      border-radius: 0.45rem;
+      border: 2px solid lightgrey;
+      transition: all 0.45s ease-in-out;
+      padding-left: 0.21rem;
+      font-weight: 900;
+      font-family: "utopia-std-headline", serif; }
+      .formRegister--forms input:focus {
+        border-left: 0.45rem solid #f62459;
+        padding-left: 0.45rem; }

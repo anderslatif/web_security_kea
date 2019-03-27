@@ -1,13 +1,27 @@
 import React, { Component } from 'react';
 import AppRouter from "./router/AppRouter";
+import { Provider } from "react-redux";
+import store from "./store/configureStore";
 // import logo from './logo.svg';
 // import './App.css';
+
+// const state = store.getState();
+
+// console.log(state);
+// console.log(store.getState());
+
+const Jsx = () => (
+  <Provider store={store}>
+    <AppRouter></AppRouter>
+  </Provider>
+);
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-      <AppRouter></AppRouter>
+      {/* <AppRouter></AppRouter> */}
+      <Jsx></Jsx>
         {/* <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
