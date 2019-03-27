@@ -241,3 +241,188 @@ html {
       .formRegister--forms input:focus {
         border-left: 0.45rem solid #f62459;
         padding-left: 0.45rem; }
+
+.component__header {
+  width: 100%;
+  height: 4.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  display: grid;
+  align-items: center;
+  background-color: #ffffff; }
+  .component__header--wrapper {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center; }
+
+.left__header {
+  display: flex;
+  flex-direction: row;
+  align-items: center; }
+  .left__header--logos {
+    margin-right: 1.4rem; }
+    .left__header--logos a {
+      font-size: 1.9rem;
+      text-decoration: none;
+      color: #2e3131;
+      font-weight: 900;
+      font-family: "utopia-std-headline", serif; }
+  .left__header .divider__element {
+    width: 2px;
+    height: 3.2rem;
+    background-color: #2e3131; }
+  .left__header--search {
+    margin-left: 1.4rem; }
+    .left__header--search svg {
+      width: 2.1rem;
+      height: 2.1rem;
+      cursor: pointer;
+      fill: #C8C9CC; }
+
+.right__header {
+  display: flex;
+  flex-direction: row;
+  align-items: center; }
+  .right__header--notifications {
+    margin-right: 1.4rem; }
+    .right__header--notifications svg {
+      width: 2.6rem;
+      height: 2.6rem;
+      cursor: pointer;
+      fill: #C8C9CC; }
+  .right__header--profile {
+    width: 3.5rem;
+    height: 3.5rem;
+    overflow: hidden;
+    border-radius: 50%; }
+    .right__header--profile a img {
+      width: 3.5rem;
+      height: 3.5rem;
+      border-radius: 0.45rem; }
+
+.page__profile {
+  width: 100%;
+  height: auto;
+  min-height: 100vh;
+  background-color: #f7f7f7;
+  border-radius: 0.45rem; }
+  .page__profile--content {
+    width: 70%;
+    height: auto;
+    margin: 0 auto;
+    background-color: #ffffff;
+    margin-top: 3.2rem; }
+
+.componentProfileHeader {
+  width: 100%;
+  height: 45vh;
+  overflow: hidden;
+  position: relative;
+  display: grid;
+  grid-template-rows: 1fr 6.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); }
+  .componentProfileHeader--cover {
+    width: 100%;
+    overflow: hidden;
+    position: relative; }
+    .componentProfileHeader--cover img {
+      width: 100%;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%); }
+    .componentProfileHeader--cover button {
+      border: none;
+      border-radius: 0.45rem;
+      width: 14rem;
+      height: 3.5rem;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      background-color: #2e3131;
+      opacity: 0.8;
+      position: absolute;
+      bottom: 1.4rem;
+      right: 1.4rem;
+      cursor: pointer;
+      padding-left: 0.45rem;
+      padding-right: 0.45rem;
+      transition: all 0.21s ease-in-out; }
+      .componentProfileHeader--cover button:hover {
+        background-color: black;
+        opacity: 0.9; }
+      .componentProfileHeader--cover button svg {
+        width: 2.1rem;
+        height: 2.1rem;
+        cursor: pointer;
+        fill: #ffffff;
+        margin-right: 0.70rem; }
+      .componentProfileHeader--cover button span {
+        color: #ffffff;
+        font-size: 1.4rem; }
+  .componentProfileHeader--navigation {
+    width: 90%;
+    margin: 0 auto;
+    display: grid;
+    align-items: center;
+    position: relative; }
+    .componentProfileHeader--navigation--profile {
+      width: 8.5rem;
+      height: 8.5rem;
+      border-radius: 50%;
+      overflow: hidden;
+      top: -4.25rem;
+      position: absolute;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); }
+      .componentProfileHeader--navigation--profile img {
+        width: 100%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(1.1); }
+    .componentProfileHeader--navigation--links {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin-left: 12rem; }
+      .componentProfileHeader--navigation--links a {
+        font-size: 1.7rem;
+        color: #5d6363;
+        text-decoration: none;
+        font-weight: 700;
+        cursor: pointer;
+        font-family: sans-serif;
+        transition: all 0.21s ease-in-out;
+        position: relative; }
+        .componentProfileHeader--navigation--links a:not(:last-child) {
+          margin-right: 1.45rem; }
+        .componentProfileHeader--navigation--links a:hover {
+          color: black; }
+      .componentProfileHeader--navigation--links .activeSubRoute {
+        font-size: 1.7rem;
+        color: black;
+        text-decoration: none;
+        font-weight: 700;
+        cursor: pointer;
+        font-family: sans-serif;
+        transition: all 0.21s ease-in-out;
+        position: relative; }
+        .componentProfileHeader--navigation--links .activeSubRoute::after {
+          content: "";
+          position: absolute;
+          bottom: -2.25rem;
+          left: 0;
+          width: 100%;
+          height: 0.35rem;
+          border-radius: 0.32rem 0.32rem 0 0;
+          background-color: #f62459;
+          transition: all 0.21s ease-in-out;
+          opacity: 1; }
+
+.componentPosts {
+  width: 70%;
+  margin: 0 auto;
+  padding: 3.2rem 0 3.2rem 0;
+  background-color: #ffffff; }
