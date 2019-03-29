@@ -6,7 +6,7 @@ class ComponentProfileHeader extends Component {
     return (
       <div className="componentProfileHeader">
         <div className="componentProfileHeader--cover">
-            <img src="./image/cover__image.jpg" alt="cover__image" />
+            <img src="./image/cover__image3.jpg" alt="cover__image" />
             <button>
                 <svg>
                     <use href="./image/sprite.svg#icon-edit"></use>

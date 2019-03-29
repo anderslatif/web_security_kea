@@ -1,7 +1,8 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif; }
 
 html {
   font-size: 62.5%; }
@@ -393,7 +394,6 @@ html {
         text-decoration: none;
         font-weight: 700;
         cursor: pointer;
-        font-family: sans-serif;
         transition: all 0.21s ease-in-out;
         position: relative; }
         .componentProfileHeader--navigation--links a:not(:last-child) {
@@ -406,7 +406,6 @@ html {
         text-decoration: none;
         font-weight: 700;
         cursor: pointer;
-        font-family: sans-serif;
         transition: all 0.21s ease-in-out;
         position: relative; }
         .componentProfileHeader--navigation--links .activeSubRoute::after {
@@ -421,8 +420,65 @@ html {
           transition: all 0.21s ease-in-out;
           opacity: 1; }
 
+.pageProfilePosts {
+  background-color: #f7f7f7; }
+
 .componentPosts {
   width: 70%;
   margin: 0 auto;
-  padding: 3.2rem 0 3.2rem 0;
-  background-color: #ffffff; }
+  padding: 4.5rem 0 3.2rem 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 2.5rem; }
+  .componentPosts .componentPostsElement {
+    height: 100%;
+    background-color: #ffffff;
+    border-radius: 0.90rem;
+    position: relative;
+    display: grid;
+    align-items: center;
+    justify-items: center; }
+    .componentPosts .componentPostsElement--wrapper {
+      width: 90%;
+      height: 90%;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 42% 1fr; }
+      .componentPosts .componentPostsElement--wrapper--cover {
+        overflow: hidden;
+        border-radius: 0.45rem; }
+        .componentPosts .componentPostsElement--wrapper--cover img {
+          width: 100%; }
+      .componentPosts .componentPostsElement--wrapper--information {
+        padding-left: 1.4rem;
+        padding-top: 3.2rem; }
+        .componentPosts .componentPostsElement--wrapper--information h2 {
+          font-family: "utopia-std-headline", serif;
+          text-transform: uppercase;
+          font-weight: 300;
+          margin-bottom: 0.45rem; }
+        .componentPosts .componentPostsElement--wrapper--information p {
+          font-size: 1.4rem;
+          margin-bottom: 0.45rem; }
+        .componentPosts .componentPostsElement--wrapper--information span {
+          display: block;
+          font-size: 1.4rem; }
+        .componentPosts .componentPostsElement--wrapper--information button {
+          border: none;
+          padding: 0.45rem 1.4rem 0.45rem 1.4rem;
+          border-radius: 0.45rem;
+          color: #ffffff;
+          background-color: dodgerblue;
+          margin-top: 1.4rem;
+          cursor: pointer; }
+
+.page__book {
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 4.5rem 1fr; }
+  .page__book--content {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); }

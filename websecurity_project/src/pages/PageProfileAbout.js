@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ComponentHeader from "../components/ComponentHeader";
 import ComponentProfileHeader from "../components/ComponentProfileHeader";
+import ComponentAbout from "../components/ComponentAbout";
 
 class PageProfileAbout extends Component {
     constructor(props) {
@@ -13,6 +14,7 @@ class PageProfileAbout extends Component {
                 <div className="page__profile--content">
                     <ComponentProfileHeader></ComponentProfileHeader>
                 </div>
+                <ComponentAbout></ComponentAbout>
                 {/* PageProfileAbout */}
             </div>
         );
