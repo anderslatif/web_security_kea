@@ -1,7 +1,7 @@
 {
   "name": "websecurity_project",
   "version": "0.1.0",
-  "homepage":"http://pedros.tech/",
+  "homepage":"http://pedros.tech",
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
