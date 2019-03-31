@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import Tilt from 'react-tilt';
-import { ErrorEmptyInput } from "../frontend__errors/errorsComponents";
+// import { ErrorEmptyInput } from "../frontend__errors/errorsComponents";
 // import { connect } from "redux";
 
 class PageRegister extends Component {
@@ -13,32 +13,14 @@ class PageRegister extends Component {
       registerRepeatPassword: "",
       error: {}
     }
-    // this.onChangeStoreDatas = this.onChangeStoreDatas.bind(this);
     this.onChangeStoreRegisterDatas = this.onChangeStoreRegisterDatas.bind(this);
     this.onSubmitStoreDatas = this.onSubmitStoreDatas.bind(this);
   }
-  
-  // onChangeStoreDatas(ev) {
-  //   let inputType = ev.target.getAttribute("name");
-  //   let inputValue = ev.target.value;
-  //   switch(inputType) {
-  //     case "registerEmail":
-  //       return this.setState({emailRegister: inputValue})
-  //     case "registerPassword":
-  //       return this.setState({passwordRegister: inputValue})
-  //     case "registerRepeatPassword":
-  //       return this.setState({passwordRepeatRegister: inputValue})
-  //   }
-  // }
 
   onChangeStoreRegisterDatas = (ev) => {
     let inputRegisterName = ev.target.name;
     let inputRegisterValue = ev.target.value;
     this.setState({[inputRegisterName]: inputRegisterValue})
-    
-    // if(this.state.registerEmail || registerPassword || registerRepeatPassword) {
-    //   this.setState({error: true})
-    // }
   }
   
   onSubmitStoreDatas = (ev) => {
@@ -51,11 +33,6 @@ class PageRegister extends Component {
     }
     console.log(registeredUser);
   }
-  // const [login, setLoginDatas] = useState({});
-  
-  // const storeInputDatas = (ev) => {
-    //     setLoginDatas({...login, email: ev.target.value})
-    // }
     render() {
       return (
         <div className="page__register">
@@ -129,17 +106,3 @@ class PageRegister extends Component {
 }
 
 export default PageRegister;
-// import React, { Component } from 'react'
-
-// class PageRegister extends Component {
-//   render() {
-//     return (
-//       <div className="page__register">
-      
-//         {/* PageRegister */}
-//       </div>
-//     )
-//   }
-// }
-
-// export default PageRegister;

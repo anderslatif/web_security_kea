@@ -20,7 +20,7 @@ class ComponentProfileHeader extends Component {
                 <img src="./image/profile__image.jpg" alt="profile__image" />
             </div>
             <div className="componentProfileHeader--navigation--links">
-                <NavLink activeClassName="activeSubRoute" to="/profile/about">About</NavLink>
+                <NavLink activeClassName="activeSubRoute" to="/profile/">About</NavLink>
                 <NavLink activeClassName="activeSubRoute" to="/profile/posts">Posts</NavLink>
             </div>
         </div>

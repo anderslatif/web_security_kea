@@ -1,12 +1,13 @@
 {
   "name": "websecurity_project",
   "version": "0.1.0",
-  "homepage":"http://pedros.tech",
+  "homepage": "http://pedros.tech",
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
     "node-sass": "^4.11.0",
     "react": "^16.8.5",
+    "react-content-loader": "^4.2.1",
     "react-dom": "^16.8.5",
     "react-pdf": "^4.0.5",
     "react-redux": "^6.0.1",

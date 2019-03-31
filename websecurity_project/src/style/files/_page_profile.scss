@@ -290,3 +290,165 @@
         }
     }
 }
+
+.component__about {
+    width:70%;
+    margin:0 auto;
+    margin-top:3.2rem;
+    display:grid;
+    align-items:center;
+    justify-items:center;
+    background-color:$color__white;
+    box-shadow:$box-shadow2;
+
+    &--wrapper {
+        width:90%;
+        padding-bottom:2rem;
+        // height:90%;
+
+        .about__titleDivision {
+            padding:1.4rem 0 1.4rem 0;
+            border-bottom:1.4px solid $color__lightgrey;
+            display:flex;
+            flex-direction:row;
+            justify-content:space-between;
+
+            h2 {
+                font-family:$all__fonts;
+                color:$color__darkgrey;
+                font-weight:900;
+                font-size:2.1rem;
+            }
+
+            button {
+                position: relative;
+                background-color:transparent;
+                cursor: pointer;
+                border:none;
+
+                &::before {
+                    content:"Edit";
+                    width:9rem;
+                    position:absolute;
+                    background-color:$color__darkgrey;
+                    border-radius:0.45rem;
+                    color:$color__white;    
+                    top: -3.5rem;
+                    left:50%;
+                    display:none;
+                    transform:translateX(-50%);
+                    transition:all 0.22s ease-in-out;
+                    padding:0.45rem 0 0.45rem 0;   
+                    // height:100%;
+                }
+
+                &:hover::before {
+                    display:block;
+                    animation:animateLabelHover 0.22s ease-in-out forwards;
+                }
+                
+                svg {
+                width:2.1rem;
+                height:2.1rem;
+                fill:$color__darkgrey;
+                cursor: pointer;
+                transition:all 0.22s ease-in-out;
+                position: relative;
+
+                &:hover {
+                    background-color:$color__darkgrey;
+                    padding:0.45rem;
+                    border-radius:0.45rem;
+                    fill:$color__white;
+                }
+                
+                // &::before {
+                //     content:"";
+                //     width:100%;
+                //     height:100%;
+                //     position:absolute;
+                //     background-color:blue;
+                //     border-radius:0.45rem;
+                //     top: -2.1rem;
+                //     left:0;
+                // }
+                
+                &:hover {}
+            }
+        }
+    }
+
+        .about__contentDivision {
+            display:grid;
+            grid-template-columns:repeat(2, 1fr);
+            grid-gap:0.95rem;
+        }
+    }
+}
+
+.about__fullNameSubsection,
+.about__addressSubsection,
+.about__emailAddressSubsection,
+.about__socialNetworkSubsection {
+    height:12rem;
+    border-bottom:1.4px solid lightgray;
+    display: grid;
+    align-items:center;
+    
+    .addFullNameContent,
+    .addAddressContent,
+    .addEmailAddressContent,
+    .addSocialNetworkContent {
+        // width:14rem;
+        display:flex;
+        flex-direction:row;
+        align-items:center;
+        cursor: pointer;
+        background-color:transparent;
+        border:none;
+        transition:all 0.22s ease-in-out;
+        
+        .addFullName,
+        .addAddress,
+        .addEmailAddress,
+        .addSocialNetwork {
+            width:4.5rem;
+            height:4.5rem;
+            fill:lightgrey;
+            cursor: pointer;
+            margin-right:0.95rem;
+            transition:all 0.22s ease-in-out;
+        }
+        
+        p {
+            font-size:1.4rem;
+            font-weight:900;
+            color:lightgrey;
+            transition:all 0.22s ease-in-out;
+        }
+
+        &:hover p {
+            color:$color__darkgrey;
+        }
+
+        &:hover svg {
+            fill:$color__darkgrey;
+        }
+    }
+    
+}
+
+// .about__addressSubsection {
+//     height:12rem;
+//     border-bottom:1.4px solid lightgray;
+// }
+
+// .about__emailAddressSubsection {
+//     height:12rem;
+//     border-bottom:1.4px solid lightgray;
+// }
+
+// .about__socialNetworkSubsection {
+//     height:12rem;
+//     border-bottom:1.4px solid lightgray;
+// }

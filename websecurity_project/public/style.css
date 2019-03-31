@@ -7,6 +7,31 @@
 html {
   font-size: 62.5%; }
 
+.pause__scroll {
+  overflow: hidden; }
+
+@keyframes animateLabelHover {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) scale(0); }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) scale(1.1); } }
+
+@keyframes animateEditProfileBackground {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+@keyframes animateEditProfile {
+  from {
+    width: 0;
+    height: 0; }
+  to {
+    width: 45rem;
+    height: 90vh; } }
+
 .page__login,
 .page__register {
   width: 100%;
@@ -472,6 +497,223 @@ html {
           margin-top: 1.4rem;
           cursor: pointer; }
 
+.component__about {
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 3.2rem;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  background-color: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); }
+  .component__about--wrapper {
+    width: 90%;
+    padding-bottom: 2rem; }
+    .component__about--wrapper .about__titleDivision {
+      padding: 1.4rem 0 1.4rem 0;
+      border-bottom: 1.4px solid #f7f7f7;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between; }
+      .component__about--wrapper .about__titleDivision h2 {
+        font-family: "Roboto", sans-serif;
+        color: #2e3131;
+        font-weight: 900;
+        font-size: 2.1rem; }
+      .component__about--wrapper .about__titleDivision button {
+        position: relative;
+        background-color: transparent;
+        cursor: pointer;
+        border: none; }
+        .component__about--wrapper .about__titleDivision button::before {
+          content: "Edit";
+          width: 9rem;
+          position: absolute;
+          background-color: #2e3131;
+          border-radius: 0.45rem;
+          color: #ffffff;
+          top: -3.5rem;
+          left: 50%;
+          display: none;
+          transform: translateX(-50%);
+          transition: all 0.22s ease-in-out;
+          padding: 0.45rem 0 0.45rem 0; }
+        .component__about--wrapper .about__titleDivision button:hover::before {
+          display: block;
+          animation: animateLabelHover 0.22s ease-in-out forwards; }
+        .component__about--wrapper .about__titleDivision button svg {
+          width: 2.1rem;
+          height: 2.1rem;
+          fill: #2e3131;
+          cursor: pointer;
+          transition: all 0.22s ease-in-out;
+          position: relative; }
+          .component__about--wrapper .about__titleDivision button svg:hover {
+            background-color: #2e3131;
+            padding: 0.45rem;
+            border-radius: 0.45rem;
+            fill: #ffffff; }
+    .component__about--wrapper .about__contentDivision {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 0.95rem; }
+
+.about__fullNameSubsection,
+.about__addressSubsection,
+.about__emailAddressSubsection,
+.about__socialNetworkSubsection {
+  height: 12rem;
+  border-bottom: 1.4px solid lightgray;
+  display: grid;
+  align-items: center; }
+  .about__fullNameSubsection .addFullNameContent,
+  .about__fullNameSubsection .addAddressContent,
+  .about__fullNameSubsection .addEmailAddressContent,
+  .about__fullNameSubsection .addSocialNetworkContent,
+  .about__addressSubsection .addFullNameContent,
+  .about__addressSubsection .addAddressContent,
+  .about__addressSubsection .addEmailAddressContent,
+  .about__addressSubsection .addSocialNetworkContent,
+  .about__emailAddressSubsection .addFullNameContent,
+  .about__emailAddressSubsection .addAddressContent,
+  .about__emailAddressSubsection .addEmailAddressContent,
+  .about__emailAddressSubsection .addSocialNetworkContent,
+  .about__socialNetworkSubsection .addFullNameContent,
+  .about__socialNetworkSubsection .addAddressContent,
+  .about__socialNetworkSubsection .addEmailAddressContent,
+  .about__socialNetworkSubsection .addSocialNetworkContent {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    transition: all 0.22s ease-in-out; }
+    .about__fullNameSubsection .addFullNameContent .addFullName,
+    .about__fullNameSubsection .addFullNameContent .addAddress,
+    .about__fullNameSubsection .addFullNameContent .addEmailAddress,
+    .about__fullNameSubsection .addFullNameContent .addSocialNetwork,
+    .about__fullNameSubsection .addAddressContent .addFullName,
+    .about__fullNameSubsection .addAddressContent .addAddress,
+    .about__fullNameSubsection .addAddressContent .addEmailAddress,
+    .about__fullNameSubsection .addAddressContent .addSocialNetwork,
+    .about__fullNameSubsection .addEmailAddressContent .addFullName,
+    .about__fullNameSubsection .addEmailAddressContent .addAddress,
+    .about__fullNameSubsection .addEmailAddressContent .addEmailAddress,
+    .about__fullNameSubsection .addEmailAddressContent .addSocialNetwork,
+    .about__fullNameSubsection .addSocialNetworkContent .addFullName,
+    .about__fullNameSubsection .addSocialNetworkContent .addAddress,
+    .about__fullNameSubsection .addSocialNetworkContent .addEmailAddress,
+    .about__fullNameSubsection .addSocialNetworkContent .addSocialNetwork,
+    .about__addressSubsection .addFullNameContent .addFullName,
+    .about__addressSubsection .addFullNameContent .addAddress,
+    .about__addressSubsection .addFullNameContent .addEmailAddress,
+    .about__addressSubsection .addFullNameContent .addSocialNetwork,
+    .about__addressSubsection .addAddressContent .addFullName,
+    .about__addressSubsection .addAddressContent .addAddress,
+    .about__addressSubsection .addAddressContent .addEmailAddress,
+    .about__addressSubsection .addAddressContent .addSocialNetwork,
+    .about__addressSubsection .addEmailAddressContent .addFullName,
+    .about__addressSubsection .addEmailAddressContent .addAddress,
+    .about__addressSubsection .addEmailAddressContent .addEmailAddress,
+    .about__addressSubsection .addEmailAddressContent .addSocialNetwork,
+    .about__addressSubsection .addSocialNetworkContent .addFullName,
+    .about__addressSubsection .addSocialNetworkContent .addAddress,
+    .about__addressSubsection .addSocialNetworkContent .addEmailAddress,
+    .about__addressSubsection .addSocialNetworkContent .addSocialNetwork,
+    .about__emailAddressSubsection .addFullNameContent .addFullName,
+    .about__emailAddressSubsection .addFullNameContent .addAddress,
+    .about__emailAddressSubsection .addFullNameContent .addEmailAddress,
+    .about__emailAddressSubsection .addFullNameContent .addSocialNetwork,
+    .about__emailAddressSubsection .addAddressContent .addFullName,
+    .about__emailAddressSubsection .addAddressContent .addAddress,
+    .about__emailAddressSubsection .addAddressContent .addEmailAddress,
+    .about__emailAddressSubsection .addAddressContent .addSocialNetwork,
+    .about__emailAddressSubsection .addEmailAddressContent .addFullName,
+    .about__emailAddressSubsection .addEmailAddressContent .addAddress,
+    .about__emailAddressSubsection .addEmailAddressContent .addEmailAddress,
+    .about__emailAddressSubsection .addEmailAddressContent .addSocialNetwork,
+    .about__emailAddressSubsection .addSocialNetworkContent .addFullName,
+    .about__emailAddressSubsection .addSocialNetworkContent .addAddress,
+    .about__emailAddressSubsection .addSocialNetworkContent .addEmailAddress,
+    .about__emailAddressSubsection .addSocialNetworkContent .addSocialNetwork,
+    .about__socialNetworkSubsection .addFullNameContent .addFullName,
+    .about__socialNetworkSubsection .addFullNameContent .addAddress,
+    .about__socialNetworkSubsection .addFullNameContent .addEmailAddress,
+    .about__socialNetworkSubsection .addFullNameContent .addSocialNetwork,
+    .about__socialNetworkSubsection .addAddressContent .addFullName,
+    .about__socialNetworkSubsection .addAddressContent .addAddress,
+    .about__socialNetworkSubsection .addAddressContent .addEmailAddress,
+    .about__socialNetworkSubsection .addAddressContent .addSocialNetwork,
+    .about__socialNetworkSubsection .addEmailAddressContent .addFullName,
+    .about__socialNetworkSubsection .addEmailAddressContent .addAddress,
+    .about__socialNetworkSubsection .addEmailAddressContent .addEmailAddress,
+    .about__socialNetworkSubsection .addEmailAddressContent .addSocialNetwork,
+    .about__socialNetworkSubsection .addSocialNetworkContent .addFullName,
+    .about__socialNetworkSubsection .addSocialNetworkContent .addAddress,
+    .about__socialNetworkSubsection .addSocialNetworkContent .addEmailAddress,
+    .about__socialNetworkSubsection .addSocialNetworkContent .addSocialNetwork {
+      width: 4.5rem;
+      height: 4.5rem;
+      fill: lightgrey;
+      cursor: pointer;
+      margin-right: 0.95rem;
+      transition: all 0.22s ease-in-out; }
+    .about__fullNameSubsection .addFullNameContent p,
+    .about__fullNameSubsection .addAddressContent p,
+    .about__fullNameSubsection .addEmailAddressContent p,
+    .about__fullNameSubsection .addSocialNetworkContent p,
+    .about__addressSubsection .addFullNameContent p,
+    .about__addressSubsection .addAddressContent p,
+    .about__addressSubsection .addEmailAddressContent p,
+    .about__addressSubsection .addSocialNetworkContent p,
+    .about__emailAddressSubsection .addFullNameContent p,
+    .about__emailAddressSubsection .addAddressContent p,
+    .about__emailAddressSubsection .addEmailAddressContent p,
+    .about__emailAddressSubsection .addSocialNetworkContent p,
+    .about__socialNetworkSubsection .addFullNameContent p,
+    .about__socialNetworkSubsection .addAddressContent p,
+    .about__socialNetworkSubsection .addEmailAddressContent p,
+    .about__socialNetworkSubsection .addSocialNetworkContent p {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: lightgrey;
+      transition: all 0.22s ease-in-out; }
+    .about__fullNameSubsection .addFullNameContent:hover p,
+    .about__fullNameSubsection .addAddressContent:hover p,
+    .about__fullNameSubsection .addEmailAddressContent:hover p,
+    .about__fullNameSubsection .addSocialNetworkContent:hover p,
+    .about__addressSubsection .addFullNameContent:hover p,
+    .about__addressSubsection .addAddressContent:hover p,
+    .about__addressSubsection .addEmailAddressContent:hover p,
+    .about__addressSubsection .addSocialNetworkContent:hover p,
+    .about__emailAddressSubsection .addFullNameContent:hover p,
+    .about__emailAddressSubsection .addAddressContent:hover p,
+    .about__emailAddressSubsection .addEmailAddressContent:hover p,
+    .about__emailAddressSubsection .addSocialNetworkContent:hover p,
+    .about__socialNetworkSubsection .addFullNameContent:hover p,
+    .about__socialNetworkSubsection .addAddressContent:hover p,
+    .about__socialNetworkSubsection .addEmailAddressContent:hover p,
+    .about__socialNetworkSubsection .addSocialNetworkContent:hover p {
+      color: #2e3131; }
+    .about__fullNameSubsection .addFullNameContent:hover svg,
+    .about__fullNameSubsection .addAddressContent:hover svg,
+    .about__fullNameSubsection .addEmailAddressContent:hover svg,
+    .about__fullNameSubsection .addSocialNetworkContent:hover svg,
+    .about__addressSubsection .addFullNameContent:hover svg,
+    .about__addressSubsection .addAddressContent:hover svg,
+    .about__addressSubsection .addEmailAddressContent:hover svg,
+    .about__addressSubsection .addSocialNetworkContent:hover svg,
+    .about__emailAddressSubsection .addFullNameContent:hover svg,
+    .about__emailAddressSubsection .addAddressContent:hover svg,
+    .about__emailAddressSubsection .addEmailAddressContent:hover svg,
+    .about__emailAddressSubsection .addSocialNetworkContent:hover svg,
+    .about__socialNetworkSubsection .addFullNameContent:hover svg,
+    .about__socialNetworkSubsection .addAddressContent:hover svg,
+    .about__socialNetworkSubsection .addEmailAddressContent:hover svg,
+    .about__socialNetworkSubsection .addSocialNetworkContent:hover svg {
+      fill: #2e3131; }
+
 .page__book {
   width: 100%;
   height: 100vh;
@@ -482,3 +724,130 @@ html {
     height: 100%;
     display: grid;
     grid-template-columns: repeat(2, 1fr); }
+
+.component__editProfile {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  z-index: 999;
+  background-color: rgba(0, 0, 0, 0.5);
+  top: 0;
+  right: 0;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  animation: animateEditProfileBackground 0.45s ease-in-out forwards; }
+  .component__editProfile--wrapper {
+    width: 45rem;
+    height: 90vh;
+    background-color: #ffffff;
+    animation: animateEditProfile 0.45s ease-in-out forwards;
+    overflow: hidden;
+    border-radius: 0.35rem; }
+
+.edit__profileContent {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: 4.5rem 1fr; }
+  .edit__profileContent--header {
+    width: 100%;
+    height: 4.5rem;
+    background-color: #f7f7f7;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 0.45rem; }
+    .edit__profileContent--header svg {
+      width: 2.1rem;
+      height: 2.1rem;
+      cursor: pointer;
+      transition: all 0.22s ease-in-out;
+      fill: #2e3131;
+      margin-right: 0.45rem; }
+      .edit__profileContent--header svg:hover {
+        background-color: #2e3131;
+        fill: #ffffff;
+        padding: 0.45rem;
+        border-radius: 0.45rem; }
+  .edit__profileContent--content {
+    padding-left: 0.45rem;
+    overflow-y: scroll;
+    background-color: #ffffff; }
+    .edit__profileContent--content::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      background-color: #F5F5F5; }
+    .edit__profileContent--content::-webkit-scrollbar {
+      width: 12px;
+      background-color: #F5F5F5; }
+    .edit__profileContent--content::-webkit-scrollbar-thumb {
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      background-color: lightgrey; }
+    .edit__profileContent--content .contentEdit__subheader {
+      width: 100%;
+      padding-left: 0.45rem;
+      height: 9rem;
+      background-color: #4c5151;
+      display: flex;
+      flex-direction: row;
+      align-items: center; }
+      .edit__profileContent--content .contentEdit__subheader svg {
+        width: 9.5rem;
+        height: 9.5rem;
+        fill: #ffffff;
+        margin-right: 3.2rem; }
+      .edit__profileContent--content .contentEdit__subheader p {
+        color: #ffffff;
+        font-size: 1.4rem;
+        font-family: "Roboto", sans-serif;
+        font-weight: 300; }
+    .edit__profileContent--content .contentEdit__fullname,
+    .edit__profileContent--content .contentEdit__address,
+    .edit__profileContent--content .contentEdit__emailaddress,
+    .edit__profileContent--content .contentEdit__socialnetwork {
+      width: 100%;
+      height: 6.5rem;
+      background-color: #f7f7f7;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin-top: 0.45rem; }
+      .edit__profileContent--content .contentEdit__fullname svg,
+      .edit__profileContent--content .contentEdit__address svg,
+      .edit__profileContent--content .contentEdit__emailaddress svg,
+      .edit__profileContent--content .contentEdit__socialnetwork svg {
+        width: 3.5rem;
+        height: 3.5rem;
+        margin-right: 3.2rem;
+        fill: #2e3131; }
+      .edit__profileContent--content .contentEdit__fullname p,
+      .edit__profileContent--content .contentEdit__address p,
+      .edit__profileContent--content .contentEdit__emailaddress p,
+      .edit__profileContent--content .contentEdit__socialnetwork p {
+        font-size: 1.4rem;
+        font-weight: 200; }
+    .edit__profileContent--content .editFullNameWrapper,
+    .edit__profileContent--content .editAddressWrapper,
+    .edit__profileContent--content .editEmailAddressWrapper,
+    .edit__profileContent--content .editSocialMediaWrapper {
+      width: 100%;
+      height: 9.5rem;
+      display: grid;
+      align-items: center; }
+      .edit__profileContent--content .editFullNameWrapper label,
+      .edit__profileContent--content .editAddressWrapper label,
+      .edit__profileContent--content .editEmailAddressWrapper label,
+      .edit__profileContent--content .editSocialMediaWrapper label {
+        width: 12rem;
+        font-size: 1.4rem;
+        font-weight: 200; }
+      .edit__profileContent--content .editFullNameWrapper input,
+      .edit__profileContent--content .editAddressWrapper input,
+      .edit__profileContent--content .editEmailAddressWrapper input,
+      .edit__profileContent--content .editSocialMediaWrapper input {
+        width: 19rem;
+        height: 3.5rem;
+        border: 1.4px solid lightgray;
+        border-radius: 0.45rem; }
