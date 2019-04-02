@@ -1,0 +1,14 @@
+.page__book {
+    width:100%;
+    height:100vh;
+    // overflow:hidden;
+    display:grid;
+    grid-template-rows:4.5rem 1fr;
+
+    &--content {
+        width:100%;
+        height:100%;
+        display:grid;
+        grid-template-columns:repeat(2, 1fr);
+    }
+}

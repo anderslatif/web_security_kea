@@ -1,0 +1,36 @@
+{
+  "name": "websecurity_project",
+  "version": "0.1.0",
+  "homepage": "http://pedros.tech",
+  "private": true,
+  "dependencies": {
+    "axios": "^0.18.0",
+    "node-sass": "^4.11.0",
+    "react": "^16.8.5",
+    "react-content-loader": "^4.2.1",
+    "react-dom": "^16.8.5",
+    "react-pdf": "^4.0.5",
+    "react-redux": "^6.0.1",
+    "react-router-dom": "^5.0.0",
+    "react-scripts": "2.1.8",
+    "react-tilt": "^0.1.4",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "compile:sass": "node-sass src/style/style.scss public/style.css -w"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
