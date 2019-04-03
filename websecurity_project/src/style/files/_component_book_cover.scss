@@ -1,0 +1,128 @@
+.componentBookInformation {
+    height:100vh;
+
+    &:hover .componentBookInformation--wrapper--datas{
+        animation: animationSlideBookInformationIn 0.45s ease-in-out forwards;
+    }
+
+    &--wrapper {
+        width: 100%;
+        margin:0 auto;
+        position:relative;
+        height:100vh;
+        overflow-y: hidden;
+
+        &--datas {
+            width:100%;
+            position: absolute;
+            bottom:-14rem;
+            left:0;
+            height:12rem;
+            background:linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.2));
+            display:grid;
+            align-items:center;
+            transition:all 0.45s ease-in-out;
+            // display:none;
+            // border:2px solid lightgrey;
+            // border-radius:0.45rem;
+
+            h2 {
+                font-size:3.2rem;
+                font-family:$font__secondary;
+                color:$color__white;
+                text-align:center;
+            }
+
+            p {
+                font-size:2.7rem;
+                color:$color__white;
+                text-align:center;
+                font-family:$font__secondary;
+                // font-weight:200;
+            }
+        }
+
+        &--cover {
+            width:100%;
+            height:100%;
+            // background-color:$color__lightgrey;
+            display:grid;
+            align-items:center;
+            justify-items:center;
+            position: relative;
+            overflow:hidden;
+
+            img {
+                height:100vh;
+            }
+        }
+    }
+
+    button {
+        width: 4.5rem;
+        height:4.5rem;
+        position: absolute;
+        top: 2.1rem;
+        left: 2.1rem;
+        background-color: transparent;
+        cursor: pointer;
+        border: none;
+        background-color:$color__white;
+        border-radius:50%;
+        display:flex;
+        align-items:center;
+        justify-content:space-around;
+        // position: relative;
+
+        &::after {
+            content:"Reviews";
+            position: absolute;
+            bottom:-4.5rem;
+            left:50%;
+            background-color:$color__darkgrey;
+            color:$color__white;
+            font-family:$all__fonts;
+            // width:100%;
+            padding:0.90rem 0.45rem 0.90rem 0.45rem;
+            display:flex;
+            align-items:center; 
+            text-align:center;
+            // height:3.5rem;
+            transform:translateX(-50%);
+            width: 7rem;
+            border-radius: 0.45rem;
+            display:none;
+        }
+
+        &:hover::after {
+            display:block;
+            animation: animateButtonReviews 0.45s ease-in-out forwards;
+        }
+        
+        svg {
+            width:2.2rem;
+            height:2.2rem;
+            fill:$color__darkgrey;
+            transition:all 0.21s ease-in-out;
+        }
+
+        &:hover svg {
+            padding:0.45rem;
+            fill:$color__white;
+        }
+
+        &:hover {
+            background-color:$color__darkgrey;
+        }
+    }
+}
+
+.component__reviews {
+    width:50%;
+    height:100vh;
+    background-color:lightgrey;
+    z-index:99;
+    position:absolute;
+    top:0;
+    left:0;
+}

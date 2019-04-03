@@ -28,3 +28,25 @@
         height:90vh;
     }
 }
+
+@keyframes animationSlideBookInformationIn {
+    from {
+        bottom:-14rem;
+        opacity:0;
+    }
+    to {
+        bottom:0;
+        opacity:1;
+    }
+}
+
+@keyframes animateButtonReviews {
+    from {
+        opacity:0;
+        bottom:-2rem
+    }
+    to {
+        opacity:1;
+        bottom:-4.5rem;
+    }
+}

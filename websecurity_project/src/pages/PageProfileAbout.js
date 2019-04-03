@@ -18,11 +18,13 @@ class PageProfileAbout extends Component {
     };
 
     componentDidUpdate() {
-        if(this.state.editProfile) {
-            document.querySelector("body").classList.add("pause__scroll"); 
-        } else {
-            document.querySelector("body").classList.add("scroll"); 
-        }
+        // if(this.state.editProfile) {
+        //     document.querySelector("body").classList.add("pause__scroll"); 
+        // }
+        
+        // if(this.state.editProfile === false) {
+        //     document.querySelector("body").classList.add("scroll"); 
+        // }
     }
     render() {
         return(
