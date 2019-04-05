@@ -912,7 +912,8 @@ html {
       background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2));
       display: grid;
       align-items: center;
-      transition: all 0.45s ease-in-out; }
+      transition: all 0.45s ease-in-out;
+      z-index: 9; }
       .componentBookInformation--wrapper--datas h2 {
         font-size: 3.2rem;
         font-family: "Goudy Bookletter 1911", serif;
