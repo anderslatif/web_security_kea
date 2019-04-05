@@ -35,7 +35,7 @@ class PageLogin extends Component {
                     </div>
                     <div className="left__areaAuths--informations">
                         <h2>Get your <span>Book</span></h2>
-                        <p>Login to access the book streaming system</p>
+                        <p>Login to access the Bookz streaming system</p>
                     </div>
                     <form className="formLogin" onSubmit={this.onSubmitStoreDatas}>
                         <div className="formLogin--forms">
