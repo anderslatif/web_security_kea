@@ -40,6 +40,19 @@ or else they will try to circumvent it
 
 
 
+Data strategy
+Minimise
+Hide - encryption, anonymization
+Aggregate - data with as high aggregation as possible
+
+Process strategy
+Inform - transparency on how the data is used
+Control - user has influence
+
+
+
+
+
 
 
 

@@ -1,0 +1,13 @@
+An SQL Injection is not the entire statement. It's the injected part.
+
+Types:
+Arithmetic (id =3 is the same as id = 1+2)
+Booleaan (25=25)
+Time Delay (sleep() or WAIT_FOR)
+
+
+
+
+
+
+

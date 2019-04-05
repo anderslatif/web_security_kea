@@ -1,0 +1,45 @@
+xss can do session hijacking and forced rediretion
+
+hashes are used for:
+1. Verifying data integrity
+2. Storing Passwords
+
+Salting a hash is a good idea to improve security and avod same password problem
+
+Rainbow tables - lookup table of prehashed passwords
+
+Bcrypt and others have  a salt built in
+
+Encryption: securing a message through a non-secure channel
+
+Symmetric encryption: Anyone who gets the key has access to the secret
+Solution: Share a new key on a new channel
+
+Asymmetric key encryption: uses 2 keys: mathematically related but can't be calculated from each other
+2 keys: Private and public key
+
+Hashing is a fixed size and a one way function.
+Encryption depends on the message size.
+
+Can we trust a public key? The answer is certificates.
+Issued by certificate authorities (CA)
+
+
+RCA (Root Certificate Authorities)
+
+https://badssl.com/
+
+https://www.ssllabs.com/ssltest/
+
+------------
+SSL (Secure Socket Layer) TLS (Transport Layer Security)
+
+All versions of SSL 1, 2, 3 is not secure anymore
+
+TLS is sometimes called SSL but it's not the same.
+
+
+
+
+
+

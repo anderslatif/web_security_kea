@@ -1,0 +1,24 @@
+http://46.101.166.161/snake/
+
+
+
+name0=Player9&score0=2900&recFile0=0&hash0=1&name1=Player8&score1=2800&recFile1=1&hash1=1&name2=Player7&score2=2700&recFile2=2&hash2=1&name3=Player6&score3=2600&recFile3=3&hash3=1&name4=Player5&score4=2500&recFile4=4&hash4=1&name5=Player4&score5=2400&recFile5=5&hash5=1&name6=Player3&score6=2300&recFile6=6&hash6=1&name7=Player2&score7=2200&recFile7=7&hash7=1&name8=Player1&score8=2100&recFile8=8&hash8=1&name9=Player0&score9=2000&recFile9=9&hash9=1&
+
+10 - 1437
+20 - 1737 - 300
+30 - 2237 - 500
+40 - 2937 - 700
+50 - 3837 - 900
+100 - 11337
+110 - 13437
+150 - 12237
+
+http://46.101.166.161/secret/cookie.txt
+
+hangman
+strongpassword
+cesar22
+
+
+
+
