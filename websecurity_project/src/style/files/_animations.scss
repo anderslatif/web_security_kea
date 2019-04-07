@@ -19,13 +19,24 @@
 }
 
 @keyframes animateEditProfile {
+    0% {
+        opacity:0;
+    }
+    90% {
+        opacity:0.5;   
+    }
+    100% {
+        opacity:1;
+    }
     from {
         width:0;
         height:0;
+        opacity:0;
     }
     to {
         width:45rem;
         height:90vh;
+        opacity:1;
     }
 }
 
