@@ -1,5 +1,6 @@
 .componentBookInformation {
     height:100vh;
+    background-color:darken($color__lightgrey, 9%);
 
     &:hover .componentBookInformation--wrapper--datas{
         animation: animationSlideBookInformationIn 0.45s ease-in-out forwards;
@@ -118,7 +119,8 @@
     }
 }
 
-.component__reviews {
+.component__reviews,
+.slideback__reviews {
     width:50%;
     height:100vh;
     background-color:lightgrey;

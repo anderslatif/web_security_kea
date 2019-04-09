@@ -62,6 +62,12 @@ html {
   to {
     left: 0; } }
 
+@keyframes animationSlideBackReviewsComponentAreas {
+  from {
+    left: 0; }
+  to {
+    left: -50%; } }
+
 .page__login,
 .page__register {
   width: 100%;
@@ -335,7 +341,7 @@ html {
       width: 2.1rem;
       height: 2.1rem;
       cursor: pointer;
-      fill: #C8C9CC; }
+      fill: #c8c9cc; }
 
 .right__header {
   display: flex;
@@ -347,7 +353,7 @@ html {
       width: 2.6rem;
       height: 2.6rem;
       cursor: pointer;
-      fill: #C8C9CC; }
+      fill: #c8c9cc; }
   .right__header--profile {
     width: 3.5rem;
     height: 3.5rem;
@@ -753,18 +759,18 @@ html {
     width: 100%;
     height: 100%;
     display: grid;
-    grid-template-columns: repeat(2, 1fr); }
+    grid-template-columns: 35% 1fr; }
 
 .page__book--content--cover {
   height: 100vh;
-  background-color: #D03857; }
+  background-color: #d03857; }
 
 .page__book--content--document {
   height: 100vh;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  background-color: #34383F; }
+  background-color: #34383f; }
   .page__book--content--document .componentIndividualBooks {
     width: 90%;
     height: 100vh; }
@@ -913,7 +919,8 @@ html {
         border-radius: 0.45rem; }
 
 .componentBookInformation {
-  height: 100vh; }
+  height: 100vh;
+  background-color: #e0e0e0; }
   .componentBookInformation:hover .componentBookInformation--wrapper--datas {
     animation: animationSlideBookInformationIn 0.45s ease-in-out forwards; }
   .componentBookInformation--wrapper {
@@ -997,7 +1004,8 @@ html {
     .componentBookInformation button:hover {
       background-color: #2e3131; }
 
-.component__reviews {
+.component__reviews,
+.slideback__reviews {
   width: 50%;
   height: 100vh;
   background-color: lightgrey;
@@ -1381,3 +1389,117 @@ html {
     transition: all 0.22s ease-in-out; }
     .feedpost__readbooks a:hover {
       background-color: dodgerblue; }
+
+.component__reviews,
+.slideback__reviews {
+  width: 35%;
+  background-color: #f7f7f7; }
+  .component__reviews .close__reviews,
+  .slideback__reviews .close__reviews {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    right: 0.45rem;
+    top: 0.45rem; }
+    .component__reviews .close__reviews svg,
+    .slideback__reviews .close__reviews svg {
+      width: 2.2rem;
+      height: 2.2rem;
+      border-radius: 0.45rem;
+      transition: all 0.22s ease-in-out; }
+    .component__reviews .close__reviews:hover svg,
+    .slideback__reviews .close__reviews:hover svg {
+      padding: 0.45rem;
+      fill: #ffffff;
+      background-color: #2e3131; }
+  .component__reviews--wrapper,
+  .slideback__reviews--wrapper {
+    width: 80%;
+    margin: 0 auto;
+    height: 100%;
+    padding-top: 2.2rem;
+    padding-bottom: 2.2rem;
+    padding-left: 5%;
+    padding-right: 5%;
+    overflow-y: scroll; }
+    .component__reviews--wrapper::-webkit-scrollbar,
+    .slideback__reviews--wrapper::-webkit-scrollbar {
+      display: none; }
+    .component__reviews--wrapper .reviews__title,
+    .slideback__reviews--wrapper .reviews__title {
+      width: 100%;
+      height: 6.5rem;
+      margin-bottom: 2.2rem; }
+      .component__reviews--wrapper .reviews__title h2,
+      .slideback__reviews--wrapper .reviews__title h2 {
+        font-size: 1.9rem;
+        margin-bottom: 0.45rem;
+        font-weight: 900; }
+      .component__reviews--wrapper .reviews__title p,
+      .slideback__reviews--wrapper .reviews__title p {
+        font-size: 1.4rem;
+        font-weight: 200; }
+    .component__reviews--wrapper .reviews__content,
+    .slideback__reviews--wrapper .reviews__content {
+      width: 100%;
+      display: grid;
+      grid-template-rows: auto;
+      grid-row-gap: 2.2rem; }
+
+.slideback__reviews {
+  animation: animationSlideBackReviewsComponentAreas 0.22s ease-in-out forwards; }
+
+.componentIndividualReview {
+  position: relative;
+  width: 32rem;
+  min-height: 14rem;
+  height: auto;
+  background-color: #ffffff;
+  border-radius: 0.45rem;
+  display: grid;
+  align-items: center; }
+  .componentIndividualReview--image {
+    width: 4.5rem;
+    height: 4.5rem;
+    border-radius: 50%;
+    overflow: hidden;
+    position: absolute;
+    left: -2.25rem;
+    top: 5%; }
+    .componentIndividualReview--image img {
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%); }
+  .componentIndividualReview--content {
+    width: 70%;
+    height: 90%;
+    margin: 0 auto; }
+    .componentIndividualReview--content .reviewIndividual__username {
+      width: 100%;
+      height: 4.5rem;
+      display: grid;
+      align-items: center; }
+      .componentIndividualReview--content .reviewIndividual__username h2 {
+        font-size: 1.4rem; }
+    .componentIndividualReview--content .reviewIndividual__reviewDates {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin-bottom: 2.2rem; }
+      .componentIndividualReview--content .reviewIndividual__reviewDates svg {
+        width: 2.2rem;
+        height: 2.2rem;
+        fill: #0058a2;
+        margin-right: 0.45rem; }
+      .componentIndividualReview--content .reviewIndividual__reviewDates p {
+        font-size: 1.4rem;
+        font-weight: 200; }
+    .componentIndividualReview--content .reviewIndividual__reviewContent {
+      width: 100%; }
+      .componentIndividualReview--content .reviewIndividual__reviewContent p {
+        font-size: 1.4rem;
+        font-weight: 200; }

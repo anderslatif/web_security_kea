@@ -18,6 +18,7 @@ class PageBook extends Component {
       loader: true
     }
     this.toggleBookReviewsPanel = this.toggleBookReviewsPanel.bind(this)
+    this.closeReviewComponent = this.closeReviewComponent.bind(this)
   }
   state = {
     numPages: null,
@@ -56,6 +57,13 @@ class PageBook extends Component {
     }
   }
 
+  closeReviewComponent = () => {
+    document.querySelector(".component__reviews").className = "slideback__reviews";
+    setTimeout(() => {
+      this.setState({bookReviewsPanel: false})
+    }, 1400)
+  }
+
   componentDidMount() {
     window.onkeydown = this.changePages;
     setTimeout(() => {
@@ -81,7 +89,7 @@ class PageBook extends Component {
           {
             this.state.bookReviewsPanel
             &&
-            <ComponentReviews />
+            <ComponentReviews closeReviewComponent={this.closeReviewComponent} />
           }
         </div>
         <div className="page__book--content--document"

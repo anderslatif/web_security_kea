@@ -1,0 +1,80 @@
+.component__reviews,
+.slideback__reviews {
+    width:35%;
+    background-color:$color__lightgrey;
+    // position:relative;
+
+    .close__reviews {
+        background-color:transparent;
+        border:none;
+        cursor: pointer;
+        position: absolute;
+        right:0.45rem;
+        top:0.45rem;
+
+        // &:focus:parent {
+        //     animation:animationSlideBackReviewsComponentAreas 0.22s ease-in-out forwards;
+        // }
+
+        svg {
+            width:2.2rem;
+            height:2.2rem;
+            border-radius:0.45rem;
+            transition:all 0.22s ease-in-out;
+        }
+
+        &:hover svg {
+            padding:0.45rem;
+            fill:$color__white;
+            background-color:$color__darkgrey;
+        }
+    }
+
+    &--wrapper {
+        width:80%;
+        margin:0 auto;
+        height:100%;
+        padding-top:2.2rem;
+        padding-bottom:2.2rem;
+        padding-left:5%;
+        padding-right:5%;
+        overflow-y: scroll;
+
+        &::-webkit-scrollbar {
+            display:none;
+        }
+
+        .reviews__title {
+            width:100%;
+            height:6.5rem;
+            margin-bottom:2.2rem;
+
+            h2 {
+                font-size:1.9rem;
+                margin-bottom:0.45rem;
+                font-weight:900;
+            }
+
+            p {
+                font-size:1.4rem;
+                font-weight:200;
+            }
+        }
+
+        .reviews__content {
+            width:100%;
+            display:grid;
+            grid-template-rows: auto;
+            grid-row-gap:2.2rem;
+            // overflow-y:scroll;
+
+            // &::-webkit-scrollbar {
+            //     display:none;
+            // }
+        }
+    }
+}
+
+.slideback__reviews {
+    animation:animationSlideBackReviewsComponentAreas 0.22s ease-in-out forwards;
+}

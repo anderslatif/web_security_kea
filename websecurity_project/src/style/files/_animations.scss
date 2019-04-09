@@ -70,3 +70,12 @@
         left:0;
     }
 }
+
+@keyframes animationSlideBackReviewsComponentAreas {
+    from {
+        left:0;
+    }
+    to {
+        left: -50%;
+    }
+}
