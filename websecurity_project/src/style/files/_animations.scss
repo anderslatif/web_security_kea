@@ -61,3 +61,12 @@
         bottom:-4.5rem;
     }
 }
+
+@keyframes animationSlideReviews {
+    from {
+        left:-50%;
+    }
+    to {
+        left:0;
+    }
+}

@@ -24,7 +24,7 @@ class ComponentIndividualFeedPosts extends Component {
                             <div className="imgFeedUsers">
                                 <img src={user.user_profile} alt="image__profile" />
                             </div>
-                            <div classNanem="datesFeedUsers">
+                            <div className="datesFeedUsers">
                                 <h2>{user.username}</h2>
                                 <p>{user.location}</p>
                             </div>

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import ComponentIndividualFeedPosts from "./ComponentIndividualFeedPosts";
 import moment from "moment";
+import { connect } from "react-redux";
 
 const feedTestPosts = [
     {
@@ -24,7 +25,7 @@ const feedTestPosts = [
         user: {
             username: "User2",
             user_profile: "./image/profile__image.jpg",
-            location: "country1",
+            location: "country2",
             id: 2
         },
         book: {
@@ -46,7 +47,7 @@ class ComponentFeedPosts extends Component {
         }
     }
     componentDidMount() {
-        // console.log(this.state.posts[0]);
+        console.log(this.state.posts[0]);
     }
     render() {
         return(
@@ -62,4 +63,10 @@ class ComponentFeedPosts extends Component {
     }
 }
 
-export default ComponentFeedPosts;
+const mapStateToProps = (state) => {
+    return {
+        posts: state
+    }
+}
+
+export default connect(mapStateToProps)(ComponentFeedPosts);

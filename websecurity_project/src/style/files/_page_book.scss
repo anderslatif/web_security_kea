@@ -44,3 +44,9 @@
 .react-pdf__Page__textContent {
     height:100vh!important;
 }
+
+.component__reviews {
+    position:absolute;
+    left:-50%;
+    animation:animationSlideReviews 0.45s ease-in forwards;
+}

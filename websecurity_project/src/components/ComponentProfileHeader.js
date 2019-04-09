@@ -22,6 +22,7 @@ class ComponentProfileHeader extends Component {
             <div className="componentProfileHeader--navigation--links">
                 <NavLink activeClassName="activeSubRoute" to="/profile/">About</NavLink>
                 <NavLink activeClassName="activeSubRoute" to="/profile/posts">Posts</NavLink>
+                <NavLink activeClassName="activeSubRoute" to="/feed">Feed</NavLink>
             </div>
         </div>
         {/* componentProfileHeader */}

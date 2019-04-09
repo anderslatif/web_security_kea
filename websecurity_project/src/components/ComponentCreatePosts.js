@@ -8,6 +8,11 @@ class ComponentCreatePosts extends Component {
           author: "",
           cover: ""
       }
+      this.testCoverUpload = this.testCoverUpload.bind(this)
+  }
+
+  testCoverUpload = (ev) => {
+    console.log(this.ref.coverFileUploader);
   }
   render() {
     return (
@@ -20,16 +25,18 @@ class ComponentCreatePosts extends Component {
                 <span>Create Post</span>
             </button>
             <button className="addAnImage">
-                <svg>
+                <svg onClick={this.testCoverUpload}>
                     <use href="./image/sprite.svg#icon-image"></use>
                 </svg>
                 <span>Add Cover</span>
+                <input ref="coverFileUploader" style={{display:"none"}} type="file" />
             </button>
             <button className="addAFile">
                 <svg>
                     <use href="./image/sprite.svg#icon-file-text"></use>
                 </svg>
                 <span>Add Book file</span>
+                <input style={{display:"none"}} type="file" />
             </button>
         </div>
         <div className="componentCreatePosts__innercontent">
