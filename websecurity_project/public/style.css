@@ -773,7 +773,9 @@ html {
   background-color: #34383f; }
   .page__book--content--document .componentIndividualBooks {
     width: 90%;
-    height: 100vh; }
+    height: 100vh;
+    position: relative;
+    overflow: hidden; }
 
 .react-pdf__Document {
   display: flex !important;
@@ -790,6 +792,44 @@ html {
   position: absolute;
   left: -50%;
   animation: animationSlideReviews 0.45s ease-in forwards; }
+
+.changeLeftPages {
+  position: absolute;
+  left: 7.5%;
+  top: 50%;
+  transform: translateX(-50%) rotate(-90deg);
+  height: 6.5rem;
+  width: 100%;
+  background-color: transparent;
+  transition: all 0.22s ease-in-out;
+  cursor: pointer;
+  border: none;
+  color: #ffffff;
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  font-weight: 200; }
+  .changeLeftPages:hover {
+    background-color: rgba(0, 0, 0, 0.9);
+    border-radius: 0.45rem; }
+
+.changeRightPages {
+  position: absolute;
+  left: 92.5%;
+  top: 50%;
+  transform: translateX(-50%) rotate(90deg);
+  height: 6.5rem;
+  width: 100%;
+  background-color: transparent;
+  transition: all 0.22s ease-in-out;
+  cursor: pointer;
+  border: none;
+  color: #ffffff;
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  font-weight: 200; }
+  .changeRightPages:hover {
+    background-color: rgba(0, 0, 0, 0.9);
+    border-radius: 0.45rem; }
 
 .component__editProfile {
   width: 100%;
