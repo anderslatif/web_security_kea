@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 
 class ComponentIndividualChatMessage extends Component {
-    render() {
+    render(props) {
+        let { message } = this.props;
         return(
             <div className="componentIndividualChatMessage">
-                ComponentIndividualChatMessage
+                <p>{message}</p>
+                {/* ComponentIndividualChatMessage */}
             </div>
         );
     }

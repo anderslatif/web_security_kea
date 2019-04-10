@@ -56,7 +56,7 @@ class ComponentChatElement extends Component {
                 <div className="chat__content">
                     {
                         this.state.chatMessages.map((msgChat) => {
-                            return <ComponentIndividualChatMessage />
+                            return <ComponentIndividualChatMessage key={msgChat.id} message={msgChat.message} />
                         })
                     }
                 </div>
