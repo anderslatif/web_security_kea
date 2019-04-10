@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { NavLink } from "react-router-dom";
 
 class ComponentPostsElement extends Component {
     constructor(props) {
@@ -16,7 +17,8 @@ class ComponentPostsElement extends Component {
                         <h2>{post.title}</h2>
                         <p>{post.author}</p>
                         <span>{post.rating}</span>
-                        <button>Read</button>
+                        <NavLink to="/profile/posts/books">Read</NavLink>
+                        {/* <button>Read</button> */}
                     </div>
                     {/* <div className="componentPostsElement--wrapper--cover">
                         <img src={post.cover} />

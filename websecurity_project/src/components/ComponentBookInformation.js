@@ -7,9 +7,10 @@ class ComponentBookInformation extends Component {
       <div className="componentBookInformation">
         <div className="componentBookInformation--wrapper">
             <div className="componentBookInformation--wrapper--datas">
-                <div>
+                <div className="book__infos">
                     <h2>Book title</h2>
-                    <p>Book author</p>
+                    <p className="book__infos--author">Book author</p>
+                    <p className="book__infos--description">This is a test description for the test books</p>
                 </div>
             </div>
             <div className="componentBookInformation--wrapper--cover">

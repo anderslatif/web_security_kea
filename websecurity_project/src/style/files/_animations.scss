@@ -42,8 +42,9 @@
 
 @keyframes animationSlideBookInformationIn {
     from {
-        bottom:-14rem;
+        bottom:-100%;
         opacity:0;
+        // bottom:-14rem;
     }
     to {
         bottom:0;
@@ -77,5 +78,23 @@
     }
     to {
         left: -50%;
+    }
+}
+
+@keyframes animationChatSlide {
+    from {
+        bottom:-100%;
+    }
+    to {
+        bottom:0;
+    }
+}
+
+@keyframes animationSlideChatLists {
+    from {
+        bottom:0;
+    }
+    to {
+        bottom:-100%;
     }
 }

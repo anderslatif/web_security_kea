@@ -4,6 +4,7 @@ import ComponentIndividualBooks from '../components/ComponentIndividualBooks';
 import ComponentBookInformation from '../components/ComponentBookInformation';
 import ComponentReviews from '../components/ComponentReviews';
 import PageLoader from '../components/PageLoader';
+import { NavLink } from "react-router-dom";
 
 // const styleBlackHeader = {
 //     color:"white",
@@ -36,7 +37,7 @@ class PageBook extends Component {
     const { numPages } = document;
     this.setState({
       numPages,
-      pageNumber: 14,
+      pageNumber: 22,
     });
   };
 
@@ -91,6 +92,11 @@ class PageBook extends Component {
         &&
         <PageLoader />
       }
+        <NavLink to="/profile/posts" className="redirectToPosts">
+          <svg>
+            <use href="./image/sprite.svg#icon-books"></use>
+          </svg>
+        </NavLink>
       {/* <ComponentHeader></ComponentHeader> */}
       <div className="page__book--content">
         <div className="page__book--content--cover">

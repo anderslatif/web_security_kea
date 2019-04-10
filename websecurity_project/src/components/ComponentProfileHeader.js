@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 
 class ComponentProfileHeader extends Component {
   render() {
+    let { handleChatState } = this.props;
     return (
       <div className="componentProfileHeader">
         <div className="componentProfileHeader--cover">
@@ -20,9 +21,15 @@ class ComponentProfileHeader extends Component {
                 <img src="./image/profile__image.jpg" alt="profile__image" />
             </div>
             <div className="componentProfileHeader--navigation--links">
-                <NavLink activeClassName="activeSubRoute" to="/profile/">About</NavLink>
-                <NavLink activeClassName="activeSubRoute" to="/profile/posts">Posts</NavLink>
-                <NavLink activeClassName="activeSubRoute" to="/feed">Feed</NavLink>
+                <NavLink activeClassName="activeSubRoute" exact={true} to="/profile/">About</NavLink>
+                <NavLink activeClassName="activeSubRoute" exact={true} to="/profile/posts">Posts</NavLink>
+                <NavLink activeClassName="activeSubRoute" exact={true} to="/feed">Feed</NavLink>
+                <button 
+                  className="toggleChatElement"
+                  onClick={handleChatState}
+                >
+                Chats
+                </button>
             </div>
         </div>
         {/* componentProfileHeader */}

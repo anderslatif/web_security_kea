@@ -110,6 +110,8 @@
             flex-direction:row;
             align-items:center;
             margin-left:12rem;
+            display:grid;
+            grid-template-columns:auto auto auto auto;
 
             a {
                 font-size:1.7rem;
@@ -120,9 +122,12 @@
                 // font-family:sans-serif;
                 transition:all 0.21s ease-in-out;
                 position: relative;
+                text-align:center;
+                // display:grid;
+                // grid-template-columns:auto auto auto auto;
 
                 &:not(:last-child) {
-                    margin-right:1.45rem
+                    // margin-right:1.45rem
                 }
 
                 // &::after {
@@ -242,19 +247,41 @@
                 span {
                     display:block;
                     font-size:1.4rem;
+                    margin-bottom:2.2rem;
                 }
-
-                button {
+                
+                a {
                     border:none;
                     padding:0.45rem 1.4rem 0.45rem 1.4rem;
                     border-radius:0.45rem;
                     color:$color__white;
-                    background-color:dodgerblue;
-                    margin-top:1.4rem;
+                    background-color:$color__primary;
                     cursor: pointer;
+                    text-decoration:none;
+                    font-weight:900;
+                    font-size:1.4rem;
+                    transition:all 0.22s ease-in-out;
+
+                    &:hover {
+                        background-color:dodgerblue;
+                    }
+                    // text-transform:uppercase;
+                    // margin-top:2.2rem;
                     // opacity:0.7;
                     // background-color:lighten($color__darkgrey, 9%);
                 }
+                // button {
+                //     border:none;
+                //     padding:0.45rem 1.4rem 0.45rem 1.4rem;
+                //     border-radius:0.45rem;
+                //     color:$color__white;
+                //     background-color:dodgerblue;
+                //     margin-top:1.4rem;
+                //     cursor: pointer;
+                //     // opacity:0.7;
+                //     // background-color:lighten($color__darkgrey, 9%);
+                // }
+
             }
 
             // &--cover {
@@ -452,3 +479,18 @@
 //     height:12rem;
 //     border-bottom:1.4px solid lightgray;
 // }
+
+.toggleChatElement {
+    grid-column:6/7;
+    cursor:pointer;
+    background-color:$color__primary;
+    color:$color__white;
+    border:none;
+    border-radius:0.45rem;
+    transition:all 0.22s ease-in-out;
+    padding:0.45rem 0.35rem 0.65rem 0.35rem;
+
+    &:hover {
+        background-color:dodgerblue;
+    }
+}

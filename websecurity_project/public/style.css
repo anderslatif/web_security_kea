@@ -42,7 +42,7 @@ html {
 
 @keyframes animationSlideBookInformationIn {
   from {
-    bottom: -14rem;
+    bottom: -100%;
     opacity: 0; }
   to {
     bottom: 0;
@@ -67,6 +67,18 @@ html {
     left: 0; }
   to {
     left: -50%; } }
+
+@keyframes animationChatSlide {
+  from {
+    bottom: -100%; }
+  to {
+    bottom: 0; } }
+
+@keyframes animationSlideChatLists {
+  from {
+    bottom: 0; }
+  to {
+    bottom: -100%; } }
 
 .page__login,
 .page__register {
@@ -448,7 +460,9 @@ html {
       display: flex;
       flex-direction: row;
       align-items: center;
-      margin-left: 12rem; }
+      margin-left: 12rem;
+      display: grid;
+      grid-template-columns: auto auto auto auto; }
       .componentProfileHeader--navigation--links a {
         font-size: 1.7rem;
         color: #5d6363;
@@ -456,9 +470,8 @@ html {
         font-weight: 700;
         cursor: pointer;
         transition: all 0.21s ease-in-out;
-        position: relative; }
-        .componentProfileHeader--navigation--links a:not(:last-child) {
-          margin-right: 1.45rem; }
+        position: relative;
+        text-align: center; }
         .componentProfileHeader--navigation--links a:hover {
           color: black; }
       .componentProfileHeader--navigation--links .activeSubRoute {
@@ -523,15 +536,21 @@ html {
           margin-bottom: 0.45rem; }
         .componentPosts .componentPostsElement--wrapper--information span {
           display: block;
-          font-size: 1.4rem; }
-        .componentPosts .componentPostsElement--wrapper--information button {
+          font-size: 1.4rem;
+          margin-bottom: 2.2rem; }
+        .componentPosts .componentPostsElement--wrapper--information a {
           border: none;
           padding: 0.45rem 1.4rem 0.45rem 1.4rem;
           border-radius: 0.45rem;
           color: #ffffff;
-          background-color: dodgerblue;
-          margin-top: 1.4rem;
-          cursor: pointer; }
+          background-color: #0058a2;
+          cursor: pointer;
+          text-decoration: none;
+          font-weight: 900;
+          font-size: 1.4rem;
+          transition: all 0.22s ease-in-out; }
+          .componentPosts .componentPostsElement--wrapper--information a:hover {
+            background-color: dodgerblue; }
 
 .component__about {
   width: 70%;
@@ -750,11 +769,69 @@ html {
     .about__socialNetworkSubsection .addSocialNetworkContent:hover svg {
       fill: #2e3131; }
 
+.toggleChatElement {
+  grid-column: 6/7;
+  cursor: pointer;
+  background-color: #0058a2;
+  color: #ffffff;
+  border: none;
+  border-radius: 0.45rem;
+  transition: all 0.22s ease-in-out;
+  padding: 0.45rem 0.35rem 0.65rem 0.35rem; }
+  .toggleChatElement:hover {
+    background-color: dodgerblue; }
+
 .page__book {
   width: 100%;
   height: 100vh;
   display: grid;
   grid-template-rows: 4.5rem 1fr; }
+  .page__book .redirectToPosts {
+    width: 4.5rem;
+    height: 4.5rem;
+    position: fixed;
+    right: 2.1rem;
+    top: 2.1rem;
+    cursor: pointer;
+    background-color: #ffffff;
+    border-radius: 50%;
+    z-index: 99;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    transition: all 0.22s ease-in-out;
+    border: 1.4px solid transparent; }
+    .page__book .redirectToPosts svg {
+      width: 2.2rem;
+      height: 2.2rem;
+      fill: #34383f;
+      transition: all 0.22s ease-in-out; }
+    .page__book .redirectToPosts:hover svg {
+      padding: 0.45rem;
+      fill: #ffffff; }
+    .page__book .redirectToPosts:hover {
+      background-color: #34383f;
+      border-color: #ffffff; }
+    .page__book .redirectToPosts::after {
+      content: "Return";
+      position: absolute;
+      bottom: -4.5rem;
+      left: 50%;
+      background-color: #ffffff;
+      color: #34383f;
+      font-family: "Roboto", sans-serif;
+      padding: 0.90rem 0.45rem 0.90rem 0.45rem;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      transform: translateX(-50%);
+      width: 7rem;
+      border-radius: 0.45rem;
+      display: none;
+      font-size: 1.4rem; }
+    .page__book .redirectToPosts:hover::after {
+      display: block;
+      animation: animateButtonReviews 0.45s ease-in-out forwards; }
   .page__book--content {
     width: 100%;
     height: 100%;
@@ -972,24 +1049,35 @@ html {
     .componentBookInformation--wrapper--datas {
       width: 100%;
       position: absolute;
-      bottom: -14rem;
       left: 0;
-      height: 12rem;
-      background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2));
+      bottom: -100%;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2));
       display: grid;
       align-items: center;
       transition: all 0.45s ease-in-out;
-      z-index: 9; }
-      .componentBookInformation--wrapper--datas h2 {
-        font-size: 3.2rem;
-        font-family: "Goudy Bookletter 1911", serif;
-        color: #ffffff;
-        text-align: center; }
-      .componentBookInformation--wrapper--datas p {
-        font-size: 2.7rem;
-        color: #ffffff;
-        text-align: center;
-        font-family: "Goudy Bookletter 1911", serif; }
+      z-index: 9;
+      height: auto;
+      padding-top: 4.5rem;
+      padding-bottom: 4.5rem; }
+      .componentBookInformation--wrapper--datas .book__infos {
+        padding-left: 0.45rem;
+        padding-right: 0.45rem; }
+        .componentBookInformation--wrapper--datas .book__infos h2 {
+          font-size: 3.2rem;
+          font-family: "Goudy Bookletter 1911", serif;
+          color: #ffffff;
+          text-align: center; }
+        .componentBookInformation--wrapper--datas .book__infos--author {
+          font-size: 2.7rem;
+          color: #ffffff;
+          text-align: center;
+          font-family: "Goudy Bookletter 1911", serif; }
+        .componentBookInformation--wrapper--datas .book__infos--description {
+          font-size: 2.2rem;
+          color: #ffffff;
+          text-align: center;
+          font-family: "Goudy Bookletter 1911", serif;
+          font-weight: 200; }
     .componentBookInformation--wrapper--cover {
       width: 100%;
       height: 100%;
@@ -1013,7 +1101,8 @@ html {
     border-radius: 50%;
     display: flex;
     align-items: center;
-    justify-content: space-around; }
+    justify-content: space-around;
+    border: 1.4px solid transparent; }
     .componentBookInformation button::after {
       content: "Reviews";
       position: absolute;
@@ -1042,7 +1131,8 @@ html {
       padding: 0.45rem;
       fill: #ffffff; }
     .componentBookInformation button:hover {
-      background-color: #2e3131; }
+      background-color: #2e3131;
+      border-color: #ffffff; }
 
 .component__reviews,
 .slideback__reviews {
@@ -1058,10 +1148,11 @@ html {
   width: 100%;
   height: 100vh;
   background-color: #ffffff;
-  position: grid;
+  display: grid;
   align-items: center;
   justify-items: center;
-  z-index: 99999; }
+  z-index: 99999;
+  position: fixed; }
   .page__loader img {
     width: 9rem;
     position: absolute;
@@ -1543,3 +1634,112 @@ html {
       .componentIndividualReview--content .reviewIndividual__reviewContent p {
         font-size: 1.4rem;
         font-weight: 200; }
+
+.componentChatElement,
+.slideChatLists {
+  width: 32rem;
+  height: 42rem;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  transition: all 0.45s ease-in-out;
+  background-color: #ffffff;
+  display: grid;
+  grid-template-rows: 6.4rem 1fr 6.5rem;
+  border: 1.4px solid #0058a2;
+  animation: animationChatSlide 0.45s ease-in-out forwards; }
+  .componentChatElement .chat__header,
+  .slideChatLists .chat__header {
+    background: linear-gradient(to right bottom, #0058a2, #43C6AC);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23); }
+    .componentChatElement .chat__header button,
+    .slideChatLists .chat__header button {
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      transition: all 0.22s ease-in-out;
+      border-radius: 0.45rem;
+      display: grid;
+      align-items: center;
+      justify-items: center; }
+      .componentChatElement .chat__header button svg,
+      .slideChatLists .chat__header button svg {
+        width: 2.2rem;
+        height: 2.2rem;
+        fill: #ffffff; }
+      .componentChatElement .chat__header button:hover,
+      .slideChatLists .chat__header button:hover {
+        background-color: #ffffff; }
+      .componentChatElement .chat__header button:hover svg,
+      .slideChatLists .chat__header button:hover svg {
+        fill: #0058a2;
+        padding: 0.45rem; }
+    .componentChatElement .chat__header h2,
+    .slideChatLists .chat__header h2 {
+      color: #ffffff;
+      font-size: 1.4rem;
+      letter-spacing: 0.32rem;
+      font-weight: 200; }
+  .componentChatElement .chat__content,
+  .slideChatLists .chat__content {
+    padding-top: 0.45rem;
+    padding-bottom: 0.45rem;
+    overflow-y: scroll; }
+    .componentChatElement .chat__content::-webkit-scrollbar,
+    .slideChatLists .chat__content::-webkit-scrollbar {
+      display: none; }
+  .componentChatElement .chat__input,
+  .slideChatLists .chat__input {
+    border-top: 1.4px solid #0058a2; }
+    .componentChatElement .chat__input--sendmessage,
+    .slideChatLists .chat__input--sendmessage {
+      position: relative;
+      width: 100%;
+      height: 100%; }
+      .componentChatElement .chat__input--sendmessage textarea,
+      .slideChatLists .chat__input--sendmessage textarea {
+        width: 100%;
+        height: 100%;
+        border: none;
+        padding-right: 4.5rem; }
+        .componentChatElement .chat__input--sendmessage textarea::-webkit-scrollbar,
+        .slideChatLists .chat__input--sendmessage textarea::-webkit-scrollbar {
+          display: none; }
+      .componentChatElement .chat__input--sendmessage button,
+      .slideChatLists .chat__input--sendmessage button {
+        position: absolute;
+        right: 2.2rem;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        transition: all 0.22s ease-in-out;
+        border-radius: 0.45rem;
+        display: grid;
+        align-items: center;
+        justify-items: center; }
+        .componentChatElement .chat__input--sendmessage button svg,
+        .slideChatLists .chat__input--sendmessage button svg {
+          width: 2.2rem;
+          height: 2.2rem;
+          fill: #0058a2; }
+
+.slideChatLists {
+  animation: animationSlideChatLists 0.45s ease-in-out forwards; }
+
+.componentIndividualChatMessage {
+  width: auto;
+  max-width: 90%;
+  margin: 0 auto;
+  padding: 1.45rem 0.35rem 1.45rem 0.35rem;
+  background-color: #0058a2;
+  color: #ffffff;
+  border-radius: 0.45rem;
+  display: inline-block; }
+  .componentIndividualChatMessage:not(:first-child) {
+    margin-top: 0.45rem; }

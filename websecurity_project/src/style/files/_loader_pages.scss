@@ -2,10 +2,11 @@
     width:100%;
     height:100vh;
     background-color:$color__white;
-    position:grid;
+    display:grid;
     align-items:center;
     justify-items:center;
     z-index:99999;
+    position:fixed;
 
     img {
         width:9rem;

@@ -16,31 +16,48 @@
         &--datas {
             width:100%;
             position: absolute;
-            bottom:-14rem;
             left:0;
-            height:12rem;
-            background:linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.2));
+            bottom:-100%;
+            background:linear-gradient(to top, rgba(0,0,0,0.5), rgba(0,0,0,0.2));
             display:grid;
             align-items:center;
             transition:all 0.45s ease-in-out;
             z-index:9;
+            height:auto;
+            padding-top:4.5rem;
+            padding-bottom:4.5rem;
+            // bottom:-14rem;
+            // height:12rem;
             // display:none;
             // border:2px solid lightgrey;
             // border-radius:0.45rem;
 
-            h2 {
-                font-size:3.2rem;
-                font-family:$font__secondary;
-                color:$color__white;
-                text-align:center;
-            }
+            .book__infos {
+                padding-left:0.45rem;
+                padding-right:0.45rem;
 
-            p {
-                font-size:2.7rem;
-                color:$color__white;
-                text-align:center;
-                font-family:$font__secondary;
-                // font-weight:200;
+                h2 {
+                    font-size:3.2rem;
+                    font-family:$font__secondary;
+                    color:$color__white;
+                    text-align:center;
+                }
+                
+                &--author {
+                    font-size:2.7rem;
+                    color:$color__white;
+                    text-align:center;
+                    font-family:$font__secondary;
+                    // font-weight:200;
+                }
+
+                &--description {
+                    font-size: 2.2rem;
+                    color:$color__white;
+                    text-align:center;
+                    font-family:$font__secondary;
+                    font-weight:200;
+                }
             }
         }
 
@@ -74,6 +91,7 @@
         display:flex;
         align-items:center;
         justify-content:space-around;
+        border:1.4px solid transparent;
         // position: relative;
 
         &::after {
@@ -115,6 +133,7 @@
 
         &:hover {
             background-color:$color__darkgrey;
+            border-color:$color__white;
         }
     }
 }
