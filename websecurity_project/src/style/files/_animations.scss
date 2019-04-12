@@ -19,20 +19,32 @@
 }
 
 @keyframes animateEditProfile {
+    0% {
+        opacity:0;
+    }
+    90% {
+        opacity:0.5;   
+    }
+    100% {
+        opacity:1;
+    }
     from {
         width:0;
         height:0;
+        opacity:0;
     }
     to {
         width:45rem;
         height:90vh;
+        opacity:1;
     }
 }
 
 @keyframes animationSlideBookInformationIn {
     from {
-        bottom:-14rem;
+        bottom:-100%;
         opacity:0;
+        // bottom:-14rem;
     }
     to {
         bottom:0;
@@ -48,5 +60,41 @@
     to {
         opacity:1;
         bottom:-4.5rem;
+    }
+}
+
+@keyframes animationSlideReviews {
+    from {
+        left:-50%;
+    }
+    to {
+        left:0;
+    }
+}
+
+@keyframes animationSlideBackReviewsComponentAreas {
+    from {
+        left:0;
+    }
+    to {
+        left: -50%;
+    }
+}
+
+@keyframes animationChatSlide {
+    from {
+        bottom:-100%;
+    }
+    to {
+        bottom:0;
+    }
+}
+
+@keyframes animationSlideChatLists {
+    from {
+        bottom:0;
+    }
+    to {
+        bottom:-100%;
     }
 }

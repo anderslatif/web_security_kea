@@ -25,16 +25,24 @@ html {
     opacity: 1; } }
 
 @keyframes animateEditProfile {
+  0% {
+    opacity: 0; }
+  90% {
+    opacity: 0.5; }
+  100% {
+    opacity: 1; }
   from {
     width: 0;
-    height: 0; }
+    height: 0;
+    opacity: 0; }
   to {
     width: 45rem;
-    height: 90vh; } }
+    height: 90vh;
+    opacity: 1; } }
 
 @keyframes animationSlideBookInformationIn {
   from {
-    bottom: -14rem;
+    bottom: -100%;
     opacity: 0; }
   to {
     bottom: 0;
@@ -47,6 +55,30 @@ html {
   to {
     opacity: 1;
     bottom: -4.5rem; } }
+
+@keyframes animationSlideReviews {
+  from {
+    left: -50%; }
+  to {
+    left: 0; } }
+
+@keyframes animationSlideBackReviewsComponentAreas {
+  from {
+    left: 0; }
+  to {
+    left: -50%; } }
+
+@keyframes animationChatSlide {
+  from {
+    bottom: -100%; }
+  to {
+    bottom: 0; } }
+
+@keyframes animationSlideChatLists {
+  from {
+    bottom: 0; }
+  to {
+    bottom: -100%; } }
 
 .page__login,
 .page__register {
@@ -321,7 +353,7 @@ html {
       width: 2.1rem;
       height: 2.1rem;
       cursor: pointer;
-      fill: #C8C9CC; }
+      fill: #c8c9cc; }
 
 .right__header {
   display: flex;
@@ -333,7 +365,7 @@ html {
       width: 2.6rem;
       height: 2.6rem;
       cursor: pointer;
-      fill: #C8C9CC; }
+      fill: #c8c9cc; }
   .right__header--profile {
     width: 3.5rem;
     height: 3.5rem;
@@ -428,7 +460,9 @@ html {
       display: flex;
       flex-direction: row;
       align-items: center;
-      margin-left: 12rem; }
+      margin-left: 12rem;
+      display: grid;
+      grid-template-columns: auto auto auto auto; }
       .componentProfileHeader--navigation--links a {
         font-size: 1.7rem;
         color: #5d6363;
@@ -436,9 +470,8 @@ html {
         font-weight: 700;
         cursor: pointer;
         transition: all 0.21s ease-in-out;
-        position: relative; }
-        .componentProfileHeader--navigation--links a:not(:last-child) {
-          margin-right: 1.45rem; }
+        position: relative;
+        text-align: center; }
         .componentProfileHeader--navigation--links a:hover {
           color: black; }
       .componentProfileHeader--navigation--links .activeSubRoute {
@@ -503,15 +536,21 @@ html {
           margin-bottom: 0.45rem; }
         .componentPosts .componentPostsElement--wrapper--information span {
           display: block;
-          font-size: 1.4rem; }
-        .componentPosts .componentPostsElement--wrapper--information button {
+          font-size: 1.4rem;
+          margin-bottom: 2.2rem; }
+        .componentPosts .componentPostsElement--wrapper--information a {
           border: none;
           padding: 0.45rem 1.4rem 0.45rem 1.4rem;
           border-radius: 0.45rem;
           color: #ffffff;
-          background-color: dodgerblue;
-          margin-top: 1.4rem;
-          cursor: pointer; }
+          background-color: #0058a2;
+          cursor: pointer;
+          text-decoration: none;
+          font-weight: 900;
+          font-size: 1.4rem;
+          transition: all 0.22s ease-in-out; }
+          .componentPosts .componentPostsElement--wrapper--information a:hover {
+            background-color: dodgerblue; }
 
 .component__about {
   width: 70%;
@@ -730,30 +769,90 @@ html {
     .about__socialNetworkSubsection .addSocialNetworkContent:hover svg {
       fill: #2e3131; }
 
+.toggleChatElement {
+  grid-column: 6/7;
+  cursor: pointer;
+  background-color: #0058a2;
+  color: #ffffff;
+  border: none;
+  border-radius: 0.45rem;
+  transition: all 0.22s ease-in-out;
+  padding: 0.45rem 0.35rem 0.65rem 0.35rem; }
+  .toggleChatElement:hover {
+    background-color: dodgerblue; }
+
 .page__book {
   width: 100%;
   height: 100vh;
   display: grid;
   grid-template-rows: 4.5rem 1fr; }
+  .page__book .redirectToPosts {
+    width: 4.5rem;
+    height: 4.5rem;
+    position: fixed;
+    right: 2.1rem;
+    top: 2.1rem;
+    cursor: pointer;
+    background-color: #ffffff;
+    border-radius: 50%;
+    z-index: 99;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    transition: all 0.22s ease-in-out;
+    border: 1.4px solid transparent; }
+    .page__book .redirectToPosts svg {
+      width: 2.2rem;
+      height: 2.2rem;
+      fill: #34383f;
+      transition: all 0.22s ease-in-out; }
+    .page__book .redirectToPosts:hover svg {
+      padding: 0.45rem;
+      fill: #ffffff; }
+    .page__book .redirectToPosts:hover {
+      background-color: #34383f;
+      border-color: #ffffff; }
+    .page__book .redirectToPosts::after {
+      content: "Return";
+      position: absolute;
+      bottom: -4.5rem;
+      left: 50%;
+      background-color: #ffffff;
+      color: #34383f;
+      font-family: "Roboto", sans-serif;
+      padding: 0.90rem 0.45rem 0.90rem 0.45rem;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      transform: translateX(-50%);
+      width: 7rem;
+      border-radius: 0.45rem;
+      display: none;
+      font-size: 1.4rem; }
+    .page__book .redirectToPosts:hover::after {
+      display: block;
+      animation: animateButtonReviews 0.45s ease-in-out forwards; }
   .page__book--content {
     width: 100%;
     height: 100%;
     display: grid;
-    grid-template-columns: repeat(2, 1fr); }
+    grid-template-columns: 35% 1fr; }
 
 .page__book--content--cover {
   height: 100vh;
-  background-color: #D03857; }
+  background-color: #d03857; }
 
 .page__book--content--document {
   height: 100vh;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  background-color: #34383F; }
+  background-color: #34383f; }
   .page__book--content--document .componentIndividualBooks {
     width: 90%;
-    height: 100vh; }
+    height: 100vh;
+    position: relative;
+    overflow: hidden; }
 
 .react-pdf__Document {
   display: flex !important;
@@ -765,6 +864,49 @@ html {
 
 .react-pdf__Page__textContent {
   height: 100vh !important; }
+
+.component__reviews {
+  position: absolute;
+  left: -50%;
+  animation: animationSlideReviews 0.45s ease-in forwards; }
+
+.changeLeftPages {
+  position: absolute;
+  left: 7.5%;
+  top: 50%;
+  transform: translateX(-50%) rotate(-90deg);
+  height: 6.5rem;
+  width: 100%;
+  background-color: transparent;
+  transition: all 0.22s ease-in-out;
+  cursor: pointer;
+  border: none;
+  color: #ffffff;
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  font-weight: 200; }
+  .changeLeftPages:hover {
+    background-color: rgba(0, 0, 0, 0.9);
+    border-radius: 0.45rem; }
+
+.changeRightPages {
+  position: absolute;
+  left: 92.5%;
+  top: 50%;
+  transform: translateX(-50%) rotate(90deg);
+  height: 6.5rem;
+  width: 100%;
+  background-color: transparent;
+  transition: all 0.22s ease-in-out;
+  cursor: pointer;
+  border: none;
+  color: #ffffff;
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  font-weight: 200; }
+  .changeRightPages:hover {
+    background-color: rgba(0, 0, 0, 0.9);
+    border-radius: 0.45rem; }
 
 .component__editProfile {
   width: 100%;
@@ -894,7 +1036,8 @@ html {
         border-radius: 0.45rem; }
 
 .componentBookInformation {
-  height: 100vh; }
+  height: 100vh;
+  background-color: #e0e0e0; }
   .componentBookInformation:hover .componentBookInformation--wrapper--datas {
     animation: animationSlideBookInformationIn 0.45s ease-in-out forwards; }
   .componentBookInformation--wrapper {
@@ -906,24 +1049,35 @@ html {
     .componentBookInformation--wrapper--datas {
       width: 100%;
       position: absolute;
-      bottom: -14rem;
       left: 0;
-      height: 12rem;
-      background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2));
+      bottom: -100%;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2));
       display: grid;
       align-items: center;
       transition: all 0.45s ease-in-out;
-      z-index: 9; }
-      .componentBookInformation--wrapper--datas h2 {
-        font-size: 3.2rem;
-        font-family: "Goudy Bookletter 1911", serif;
-        color: #ffffff;
-        text-align: center; }
-      .componentBookInformation--wrapper--datas p {
-        font-size: 2.7rem;
-        color: #ffffff;
-        text-align: center;
-        font-family: "Goudy Bookletter 1911", serif; }
+      z-index: 9;
+      height: auto;
+      padding-top: 4.5rem;
+      padding-bottom: 4.5rem; }
+      .componentBookInformation--wrapper--datas .book__infos {
+        padding-left: 0.45rem;
+        padding-right: 0.45rem; }
+        .componentBookInformation--wrapper--datas .book__infos h2 {
+          font-size: 3.2rem;
+          font-family: "Goudy Bookletter 1911", serif;
+          color: #ffffff;
+          text-align: center; }
+        .componentBookInformation--wrapper--datas .book__infos--author {
+          font-size: 2.7rem;
+          color: #ffffff;
+          text-align: center;
+          font-family: "Goudy Bookletter 1911", serif; }
+        .componentBookInformation--wrapper--datas .book__infos--description {
+          font-size: 2.2rem;
+          color: #ffffff;
+          text-align: center;
+          font-family: "Goudy Bookletter 1911", serif;
+          font-weight: 200; }
     .componentBookInformation--wrapper--cover {
       width: 100%;
       height: 100%;
@@ -947,7 +1101,8 @@ html {
     border-radius: 50%;
     display: flex;
     align-items: center;
-    justify-content: space-around; }
+    justify-content: space-around;
+    border: 1.4px solid transparent; }
     .componentBookInformation button::after {
       content: "Reviews";
       position: absolute;
@@ -976,9 +1131,11 @@ html {
       padding: 0.45rem;
       fill: #ffffff; }
     .componentBookInformation button:hover {
-      background-color: #2e3131; }
+      background-color: #2e3131;
+      border-color: #ffffff; }
 
-.component__reviews {
+.component__reviews,
+.slideback__reviews {
   width: 50%;
   height: 100vh;
   background-color: lightgrey;
@@ -991,13 +1148,598 @@ html {
   width: 100%;
   height: 100vh;
   background-color: #ffffff;
-  position: grid;
+  display: grid;
   align-items: center;
   justify-items: center;
-  z-index: 99999; }
+  z-index: 99999;
+  position: fixed; }
   .page__loader img {
     width: 9rem;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%); }
+
+.page__feed {
+  width: 100%;
+  height: 100vh;
+  background-color: #f7f7f7;
+  overflow: hidden; }
+  .page__feed--wrapper {
+    width: 80%;
+    margin: 0 auto;
+    border-radius: 0.45rem;
+    margin-top: 4.5rem;
+    display: grid;
+    grid-template-columns: 22rem 1fr 14rem;
+    grid-column-gap: 4.5rem;
+    height: 100%;
+    overflow: hidden; }
+    @media (max-width: 900px) {
+      .page__feed--wrapper {
+        width: 90%;
+        grid-column-gap: 2.2rem; } }
+
+.feed__areas {
+  overflow: scroll;
+  padding-bottom: 12.5rem; }
+  .feed__areas::-webkit-scrollbar {
+    display: none; }
+
+.componentFeedPosts {
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 4.5rem;
+  display: grid;
+  grid-template-rows: auto;
+  grid-row-gap: 3.5rem; }
+
+.componentCreatePosts {
+  width: 100%;
+  background-color: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  border-radius: 0.45rem;
+  display: grid;
+  grid-template-rows: 4.5rem 1fr;
+  padding-bottom: 2.2rem; }
+  .componentCreatePosts .componentCreatePosts__innernavigation {
+    width: 100%;
+    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-bottom: 1.4px solid lightgrey; }
+    .componentCreatePosts .componentCreatePosts__innernavigation button {
+      width: auto;
+      height: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      background-color: transparent;
+      cursor: pointer;
+      border: none;
+      transition: 0.22s ease-in-out;
+      padding: 0 2.2rem 0 2.2rem; }
+      .componentCreatePosts .componentCreatePosts__innernavigation button:hover {
+        background-color: #f7f7f7; }
+      .componentCreatePosts .componentCreatePosts__innernavigation button svg {
+        width: 2.2rem;
+        height: 2.2rem;
+        cursor: pointer;
+        fill: #0058a2; }
+      .componentCreatePosts .componentCreatePosts__innernavigation button span {
+        margin-left: 1.7rem; }
+  .componentCreatePosts .componentCreatePosts__innercontent {
+    display: flex;
+    align-items: center; }
+    .componentCreatePosts .componentCreatePosts__innercontent--wrapper {
+      padding-left: 2.2rem;
+      padding-right: 2.2rem;
+      display: grid;
+      grid-template-columns: 4.5rem 1fr;
+      grid-column-gap: 2.2rem;
+      margin: 0 auto;
+      width: 100%;
+      height: 80%;
+      align-items: center; }
+      .componentCreatePosts .componentCreatePosts__innercontent--wrapper .imgUsers {
+        width: 4.5rem;
+        height: 4.5rem;
+        overflow: hidden;
+        border-radius: 50%; }
+        .componentCreatePosts .componentCreatePosts__innercontent--wrapper .imgUsers img {
+          height: 100%; }
+      .componentCreatePosts .componentCreatePosts__innercontent--wrapper .bookDatas {
+        display: flex;
+        height: 90%;
+        flex-direction: column; }
+        .componentCreatePosts .componentCreatePosts__innercontent--wrapper .bookDatas label {
+          font-size: 1.4rem;
+          margin-top: 0.45rem; }
+        .componentCreatePosts .componentCreatePosts__innercontent--wrapper .bookDatas textarea {
+          display: flex;
+          align-items: center;
+          justify-items: center;
+          width: 100%;
+          border: none;
+          font-size: 1.4rem;
+          font-weight: 200;
+          font-family: "Roboto", sans-serif;
+          color: #2e3131;
+          border-bottom: 1.4px solid lightgrey; }
+        .componentCreatePosts .componentCreatePosts__innercontent--wrapper .bookDatas input {
+          width: 50%;
+          height: 3.5rem;
+          border: none;
+          display: block;
+          border-bottom: 1.4px solid lightgrey;
+          margin-top: 0.45rem; }
+
+.componentFeedCardProfile {
+  height: 28.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  display: grid;
+  align-items: center;
+  background-color: #ffffff; }
+  .componentFeedCardProfile--wrapper {
+    width: 80%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-rows: 1fr 6.5rem 4.5rem; }
+    .componentFeedCardProfile--wrapper .user__datas {
+      border-bottom: 1.4px solid lightgrey;
+      padding: 1.45rem 0 1.45rem 0; }
+      .componentFeedCardProfile--wrapper .user__datas--image {
+        width: 9.5rem;
+        height: 9.5rem;
+        margin: 0 auto;
+        border-radius: 50%;
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 0.45rem; }
+        .componentFeedCardProfile--wrapper .user__datas--image img {
+          height: 100%;
+          position: absolute;
+          top: 0;
+          left: 50%;
+          transform: translateX(-50%); }
+      .componentFeedCardProfile--wrapper .user__datas--username {
+        margin-bottom: 0.45rem;
+        font-weight: 900;
+        font-family: "Roboto", sans-serif;
+        font-size: 1.4rem;
+        text-align: center; }
+      .componentFeedCardProfile--wrapper .user__datas--country {
+        margin-bottom: 0.45rem;
+        font-weight: 200;
+        font-family: "Roboto", sans-serif;
+        font-size: 1.4rem;
+        text-align: center;
+        color: darkgrey; }
+    .componentFeedCardProfile--wrapper .profile__datas {
+      display: grid;
+      align-items: center;
+      justify-items: center;
+      border-bottom: 1.4px solid lightgrey; }
+      .componentFeedCardProfile--wrapper .profile__datas h2 {
+        font-size: 2rem;
+        font-weight: 900; }
+    .componentFeedCardProfile--wrapper .view__profile {
+      display: grid;
+      align-items: center;
+      justify-items: center; }
+      .componentFeedCardProfile--wrapper .view__profile a {
+        text-align: center;
+        font-size: 1.4rem;
+        color: #0058a2;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.22s ease-in-out; }
+        .componentFeedCardProfile--wrapper .view__profile a:hover {
+          color: #0071d0;
+          text-decoration: underline; }
+
+.componentFeedNavigation {
+  height: 9rem;
+  background-color: #ffffff;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); }
+  .componentFeedNavigation--wrapper {
+    width: 90%;
+    height: 90%;
+    display: grid;
+    align-items: center;
+    justify-items: center; }
+    .componentFeedNavigation--wrapper .feed__navigationWrapper {
+      border-bottom: 1.4px solid lightgrey;
+      display: grid;
+      align-items: center;
+      justify-items: center;
+      width: 100%;
+      padding-bottom: 0.45rem; }
+      .componentFeedNavigation--wrapper .feed__navigationWrapper a {
+        width: 100%;
+        font-size: 1.4rem;
+        text-decoration: none;
+        text-align: center;
+        cursor: pointer;
+        color: #0058a2;
+        transition: all 0.22s ease-in-out;
+        padding: 0.32rem 0.45rem 0.32rem 0.45rem; }
+        .componentFeedNavigation--wrapper .feed__navigationWrapper a:hover {
+          background-color: #0058a2;
+          color: #ffffff;
+          border-radius: 0.45rem;
+          width: 100%; }
+
+.componentIndividualFeedPosts {
+  height: auto;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  background-color: #ffffff; }
+  .componentIndividualFeedPosts--wrapper {
+    width: 90%;
+    padding: 0.95rem 0 0.45rem 0; }
+
+.feedpost__header {
+  width: 100%;
+  height: 4.5rem;
+  border-bottom: 1.4px solid lightgray;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center; }
+  .feedpost__header--user {
+    display: flex;
+    flex-direction: row; }
+    .feedpost__header--user .imgFeedUsers {
+      width: 3.5rem;
+      height: 3.5rem;
+      overflow: hidden;
+      position: relative;
+      border-radius: 50%;
+      margin-right: 2.2rem; }
+      .feedpost__header--user .imgFeedUsers img {
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%); }
+    .feedpost__header--user .datesFeedUsers h2 {
+      color: #2e3131;
+      font-size: 1.7rem; }
+    .feedpost__header--user .datesFeedUsers p {
+      color: darkgrey;
+      font-size: 1.7rem; }
+
+.feedpost__description {
+  width: 100%;
+  height: 6.5rem;
+  display: grid;
+  align-items: center; }
+  .feedpost__description p {
+    font-size: 1.4rem;
+    color: darkgrey; }
+
+.feedpost__content {
+  width: 100%;
+  height: 45rem;
+  overflow: hidden;
+  position: relative; }
+  .feedpost__content img {
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%); }
+
+.feedpost__datas {
+  width: 100%;
+  height: 6.5rem;
+  display: grid;
+  align-items: center; }
+  .feedpost__datas--information h2 {
+    color: #2e3131;
+    font-size: 1.4rem; }
+  .feedpost__datas--information p {
+    color: darkgrey;
+    font-size: 1.4rem; }
+
+.feedpost__like-comment {
+  width: 100%;
+  height: 4.5rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 1.4px solid lightgrey; }
+  .feedpost__like-comment .feedpost__likes {
+    width: 7rem;
+    display: flex;
+    flex-direction: row; }
+    .feedpost__like-comment .feedpost__likes svg {
+      width: 2.1rem;
+      height: 2.1rem;
+      fill: darkgrey;
+      cursor: pointer;
+      transition: all 0.22s ease-in-out; }
+      .feedpost__like-comment .feedpost__likes svg:hover {
+        fill: #0058a2; }
+    .feedpost__like-comment .feedpost__likes p {
+      font-size: 1.4rem;
+      color: darkgrey; }
+  .feedpost__like-comment .feedpost__comments {
+    width: 7rem;
+    display: flex;
+    flex-direction: row; }
+    .feedpost__like-comment .feedpost__comments svg {
+      width: 2.1rem;
+      height: 2.1rem;
+      fill: darkgrey;
+      cursor: pointer;
+      transition: all 0.22s ease-in-out; }
+      .feedpost__like-comment .feedpost__comments svg:hover {
+        fill: #0058a2; }
+    .feedpost__like-comment .feedpost__comments p {
+      font-size: 1.4rem;
+      color: darkgrey; }
+
+.feedpost__reviews {
+  width: 100%;
+  height: 6.5rem;
+  display: grid;
+  align-items: center; }
+  .feedpost__reviews textarea {
+    width: 100%;
+    border: none;
+    font-weight: 200; }
+
+.feedpost__readbooks {
+  height: 3.5rem;
+  margin-top: 0.45rem;
+  margin-bottom: 0.45rem; }
+  .feedpost__readbooks a {
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    cursor: pointer;
+    color: #ffffff;
+    background-color: #0058a2;
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-family: "Roboto", sans-serif;
+    font-weight: 200;
+    font-size: 1.4rem;
+    border-radius: 0.45rem;
+    transition: all 0.22s ease-in-out; }
+    .feedpost__readbooks a:hover {
+      background-color: dodgerblue; }
+
+.component__reviews,
+.slideback__reviews {
+  width: 35%;
+  background-color: #f7f7f7; }
+  .component__reviews .close__reviews,
+  .slideback__reviews .close__reviews {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    right: 0.45rem;
+    top: 0.45rem; }
+    .component__reviews .close__reviews svg,
+    .slideback__reviews .close__reviews svg {
+      width: 2.2rem;
+      height: 2.2rem;
+      border-radius: 0.45rem;
+      transition: all 0.22s ease-in-out; }
+    .component__reviews .close__reviews:hover svg,
+    .slideback__reviews .close__reviews:hover svg {
+      padding: 0.45rem;
+      fill: #ffffff;
+      background-color: #2e3131; }
+  .component__reviews--wrapper,
+  .slideback__reviews--wrapper {
+    width: 80%;
+    margin: 0 auto;
+    height: 100%;
+    padding-top: 2.2rem;
+    padding-bottom: 2.2rem;
+    padding-left: 5%;
+    padding-right: 5%;
+    overflow-y: scroll; }
+    .component__reviews--wrapper::-webkit-scrollbar,
+    .slideback__reviews--wrapper::-webkit-scrollbar {
+      display: none; }
+    .component__reviews--wrapper .reviews__title,
+    .slideback__reviews--wrapper .reviews__title {
+      width: 100%;
+      height: 6.5rem;
+      margin-bottom: 2.2rem; }
+      .component__reviews--wrapper .reviews__title h2,
+      .slideback__reviews--wrapper .reviews__title h2 {
+        font-size: 1.9rem;
+        margin-bottom: 0.45rem;
+        font-weight: 900; }
+      .component__reviews--wrapper .reviews__title p,
+      .slideback__reviews--wrapper .reviews__title p {
+        font-size: 1.4rem;
+        font-weight: 200; }
+    .component__reviews--wrapper .reviews__content,
+    .slideback__reviews--wrapper .reviews__content {
+      width: 100%;
+      display: grid;
+      grid-template-rows: auto;
+      grid-row-gap: 2.2rem; }
+
+.slideback__reviews {
+  animation: animationSlideBackReviewsComponentAreas 0.22s ease-in-out forwards; }
+
+.componentIndividualReview {
+  position: relative;
+  width: 32rem;
+  min-height: 14rem;
+  height: auto;
+  background-color: #ffffff;
+  border-radius: 0.45rem;
+  display: grid;
+  align-items: center; }
+  .componentIndividualReview--image {
+    width: 4.5rem;
+    height: 4.5rem;
+    border-radius: 50%;
+    overflow: hidden;
+    position: absolute;
+    left: -2.25rem;
+    top: 5%; }
+    .componentIndividualReview--image img {
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%); }
+  .componentIndividualReview--content {
+    width: 70%;
+    height: 90%;
+    margin: 0 auto; }
+    .componentIndividualReview--content .reviewIndividual__username {
+      width: 100%;
+      height: 4.5rem;
+      display: grid;
+      align-items: center; }
+      .componentIndividualReview--content .reviewIndividual__username h2 {
+        font-size: 1.4rem; }
+    .componentIndividualReview--content .reviewIndividual__reviewDates {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin-bottom: 2.2rem; }
+      .componentIndividualReview--content .reviewIndividual__reviewDates svg {
+        width: 2.2rem;
+        height: 2.2rem;
+        fill: #0058a2;
+        margin-right: 0.45rem; }
+      .componentIndividualReview--content .reviewIndividual__reviewDates p {
+        font-size: 1.4rem;
+        font-weight: 200; }
+    .componentIndividualReview--content .reviewIndividual__reviewContent {
+      width: 100%; }
+      .componentIndividualReview--content .reviewIndividual__reviewContent p {
+        font-size: 1.4rem;
+        font-weight: 200; }
+
+.componentChatElement,
+.slideChatLists {
+  width: 32rem;
+  height: 42rem;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  transition: all 0.45s ease-in-out;
+  background-color: #ffffff;
+  display: grid;
+  grid-template-rows: 6.4rem 1fr 6.5rem;
+  border: 1.4px solid #0058a2;
+  animation: animationChatSlide 0.45s ease-in-out forwards; }
+  .componentChatElement .chat__header,
+  .slideChatLists .chat__header {
+    background: linear-gradient(to right bottom, #0058a2, #43C6AC);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23); }
+    .componentChatElement .chat__header button,
+    .slideChatLists .chat__header button {
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      transition: all 0.22s ease-in-out;
+      border-radius: 0.45rem;
+      display: grid;
+      align-items: center;
+      justify-items: center; }
+      .componentChatElement .chat__header button svg,
+      .slideChatLists .chat__header button svg {
+        width: 2.2rem;
+        height: 2.2rem;
+        fill: #ffffff; }
+      .componentChatElement .chat__header button:hover,
+      .slideChatLists .chat__header button:hover {
+        background-color: #ffffff; }
+      .componentChatElement .chat__header button:hover svg,
+      .slideChatLists .chat__header button:hover svg {
+        fill: #0058a2;
+        padding: 0.45rem; }
+    .componentChatElement .chat__header h2,
+    .slideChatLists .chat__header h2 {
+      color: #ffffff;
+      font-size: 1.4rem;
+      letter-spacing: 0.32rem;
+      font-weight: 200; }
+  .componentChatElement .chat__content,
+  .slideChatLists .chat__content {
+    padding-top: 0.45rem;
+    padding-bottom: 0.45rem;
+    overflow-y: scroll; }
+    .componentChatElement .chat__content::-webkit-scrollbar,
+    .slideChatLists .chat__content::-webkit-scrollbar {
+      display: none; }
+  .componentChatElement .chat__input,
+  .slideChatLists .chat__input {
+    border-top: 1.4px solid #0058a2; }
+    .componentChatElement .chat__input--sendmessage,
+    .slideChatLists .chat__input--sendmessage {
+      position: relative;
+      width: 100%;
+      height: 100%; }
+      .componentChatElement .chat__input--sendmessage textarea,
+      .slideChatLists .chat__input--sendmessage textarea {
+        width: 100%;
+        height: 100%;
+        border: none;
+        padding-right: 4.5rem; }
+        .componentChatElement .chat__input--sendmessage textarea::-webkit-scrollbar,
+        .slideChatLists .chat__input--sendmessage textarea::-webkit-scrollbar {
+          display: none; }
+      .componentChatElement .chat__input--sendmessage button,
+      .slideChatLists .chat__input--sendmessage button {
+        position: absolute;
+        right: 2.2rem;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        transition: all 0.22s ease-in-out;
+        border-radius: 0.45rem;
+        display: grid;
+        align-items: center;
+        justify-items: center; }
+        .componentChatElement .chat__input--sendmessage button svg,
+        .slideChatLists .chat__input--sendmessage button svg {
+          width: 2.2rem;
+          height: 2.2rem;
+          fill: #0058a2; }
+
+.slideChatLists {
+  animation: animationSlideChatLists 0.45s ease-in-out forwards; }
+
+.componentIndividualChatMessage {
+  width: auto;
+  max-width: 90%;
+  margin: 0 auto;
+  padding: 1.45rem 0.35rem 1.45rem 0.35rem;
+  background-color: #0058a2;
+  color: #ffffff;
+  border-radius: 0.45rem;
+  display: inline-block; }
+  .componentIndividualChatMessage:not(:first-child) {
+    margin-top: 0.45rem; }

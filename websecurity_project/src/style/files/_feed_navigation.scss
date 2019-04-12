@@ -1,0 +1,43 @@
+.componentFeedNavigation {
+    height:9rem;
+    background-color:$color__white;
+    display:grid;
+    align-items:center;
+    justify-items:center;
+    box-shadow:$box-shadow2;
+
+    &--wrapper {
+        width:90%;
+        height:90%;
+        display:grid;
+        align-items:center;
+        justify-items:center;
+
+        .feed__navigationWrapper {
+            border-bottom:1.4px solid lightgrey;
+            display:grid;
+            align-items:center;
+            justify-items:center;
+            width:100%;
+            padding-bottom:0.45rem;
+
+            a {
+                width:100%;
+                font-size:1.4rem;
+                text-decoration:none;
+                text-align:center;
+                cursor: pointer;
+                color:#0058a2;
+                transition:all 0.22s ease-in-out;
+                padding:0.32rem 0.45rem 0.32rem 0.45rem;
+
+                &:hover {
+                    background-color:#0058a2;
+                    color:$color__white;
+                    border-radius:0.45rem;
+                    width:100%;
+                }
+            }
+        }
+    }
+}

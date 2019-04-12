@@ -4,6 +4,7 @@ import ComponentIndividualBooks from '../components/ComponentIndividualBooks';
 import ComponentBookInformation from '../components/ComponentBookInformation';
 import ComponentReviews from '../components/ComponentReviews';
 import PageLoader from '../components/PageLoader';
+import { NavLink } from "react-router-dom";
 
 // const styleBlackHeader = {
 //     color:"white",
@@ -15,14 +16,18 @@ class PageBook extends Component {
     super(props)
     this.state = {
       bookReviewsPanel: false,
-      loader: true
+      loader: true,
+      numPages: null,
+      pageNumber: 1,
     }
     this.toggleBookReviewsPanel = this.toggleBookReviewsPanel.bind(this)
+    this.closeReviewComponent = this.closeReviewComponent.bind(this)
+    this.switchPages = this.switchPages.bind(this);
   }
-  state = {
-    numPages: null,
-    pageNumber: 1,
-  }
+  // state = {
+  //   numPages: null,
+  //   pageNumber: 1,
+  // }
 
   toggleBookReviewsPanel = () => {
     this.setState((prevState) => ({bookReviewsPanel: !prevState.bookReviewsPanel}))
@@ -32,7 +37,7 @@ class PageBook extends Component {
     const { numPages } = document;
     this.setState({
       numPages,
-      pageNumber: 1,
+      pageNumber: 22,
     });
   };
 
@@ -40,9 +45,9 @@ class PageBook extends Component {
     pageNumber: prevState.pageNumber + offset,
   }));
 
-  // previousPage = () => this.changePage(-1);
+  previousPage = () => this.changePage(-1);
 
-  // nextPage = () => this.changePage(1);
+  nextPage = () => this.changePage(1);
   
   changePages = (ev) => {
     const pressedKey = ev.keyCode;
@@ -56,8 +61,23 @@ class PageBook extends Component {
     }
   }
 
+  switchPages = (ev) => {
+    if(ev.keyCode === "37") {
+      console.log("left");
+      this.changePage(-1);
+    }
+  }
+
+  closeReviewComponent = () => {
+    document.querySelector(".component__reviews").className = "slideback__reviews";
+    setTimeout(() => {
+      this.setState({bookReviewsPanel: false})
+    }, 1400)
+  }
+  
   componentDidMount() {
-    window.onkeydown = this.changePages;
+    // window.onkeydown ? 
+    // window.onkeydown = this.switchPages();
     setTimeout(() => {
       this.setState({loader: false})
     }, 2200)
@@ -72,6 +92,11 @@ class PageBook extends Component {
         &&
         <PageLoader />
       }
+        <NavLink to="/profile/posts" className="redirectToPosts">
+          <svg>
+            <use href="./image/sprite.svg#icon-books"></use>
+          </svg>
+        </NavLink>
       {/* <ComponentHeader></ComponentHeader> */}
       <div className="page__book--content">
         <div className="page__book--content--cover">
@@ -81,19 +106,21 @@ class PageBook extends Component {
           {
             this.state.bookReviewsPanel
             &&
-            <ComponentReviews />
+            <ComponentReviews closeReviewComponent={this.closeReviewComponent} />
           }
         </div>
         <div className="page__book--content--document"
           onKeyPress={this.changePages}
         >
           <ComponentIndividualBooks
-            numPages={numPages}
-            pageNumber={pageNumber}
-            // nextPage={this.nextPage}
-            // previousPage={this.previousPage}
-            changePage={this.changePage}
+            numPages={this.state.numPages}
+            pageNumber={this.state.pageNumber}
+            // pageNumber={pageNumber}
+            nextPage={this.nextPage}
+            previousPage={this.previousPage}
+            // changePages={this.changePages}
             onDocumentLoadSuccess={this.onDocumentLoadSuccess}
+            // switchPages={this.switchPages}
           >
           </ComponentIndividualBooks>
         </div>

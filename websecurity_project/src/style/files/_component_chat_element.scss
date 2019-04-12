@@ -1,0 +1,113 @@
+.componentChatElement,
+.slideChatLists {
+    width:32rem;
+    height:42rem;
+    position:fixed;
+    right:0;
+    bottom:0;
+    transition:all 0.45s ease-in-out;
+    background-color:$color__white;
+    display:grid;
+    grid-template-rows:6.4rem 1fr 6.5rem;
+    border:1.4px solid $color__primary;
+    animation: animationChatSlide 0.45s ease-in-out forwards;
+    // background-color:blue;
+
+    .chat__header {
+        background:linear-gradient(to right bottom, $color__primary, #43C6AC);
+        display:flex;
+        flex-direction:row;
+        justify-content:space-around;
+        align-items:center;
+        box-shadow:$box-shadow;
+
+        button {
+            background-color:transparent;
+            border:none;
+            cursor:pointer;
+            transition:all 0.22s ease-in-out;
+            border-radius:0.45rem;
+            display:grid;
+            align-items:center;
+            justify-items:center;
+
+            svg {
+                width:2.2rem;
+                height:2.2rem;
+                fill:$color__white;
+            }
+
+            &:hover {
+                background-color:$color__white;
+            }
+
+            &:hover svg {
+                fill:$color__primary;
+                padding:0.45rem;
+            }
+        }
+
+        h2 {
+            color:$color__white;
+            font-size:1.4rem;
+            letter-spacing:0.32rem;
+            font-weight:200;
+        }
+    }
+
+    .chat__content {
+        padding-top:0.45rem;
+        padding-bottom:0.45rem;
+        overflow-y:scroll;
+        
+        &::-webkit-scrollbar {
+            display:none;
+        }
+    }
+
+    .chat__input {
+        border-top:1.4px solid $color__primary;
+
+        &--sendmessage {
+            position:relative;
+            width:100%;
+            height:100%;
+            
+            textarea {
+                width:100%;
+                height:100%;
+                border:none;
+                padding-right:4.5rem;
+
+                &::-webkit-scrollbar {
+                    display:none;
+                }
+            }
+
+            button {
+                position: absolute;
+                right:2.2rem;
+                top:50%;
+                transform:translateY(-50%);
+                background-color:transparent;
+                border:none;
+                cursor:pointer;
+                transition:all 0.22s ease-in-out;
+                border-radius:0.45rem;
+                display:grid;
+                align-items:center;
+                justify-items:center;
+
+                svg {
+                    width:2.2rem;
+                    height:2.2rem;
+                    fill:$color__primary;
+                }
+            }
+        }
+    }
+}
+
+.slideChatLists {
+    animation: animationSlideChatLists 0.45s ease-in-out forwards;
+}

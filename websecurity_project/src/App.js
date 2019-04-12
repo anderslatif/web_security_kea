@@ -11,9 +11,9 @@ import store from "./store/configureStore";
 // console.log(store.getState());
 
 const Jsx = () => (
-  // <Provider store={store}>
+  <Provider store={store}>
     <AppRouter></AppRouter>
-  // </Provider>
+  </Provider>
 );
 
 class App extends Component {

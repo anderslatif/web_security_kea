@@ -1,0 +1,14 @@
+.componentIndividualChatMessage {
+    width:auto;
+    max-width:90%;
+    margin:0 auto;
+    padding:1.45rem 0.35rem 1.45rem 0.35rem;
+    background-color:$color__primary;
+    color:$color__white;
+    border-radius:0.45rem;
+    display:inline-block;
+    
+    &:not(:first-child) {
+        margin-top:0.45rem;
+    }
+}

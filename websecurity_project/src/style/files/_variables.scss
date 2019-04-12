@@ -1,25 +1,26 @@
 //color
-$color__white:#ffffff;
-$color__black:#000000;
-$color__red:#f62459;
-$color__darkgrey:#2e3131;
-$color__lightgrey:#f7f7f7;
-$color__blue:#9ABCED;
-$color__grey:#C8C9CC;
-$color__darks:#34383F;
-$color__pink:#D03857;
+$color__white: #ffffff;
+$color__black: #000000;
+$color__red: #f62459;
+$color__darkgrey: #2e3131;
+$color__lightgrey: #f7f7f7;
+$color__blue: #9abced;
+$color__grey: #c8c9cc;
+$color__darks: #34383f;
+$color__pink: #d03857;
+$color__primary: #0058a2;
 
 //fonts
-$font__primary: 'utopia-std-headline', serif;
-$font__secondary: 'Goudy Bookletter 1911', serif;
+$font__primary: "utopia-std-headline", serif;
+$font__secondary: "Goudy Bookletter 1911", serif;
 $all__fonts: "Roboto", sans-serif;
 
 //box-shadow
-$box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-$box-shadow2: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+$box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+$box-shadow2: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 
 //screen-sizes
 $large: 900px;
-$medium-large:700px;
-$medium:545px;
-$small:445px;
+$medium-large: 700px;
+$medium: 545px;
+$small: 445px;

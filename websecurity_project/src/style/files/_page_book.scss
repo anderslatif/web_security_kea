@@ -5,11 +5,73 @@
     grid-template-rows:4.5rem 1fr;
     // overflow:hidden;
 
+    .redirectToPosts {
+        width:4.5rem;
+        height:4.5rem;
+        position:fixed;
+        right:2.1rem;
+        top:2.1rem;
+        cursor: pointer;
+        background-color:$color__white;
+        border-radius:50%;
+        z-index:99;
+        display:grid;
+        align-items:center;
+        justify-items:center;
+        transition:all 0.22s ease-in-out;
+        border:1.4px solid transparent;
+
+        svg {
+            width:2.2rem;
+            height:2.2rem;
+            fill:$color__darks;
+            transition:all 0.22s ease-in-out;
+            // padding:0.45rem;
+        }
+
+        &:hover svg {
+            padding:0.45rem;
+            fill:$color__white;
+        }
+        
+        &:hover {
+            background-color:$color__darks;
+            border-color:$color__white;
+        }
+
+        &::after {
+            content:"Return";
+            position: absolute;
+            bottom:-4.5rem;
+            left:50%;
+            background-color:$color__white;
+            color:$color__darks;
+            font-family:$all__fonts;
+            // width:100%;
+            padding:0.90rem 0.45rem 0.90rem 0.45rem;
+            display:flex;
+            align-items:center; 
+            text-align:center;
+            // height:3.5rem;
+            transform:translateX(-50%);
+            width: 7rem;
+            border-radius: 0.45rem;
+            display:none;
+            font-size:1.4rem;
+        }
+
+        &:hover::after {
+            display:block;
+            animation: animateButtonReviews 0.45s ease-in-out forwards;
+        }
+    }
+
     &--content {
         width:100%;
         height:100%;
         display:grid;
-        grid-template-columns:repeat(2, 1fr);
+        grid-template-columns:35% 1fr;
+        // grid-template-columns:repeat(2, 1fr);
     }
 }
 
@@ -28,6 +90,8 @@
     .componentIndividualBooks {
         width:90%;
         height:100vh;
+        position: relative;
+        overflow:hidden;
     }
 }
 
@@ -43,4 +107,59 @@
 
 .react-pdf__Page__textContent {
     height:100vh!important;
+}
+
+.component__reviews {
+    position:absolute;
+    left:-50%;
+    animation:animationSlideReviews 0.45s ease-in forwards;
+}
+
+.changeLeftPages {
+    position: absolute;
+    left:7.5%;
+    top:50%;
+    transform:translateX(-50%) rotate(-90deg);
+    height:6.5rem;
+    width:100%;
+    // height:100%;
+    // width:4.5rem;
+    background-color:transparent;
+    transition:all 0.22s ease-in-out;
+    cursor: pointer;
+    border:none;
+    color:$color__white;
+    text-transform:uppercase;
+    font-size:1.4rem;
+    font-weight:200;
+
+    &:hover {
+        background-color:rgba(0,0,0,0.9);
+        border-radius:0.45rem;
+    }
+}
+
+.changeRightPages {
+    position: absolute;
+    left:92.5%;
+    top:50%;
+    transform:translateX(-50%) rotate(90deg);
+    height:6.5rem;
+    width:100%;
+    background-color:transparent;
+    transition:all 0.22s ease-in-out;
+    cursor: pointer;
+    border:none;
+    color:$color__white;
+    text-transform:uppercase;
+    font-size:1.4rem;
+    font-weight:200;
+    // left:100%;
+    // width:4.5rem;
+    // height:100%;
+
+    &:hover {
+        background-color:rgba(0,0,0,0.9);
+        border-radius:0.45rem;
+    }
 }
