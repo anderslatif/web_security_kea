@@ -1,0 +1,24 @@
+Reflected XSS (Also called: Non-persistent XSS)
+
+can occure when user-input is displayed un-encoded
+
+Example: echo "<p>"$_GET["name"]
+
+
+
+Stored XSS (Persisted XSS)
+
+Malicious code is stored in the db
+
+Everyone that views the output of the database risks being a victim
+
+
+
+
+
+
+
+
+
+
+
