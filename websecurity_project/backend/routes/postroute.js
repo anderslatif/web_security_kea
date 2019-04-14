@@ -91,17 +91,45 @@ router.post("/post", async (req, res) => {
             res.send({ result: post });
         })
     } else {
-        // fixme Someone is trying to use this route without knowing exactly what fields are required");
+        // fixme Someone is trying to use this route without knowing exactly what fields are required
         // fixme give them status 200 which will be considered an error status code in our client
         // fixme that will confuse them, lol
-        helperFunctions.logToFile("Someone is trying to POST a post and doesn't have the required fields" + error, "intrusions.txt");
+        helperFunctions.logToFile("Someone is trying to POST a post and doesn't have the required fields", "intrusions.txt");
         res.status(200).send("Signed up OK");
     }
 });
 
-router.put("/post", (req, res) => {
-    // todo check for fields
+router.put("/post/:id", (req, res) => {
     if (req.body) {
+        Post.find({ id: req.params.id }).exec((error, foundPosts) => {
+            if (error) {
+                helperFunctions.logToFile("MongoFailed" + error, "mongo-errors.txt");
+            }
+            if (foundPosts.length === 1) {
+                const { title, description, author, file, cover } = req.body;
+                const foundPost = foundPosts[0];
+                foundPost.title = title;
+                foundPost.description = description;
+                foundPost.author = author;
+                foundPost.file = file;
+                foundPost.cover = cover;
+                foundPosts.save(error => {
+                    if (error) {
+                        helperFunctions.logToFile("MongoFailed" + error, "mongo-errors.txt");
+                    }
+                    res.status(200).send("OK");
+                });
+            } else if (foundPosts.length === 0) {
+                helperFunctions.logToFile("Someone is trying to update a post without knowing the correct id", "intrusions.txt");
+                // fixme give them status 200 which will be considered an error status code in our client
+                // fixme that will confuse them, lol
+                helperFunctions.logToFile("Someone is trying to POST a post and doesn't have the required fields" + error, "intrusions.txt");
+                res.status(200).send("Updated post up OK");
+            } else {
+                helperFunctions.logToFile("There should never be multiple posts with the same id", "backend-errors.txt");
+                res.send("");
+            }
+        })
       // todo allow update an existing post?
     } else {
         // fixme Someone is trying to use this route without knowing exactly what fields are required");
