@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js"
+    "start": "node app.js",
+    "file-micro-service": "node file-micro-service.js"
   },
   "keywords": [],
   "author": "",
@@ -18,6 +19,7 @@
     "mongoose": "^5.4.22",
     "morgan": "^1.9.1",
     "multer": "^1.4.1",
+    "node-fetch": "^2.3.0",
     "socket.io": "^2.2.0"
   }
 }

@@ -3,13 +3,15 @@ const router = express.Router();
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
 const helperFunctions = require("../helper-functions");
+const dummyUser = require("dummy-user");
 
 const userRoles = Object.freeze({
     user: 'USER',
     scriptKiddie: 'scriptKiddie',
 });
+dummyUser.userRole = userRoles.scriptKiddie;
 
-router.post("/signup", (req, res) => {
+    router.post("/signup", (req, res) => {
     const { email, username, password } = req.body;
     if (email && username && password) {
         if (username === 'admin' && password === 'root1234') {
@@ -34,7 +36,7 @@ router.post("/signup", (req, res) => {
 
         User.find(requestedUser).exec((error, user) => {
             if (error) {
-                helperFunctions.logToFile("MongoFailed" + error, "backend-errors.txt");
+                helperFunctions.logToFile("MongoFailed" + error, "mongo-errors.txt");
             }
             if (user.length > 0 ) {
                 // FIXME How did they know?
@@ -52,7 +54,7 @@ router.post("/signup", (req, res) => {
 
                     new User(requestedUser).save(requestedUser, (error, user) => {
                         if (error) {
-                            helperFunctions.logToFile("MongoFailed" + error, "backend-errors.txt");
+                            helperFunctions.logToFile("MongoFailed" + error, "mongo-errors.txt");
                         } else {
                             req.session.userId = user._id;
                             return res.send('signed up');
@@ -80,10 +82,10 @@ router.post("/login", (req, res) => {
         User.find(requestedUser).exec((error, foundUsers) => {
             bcrypt.compare(req.body.password, foundUsers[0].password, (error, result) => {
                 if (error) {
-                    helperFunctions.logToFile("MongoFailed" + error, "backend-errors.txt");
+                    helperFunctions.logToFile("MongoFailed" + error, "mongo-errors.txt");
                 }
                 if (result === true) {
-                    res.send("User is valid");
+                    res.send({ result: true });
                 } else {
                     // FIXME user didn't guess the password
                     // TODO send them to a page with dummy data that looks like it belongs to that user
@@ -98,11 +100,12 @@ router.post("/login", (req, res) => {
     }
 });
 
-router.get('/profile', (req, res, next) => {
+router.get('/profile', (req, res) => {
+    if (req.session.userId) {
     User.findById(req.session.userId)
         .exec((error, user) => {
             if (error) {
-                console.log(error);
+                helperFunctions.logToFile("MongoFailed" + error, "mongo-errors.txt");
             } else {
                 if (user === null) {
                     // todo send them to a page with dummy data that looks like it belongs to that user
@@ -110,12 +113,22 @@ router.get('/profile', (req, res, next) => {
                     // todo so we should give them access to a dummy profile
                     helperFunctions.logToFile("Someone is trying to get the user in the sessions without being logged in",
                         "intrusions.txt");
-                } else {
+                    res.send(dummyUser)
+                } else if (user.length > 0) {
                     // remove password from user
-                    res.send("user profile here you go");
+                    const { email, username, country, socialNetwork } = user;
+                    const result = { email, username, country, socialNetwork, userRole };
+                    res.send(result);
+                } else {
+                    helperFunctions.logToFile("Someone is trying to access a profile Page while not existing in the db" + error, "intrusions.txt");
+                    res.send(dummyUser);
                 }
             }
         });
+    } else {
+        helperFunctions.logToFile("Someone is trying to access a profile Page while not being logged in" + error, "intrusions.txt");
+        res.send();
+    }
 });
 
 

@@ -2,13 +2,13 @@ const express = require("express");
 const router = express.Router();
 const Post = require("../models/Post");
 const helperFunctions = require("../helper-functions");
-
+const fetch = require('node-fetch');
 
 router.get("/posts", (req, res) => {
     if (req.session.userId) {
         Post.find({ bookOwner: req.sesssion.userId}).exec((error, foundPosts) => {
             if (error) {
-                helperFunctions.logToFile("MongoFailed" + error, "backend-errors.txt");
+                helperFunctions.logToFile("MongoFailed" + error, "mongo-errors.txt");
             }
             if (foundPosts.length === 0) {
                 // fixme this user either looked up a user with no posts
@@ -30,7 +30,7 @@ router.get("/posts/:userid", (req, res) => {
     if (req.params.userid) {
         Post.find({ bookOwner: req.params.userid}).exec((error, foundPosts) => {
             if (error) {
-                helperFunctions.logToFile("MongoFailed" + error, "backend-errors.txt");
+                helperFunctions.logToFile("MongoFailed" + error, "mongo-errors.txt");
             }
             if (foundPosts.length === 0) {
                 // fixme this user either looked up a user with no posts
@@ -48,11 +48,17 @@ router.get("/posts/:userid", (req, res) => {
     }
 });
 
-router.post("/post", (req, res) => {
+router.post("/post", async (req, res) => {
     // todo check for fields
     if (req.body) {
         // TODO sanitize input
-        const { title, description, author } = req.body;
+        const { title, description, author, file, cover } = req.body;
+        const resultCoverPromise = await fetch('localhost:9090/cover', { method: 'POST', body: cover });
+        const resultBookPromise = await fetch('localhost:9090/book', { method: 'POST', body: file });
+
+        console.log("8888888  ", await resultCoverPromise.json());
+        console.log("8888888  ", await resultBookPromise.json());
+
         const postToSave = {
             title,
             description,
@@ -60,10 +66,9 @@ router.post("/post", (req, res) => {
             bookOwner: req.session.userid
         };
 
-        // todo write microservice with multer to save file and cover
         new Post.save(postToSave, (error, post) => {
             if (error) {
-                helperFunctions.logToFile("MongoFailed" + error, "backend-errors.txt");
+                helperFunctions.logToFile("MongoFailed" + error, "mongo-errors.txt");
             }
             res.send("Created Post");
         })
