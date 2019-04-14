@@ -7,7 +7,7 @@ const dummyUser = require("dummy-user");
 
 const userRoles = Object.freeze({
     user: 'USER',
-    scriptKiddie: 'scriptKiddie',
+    scriptKiddie: 'SCRIPTKIDDIE',
 });
 dummyUser.userRole = userRoles.scriptKiddie;
 

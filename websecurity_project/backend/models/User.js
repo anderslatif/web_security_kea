@@ -3,7 +3,7 @@ const countriesJson = require('countries');
 const userRoles = Object.freeze({
     admin: 'ADMIN',
     user: 'USER',
-    scriptKiddie: 'scriptKiddie',
+    scriptKiddie: 'SCRIPTKIDDIE',
 });
 
 const countries = Object.freeze({ ...countriesJson.countries });
