@@ -12,8 +12,8 @@ app.use(bodyParser.json());
 const morgan = require('morgan');
 app.use(morgan('combined', ':remote-addr - :remote-user [:date] ":method :url HTTP/:http-version" :status :res[content-length] ":referrer" ":user-agent"'));
 
-// TODO This is stupid. We allow people access to the public folder by serving it as static content.
-// TODO I put a fake password file there - lol
+// FIXME This is stupid. We allow people access to the public folder by serving it as static content.
+// FIXME I put a fake password file there - lol
 app.use(express.static(__dirname + '/public'));
 
 // todo since we can't use helmet we have to code our own implementation

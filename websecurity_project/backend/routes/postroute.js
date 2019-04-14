@@ -4,7 +4,7 @@ const Post = require("../models/Post");
 const helperFunctions = require("../helper-functions");
 
 
-router.get("/post/:userid", (req, res) => {
+router.get("/posts/:userid", (req, res) => {
     if (req.params.userid) {
         // TODO sanitize the input
         Post.find({ bookOwner: req.params.userid}).exec((error, foundPosts) => {
