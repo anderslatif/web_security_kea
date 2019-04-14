@@ -56,21 +56,39 @@ router.post("/post", async (req, res) => {
         const resultCoverPromise = await fetch('localhost:9090/cover', { method: 'POST', body: cover });
         const resultBookPromise = await fetch('localhost:9090/book', { method: 'POST', body: file });
 
-        console.log("8888888  ", await resultCoverPromise.json());
-        console.log("8888888  ", await resultBookPromise.json());
+        /*
+
+        {
+            "fieldname": "cover",
+            "originalname": "Screenshot 2019-04-15 at 00.06.54.png",
+            "encoding": "7bit",
+            "mimetype": "jpeg",
+            "destination": "/......../uploads/",
+            "filename": "1dbe22ca7d04da0c4f0969aa70226aa8",
+            "path": "/......../uploads/1dbe22ca7d04da0c4f0969aa70226aa8",
+            "size": 175823
+        }
+         */
+        const coverJson = await resultCoverPromise.json();
+        const bookJson = await resultBookPromise.json();
 
         const postToSave = {
             title,
             description,
             author,
-            bookOwner: req.session.userid
+            bookOwner: req.session.userid,
+            cover: coverJson ? coverJson : {},
+            file: bookJson ? bookJson : {}
         };
+
+        // TODO Validate the response from the file micro service
 
         new Post.save(postToSave, (error, post) => {
             if (error) {
                 helperFunctions.logToFile("MongoFailed" + error, "mongo-errors.txt");
             }
-            res.send("Created Post");
+            // created post
+            res.send({ result: post });
         })
     } else {
         // fixme Someone is trying to use this route without knowing exactly what fields are required");
