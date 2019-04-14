@@ -1,9 +1,8 @@
 Reflected XSS (Also called: Non-persistent XSS)
 
-can occure when user-input is displayed un-encoded
+can occur when user-input is displayed un-encoded
 
 Example: echo "<p>"$_GET["name"]
-
 
 
 Stored XSS (Persisted XSS)
@@ -11,6 +10,18 @@ Stored XSS (Persisted XSS)
 Malicious code is stored in the db
 
 Everyone that views the output of the database risks being a victim
+
+
+---------------------
+
+CSRF - Cross-site Request Forgery
+
+How to defend: referer on the header
+if the referer field shows that it's coming from a wrong ip then it's a CSRF
+
+or token...
+
+
 
 
 
