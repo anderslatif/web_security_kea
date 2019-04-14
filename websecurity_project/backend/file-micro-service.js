@@ -18,6 +18,6 @@ app.post('/book', upload.single('book'), (req, res, next) => {
 
 app.listen(9090, error => {
     if (error) {
-        helperFunctions.logToFile("Problem starting the server: ", "backend-errors.txt");
+        helperFunctions.logToFile("Problem starting the file micro service server: ", "backend-errors.txt");
     }
 });
