@@ -123,7 +123,6 @@ router.put("/post/:id", (req, res) => {
                 helperFunctions.logToFile("Someone is trying to update a post without knowing the correct id", "intrusions.txt");
                 // fixme give them status 200 which will be considered an error status code in our client
                 // fixme that will confuse them, lol
-                helperFunctions.logToFile("Someone is trying to POST a post and doesn't have the required fields" + error, "intrusions.txt");
                 res.status(200).send("Updated post up OK");
             } else {
                 helperFunctions.logToFile("There should never be multiple posts with the same id", "backend-errors.txt");

@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const multer  = require('multer');
-const upload = multer({ dest: __dirname + '/uploads/' });
+const upload = multer({ dest: __dirname + '/files/' });
 const helperFunctions = require("./helper-functions");
 
 app.post('/cover', upload.single('cover'), (req, res, next) => {

@@ -78,7 +78,7 @@ router.post("/login", (req, res) => {
             email: req.body.email,
             username: req.body.username,
         };
-
+        // FIXME Dangerous: We don't check for how often this is called from each IP but we log intrusion attempts
         User.find(requestedUser).exec((error, foundUsers) => {
             bcrypt.compare(req.body.password, foundUsers[0].password, (error, result) => {
                 if (error) {
