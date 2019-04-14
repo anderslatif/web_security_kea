@@ -6,7 +6,6 @@ const helperFunctions = require("../helper-functions");
 
 router.get("/posts", (req, res) => {
     if (req.session.userId) {
-        // TODO sanitize the input
         Post.find({ bookOwner: req.sesssion.userId}).exec((error, foundPosts) => {
             if (error) {
                 helperFunctions.logToFile("MongoFailed" + error, "backend-errors.txt");
