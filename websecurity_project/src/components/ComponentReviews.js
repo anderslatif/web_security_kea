@@ -4,9 +4,23 @@ import ComponentIndividualReview from './ComponentIndividualReview';
 
 const testReviewsLists = [
   {
-    userName: "user__review1",
+    userName: "Jim Hopkins",
+    userImage: "https://via.placeholder.com/150C/O https://placeholder.com/",
+    userReview: "Great book!",
+    reviewDates: moment().format("D. MM. YYYY"),
+    reviewId: 1
+  },
+  {
+    userName: "Cosmin Burlacu",
     userImage: "./image/profile__image.jpg",
-    userReview: "this is just a review",
+    userReview: "I totally recommend this book",
+    reviewDates: moment().format("D. MM. YYYY"),
+    reviewId: 2
+  },
+  {
+    userName: "user__review1",
+    userImage: "https://via.placeholder.com/150C/O https://placeholder.com/",
+    userReview: "Great book to read in a moody day.",
     reviewDates: moment().format("D. MM. YYYY"),
     reviewId: 1
   },
@@ -14,28 +28,14 @@ const testReviewsLists = [
     userName: "user__review2",
     userImage: "./image/profile__image.jpg",
     userReview: "this is just a review",
-    reviewDates: moment().format("d. MM. YYYY"),
-    reviewId: 2
-  },
-  {
-    userName: "user__review1",
-    userImage: "./image/profile__image.jpg",
-    userReview: "this is just a review",
-    reviewDates: moment().format("d. MM. YYYY"),
-    reviewId: 1
-  },
-  {
-    userName: "user__review2",
-    userImage: "./image/profile__image.jpg",
-    userReview: "this is just a review",
-    reviewDates: moment().format("d. MM. YYYY"),
+    reviewDates: moment().format("D. MM. YYYY"),
     reviewId: 2
   },
   {
     userName: "user__review2",
     userImage: "./image/profile__image.jpg",
     userReview: "this is just a review",
-    reviewDates: moment().format("d. MM. YYYY"),
+    reviewDates: moment().format("D. MM. YYYY"),
     reviewId: 2
   }
 ];

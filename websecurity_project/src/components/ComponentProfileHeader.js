@@ -1,14 +1,30 @@
 import React, { Component } from 'react';
 import { NavLink } from "react-router-dom";
+import ComponentEditCover from './ComponentEditCover';
 
 class ComponentProfileHeader extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      editCoverState: false
+    }
+    this.toggleCoverState = this.toggleCoverState.bind(this);
+  }
+  toggleCoverState = () => {
+    this.setState((prevState) => ({editCoverState: !prevState.editCoverState}))
+  };
   render() {
     let { handleChatState } = this.props;
     return (
       <div className="componentProfileHeader">
+        {
+          this.state.editCoverState
+          &&
+          <ComponentEditCover></ComponentEditCover>
+        }
         <div className="componentProfileHeader--cover">
             <img src="./image/cover__image3.jpg" alt="cover__image" />
-            <button>
+            <button onClick={this.toggleCoverState}>
                 <svg>
                     <use href="./image/sprite.svg#icon-edit"></use>
                 </svg>
