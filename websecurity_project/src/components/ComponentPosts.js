@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ComponentPostsElement from "./ComponentPostsElement";
+import axios from "axios";
 
 const postTests = [
     {
@@ -39,12 +40,28 @@ const postTests = [
     }
 ];
 
+
 class PageProfilePosts extends Component {
     constructor(props) {
         super(props);
         this.state = {
             testPosts: postTests
         }
+    }
+    componentDidMount() {
+        // localhost/8080:post
+        axios.get('localhost/8080:posts/:userid')
+        .then(function (response) {
+            // handle success
+            console.log(response);
+        })
+        .catch(function (error) {
+            // handle error
+            console.log(error);
+        })
+        .then(function () {
+            // always executed
+        });
     }
     render() {
         return(

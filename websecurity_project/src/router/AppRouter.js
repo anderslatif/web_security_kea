@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import PageLogin from "../pages/PageLogin";
 import PageRegister from "../pages/PageRegister";
 // import PageProfileAbout from "../pages/PageProfile";
@@ -19,6 +19,7 @@ class AppRouter extends Component {
                     <div>
                         {/* <Widget /> */}
                         <Switch>
+                            <Redirect exact={true} from="/" to="/login" />
                             <Route path="/login" component={PageLogin} />
                             <Route path="/register" component={PageRegister} />
                             {/* <Route exact={true} path="/profile/about" component={PageProfileAbout} /> */}

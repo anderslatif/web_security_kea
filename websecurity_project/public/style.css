@@ -388,6 +388,9 @@ html {
     margin: 0 auto;
     background-color: #ffffff;
     margin-top: 3.2rem; }
+    @media (max-width: 900px) {
+      .page__profile--content {
+        width: 90%; } }
 
 .componentProfileHeader {
   width: 100%;
@@ -504,6 +507,15 @@ html {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 2.5rem; }
+  @media (max-width: 900px) {
+    .componentPosts {
+      width: 90%; } }
+  @media (max-width: 700px) {
+    .componentPosts {
+      grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 445px) {
+    .componentPosts {
+      grid-template-columns: 1fr; } }
   .componentPosts .componentPostsElement {
     height: 100%;
     background-color: #ffffff;
