@@ -4,9 +4,31 @@ const Post = require("../models/Post");
 const helperFunctions = require("../helper-functions");
 
 
+router.get("/posts", (req, res) => {
+    if (req.session.userId) {
+        // TODO sanitize the input
+        Post.find({ bookOwner: req.sesssion.userId}).exec((error, foundPosts) => {
+            if (error) {
+                helperFunctions.logToFile("MongoFailed" + error, "backend-errors.txt");
+            }
+            if (foundPosts.length === 0) {
+                // fixme this user either looked up a user with no posts
+                // fixme or is guessing ids without knowing any
+                helperFunctions.logToFile("Someone might be trying to guess user ids to access posts" + error, "intrusions.txt");
+            }
+        });
+        res.send({ post: foundPosts });
+    } else {
+        // fixme Someone is trying to use this route without knowing exactly what fields are required
+        // fixme give them status 200 which will be considered an error status code in our client
+        // fixme that will confuse them, lol
+        helperFunctions.logToFile("Someone is trying to get posts without defining an id" + error, "intrusions.txt");
+        res.status(200).send("Signed up OK");
+    }
+});
+
 router.get("/posts/:userid", (req, res) => {
     if (req.params.userid) {
-        // TODO sanitize the input
         Post.find({ bookOwner: req.params.userid}).exec((error, foundPosts) => {
             if (error) {
                 helperFunctions.logToFile("MongoFailed" + error, "backend-errors.txt");
@@ -30,6 +52,7 @@ router.get("/posts/:userid", (req, res) => {
 router.post("/post", (req, res) => {
     // todo check for fields
     if (req.body) {
+        // TODO sanitize input
         const { title, description, author } = req.body;
         const postToSave = {
             title,
