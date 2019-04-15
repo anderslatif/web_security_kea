@@ -13,7 +13,7 @@ router.get("/posts", (req, res) => {
             if (foundPosts.length === 0) {
                 // fixme this user either looked up a user with no posts
                 // fixme or is guessing ids without knowing any
-                helperFunctions.logToFile("Someone might be trying to guess user ids to access posts" + error, "intrusions.txt");
+                helperFunctions.logToFile("Someone might be trying to guess user ids to access posts", "intrusions.txt");
             }
         });
         res.send({ post: foundPosts });
@@ -21,7 +21,7 @@ router.get("/posts", (req, res) => {
         // fixme Someone is trying to use this route without knowing exactly what fields are required
         // fixme give them status 200 which will be considered an error status code in our client
         // fixme that will confuse them, lol
-        helperFunctions.logToFile("Someone is trying to get posts without defining an id" + error, "intrusions.txt");
+        helperFunctions.logToFile("Someone is trying to get posts without defining an id", "intrusions.txt");
         res.status(200).send("Signed up OK");
     }
 });
@@ -35,7 +35,7 @@ router.get("/posts/:userid", (req, res) => {
             if (foundPosts.length === 0) {
                 // fixme this user either looked up a user with no posts
                 // fixme or is guessing ids without knowing any
-                helperFunctions.logToFile("Someone might be trying to guess user ids to access posts" + error, "intrusions.txt");
+                helperFunctions.logToFile("Someone might be trying to guess user ids to access posts", "intrusions.txt");
             }
         });
         res.send({ post: foundPosts });
@@ -43,7 +43,7 @@ router.get("/posts/:userid", (req, res) => {
         // fixme Someone is trying to use this route without knowing exactly what fields are required
         // fixme give them status 200 which will be considered an error status code in our client
         // fixme that will confuse them, lol
-        helperFunctions.logToFile("Someone is trying to get posts without defining an id" + error, "intrusions.txt");
+        helperFunctions.logToFile("Someone is trying to get posts without defining an id", "intrusions.txt");
         res.status(200).send("Signed up OK");
     }
 });
@@ -134,7 +134,7 @@ router.put("/post/:id", (req, res) => {
         // fixme Someone is trying to use this route without knowing exactly what fields are required");
         // fixme give them status 200 which will be considered an error status code in our client
         // fixme that will confuse them, lol
-        helperFunctions.logToFile("Someone is trying to POST a post and doesn't have the required fields" + error, "intrusions.txt");
+        helperFunctions.logToFile("Someone is trying to POST a post and doesn't have the required fields", "intrusions.txt");
         res.status(200).send("Signed up OK");
     }
 });
