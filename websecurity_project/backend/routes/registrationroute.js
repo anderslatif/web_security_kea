@@ -4,7 +4,7 @@ const User = require("../models/User");
 const ResetPassword = require("../models/ResetPassword");
 const bcrypt = require("bcrypt");
 const helperFunctions = require("../helper-functions");
-const dummyUser = require("dummy-user");
+const dummyUser = require("./dummy-user");
 const crypto = require("crypto");
 
 const userRoles = Object.freeze({

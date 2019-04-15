@@ -1,6 +1,24 @@
 const express = require('express');
 const app = express();
-const server = require('http').createServer(app);
+
+const fs = require('fs');
+const tls = require('tls');;
+const privateKey = fs.readFileSync('server.key').toString();
+const certificate = fs.readFileSync('server.cert').toString();
+
+const credentials = { key: privateKey, cert: certificate };
+
+// TODO get the certificates
+const server = tls.createServer(credentials).listen(8080);
+
+/* const server = require('http').createServer(app);
+server.listen(8080, error => {
+    if (error) {
+        helperFunctions.logToFile("Problem starting the server: ", "backend-errors.txt");
+    }
+}); */
+
+
 const io = require('socket.io')(server);
 
 const bodyParser = require('body-parser');
@@ -41,7 +59,7 @@ app.use(session({
     })
 }));
 
-const helperFunctions = require("../helper-functions");
+const helperFunctions = require("./helper-functions");
 
 // ----------------------- routes ----------------------
 
@@ -71,8 +89,3 @@ io.on('connection', socket => {
     });
 });
 
-server.listen(8080, error => {
-    if (error) {
-        helperFunctions.logToFile("Problem starting the server: ", "backend-errors.txt");
-    }
-});
