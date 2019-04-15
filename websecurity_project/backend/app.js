@@ -67,9 +67,11 @@ const helperFunctions = require("./helper-functions");
 const postroute = require("./routes/postroute");
 const userroute = require("./routes/userroute");
 const registrationroute = require("./routes/registrationroute");
+const resetpasswordroute = require("./routes/resetpasswordroute");
 app.use(postroute);
 app.use(userroute);
 app.use(registrationroute);
+app.use(resetpasswordroute);
 
 app.get("/", (req, res) => {
    res.send("Welcome to the awesome book api. Feel right at home exploring.")
