@@ -9,7 +9,8 @@ const ResetPasswordSchema = new mongoose.Schema({
         type: String,
         unique: true,
         trim: true
-    }
+    },
+    password: String
 });
 
 const ResetPassword = mongoose.model('ResetPassword', ResetPasswordSchema);

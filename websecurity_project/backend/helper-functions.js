@@ -27,14 +27,29 @@ module.exports = {
     });
   },
   sendEmail: async (to, subject, html) => {
-    const info = await transporter.sendMail({
-      // TODO proper email address
+    const mailOptions = {
       from: '"Books boo 👻" <bookshelfweb@gmail.com>', // sender address
       to, // list of receivers, comma separated in a string
       subject,
       html
+    };
+    const smtpTrans = await nodemailer.createTransport({
+      service: 'gmail',
+      //  host:'smtp.gmail.com',
+      //  port:465,
+      // secure:true,
+      auth: {
+        user: "bookshelfweb@gmail.com",
+        pass: "WebSec2019"
+      }
     });
-    this.logToFile(info, "email-log.txt");
-    return info;
+    smtpTrans.sendMail(mailOptions, (error, res) => {
+      if (error) {
+        this.logToFile(mailOptions, "email-errors.txt");
+        return false;
+      }
+      this.logToFile(mailOptions, "email-log.txt");
+      return res;
+    });
   }
 };
