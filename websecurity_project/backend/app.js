@@ -6,6 +6,8 @@ const tls = require('tls');;
 const privateKey = fs.readFileSync('server.key').toString();
 const certificate = fs.readFileSync('server.cert').toString();
 
+require('dotenv').config();
+
 const credentials = { key: privateKey, cert: certificate };
 
 // TODO get the certificates
