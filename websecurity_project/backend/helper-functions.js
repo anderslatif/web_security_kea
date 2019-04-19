@@ -39,8 +39,8 @@ module.exports = {
       //  port:465,
       // secure:true,
       auth: {
-        user: "bookshelfweb@gmail.com",
-        pass: "WebSec2019"
+        user: process.env.EMAIL_ADDRESS,
+        pass: process.env.EMAIL_PASSWORD
       }
     });
     smtpTrans.sendMail(mailOptions, (error, res) => {
