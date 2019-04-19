@@ -67,11 +67,9 @@ const helperFunctions = require("./helper-functions");
 
 
 const postroute = require("./routes/postroute");
-const userroute = require("./routes/userroute");
 const registrationroute = require("./routes/registrationroute");
 const resetpasswordroute = require("./routes/resetpasswordroute");
 app.use(postroute);
-app.use(userroute);
 app.use(registrationroute);
 app.use(resetpasswordroute);
 
@@ -89,7 +87,7 @@ io.on('connection', socket => {
     });
 
     socket.on('error', error => {
-        helperFunctions.logToFile("Someone has accessed the password file: ", "socket-errors.txt");
+        helperFunctions.logToFile("Someone has accessed the password file: " + error, "socket-errors.txt");
     });
 });
 
