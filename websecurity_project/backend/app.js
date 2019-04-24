@@ -10,16 +10,7 @@ require('dotenv').config();
 
 const credentials = { key: privateKey, cert: certificate };
 
-// TODO get the certificates
 const server = tls.createServer(credentials).listen(8080);
-
-/* const server = require('http').createServer(app);
-server.listen(8080, error => {
-    if (error) {
-        helperFunctions.logToFile("Problem starting the server: ", "backend-errors.txt");
-    }
-}); */
-
 
 const io = require('socket.io')(server);
 
