@@ -4,9 +4,11 @@ const multer  = require('multer');
 const upload = multer({ dest: __dirname + '/files/' });
 const helperFunctions = require("./helper-functions");
 
+const tls = require('tls');;
+const fs = require('fs');
+const privateKey = fs.readFileSync('server.key').toString();
+const certificate = fs.readFileSync('server.cert').toString();
 const credentials = { key: privateKey, cert: certificate };
-
-const server = tls.createServer(credentials).listen(8080);
 
 app.post('/cover', upload.single('cover'), (req, res) => {
     try {
@@ -32,7 +34,7 @@ app.post('/book', upload.single('book'), (req, res) => {
 
 });
 
-app.listen(9090, error => {
+const server = tls.createServer(credentials).listen(9090, error => {
     if (error) {
         helperFunctions.logToFile("Problem starting the file micro service server: ", "backend-errors.txt");
     }
