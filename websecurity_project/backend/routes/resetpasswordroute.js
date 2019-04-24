@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const helperFunctions = require("../helper-functions");
-const User = require("../models/User");
+const User = require("../models/User")
 const ResetPassword = require("../models/ResetPassword");
 
 router.post('/reset-password', (req, res) => {
