@@ -9,6 +9,7 @@ import PageBook from "../pages/PageBook";
 import PageChat from "../pages/PageChat";
 import { Widget, addResponseMessage } from "react-chat-widget";
 import PageFeed from "../pages/PageFeed";
+import PageNotFound from "../pages/PageNotFound";
 // import { Provider } from "react-redux";
 
 class AppRouter extends Component {
@@ -28,6 +29,7 @@ class AppRouter extends Component {
                             <Route exact={true} path="/profile/posts/:bookid" component={PageBook} />
                             <Route exact={true} path="/chat" component={PageChat} />
                             <Route path="/feed" component={PageFeed} />
+                            <Route component={PageNotFound} />
                         </Switch>
                     </div>
                 </BrowserRouter>

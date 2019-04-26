@@ -5,6 +5,9 @@ module.exports = {
   escapeCrossSideScripting: () => {
         // todo recursive function
   },
+  escapeMongoDbInjections: () => {
+
+  },
   isValidEmail: () => {
     // todo implement
     return true;

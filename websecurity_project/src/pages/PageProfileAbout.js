@@ -4,6 +4,7 @@ import ComponentProfileHeader from "../components/ComponentProfileHeader";
 import ComponentAbout from "../components/ComponentAbout";
 import ComponentEditProfile from "../components/ComponentEditProfile";
 import ComponentChatElement from "../components/ComponentChatElement";
+import axios from "axios";
 
 class PageProfileAbout extends Component {
     constructor(props) {
@@ -37,6 +38,20 @@ class PageProfileAbout extends Component {
         // if(this.state.editProfile === false) {
         //     document.querySelector("body").classList.add("scroll"); 
         // }
+    }
+    componentDidMount() {
+        axios.get('/user?ID=12345')
+            .then(function (response) {
+                // handle success
+                console.log(response);
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            })
+            .then(function () {
+                // always executed
+            });
     }
     render() {
         return(

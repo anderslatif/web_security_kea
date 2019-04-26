@@ -50,7 +50,7 @@ class PageProfilePosts extends Component {
     }
     componentDidMount() {
         // localhost/8080:post
-        axios.get('localhost/8080:posts/:userid')
+        axios.get('/posts')
         .then(function (response) {
             // handle success
             console.log(response);

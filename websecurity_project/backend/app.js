@@ -41,7 +41,7 @@ app.use(session({
     })
 }));
 
-const helperFunctions = require("../helper-functions");
+const helperFunctions = require("./helper-functions");
 
 // ----------------------- routes ----------------------
 
