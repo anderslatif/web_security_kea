@@ -36,7 +36,7 @@ ECB - electronic codebook mode
 
 CBC - cipher block chaining mode (Initialization Vector, see it as a salt) cyclic block chaining
 
-OFB - output feedback mode (similar to CBC but more error rsistant)
+OFB - output feedback mode (similar to CBC but more error resistant)
 
 -----
 
@@ -53,5 +53,12 @@ OpenSSL - heartbleed bug
 
 -----
 
-pros      cons
+
+Cyclic pros
+More randomness
+Better
+
+Cyclic cons
+Slower
+Less fault tolerant
 
