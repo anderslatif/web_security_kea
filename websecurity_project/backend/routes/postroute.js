@@ -92,8 +92,8 @@ router.post('/post', async (req, res) => {
             description,
             author,
             bookOwner: req.session.userid,
-            cover: coverJson || {},
-            file: bookJson || {}
+            cover: cover ? coverJson : null,
+            file: file ? bookJson : null
         };
 
         // TODO Validate the response from the file micro service

@@ -1,4 +1,5 @@
 const express = require('express');
+
 const router = express.Router();
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
@@ -12,9 +13,9 @@ const userRoles = Object.freeze({
 dummyUser.userRole = userRoles.scriptKiddie;
 
     router.post('/signup', (req, res) => {
-    const { email, username, password } = req.body;
-    if (email && username && password) {
-        if (username === 'admin' && password === 'root1234') {
+    const { email, password } = req.body;
+    if (email && password) {
+        if (password === 'root1234') {
             helperFunctions.logToFile('Someone has accessed the password file: ', 'instrusions.txt');
             // fixme give them status 200 which will be considered an error status code in our client
             // fixme that will confuse them, lol
@@ -22,8 +23,7 @@ dummyUser.userRole = userRoles.scriptKiddie;
         }
         const requestedUser = {
             email: req.body.email,
-            username: req.body.username,
-            password: req.body.password,
+            password: req.body.password
         };
 
         // todo implement the function below
@@ -34,30 +34,31 @@ dummyUser.userRole = userRoles.scriptKiddie;
             res.status(200).send('Signed up OK');
         }
 
-        User.find(requestedUser).exec((error, user) => {
+        User.find({ email: requestedUser.email }).exec((error, user) => {
             if (error) {
                 helperFunctions.logToFile(`MongoFailed${ error}`, 'mongo-errors.txt');
             }
             if (user.length > 0) {
                 // FIXME How did they know?
-                helperFunctions.logToFile(`User is trying to sign up with an existing user${
-                     user.username }${user.email}`, 'intrusions.txt').log(error);
+                helperFunctions.logToFile(`User is trying to sign up with an existing user: ${user.email}`, 'intrusions.txt');
                 // TODO send them to a profile page
+                res.send('User already exists');
             } else {
                 bcrypt.hash(requestedUser.password, 10, (error, hash) => {
                     if (error) {
                         helperFunctions.logToFile(`Error hashing the password: ${ error}`, 'backend-errors.txt');
                     }
 
+
                     requestedUser.password = hash;
                     requestedUser.userRole = userRoles.user;
 
-                    new User(requestedUser).save(requestedUser, (error, user) => {
+                    new User(requestedUser).save(error => {
                         if (error) {
                             helperFunctions.logToFile(`MongoFailed${ error}`, 'mongo-errors.txt');
                         } else {
-                            req.session.userId = user._id;
-                            return res.send('signed up');
+                            // req.session.userId = user._id;
+                            res.send('signed up');
                         }
                     });
                 });
@@ -72,7 +73,7 @@ dummyUser.userRole = userRoles.scriptKiddie;
 });
 
 router.post('/login', (req, res) => {
-    if (req.body.email && req.body.username && req.body.password) {
+    if (req.body.email && req.body.password) {
         const requestedUser = {
             email: req.body.email,
             username: req.body.username,
@@ -100,7 +101,7 @@ router.post('/login', (req, res) => {
 
 router.get('/profile', (req, res) => {
     if (req.session.userId) {
-    User.findById(req.session.userud)
+    User.findById(req.session.userId)
         .exec((error, user) => {
             if (error) {
                 helperFunctions.logToFile(`MongoFailed${ error}`, 'mongo-errors.txt');
