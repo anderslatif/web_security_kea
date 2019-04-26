@@ -26,13 +26,13 @@ class PageLogin extends Component {
         ev.preventDefault();
         console.log(this.state)
     }
-    componentDidMount() {
-        axios.post("http://localhost:8080/login", {
-            email: "emazxcil@email.com",
-            password: "paszxcsword"
-        }).then(res => console.log("login success: ", res))
-          .catch(error => console.log("login failed: ", error))
-    }
+    // componentDidMount() {
+    //     axios.post("http://localhost:8080/login", {
+    //         email: "emazxcil@email.com",
+    //         password: "paszxcsword"
+    //     }).then(res => console.log("login success: ", res))
+    //       .catch(error => console.log("login failed: ", error))
+    // }
     testEmail = () => {
         
     }
