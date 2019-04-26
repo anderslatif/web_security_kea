@@ -1,5 +1,9 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import ComponentIndividualChatMessage from "./ComponentIndividualChatMessage";
+import io from 'socket.io-client';
+
+const socket = io('localhost:8080');
+// import React, { useState, useEffect } from 'react';
 
 const testChatMessages = [
     {
@@ -33,9 +37,32 @@ class ComponentChatElement extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            chatMessages: testChatMessages
+            chatMessages: testChatMessages,
+            input: "",
+            messages: []
         }
+        this.setMessages = this.setMessages.bind(this);
+        this.setInput = this.setInput.bind(this);
     }
+    setMessages = (msgs) => {
+        this.setState(() => {
+            return msgs
+        })
+    }
+    setInput = (ev) => {
+        this.setState({input: ev.target.value})
+        console.log(this.state.input);
+    }
+    componentDidMount() {
+        socket.on("send-message", data => {
+            this.setMessages([...this.state.messages, data.msg]); 
+        });
+    }
+    // componentDidMount() {
+    //     socket.on("send-message", data => {
+    //         setMessages([...this.state.messages, data.msg]); 
+    //     });
+    // }
     render() {
         let { handleChatState, handleChatStateSlide } = this.props;
         return(
@@ -55,15 +82,15 @@ class ComponentChatElement extends Component {
                 </div>
                 <div className="chat__content">
                     {
-                        this.state.chatMessages.map((msgChat) => {
+                        this.state.messages.map((msgChat) => {
                             return <ComponentIndividualChatMessage key={msgChat.id} message={msgChat.message} />
                         })
                     }
                 </div>
                 <div className="chat__input">
                     <form className="chat__input--sendmessage">
-                        <textarea></textarea>
-                        <button>
+                        <textarea onChange={this.setInput}></textarea>
+                        <button onClick={() => {socket.emit("receive-message", {msg: this.state.input})}}>
                             <svg>
                                 <use href="./image/sprite.svg#icon-send"></use>
                             </svg>
