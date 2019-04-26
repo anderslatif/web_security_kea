@@ -47,18 +47,18 @@ router.post('/post', async (req, res) => {
             const bookJson = await resultBookPromise.json();
         }
 
-        const postToSave = {
+        const post = new Post({
             title,
             description,
             author,
             bookOwner: req.session.userid,
             cover: cover ? coverJson : null,
             file: file ? bookJson : null
-        };
+        });
 
         // TODO Validate the response from the file micro service
 
-        new Post.save(postToSave, (error, post) => {
+        post.save(error => {
             if (error) {
                 helperFunctions.logToFile(`MongoFailed${ error}`, 'mongo-errors.txt');
             }
@@ -73,7 +73,7 @@ router.post('/post', async (req, res) => {
 
 router.put('/post/:id', (req, res) => {
     if (req.body) {
-        Post.find({ id: req.params.id }).exec((error, foundPosts) => {
+        Post.find({ _id: req.params.id }).exec((error, foundPosts) => {
             if (error) {
                 helperFunctions.logToFile(`MongoFailed${ error}`, 'mongo-errors.txt');
             }
@@ -85,7 +85,8 @@ router.put('/post/:id', (req, res) => {
                 foundPost.author = author;
                 foundPost.file = file;
                 foundPost.cover = cover;
-                foundPosts.save(error => {
+
+                foundPost.save(error => {
                     if (error) {
                         helperFunctions.logToFile(`MongoFailed${ error}`, 'mongo-errors.txt');
                     }

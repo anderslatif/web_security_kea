@@ -1,9 +1,11 @@
 const express = require('express');
+
 const router = express.Router();
 const helperFunctions = require('../helper-functions');
 const User = require('../models/User');
 const ResetPassword = require('../models/ResetPassword');
 const bcrypt = require('bcrypt');
+const crypto = require('crypto');
 
 router.post('/reset-password', (req, res) => {
     if (req.body.email) {
@@ -14,7 +16,7 @@ router.post('/reset-password', (req, res) => {
 
         // todo implement the function below
         if (helperFunctions.isValidEmail(req.body.email)) {
-            User.findOne({ where: { email: req.body.email } })
+            User.findOne({ email: req.body.email })
                 .then((user, error) => {
                     if (error) {
                         helperFunctions.logToFile(`MongoFailed${ error}`, 'mongo-errors.txt');
@@ -22,51 +24,44 @@ router.post('/reset-password', (req, res) => {
                     if (!user) {
                         helperFunctions.logToFile('Someone is trying to guess existing emails ' +
                             'through the reset password service: ', 'intrusions.txt');
+                        res.send('');
                     }
 
-                    ResetPassword
-                        .findOne({
-                            where: { userId: user.id, status: 0 },
-                        }).then((resetPassword) => {
-                        if (resetPassword) {
-                        resetPassword.destroy({
-                                where: {
-                                    id: resetPassword.id
-                                }
-                            });
-}
-
+                    ResetPassword.findOne({
+                        userId: user.id
+                    }).then((resetPassword) => {
                         const token = crypto.randomBytes(32).toString('hex');
 
                         bcrypt.hash(token, 10, (error, hash) => {
                             if (error) {
                                 helperFunctions.logToFile(`Error hashing the password: ${ error}`, 'backend-errors.txt');
                             }
-                            const tokenExpiry = new Date.now();
-                            tokenExpiry.setSeconds(tokenExpiry.getSeconds + 3600); // 1 hour
+                            const tokenExpiry = new Date();
+                            tokenExpiry.setSeconds(tokenExpiry.getSeconds() + 900); // 15 min
+
 
                             ResetPassword.create({
-                                userId: req.session.userid,
+                                userId: user._id,
                                 resetPasswordToken: hash,
                                 expire: tokenExpiry,
                             }).then((resetPassword, error) => {
+
                                 if (error) {
                                     helperFunctions.logToFile(`MongoFailed${ error}`, 'mongo-errors.txt');
                                 }
 
                                 // TODO reset password link
                                 const clientUrl = 'localhost/';
-                                const mailOptions = {
-                                    to: req.body.email,
-                                    subject: 'Reset your account password on your book profile',
-                                    html: `${'<h4><b>Reset Password</b></h4>' +
+
+                                const to = req.body.email;
+                                const subject = 'Reset your account password on your book profile';
+                                const html = `${'<h4><b>Reset Password</b></h4>' +
                                         '<p>To reset your password, please complete this form:</p>' +
                                         '<a href='}${ clientUrl }reset/${ req.session.userid
                                          }/${ token }">Reset password</a>` +
                                         '<br><br>' +
-                                        '<p>Bookshelf Team</p>'
-                                };
-                                const mailSent = helperFunctions.sendEmail(mailOptions);
+                                        '<p>Bookshelf Team</p>';
+                                const mailSent = helperFunctions.sendEmail(to, subject, html);
 
                                 if (mailSent) {
                                     return res.json({ success: true, message: 'Check your mail to reset your password.' });
@@ -80,10 +75,11 @@ router.post('/reset-password', (req, res) => {
             // FIXME someone is trying to guess existing emails
             helperFunctions.logToFile(`Someone is trying to guess existing emails through the reset email endpoint${
                  error}`, 'intrusions.txt');
+            res.send();
         }
     } else {
         // fixme Someone is trying to use this route without knowing exactly what fields are required"
-
+        res.send();
     }
 });
 
