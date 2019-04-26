@@ -12,18 +12,12 @@ const userRoles = Object.freeze({
 });
 dummyUser.userRole = userRoles.scriptKiddie;
 
-<<<<<<< HEAD
     router.post('/signup', (req, res) => {
     const { email, password, passwordRepeated } = req.body;
     if (email && password && passwordRepeated) {
         if (password !== passwordRepeated) {
             res.send("Password and repeated password are not the same");
         }
-=======
-router.post('/signup', (req, res) => {
-    const { email, password } = req.body;
-    if (email && password) {
->>>>>>> 5b364c843b3c758b3f46c4fac08999b9e5f136d2
         if (password === 'root1234') {
             helperFunctions.logToFile('Someone has accessed the password file: ', 'instrusions.txt');
             res.status(200).send();
