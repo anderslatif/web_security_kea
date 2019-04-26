@@ -16,7 +16,7 @@ dummyUser.userRole = userRoles.scriptKiddie;
     const { email, password, passwordRepeated } = req.body;
     if (email && password && passwordRepeated) {
         if (password !== passwordRepeated) {
-            res.send("Password and repeated password are not the same");
+            res.send('Password and repeated password are not the same');
         }
         if (password === 'root1234') {
             helperFunctions.logToFile('Someone has accessed the password file: ', 'instrusions.txt');
@@ -73,17 +73,22 @@ router.post('/login', (req, res) => {
         };
 
         User.find(requestedUser).exec((error, foundUsers) => {
-            bcrypt.compare(req.body.password, foundUsers[0].password, (error, result) => {
-                if (error) {
-                    helperFunctions.logToFile(`Error comparing hashed passwords: ${ error}`, 'backend-errors.txt');
-                }
-                if (result === true) {
-                    req.session.userId = foundUsers[0]._id;
-                    res.send({ result: true });
-                } else {
-                    helperFunctions.logToFile('Someone is trying to guess the password', 'intrusions.txt');
-                }
-            });
+            if (!foundUsers || foundUsers.length === 0) {
+                helperFunctions.logToFile('User does not exist', 'intrusions.txt');
+                res.send('User does not exist');
+            } else {
+                bcrypt.compare(req.body.password, foundUsers[0].password, (error, result) => {
+                    if (error) {
+                        helperFunctions.logToFile(`Error comparing hashed passwords: ${ error}`, 'backend-errors.txt');
+                    }
+                    if (result === true) {
+                        req.session.userId = foundUsers[0]._id;
+                        res.send({ result: true });
+                    } else {
+                        helperFunctions.logToFile('Someone is trying to guess the password', 'intrusions.txt');
+                    }
+                });
+            }
         });
     } else {
         // "Someone is trying to use this route without knowing exactly what fields are required
