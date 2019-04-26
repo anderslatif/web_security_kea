@@ -31,12 +31,7 @@ router.get("/posts/all", (req, res) => {
         if (error) {
             helperFunctions.logToFile("MongoFailed" + error, "mongo-errors.txt");
         }
-        if (foundPosts.length === 0) {
-            // fixme this user either looked up a user with no posts
-            // fixme or is guessing ids without knowing any
-            helperFunctions.logToFile("Someone might be trying to guess user ids to access posts", "intrusions.txt");
-        }
-        res.send({post: foundPosts});
+        res.send(foundPosts);
     });
     res.send({});
 });
@@ -54,7 +49,7 @@ router.get("/posts/:userid", (req, res) => {
                 helperFunctions.logToFile("Someone might be trying to guess user ids to access posts", "intrusions.txt");
             }
         });
-        res.send({ post: foundPosts });
+        res.send(foundPosts);
     } else {
         // fixme Someone is trying to use this route without knowing exactly what fields are required
         // fixme give them status 200 which will be considered an error status code in our client
