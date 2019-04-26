@@ -41,8 +41,8 @@ router.post('/post', async (req, res) => {
         const { title, description, author, file, cover } = req.body;
 
         if (file || cover) {
-            const resultCoverPromise = await fetch('localhost:9090/cover', { method: 'POST', body: cover });
-            const resultBookPromise = await fetch('localhost:9090/book', { method: 'POST', body: file });
+            const resultCoverPromise = await fetch('http://localhost:9090/cover', { method: 'POST', body: cover });
+            const resultBookPromise = await fetch('http://localhost:9090/book', { method: 'POST', body: file });
             const coverJson = await resultCoverPromise.json();
             const bookJson = await resultBookPromise.json();
         }
