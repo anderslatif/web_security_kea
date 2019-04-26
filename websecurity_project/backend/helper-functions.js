@@ -25,7 +25,7 @@ module.exports = {
 
     fs.writeFile("~/../websrv/logs/" + file, log, function(err) {
       if(err) {
-        return this.logToFile("Failed writing to log files: " + err, "backend-errors.txt");
+        // return logToFile("Failed writing to log files: " + err, "backend-errors.txt");
       }
     });
   },
