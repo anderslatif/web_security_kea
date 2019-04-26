@@ -3,12 +3,12 @@ import {
     LOGIN_USER
 } from "./actionsVariables";
 
-export const registerUser = ({email, password, passwordRepeat}) => ({
+export const registerUser = ({email, password, passwordrepeat}) => ({
     type: REGISTER_USER,
     users: {
         email,
         password,
-        passwordRepeat
+        passwordrepeat
     }
 });
 

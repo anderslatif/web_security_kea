@@ -7,26 +7,61 @@ class ComponentCreatePosts extends Component {
       this.state = {
           title: "",
           author: "",
-          cover: ""
+          description: "",
+          cover: "",
+          file: ""
       }
-      this.testCoverUpload = this.testCoverUpload.bind(this)
+      this.testCoverUpload = this.testCoverUpload.bind(this);
+      this.setPostDatas = this.setPostDatas.bind(this);
+      this.uploadFile = this.uploadFile.bind(this);
+      this.setTextPost = this.setTextPost.bind(this);
   }
+  setPostDatas = (ev) => {
+    let datas = ev.target.value;
+    let type = ev.target.name;
+    let fileDocument = ev.target.files[0];
 
+    this.setState(() => {
+        if(type === "file") {
+            return {
+                file: fileDocument
+                // [type]: datas
+            }
+        }
+    })
+  }
+  setTextPost = (ev) => {
+    let dataValue = ev.target.value;
+    let dataType = ev.target.name;
+
+    this.setState({[dataType]: dataValue})
+  }
+  uploadFile = () => {
+      axios.post("http://localhost:8080/post", {
+          title: this.state.title,
+          description: this.state.description,
+          author: this.state.author,
+          cover: "tests",
+          file: this.state.file
+      }).then(res => console.log("post successful: ", res))
+        .catch(error => console.log("post error: ", error))
+  }
   testCoverUpload = (ev) => {
     console.log(this.ref.coverFileUploader);
   }
   componentDidMount() {
     console.log("post");
-    axios.post("https://localhost:8080/post", {
-        title: "x"
-    }).then(res => console.log("post some: ", res))
-      .catch(err => console.log("error-post request: ", err))
+    // axios()
+    // axios.post("https://localhost:8080/post", {
+    //     title: "x"
+    // }).then(res => console.log("post some: ", res))
+    //   .catch(err => console.log("error-post request: ", err))
   }
   render() {
     return (
       <div className="componentCreatePosts">
         <div className="componentCreatePosts__innernavigation">
-            <button className="makeAPost">
+            <button className="makeAPost" onClick={this.uploadFile}>
                 <svg>
                     <use href="./image/sprite.svg#icon-edit"></use>
                 </svg>
@@ -37,14 +72,14 @@ class ComponentCreatePosts extends Component {
                     <use href="./image/sprite.svg#icon-image"></use>
                 </svg>
                 <span>Add Cover</span>
-                <input ref="coverFileUploader" style={{display:"none"}} type="file" />
+                <input ref="coverFileUploader" type="file" />
             </button>
             <button className="addAFile">
                 <svg>
                     <use href="./image/sprite.svg#icon-file-text"></use>
                 </svg>
-                <span>Add Book file</span>
-                <input style={{display:"none"}} type="file" />
+                {/* <span>Add Book file</span> */}
+                <input type="file" name="file" onChange={this.setPostDatas} />
             </button>
         </div>
         <div className="componentCreatePosts__innercontent">
@@ -54,11 +89,11 @@ class ComponentCreatePosts extends Component {
                 </div>
                 <div className="bookDatas">
                     <label>Add Title</label>
-                    <input type="text" />
+                    <input type="text" name="title" onChange={this.setTextPost} />
                     <label>Add Author</label>
-                    <input type="text" />
+                    <input type="text" name="author" onChange={this.setTextPost} />
                     <label>Add Description</label>
-                    <textarea value="" onChange={() => {}}>Write a short description of your posts</textarea>
+                    <textarea value={this.state.description} name="description" onChange={this.setTextPost}>Write a short description of your posts</textarea>
                 </div>
             </div>
         </div>

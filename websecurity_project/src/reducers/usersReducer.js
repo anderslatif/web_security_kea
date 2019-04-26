@@ -10,11 +10,14 @@ const usersReducerDefaultReducer = {};
 const usersReducer = (state = usersReducerDefaultReducer, action) => {
     switch(action.type) {
         case REGISTER_USER:
-            return axios.post("http://localhost:27017/add-post", {
-                title: action.posts.title,
-                author: action.posts.author,
-                cover: action.posts.cover,
-                file: action.posts.file
+            return axios.post("http://localhost:8080/signup", {
+                email: users.email,
+                password: users.password,
+                passwordRepeat: users.passwordRepeat
+                // title: action.posts.title,
+                // author: action.posts.author,
+                // cover: action.posts.cover,
+                // file: action.posts.file
             })
             .then(res => console.log(res))
             .catch((error) => console.log(error));

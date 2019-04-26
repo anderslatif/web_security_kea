@@ -33,6 +33,9 @@ class PageLogin extends Component {
         }).then(res => console.log("login success: ", res))
           .catch(error => console.log("login failed: ", error))
     }
+    testEmail = () => {
+        
+    }
     render() {
     return (
         <div className="page__login">

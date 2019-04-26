@@ -13,8 +13,11 @@ const userRoles = Object.freeze({
 dummyUser.userRole = userRoles.scriptKiddie;
 
     router.post('/signup', (req, res) => {
-    const { email, password } = req.body;
-    if (email && password) {
+    const { email, password, passwordRepeated } = req.body;
+    if (email && password && passwordRepeated) {
+        if (password !== passwordRepeated) {
+            res.send("Password and repeated password are not the same");
+        }
         if (password === 'root1234') {
             helperFunctions.logToFile('Someone has accessed the password file: ', 'instrusions.txt');
             // fixme give them status 200 which will be considered an error status code in our client
