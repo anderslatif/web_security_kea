@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import ComponentPostsElement from "./ComponentPostsElement";
 import axios from "axios";
+import { fetchPosts } from "../actions/postActions";
+import { dispatch } from "redux";
+import { connect } from "react-redux";
 
 const postTests = [
     {
@@ -49,19 +52,24 @@ class PageProfilePosts extends Component {
         }
     }
     componentDidMount() {
+        // console.log(axios)
+        // store.dispatch(fetchPosts);
+        axios.get("https://localhost:8080/posts")
+                    .then(res => console.log("9999 posts: ", res))
+                    .catch((error) => console.log("fetch error: ", error));
         // localhost/8080:post
-        axios.get('/posts')
-        .then(function (response) {
-            // handle success
-            console.log(response);
-        })
-        .catch(function (error) {
-            // handle error
-            console.log(error);
-        })
-        .then(function () {
-            // always executed
-        });
+        // axios.get('/posts')
+        // .then(function (response) {
+        //     // handle success
+        //     console.log(response);
+        // })
+        // .catch(function (error) {
+        //     // handle error
+        //     console.log(error);
+        // })
+        // .then(function () {
+        //     // always executed
+        // });
     }
     render() {
         return(
