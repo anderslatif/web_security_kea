@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import Tilt from 'react-tilt';
+import axios from 'axios';
 // import { ErrorEmptyInput } from "../frontend__errors/errorsComponents";
 // import { connect } from "redux";
 
@@ -32,6 +33,15 @@ class PageRegister extends Component {
       passwordRepeat: this.state.registerRepeatPassword
     }
     console.log(registeredUser);
+  }
+  componentDidMount() {
+    console.log("register users");
+    axios.post("http://localhost:8080/signup", {
+      email: "email@email.com",
+      username: "cosmin",
+      password: "password"
+    }).then(res => console.log(res))
+      .catch(error => console.log("register error: ", error))
   }
     render() {
       return (
