@@ -13,11 +13,10 @@ const PostSchema = new mongoose.Schema({
         trim: true
     },
     cover: {
-        type: String,
-        trim: true
+        type: Object,
     },
     file: {
-
+        type: Object,
     },
     // FIXME TODO Danger ahead
     description: {

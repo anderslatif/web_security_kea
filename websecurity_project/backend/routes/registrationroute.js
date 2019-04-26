@@ -3,7 +3,7 @@ const router = express.Router();
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
 const helperFunctions = require("../helper-functions");
-const dummyUser = require("dummy-user");
+const dummyUser = require("./dummy-user");
 
 const userRoles = Object.freeze({
     user: 'USER',
@@ -46,7 +46,7 @@ dummyUser.userRole = userRoles.scriptKiddie;
             } else {
                 bcrypt.hash(requestedUser.password, 10, (error, hash) =>{
                     if (error) {
-                        console.log(error);
+                        helperFunctions.logToFile("Error hashing the password: " + error, "backend-errors.txt");
                     }
 
                     requestedUser.password = hash;
@@ -78,39 +78,39 @@ router.post("/login", (req, res) => {
             email: req.body.email,
             username: req.body.username,
         };
-
+        // FIXME Dangerous: We don't check for how often this is called from each IP but we log intrusion attempts
         User.find(requestedUser).exec((error, foundUsers) => {
             bcrypt.compare(req.body.password, foundUsers[0].password, (error, result) => {
                 if (error) {
-                    helperFunctions.logToFile("MongoFailed" + error, "mongo-errors.txt");
+                    helperFunctions.logToFile("Error comparing hashed passwords: " + error, "backend-errors.txt");
                 }
                 if (result === true) {
                     res.send({ result: true });
                 } else {
                     // FIXME user didn't guess the password
                     // TODO send them to a page with dummy data that looks like it belongs to that user
-                    helperFunctions.logToFile("Someone is trying to guess the password" + error, "intrusions.txt");
+                    helperFunctions.logToFile("Someone is trying to guess the password", "intrusions.txt");
                 }
             });
         });
 
     } else {
-        // fixme Someone is trying to use this route without knowing exactly what fields are required");
+        // fixme Someone is trying to use this route without knowing exactly what fields are required"
         // todo log them in lol - give them hacker role
     }
 });
 
 router.get('/profile', (req, res) => {
     if (req.session.userId) {
-    User.findById(req.session.userId)
+    User.findById(req.session.userud)
         .exec((error, user) => {
             if (error) {
                 helperFunctions.logToFile("MongoFailed" + error, "mongo-errors.txt");
             } else {
                 if (user === null) {
-                    // todo send them to a page with dummy data that looks like it belongs to that user
-                    // todo the user isn't authorized but we want to trick them into thinking they gained access
-                    // todo so we should give them access to a dummy profile
+                    // fixme send them to a page with dummy data that looks like it belongs to that user
+                    // fixme the user isn't authorized but we want to trick them into thinking they gained access
+                    // fixme so we should give them access to a dummy profile
                     helperFunctions.logToFile("Someone is trying to get the user in the sessions without being logged in",
                         "intrusions.txt");
                     res.send(dummyUser)
@@ -120,17 +120,16 @@ router.get('/profile', (req, res) => {
                     const result = { email, username, country, socialNetwork, userRole };
                     res.send(result);
                 } else {
-                    helperFunctions.logToFile("Someone is trying to access a profile Page while not existing in the db" + error, "intrusions.txt");
+                    helperFunctions.logToFile("Someone is trying to access a profile Page while not existing in the db", "intrusions.txt");
                     res.send(dummyUser);
                 }
             }
         });
     } else {
-        helperFunctions.logToFile("Someone is trying to access a profile Page while not being logged in" + error, "intrusions.txt");
+        helperFunctions.logToFile("Someone is trying to access a profile Page while not being logged in", "intrusions.txt");
         res.send();
     }
 });
-
 
 router.get('/logout', (req, res) => {
     if (req.session) {

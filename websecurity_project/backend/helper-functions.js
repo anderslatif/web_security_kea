@@ -1,3 +1,5 @@
+const nodemailer = require("nodemailer");
+
 module.exports = {
   escapeMysqlInjections: () => {
 
@@ -17,10 +19,40 @@ module.exports = {
     // backend-errors.txt
     // socket-errors.txt
     // intrusions.txt
+
+    // email-log.txt
+    // email-errors.txt
+
     fs.writeFile("~/../websrv/logs/" + file, log, function(err) {
       if(err) {
-        return this("Failed writing to log files: " + err, "backend-errors.txt");
+        return this.logToFile("Failed writing to log files: " + err, "backend-errors.txt");
       }
+    });
+  },
+  sendEmail: async (to, subject, html) => {
+    const mailOptions = {
+      from: '"Books boo 👻" <bookshelfweb@gmail.com>', // sender address
+      to, // list of receivers, comma separated in a string
+      subject,
+      html
+    };
+    const smtpTrans = await nodemailer.createTransport({
+      service: 'gmail',
+      //  host:'smtp.gmail.com',
+      //  port:465,
+      // secure:true,
+      auth: {
+        user: process.env.EMAIL_ADDRESS,
+        pass: process.env.EMAIL_PASSWORD
+      }
+    });
+    smtpTrans.sendMail(mailOptions, (error, res) => {
+      if (error) {
+        this.logToFile(mailOptions, "email-errors.txt");
+        return false;
+      }
+      this.logToFile(mailOptions, "email-log.txt");
+      return res;
     });
   }
 };

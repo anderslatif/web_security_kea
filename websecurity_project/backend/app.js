@@ -1,6 +1,17 @@
 const express = require('express');
 const app = express();
-const server = require('http').createServer(app);
+
+const fs = require('fs');
+const tls = require('tls');;
+const privateKey = fs.readFileSync('server.key').toString();
+const certificate = fs.readFileSync('server.cert').toString();
+
+require('dotenv').config();
+
+const credentials = { key: privateKey, cert: certificate };
+
+const server = tls.createServer(credentials).listen(8080);
+
 const io = require('socket.io')(server);
 
 const bodyParser = require('body-parser');
@@ -47,11 +58,11 @@ const helperFunctions = require("./helper-functions");
 
 
 const postroute = require("./routes/postroute");
-const userroute = require("./routes/userroute");
 const registrationroute = require("./routes/registrationroute");
+const resetpasswordroute = require("./routes/resetpasswordroute");
 app.use(postroute);
-app.use(userroute);
 app.use(registrationroute);
+app.use(resetpasswordroute);
 
 app.get("/", (req, res) => {
    res.send("Welcome to the awesome book api. Feel right at home exploring.")
@@ -67,12 +78,7 @@ io.on('connection', socket => {
     });
 
     socket.on('error', error => {
-        helperFunctions.logToFile("Someone has accessed the password file: ", "socket-errors.txt");
+        helperFunctions.logToFile("Someone has accessed the password file: " + error, "socket-errors.txt");
     });
 });
 
-server.listen(8080, error => {
-    if (error) {
-        helperFunctions.logToFile("Problem starting the server: ", "backend-errors.txt");
-    }
-});

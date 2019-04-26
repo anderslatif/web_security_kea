@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js",
-    "file-micro-service": "node file-micro-service.jsv"
+    "file-micro-service": "node file-micro-service.js"
   },
   "keywords": [],
   "author": "",
@@ -15,12 +15,17 @@
     "bcrypt": "^3.0.5",
     "body-parser": "^1.18.3",
     "connect-mongo": "^2.0.3",
+<<<<<<< HEAD
+=======
+    "dotenv": "^7.0.0",
+>>>>>>> a212cd8e869ba248bad8a6eab33fc2d26330ed61
     "express": "^4.16.4",
     "express-session": "^1.16.1",
     "mongoose": "^5.4.22",
     "morgan": "^1.9.1",
     "multer": "^1.4.1",
     "node-fetch": "^2.3.0",
+    "nodemailer": "^6.1.0",
     "socket.io": "^2.2.0"
   }
 }

@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const countriesJson = require('countries');
+const countriesJson = require('./countries');
 const userRoles = Object.freeze({
     admin: 'ADMIN',
     user: 'USER',
@@ -23,9 +23,7 @@ const UserSchema = new mongoose.Schema({
         unique: true,
         trim: true
     },
-    password: {
-        type: String
-    },
+    password: String,
     userRole: {
         type: String,
         enum: Object.values(userRoles)
@@ -35,18 +33,16 @@ const UserSchema = new mongoose.Schema({
         trim: true
     },
     country: {
-        type: String,
+        type: Object,
         enum: Object.values(countries)
     },
-    socialNetwork: {
-        type: String
-    },
+    socialNetwork: String,
     books: []
 });
 
 Object.assign(UserSchema.statics, userRoles);
 
-/* TODO We implemented out own version
+/* TODO We implemented our own version
 // hashing a password before saving it to the database
 UserSchema.pre('save', () => {
     const user = this;
