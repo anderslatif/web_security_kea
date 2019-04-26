@@ -58,6 +58,7 @@ app.use(express.static(`${__dirname }/public`));
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const mongoose = require('mongoose');
+mongoose.set('useCreateIndex', true);
 
 mongoose.connect('mongodb://localhost:27017/books', { useNewUrlParser: true });
 

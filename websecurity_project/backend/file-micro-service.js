@@ -28,7 +28,7 @@ app.post('/book', upload.single('file'), (req, res) => {
         console.log('888888888', req.file);
         // req.file is the `book` file
         // req.body will hold the text fields, if there were any
-        res.send({});
+        res.send('..');
     } catch (e) {
         helperFunctions.logToFile('Problem in the /book file micro service: ', 'backend-errors.txt');
         helperFunctions.logToFile('', 'backend-errors.txt');

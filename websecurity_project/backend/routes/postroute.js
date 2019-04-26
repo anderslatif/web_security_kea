@@ -40,11 +40,15 @@ router.post('/post', async (req, res) => {
         // TODO sanitize input
         const { title, description, author, file, cover } = req.body;
 
+        let coverJson = null;
+        let bookJson = null;
+
         if (file || cover) {
-            const resultCoverPromise = await fetch('http://localhost:9090/cover', { method: 'POST', body: cover });
-            const resultBookPromise = await fetch('http://localhost:9090/book', { method: 'POST', body: file });
-            const coverJson = await resultCoverPromise.json();
-            const bookJson = await resultBookPromise.json();
+            console.log('0000 ', req.body);
+           /* const resultCoverPromise = await fetch('http://localhost:9090/cover', { method: 'POST', body: cover });
+            const resultBookPromise = await fetch('http://localhost:9090/book', { method: 'POST', body: { file } });
+            coverJson = await resultCoverPromise.json();
+            bookJson = await resultBookPromise.json(); */
         }
 
         const post = new Post({
@@ -52,8 +56,8 @@ router.post('/post', async (req, res) => {
             description,
             author,
             bookOwner: req.session.userid,
-            cover: cover ? coverJson : null,
-            file: file ? bookJson : null
+            cover: coverJson,
+            file: bookJson
         });
 
         // TODO Validate the response from the file micro service
