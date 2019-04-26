@@ -90,7 +90,7 @@ router.post('/login', (req, res) => {
 
 router.get('/profile', (req, res) => {
     if (req.session.userId) {
-    User.findById(req.session.userId)
+        User.findById(req.session.userId)
         .exec((error, user) => {
             if (error) {
                 helperFunctions.logToFile(`MongoFailed${ error}`, 'mongo-errors.txt');
@@ -101,7 +101,7 @@ router.get('/profile', (req, res) => {
                 // fixme send them to a page with dummy data that looks like it belongs to that user
                 // fixme the user isn't authorized but we want to trick them into thinking they gained access
                     res.send(dummyUser);
-                } else if (user.length > 0) {
+                } else if (user) {
                     // remove password from user
                     const { email, country, socialNetwork } = user;
                     const userRole = userRoles.user;
@@ -114,7 +114,7 @@ router.get('/profile', (req, res) => {
         });
     } else {
         helperFunctions.logToFile('Someone is trying to access a profile Page while not being logged in', 'intrusions.txt');
-        res.send();
+        res.send('You are not logged in');
     }
 });
 
