@@ -85,7 +85,8 @@ router.put('/post/:id', (req, res) => {
                 foundPost.author = author;
                 foundPost.file = file;
                 foundPost.cover = cover;
-                foundPosts.save(error => {
+
+                foundPost.save(error => {
                     if (error) {
                         helperFunctions.logToFile(`MongoFailed${ error}`, 'mongo-errors.txt');
                     }
