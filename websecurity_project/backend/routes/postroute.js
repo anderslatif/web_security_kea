@@ -33,7 +33,6 @@ router.get("/posts/all", (req, res) => {
         }
         res.send(foundPosts);
     });
-    res.send({});
 });
 
 
