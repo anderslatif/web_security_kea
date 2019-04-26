@@ -7,35 +7,17 @@ const fetch = require('node-fetch');
 
 router.get('/posts', (req, res) => {
     if (req.session.userId) {
-        Post.find({ bookOwner: req.sesssion.userId }).exec((error, foundPosts) => {
+        Post.find().exec((error, foundPosts) => {
             if (error) {
                 helperFunctions.logToFile(`MongoFailed${ error}`, 'mongo-errors.txt');
-            }
-            if (foundPosts.length === 0) {
-                // fixme this user either looked up a user with no posts
-                // fixme or is guessing ids without knowing any
-                helperFunctions.logToFile('Someone might be trying to guess user ids to access posts', 'intrusions.txt');
             }
             res.send(foundPosts);
         });
     } else {
         // fixme Someone is trying to use this route without knowing exactly what fields are required
-        // fixme give them status 200 which will be considered an error status code in our client
-        // fixme that will confuse them, lol
-        helperFunctions.logToFile('Someone is trying to get posts without defining an id', 'intrusions.txt');
-        res.status(200).send('Signed up OK');
+        res.status(200).send();
     }
 });
-
-router.get('/posts/all', (req, res) => {
-    Post.find({}).exec((error, foundPosts) => {
-        if (error) {
-            helperFunctions.logToFile(`MongoFailed${ error}`, 'mongo-errors.txt');
-        }
-        res.send(foundPosts);
-    });
-});
-
 
 router.get('/posts/:userid', (req, res) => {
     if (req.params.userid) {
@@ -43,46 +25,24 @@ router.get('/posts/:userid', (req, res) => {
             if (error) {
                 helperFunctions.logToFile(`MongoFailed${ error}`, 'mongo-errors.txt');
             }
-            if (foundPosts.length === 0) {
-                // fixme this user either looked up a user with no posts
-                // fixme or is guessing ids without knowing any
-                helperFunctions.logToFile('Someone might be trying to guess user ids to access posts', 'intrusions.txt');
-            }
             res.send(foundPosts);
         });
     } else {
         // fixme Someone is trying to use this route without knowing exactly what fields are required
-        // fixme give them status 200 which will be considered an error status code in our client
-        // fixme that will confuse them, lol
-        helperFunctions.logToFile('Someone is trying to get posts without defining an id', 'intrusions.txt');
-        res.status(200).send('Signed up OK');
+        res.status(200).send();
     }
 });
 
 
 router.post('/post', async (req, res) => {
     // todo check for fields
-    if (req.body) {
+    if (req.body.title && req.body.author && req.body.description) {
         // TODO sanitize input
         const { title, description, author, file, cover } = req.body;
 
         if (file || cover) {
             const resultCoverPromise = await fetch('localhost:9090/cover', { method: 'POST', body: cover });
             const resultBookPromise = await fetch('localhost:9090/book', { method: 'POST', body: file });
-
-            /*
-
-            {
-                "fieldname": "cover",
-                "originalname": "Screenshot 2019-04-15 at 00.06.54.png",
-                "encoding": "7bit",
-                "mimetype": "jpeg",
-                "destination": "/......../uploads/",
-                "filename": "1dbe22ca7d04da0c4f0969aa70226aa8",
-                "path": "/......../uploads/1dbe22ca7d04da0c4f0969aa70226aa8",
-                "size": 175823
-            }
-             */
             const coverJson = await resultCoverPromise.json();
             const bookJson = await resultBookPromise.json();
         }
@@ -106,11 +66,8 @@ router.post('/post', async (req, res) => {
             res.send({ result: post });
         });
     } else {
-        // fixme Someone is trying to use this route without knowing exactly what fields are required
-        // fixme give them status 200 which will be considered an error status code in our client
-        // fixme that will confuse them, lol
         helperFunctions.logToFile("Someone is trying to POST a post and doesn't have the required fields", 'intrusions.txt');
-        res.status(200).send('Signed up OK');
+        res.status(200).send();
     }
 });
 
@@ -136,21 +93,13 @@ router.put('/post/:id', (req, res) => {
                 });
             } else if (foundPosts.length === 0) {
                 helperFunctions.logToFile('Someone is trying to update a post without knowing the correct id', 'intrusions.txt');
-                // fixme give them status 200 which will be considered an error status code in our client
-                // fixme that will confuse them, lol
-                res.status(200).send('Updated post up OK');
             } else {
                 helperFunctions.logToFile('There should never be multiple posts with the same id', 'backend-errors.txt');
-                res.send('');
             }
         });
-      // todo allow update an existing post?
     } else {
-        // fixme Someone is trying to use this route without knowing exactly what fields are required");
-        // fixme give them status 200 which will be considered an error status code in our client
-        // fixme that will confuse them, lol
-        helperFunctions.logToFile("Someone is trying to POST a post and doesn't have the required fields", 'intrusions.txt');
-        res.status(200).send('Signed up OK');
+        helperFunctions.logToFile("Someone is trying to PUT a post and doesn't have the required fields", 'intrusions.txt');
+        res.status(200).send();
     }
 });
 

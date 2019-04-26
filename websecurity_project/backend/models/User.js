@@ -8,6 +8,8 @@ const userRoles = Object.freeze({
 
 const countries = Object.freeze({ ...countriesJson.countries });
 
+Object.assign(UserSchema.statics, userRoles);
+
 const UserSchema = new mongoose.Schema({
     id: {
         type: String,
@@ -34,44 +36,6 @@ const UserSchema = new mongoose.Schema({
     socialNetwork: String,
     books: []
 });
-
-Object.assign(UserSchema.statics, userRoles);
-
-/* TODO We implemented our own version
-// hashing a password before saving it to the database
-UserSchema.pre('save', () => {
-    const user = this;
-    console.log("user ", user);
-    bcrypt.hash(user.password, 10, (err, hash) =>{
-        if (err) {
-            console.log(err);
-        }
-        user.password = hash;
-    });
-});
-
-// authenticate input against database
-UserSchema.statics.authenticate = (email, password, callback) => {
-    User.findOne({ email: email })
-        .exec((err, user) => {
-            if (err) {
-                return callback(err)
-            } else if (!user) {
-                const err = new Error('User not found.');
-                err.status = 401;
-                return callback(err);
-            }
-            bcrypt.compare(password, user.password, (err, result) => {
-                if (result === true) {
-                    return callback(null, user);
-                } else {
-                    return callback();
-                }
-            })
-        });
-};
-*/
-
 
 const User = mongoose.model('User', UserSchema);
 module.exports = User;

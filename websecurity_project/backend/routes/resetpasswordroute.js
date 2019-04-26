@@ -1,9 +1,9 @@
 const express = require('express');
-
 const router = express.Router();
 const helperFunctions = require('../helper-functions');
 const User = require('../models/User');
 const ResetPassword = require('../models/ResetPassword');
+const bcrypt = require('bcrypt');
 
 router.post('/reset-password', (req, res) => {
     if (req.body.email) {
@@ -12,9 +12,9 @@ router.post('/reset-password', (req, res) => {
             res.send('OK');
         }
 
+        // todo implement the function below
         if (helperFunctions.isValidEmail(req.body.email)) {
-            User
-                .findOne({ where: { email: req.body.email } })
+            User.findOne({ where: { email: req.body.email } })
                 .then((user, error) => {
                     if (error) {
                         helperFunctions.logToFile(`MongoFailed${ error}`, 'mongo-errors.txt');
@@ -29,7 +29,7 @@ router.post('/reset-password', (req, res) => {
                             where: { userId: user.id, status: 0 },
                         }).then((resetPassword) => {
                         if (resetPassword) {
- resetPassword.destroy({
+                        resetPassword.destroy({
                                 where: {
                                     id: resetPassword.id
                                 }
