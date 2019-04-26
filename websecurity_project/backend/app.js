@@ -1,6 +1,9 @@
 const express = require('express');
 const app = express();
+const cors = require("cors");
 
+app.use(cors());
+  
 const fs = require('fs');
 const tls = require('tls');;
 const privateKey = fs.readFileSync('server.key').toString();

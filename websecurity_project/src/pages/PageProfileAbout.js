@@ -11,7 +11,7 @@ class PageProfileAbout extends Component {
         super(props);
         this.state = {
             editProfile: false,
-            chatState: false
+            chatState: true
         }
         this.handleEditProfile = this.handleEditProfile.bind(this);
         this.handleChatState = this.handleChatState.bind(this);
