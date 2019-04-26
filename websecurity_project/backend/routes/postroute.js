@@ -47,18 +47,18 @@ router.post('/post', async (req, res) => {
             const bookJson = await resultBookPromise.json();
         }
 
-        const postToSave = {
+        const post = new Post({
             title,
             description,
             author,
             bookOwner: req.session.userid,
             cover: cover ? coverJson : null,
             file: file ? bookJson : null
-        };
+        });
 
         // TODO Validate the response from the file micro service
 
-        new Post.save(postToSave, (error, post) => {
+        post.save(error => {
             if (error) {
                 helperFunctions.logToFile(`MongoFailed${ error}`, 'mongo-errors.txt');
             }
