@@ -65,24 +65,27 @@ router.post('/post', async (req, res) => {
     if (req.body) {
         // TODO sanitize input
         const { title, description, author, file, cover } = req.body;
-        const resultCoverPromise = await fetch('localhost:9090/cover', { method: 'POST', body: cover });
-        const resultBookPromise = await fetch('localhost:9090/book', { method: 'POST', body: file });
 
-        /*
+        if (file || cover) {
+            const resultCoverPromise = await fetch('localhost:9090/cover', { method: 'POST', body: cover });
+            const resultBookPromise = await fetch('localhost:9090/book', { method: 'POST', body: file });
 
-        {
-            "fieldname": "cover",
-            "originalname": "Screenshot 2019-04-15 at 00.06.54.png",
-            "encoding": "7bit",
-            "mimetype": "jpeg",
-            "destination": "/......../uploads/",
-            "filename": "1dbe22ca7d04da0c4f0969aa70226aa8",
-            "path": "/......../uploads/1dbe22ca7d04da0c4f0969aa70226aa8",
-            "size": 175823
+            /*
+
+            {
+                "fieldname": "cover",
+                "originalname": "Screenshot 2019-04-15 at 00.06.54.png",
+                "encoding": "7bit",
+                "mimetype": "jpeg",
+                "destination": "/......../uploads/",
+                "filename": "1dbe22ca7d04da0c4f0969aa70226aa8",
+                "path": "/......../uploads/1dbe22ca7d04da0c4f0969aa70226aa8",
+                "size": 175823
+            }
+             */
+            const coverJson = await resultCoverPromise.json();
+            const bookJson = await resultBookPromise.json();
         }
-         */
-        const coverJson = await resultCoverPromise.json();
-        const bookJson = await resultBookPromise.json();
 
         const postToSave = {
             title,
