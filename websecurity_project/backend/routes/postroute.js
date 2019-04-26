@@ -73,7 +73,7 @@ router.post('/post', async (req, res) => {
 
 router.put('/post/:id', (req, res) => {
     if (req.body) {
-        Post.find({ id: req.params.id }).exec((error, foundPosts) => {
+        Post.find({ _id: req.params.id }).exec((error, foundPosts) => {
             if (error) {
                 helperFunctions.logToFile(`MongoFailed${ error}`, 'mongo-errors.txt');
             }
