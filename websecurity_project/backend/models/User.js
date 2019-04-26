@@ -8,7 +8,6 @@ const userRoles = Object.freeze({
 
 const countries = Object.freeze({ ...countriesJson.countries });
 
-Object.assign(UserSchema.statics, userRoles);
 
 const UserSchema = new mongoose.Schema({
     id: {
@@ -36,6 +35,8 @@ const UserSchema = new mongoose.Schema({
     socialNetwork: String,
     books: []
 });
+
+Object.assign(UserSchema.statics, userRoles);
 
 const User = mongoose.model('User', UserSchema);
 module.exports = User;
