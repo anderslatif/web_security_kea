@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Tilt from 'react-tilt';
 import { loginAuthAction } from "../actions/authActions";
 import { connect } from "react-redux";
+import axios from "axios";
 
 class PageLogin extends Component {
     constructor(props) {
@@ -24,6 +25,13 @@ class PageLogin extends Component {
     onSubmitStoreDatas = (ev) => {
         ev.preventDefault();
         console.log(this.state)
+    }
+    componentDidMount() {
+        axios.post("http://localhost:8080/login", {
+            email: "emazxcil@email.com",
+            password: "paszxcsword"
+        }).then(res => console.log("login success: ", res))
+          .catch(error => console.log("login failed: ", error))
     }
     render() {
     return (

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import axios from "axios";
 
 class ComponentCreatePosts extends Component {
   constructor(props) {
@@ -13,6 +14,13 @@ class ComponentCreatePosts extends Component {
 
   testCoverUpload = (ev) => {
     console.log(this.ref.coverFileUploader);
+  }
+  componentDidMount() {
+    console.log("post");
+    axios.post("https://localhost:8080/post", {
+        title: "x"
+    }).then(res => console.log("post some: ", res))
+      .catch(err => console.log("error-post request: ", err))
   }
   render() {
     return (

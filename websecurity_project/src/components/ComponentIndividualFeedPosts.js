@@ -9,7 +9,7 @@ class ComponentIndividualFeedPosts extends Component {
         }
     }
     componentDidMount() {
-        console.log(this.props.post.book);
+        // console.log(this.props.post.book);
     }
     render(props) {
         let { post } = this.props;

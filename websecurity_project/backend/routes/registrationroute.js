@@ -72,11 +72,11 @@ dummyUser.userRole = userRoles.scriptKiddie;
 });
 
 router.post("/login", (req, res) => {
-    if (req.body.email && req.body.username && req.body.password) {
+    if (req.body.email && req.body.password) {
 
         const requestedUser = {
             email: req.body.email,
-            username: req.body.username,
+            password: req.body.password,
         };
         // FIXME Dangerous: We don't check for how often this is called from each IP but we log intrusion attempts
         User.find(requestedUser).exec((error, foundUsers) => {
