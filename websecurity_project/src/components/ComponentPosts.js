@@ -54,7 +54,7 @@ class PageProfilePosts extends Component {
     componentDidMount() {
         // console.log(axios)
         // store.dispatch(fetchPosts);
-        axios.get("https://localhost:8080/posts")
+        axios.get("localhost:8080/posts/all")
                     .then(res => console.log("9999 posts: ", res))
                     .catch((error) => console.log("fetch error: ", error));
         // localhost/8080:post

@@ -71,6 +71,7 @@ class ComponentEditProfile extends Component {
                         </label>
                         <input type="text"/>    
                     </div>
+                    <button className="updateProfileSubmit--button">Update profile</button>
                 </div>
             </div>
         </div>
