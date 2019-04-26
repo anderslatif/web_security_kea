@@ -9,9 +9,9 @@ class PageProfilePosts extends Component {
         super(props);
     }
     componentDidMount() {
-        axios.get("https://localhost:8080/posts")
-                    .then(res => console.log("9999 posts: ", res))
-                    .catch((error) => console.log(error));
+        // axios.get("https://localhost:8080/posts")
+        //             .then(res => console.log("9999 posts: ", res))
+        //             .catch((error) => console.log(error));
     }
     render() {
         return(
