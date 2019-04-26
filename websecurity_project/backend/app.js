@@ -31,7 +31,7 @@ app.use(morgan('combined', ':remote-addr - :remote-user [:date] ":method :url HT
 // Rate limiting middleware
 const rateLimit = require('express-rate-limit');
 
-/* app.enable("trust proxy");
+app.enable('trust proxy');
 
 const limiter = rateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutes
@@ -46,8 +46,8 @@ const resetPasswordLimiter = rateLimit({
     max: 4, // limit each IP to 4 requests per windowMs
     message: 'You are attempting to reset password way too often'
 });
-app.use("/reset-password", resetPasswordLimiter);
-app.use("/update-reset-password", resetPasswordLimiter); */
+app.use('/reset-password', resetPasswordLimiter);
+app.use('/update-reset-password', resetPasswordLimiter);
 
 // FIXME This is stupid. We allow people access to the public folder by serving it as static content.
 // FIXME I put a fake password file there - lol
@@ -58,6 +58,7 @@ app.use(express.static(`${__dirname }/public`));
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const mongoose = require('mongoose');
+
 mongoose.set('useCreateIndex', true);
 
 mongoose.connect('mongodb://localhost:27017/books', { useNewUrlParser: true });
