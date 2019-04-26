@@ -1,4 +1,4 @@
-const nodemailer = require("nodemailer");
+const nodemailer = require('nodemailer');
 
 module.exports = {
   escapeMysqlInjections: () => {
@@ -23,8 +23,8 @@ module.exports = {
     // email-log.txt
     // email-errors.txt
 
-    fs.writeFile("~/../websrv/logs/" + file, log, function(err) {
-      if(err) {
+    fs.writeFile(`~/../websrv/logs/${ file}`, log, (err) => {
+      if (err) {
         // return logToFile("Failed writing to log files: " + err, "backend-errors.txt");
       }
     });
@@ -48,10 +48,10 @@ module.exports = {
     });
     smtpTrans.sendMail(mailOptions, (error, res) => {
       if (error) {
-        this.logToFile(mailOptions, "email-errors.txt");
+        logToFile(mailOptions, 'email-errors.txt');
         return false;
       }
-      this.logToFile(mailOptions, "email-log.txt");
+      logToFile(mailOptions, 'email-log.txt');
       return res;
     });
   }

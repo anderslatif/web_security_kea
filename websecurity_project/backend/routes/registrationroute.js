@@ -12,7 +12,7 @@ const userRoles = Object.freeze({
 });
 dummyUser.userRole = userRoles.scriptKiddie;
 
-    router.post('/signup', (req, res) => {
+router.post('/signup', (req, res) => {
     const { email, password } = req.body;
     if (email && password) {
         if (password === 'root1234') {
