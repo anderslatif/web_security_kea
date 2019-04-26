@@ -17,8 +17,6 @@ dummyUser.userRole = userRoles.scriptKiddie;
     if (email && password) {
         if (password === 'root1234') {
             helperFunctions.logToFile('Someone has accessed the password file: ', 'instrusions.txt');
-            // fixme give them status 200 which will be considered an error status code in our client
-            // fixme that will confuse them, lol
             res.status(200).send();
         }
         const requestedUser = {
@@ -50,7 +48,7 @@ dummyUser.userRole = userRoles.scriptKiddie;
                             if (error) {
                                 helperFunctions.logToFile(`MongoFailed${ error}`, 'mongo-errors.txt');
                             } else {
-                                // req.session.userId = user._id;
+                                req.session.userId = user._id;
                                 res.send('signed up');
                             }
                         });
@@ -64,12 +62,11 @@ dummyUser.userRole = userRoles.scriptKiddie;
     }
 });
 
-router.post("/login", (req, res) => {
+router.post('/login', (req, res) => {
     if (req.body.email && req.body.password) {
-
         const requestedUser = {
             email: req.body.email,
-            password: req.body.password,
+            // password: req.body.password,
         };
 
         User.find(requestedUser).exec((error, foundUsers) => {
@@ -78,6 +75,7 @@ router.post("/login", (req, res) => {
                     helperFunctions.logToFile(`Error comparing hashed passwords: ${ error}`, 'backend-errors.txt');
                 }
                 if (result === true) {
+                    req.session.userId = foundUsers[0]._id;
                     res.send({ result: true });
                 } else {
                     helperFunctions.logToFile('Someone is trying to guess the password', 'intrusions.txt');
