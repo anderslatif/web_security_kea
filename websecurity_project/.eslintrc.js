@@ -18,7 +18,7 @@ module.exports = {
         ecmaVersion: 7,
         sourceType: 'module',
     },
-    plugins: ['babel', 'import', 'jsx-a11y', 'mocha', 'material-ui'],
+    plugins: ['babel', 'import', 'jsx-a11y'],
     settings: {
         'import/resolver': {
             alias: {
@@ -47,7 +47,7 @@ module.exports = {
         'consistent-this': ['error', 'self'],
         'max-len': [
             'error',
-            100,
+            160,
             2,
             {
                 ignoreUrls: true,
