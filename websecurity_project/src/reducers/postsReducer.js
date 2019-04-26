@@ -19,11 +19,11 @@ const postsReducer = (state = postsReducerDefaultState, action) => {
     switch(action.type) {
         // get all posts
         case FETCH_POSTS:
-            return axios.get("http://localhost:27017/initial-datas")
-                    .then(res => console.log(res))
+            return axios.get("https://localhost:8080/posts")
+                    .then(res => console.log("9999 posts: ", res))
                     .catch((error) => console.log(error));
         case ADD_POST:
-            return axios.post("http://localhost:27017/add-post", {
+            return axios.post("https://localhost:8080/post", {
 
                         })
                         .then((res) => console.log(res))

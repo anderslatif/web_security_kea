@@ -27,7 +27,7 @@ class AppRouter extends Component {
                             <Route exact={true} path="/profile" component={PageProfileAbout} />
                             <Route exact={true} path="/profile/posts" component={PageProfilePosts} />
                             <Route exact={true} path="/profile/posts/:bookid" component={PageBook} />
-                            <Route exact={true} path="/chat" component={PageChat} />
+                            {/* <Route exact={true} path="/chat" component={PageChat} /> */}
                             <Route path="/feed" component={PageFeed} />
                             <Route component={PageNotFound} />
                         </Switch>
