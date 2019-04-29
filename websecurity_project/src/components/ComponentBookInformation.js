@@ -1,4 +1,8 @@
 import React, { Component } from 'react'
+/*
+Individual Book page ComponentBookinformation - it contains some data
+about the accessed book - it appears only onMouseOver
+*/
 
 class ComponentBookInformation extends Component {
   render(props) {

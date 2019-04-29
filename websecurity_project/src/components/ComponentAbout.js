@@ -1,4 +1,8 @@
 import React, { Component } from 'react'
+/*
+About page ComponentAbout - it contains areas to add the 4 types of 
+information about the logged in user
+*/
 
 class ComponentAbout extends Component {
   render(props) {
