@@ -31,23 +31,42 @@ app.use(morgan('combined', ':remote-addr - :remote-user [:date] ":method :url HT
 // Rate limiting middleware
 const rateLimit = require('express-rate-limit');
 
-/* app.enable("trust proxy");
+app.enable('trust proxy');
 
-const limiter = rateLimit({
+const helperFunctions = require('./helper-functions');
+
+const basicLimiter = rateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutes
     max: 120, // limit each IP to 120 requests per windowMs
-    message: 'You are doing it too much'
+    message: 'You are doing it too much',
+    onLimitReached: (req) => {
+        helperFunctions.logToFile(`Someone is bruteforcing the basic endpoints: ${ req.ip}`, 'bruteforcers.txt');
+    }
 });
-app.use(limiter); // all requests
+app.use(basicLimiter); // all requests
+
+const registrationLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 12, // limit each IP to 12 requests per windowMs
+    message: 'You are attempting to reset password way too often',
+    onLimitReached: (req) => {
+        helperFunctions.logToFile(`Someone is bruteforcing the registration endpoints: ${ req.ip}`, 'bruteforcers.txt');
+    }
+});
+app.use('/signup', registrationLimiter);
+app.use('/login', registrationLimiter);
 
 
 const resetPasswordLimiter = rateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutes
     max: 4, // limit each IP to 4 requests per windowMs
-    message: 'You are attempting to reset password way too often'
+    message: 'You are attempting to reset password way too often',
+    onLimitReached: (req) => {
+        helperFunctions.logToFile(`Someone is bruteforcing the password reset endpoints: ${ req.ip}`, 'bruteforcers.txt');
+    }
 });
-app.use("/reset-password", resetPasswordLimiter);
-app.use("/update-reset-password", resetPasswordLimiter); */
+app.use('/reset-password', resetPasswordLimiter);
+app.use('/update-reset-password', resetPasswordLimiter);
 
 // FIXME This is stupid. We allow people access to the public folder by serving it as static content.
 // FIXME I put a fake password file there - lol
@@ -58,6 +77,8 @@ app.use(express.static(`${__dirname }/public`));
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const mongoose = require('mongoose');
+
+mongoose.set('useCreateIndex', true);
 
 mongoose.connect('mongodb://localhost:27017/books', { useNewUrlParser: true });
 
@@ -77,8 +98,6 @@ app.use(session({
         mongooseConnection: db
     })
 }));
-
-const helperFunctions = require('./helper-functions');
 
 // ----------------------- routes ----------------------
 

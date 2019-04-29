@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
-import axios from "axios";
+import React, { Component } from 'react';
+import axios from 'axios';
 
 let fileReader;
 
 class ComponentCreatePosts extends Component {
   constructor(props) {
-      super(props)
+      super(props);
       this.state = {
           title: "",
           author: "",
@@ -51,13 +51,13 @@ class ComponentCreatePosts extends Component {
         <div className="componentCreatePosts__innernavigation">
             <button className="makeAPost" onClick={this.makePostReques}>
                 <svg>
-                    <use href="./image/sprite.svg#icon-edit"></use>
+                    <use href="./image/sprite.svg#icon-edit" />
                 </svg>
                 <span>Create Post</span>
             </button>
             <button className="addAnImage" onClick={(e) => this.bookCoverFile.click() }>
                 <svg onClick={this.testCoverUpload}>
-                    <use href="./image/sprite.svg#icon-image"></use>
+                    <use href="./image/sprite.svg#icon-image" />
                 </svg>
                 <span>Add Cover</span>
                 <input 
@@ -72,7 +72,7 @@ class ComponentCreatePosts extends Component {
             </button>
             <button className="addAFile" onClick={(e) => this.bookPdfFile.click()}>
                 <svg>
-                    <use href="./image/sprite.svg#icon-file-text"></use>
+                    <use href="./image/sprite.svg#icon-file-text" />
                 </svg>
                 <span>Add Book file</span>
                 <input
@@ -103,7 +103,7 @@ class ComponentCreatePosts extends Component {
         {/* <div className="componentCreatePosts__innercontent"></div> */}
         {/* ComponentCreatePosts */}
       </div>
-    )
+    );
   }
 }
 

@@ -1,11 +1,13 @@
 const express = require('express');
-const app = express();
-const multer  = require('multer');
-const upload = multer({ dest: __dirname + '/files/' });
-const helperFunctions = require("./helper-functions");
 
-const tls = require('tls');;
+const app = express();
+const multer = require('multer');
+
+const upload = multer({ dest: `${__dirname }/files/` });
+const helperFunctions = require('./helper-functions');
+const tls = require('tls');
 const fs = require('fs');
+
 const privateKey = fs.readFileSync('server.key').toString();
 const certificate = fs.readFileSync('server.cert').toString();
 const credentials = { key: privateKey, cert: certificate };
@@ -16,26 +18,30 @@ app.post('/cover', upload.single('cover'), (req, res) => {
         // req.body will hold the text fields, if there were any
         res.send(req.file);
     } catch (e) {
-        helperFunctions.logToFile("Problem in the /cover file micro service: ", "backend-errors.txt");
-        helperFunctions.logToFile("", "backend-errors.txt");
+        helperFunctions.logToFile('Problem in the /cover file micro service: ', 'backend-errors.txt');
+        helperFunctions.logToFile('', 'backend-errors.txt');
     }
-
 });
 
-app.post('/book', upload.single('book'), (req, res) => {
+app.post('/book', upload.single('file'), (req, res) => {
     try {
+        console.log('888888888', req.file);
         // req.file is the `book` file
         // req.body will hold the text fields, if there were any
-        res.send(res.file);
+        res.send('..');
     } catch (e) {
-        helperFunctions.logToFile("Problem in the /book file micro service: ", "backend-errors.txt");
-        helperFunctions.logToFile("", "backend-errors.txt");
+        helperFunctions.logToFile('Problem in the /book file micro service: ', 'backend-errors.txt');
+        helperFunctions.logToFile('', 'backend-errors.txt');
     }
-
 });
 
-const server = tls.createServer(credentials).listen(9090, error => {
+/* const server = tls.createServer(credentials).listen(9090, error => {
     if (error) {
-        helperFunctions.logToFile("Problem starting the file micro service server: ", "backend-errors.txt");
+        helperFunctions.logToFile('Problem starting the file micro service server: ', 'backend-errors.txt');
+    }
+}); */
+app.listen(9090, error => {
+    if (error) {
+        helperFunctions.logToFile('Problem starting the file micro service server: ', 'backend-errors.txt');
     }
 });
