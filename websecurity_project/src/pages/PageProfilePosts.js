@@ -3,6 +3,7 @@ import ComponentHeader from "../components/ComponentHeader";
 import ComponentProfileHeader from "../components/ComponentProfileHeader";
 import ComponentPosts from "../components/ComponentPosts";
 import axios from "axios";
+import { connect } from "react-redux";
 
 class PageProfilePosts extends Component {
     constructor(props) {
@@ -13,18 +14,25 @@ class PageProfilePosts extends Component {
         //             .then(res => console.log("9999 posts: ", res))
         //             .catch((error) => console.log(error));
     }
-    render() {
+    render(props) {
+        // console.log(props.personalPosts)
         return(
             <div className="pageProfilePosts">
                 <ComponentHeader></ComponentHeader>
                 <div className="page__profile--content">
                     <ComponentProfileHeader></ComponentProfileHeader>
                 </div>
-                <ComponentPosts />
+                <ComponentPosts personalPosts={this.props.personalPosts}/>
                 {/* PageProfilePosts */}
             </div>
         );
     }
 }
 
-export default PageProfilePosts;
+const mapStateToProps = (state) => {
+    return {
+        personalPosts: state.personalPosts
+    }
+}
+
+export default connect(mapStateToProps)(PageProfilePosts);

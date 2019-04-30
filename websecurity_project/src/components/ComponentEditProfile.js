@@ -1,6 +1,21 @@
 import React, { Component } from 'react'
 
 class ComponentEditProfile extends Component {
+  constructor(props) {
+  super(props)
+  this.state = {
+    fullName: "",
+    country: "",
+    email:"",
+    socialNetwork: ""
+  }
+  this.setStateValue = this.setStateValue.bind(this);
+  }
+  setStateValue = (ev) => {
+    let valueType = ev.target.name;
+    let valueContent = ev.target.value;
+    this.setState({[valueType]: valueContent});
+  }
   render(props) {
     let { handleEditProfile } = this.props;
     return (
@@ -30,7 +45,7 @@ class ComponentEditProfile extends Component {
                         <label>
                             Full Name: 
                         </label>
-                        <input type="text"/>    
+                        <input type="text" value={this.state.fullName} name="fullName" onChange={this.setStateValue}/>    
                     </div>
 
                     <div className="contentEdit__address">
@@ -43,7 +58,7 @@ class ComponentEditProfile extends Component {
                         <label>
                             Country Address: 
                         </label>
-                        <input type="text"/>    
+                        <input type="text" value={this.state.country} name="country" onChange={this.setStateValue}/>    
                     </div>
 
                     <div className="contentEdit__emailaddress">
@@ -56,7 +71,7 @@ class ComponentEditProfile extends Component {
                         <label>
                             Email Address: 
                         </label>
-                        <input type="text"/>    
+                        <input type="text" value={this.state.email} name="email" onChange={this.setStateValue}/>    
                     </div>
 
                     <div className="contentEdit__socialnetwork">
@@ -69,7 +84,7 @@ class ComponentEditProfile extends Component {
                         <label>
                             Social Media: 
                         </label>
-                        <input type="text"/>    
+                        <input type="text" value={this.state.socialNetwork} name="socialNetwork" onChange={this.setStateValue}/>    
                     </div>
                     <button className="updateProfileSubmit--button">Update profile</button>
                 </div>

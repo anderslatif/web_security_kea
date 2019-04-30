@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import Tilt from 'react-tilt';
 import axios from 'axios';
+import { connect } from "react-redux";
+import { actionRegisterUser } from "../actions/userActions";
 // import { ErrorEmptyInput } from "../frontend__errors/errorsComponents";
 // import { connect } from "redux";
 
@@ -9,13 +11,13 @@ class PageRegister extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      registerEmail: "",
-      registerPassword: "",
-      registerRepeatPassword: "",
-      error: {}
+      email: "",
+      password: "",
+      passwordRepeated: ""
     }
     this.onChangeStoreRegisterDatas = this.onChangeStoreRegisterDatas.bind(this);
-    this.onSubmitStoreDatas = this.onSubmitStoreDatas.bind(this);
+    this.handleSubmitRegister = this.handleSubmitRegister.bind(this)
+    // this.onSubmitStoreDatas = this.onSubmitStoreDatas.bind(this);
   }
 
   onChangeStoreRegisterDatas = (ev) => {
@@ -24,24 +26,9 @@ class PageRegister extends Component {
     this.setState({[inputRegisterName]: inputRegisterValue})
   }
   
-  onSubmitStoreDatas = (ev) => {
+  handleSubmitRegister = (ev) => {
     ev.preventDefault();
-
-    const registeredUser = {
-      email: this.state.registerEmail,
-      password: this.state.registerPassword,
-      passwordRepeat: this.state.registerRepeatPassword
-    }
-    console.log(registeredUser);
-  }
-  componentDidMount() {
-    console.log("register users");
-    axios.post("http://localhost:8080/signup", {
-      email: "email@email.com",
-      username: "cosmin",
-      password: "password"
-    }).then(res => console.log(res))
-      .catch(error => console.log("register error: ", error))
+    this.props.onRegisterUser(this.state);
   }
     render() {
       return (
@@ -55,26 +42,26 @@ class PageRegister extends Component {
                         <h2>Get your <span>Book</span></h2>
                         <p>Login to access the book streaming system</p>
                     </div>
-                    <form className="formRegister" onSubmit={this.onSubmitStoreDatas}>
+                    <form className="formRegister" onSubmit={this.handleSubmitRegister}>
                         <div className="formRegister--forms">
                             <input 
                               type="text" 
                               placeholder="Your Email" 
-                              name="registerEmail" 
+                              name="email" 
                               value={this.state.registerEmail} 
                               onChange={this.onChangeStoreRegisterDatas} 
                             />
                             <input 
                               type="password" 
                               placeholder="Your Password" 
-                              name="registerPassword" 
+                              name="password" 
                               value={this.state.registerPassword} 
                               onChange={this.onChangeStoreRegisterDatas} 
                             />
                             <input 
                               type="password" 
                               placeholder="Repeat Password" 
-                              name="registerRepeatPassword" 
+                              name="passwordRepeated" 
                               value={this.state.registerRepeatPassword} 
                               onChange={this.onChangeStoreRegisterDatas} 
                             />
@@ -115,4 +102,12 @@ class PageRegister extends Component {
   }
 }
 
-export default PageRegister;
+const mapDispatchToProps = dispatch => {
+  return {
+    onRegisterUser: user => {
+      dispatch(actionRegisterUser(user))
+    }
+  }
+}
+
+export default connect(null, mapDispatchToProps)(PageRegister);

@@ -8,6 +8,12 @@ export const REGISTER_USER = "REGISTER_USER";
 //Variable for: logging in users
 export const LOGIN_USER = "LOGIN_USER";
 
+// Variable for: fetching user datas
+export const FETCH_USER = "FETCH_USER";
+
+// Variable for: initial add and/or edit profile
+export const EDIT_PROFILE = "EDIT_PROFILE";
+
 // *****************
 // Posts constants
 // ******************
@@ -26,3 +32,9 @@ export const UPDATE_POST = "UPDATE_POST";
 
 //Variable for: getting all chat messages
 export const FETCH_CHAT = "FETCH_CHAT";
+
+// ****************
+// Personal posts actions variables exports
+// ****************
+
+export const FETCH_PERSONAL_POSTS = "FETCH_PERSONAL_POSTS";

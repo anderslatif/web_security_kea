@@ -5,6 +5,21 @@ information about the logged in user
 */
 
 class ComponentAbout extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      fullName: "",
+      country: "",
+      email:"",
+      socialNetwork: ""
+    }
+    this.setStateValue = this.setStateValue.bind(this);
+  }
+  setStateValue = (ev) => {
+    let valueType = ev.target.name;
+    let valueContent = ev.target.value;
+    this.setState({[valueType]: valueContent});
+  }
   render(props) {
     let { handleEditProfile } = this.props;
     return (
@@ -26,6 +41,8 @@ class ComponentAbout extends Component {
                 </svg>
                 <p>Add Fullname</p>
               </button>
+              {/* <input type="text" />
+              <button>approve</button> */}
             </div>
             <div className="about__addressSubsection">
               <button className="addAddressContent">

@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import AppRouter from "./router/AppRouter";
 import { Provider } from "react-redux";
-import store from "./store/configureStore";
+import configureStore from "./store/configureStore";
+import { fetchAllPosts } from "./actions/postActions";
+// import store from "./store/configureStore";
+
+const store = configureStore();
+// store.dispatch(fetchAllPosts());
 // import logo from './logo.svg';
 // import './App.css';
 
@@ -9,7 +14,8 @@ import store from "./store/configureStore";
 
 // console.log(state);
 // console.log(store.getState());
-
+console.log(store.getState())
+console.log(store.getState())
 const Jsx = () => (
   <Provider store={store}>
     <AppRouter></AppRouter>
