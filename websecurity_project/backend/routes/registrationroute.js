@@ -2,6 +2,7 @@ const express = require('express');
 
 const router = express.Router();
 const User = require('../models/User');
+const Post = require('../models/Post');
 const bcrypt = require('bcrypt');
 const helperFunctions = require('../helper-functions');
 const dummyUser = require('./dummy-user');
@@ -112,9 +113,15 @@ router.get('/profile', (req, res) => {
                 } else if (user) {
                     // remove password from user
                     const { email, country, socialNetwork } = user;
-                    const userRole = userRoles.user;
-                    const result = { email, country, socialNetwork, userRole };
-                    res.send(result);
+                    Post.find({ id: { $eq: user._id } }).exec((err, posts) => {
+                        if (err) {
+                            helperFunctions.logToFile(`MongoFailed${ error}`, 'mongo-errors.txt');
+                            res.send();
+                        }
+                        const result = { email, country, socialNetwork };
+                        result.postsNumber = posts.length;
+                        res.send(result);
+                    });
                 } else {
                     helperFunctions.logToFile('Someone is trying to access a profile Page while not existing in the db', 'intrusions.txt');
                     res.send(dummyUser);

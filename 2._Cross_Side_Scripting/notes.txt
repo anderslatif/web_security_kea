@@ -41,5 +41,8 @@ Encryption takes a plain text and converts it to an encrypted text using a key a
 
 A digest takes a plain text and generates a hashcode which can be used to verify if the plain text is unmodified but cannot be used to decrypt the original text from the hash value.
 
+OWASP_CSRFTOKEN
+https://publish.skat.dk/content/connect/c1/7/en/events/catalog.html?OWASP_CSRFTOKEN=1d694f81ca2aa57ca51270c5e6d3355adf497105ecd390480b1534edc2512383&ik_navn=link#currentSearchTag=5503059
+
 
 
