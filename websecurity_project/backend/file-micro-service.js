@@ -7,10 +7,13 @@ const upload = multer({ dest: `${__dirname }/files/` });
 const helperFunctions = require('./helper-functions');
 const tls = require('tls');
 const fs = require('fs');
+const cors = require("cors");
 
 const privateKey = fs.readFileSync('server.key').toString();
 const certificate = fs.readFileSync('server.cert').toString();
 const credentials = { key: privateKey, cert: certificate };
+
+app.use(cors())
 
 // var allowCrossDomain = function(req, res, next) {
 //     res.header('Access-Control-Allow-Origin', "*");
