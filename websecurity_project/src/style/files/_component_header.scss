@@ -87,3 +87,73 @@
     //     height:2.1rem;
     // }
 }
+
+.userStatus {
+    position: absolute;
+    right: 14rem;
+    // grid-column: 6/7;
+    cursor: pointer;
+    background-color: #0058a2;
+    color: #ffffff;
+    border: none;
+    border-radius: 0.45rem;
+    transition: all 0.22s ease-in-out;
+    padding: 0.45rem 0.95rem 0.65rem 0.95rem;
+
+    &:hover {
+        background-color:dodgerblue;
+    }
+}
+
+.userStatusInput {
+    margin-right:0.45rem;
+    padding:0.45rem 0.95rem 0.45rem 0.95rem;
+    border-radius:0.45rem;
+    border:1.4px solid lightgrey;
+    // position: fixed;
+    // bottom:0;
+    // bottom:-4.5rem;
+}
+
+.wrapperUserStatus {
+    position:fixed;
+    top:35%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    background-color:$color__white;
+    border-radius:0.45rem;
+    box-shadow:$box-shadow2;
+    padding:4.5rem;
+
+    .buttonAcceptStatus {
+        cursor:pointer;
+        padding:0.45rem 0.95rem 0.45rem 0.95rem;
+        background-color:$color__primary;
+        transition:all 0.22s ease-in-out;
+        color:$color__white;
+        border:none;
+        border-radius:0.45rem;
+
+        &:hover {
+            background-color:dodgerblue;
+        }
+    }
+    
+    .closeUserStatus {
+        width:2.2rem;
+        height:2.2rem;
+        position: absolute;
+        cursor: pointer;
+        top:0.45rem;
+        right:0.45rem;
+        transition:all 0.22s ease-in-out;
+        border-radius:0.45rem;
+
+        &:hover {
+            background-color:$color__darkgrey;
+            fill:$color__white;
+            border-radius:0.45rem;
+            padding:0.45rem;
+        }
+    }
+}

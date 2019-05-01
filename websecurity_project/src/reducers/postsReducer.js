@@ -6,7 +6,8 @@ import {
     ADD_POST, 
     REMOVE_POSTS,
     UPDATE_POST, 
-    FETCH_POSTS
+    FETCH_POSTS,
+    CREATE_POST
 } from "../actions/actionsVariables";
 import moment from "moment";
 
@@ -55,23 +56,27 @@ const postsReducerDefaultState = [
 
 export default (state = postsReducerDefaultState, action) => {
     switch(action.type) {
+        // create posts
+        case CREATE_POST:
+            return [...state, action.post]
         // get all posts
         case FETCH_POSTS:
             return action.posts;
-        case ADD_POST:
-            return axios.post("https://localhost:8080/post", {
-                        
-                    })
-                    .then((res) => console.log(res))
-                    .catch((error) => console.log(error));
-        case REMOVE_POSTS:
-            return state.filter(({id}) => {
-                return id === action.id
-            });
         case UPDATE_POST:
             return true;
         default:
             return state;
-    }
-};
-
+        }
+    };
+    
+    // case REMOVE_POSTS:
+    //     return state.filter(({id}) => {
+    //         return id === action.id
+    //     });
+    
+    // case ADD_POST:
+    //     return axios.post("https://localhost:8080/post", {
+                    
+    //             })
+    //             .then((res) => console.log(res))
+    //             .catch((error) => console.log(error));

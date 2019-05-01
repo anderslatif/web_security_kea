@@ -14,6 +14,9 @@ export const FETCH_USER = "FETCH_USER";
 // Variable for: initial add and/or edit profile
 export const EDIT_PROFILE = "EDIT_PROFILE";
 
+// Variable for: creating a user status
+export const CREATE_STATUS = "CREATE_STATUS";
+
 // *****************
 // Posts constants
 // ******************
@@ -32,6 +35,9 @@ export const UPDATE_POST = "UPDATE_POST";
 
 //Variable for: getting all chat messages
 export const FETCH_CHAT = "FETCH_CHAT";
+
+// Variable for: creting a post
+export const CREATE_POST = "CREATE_POST";
 
 // ****************
 // Personal posts actions variables exports

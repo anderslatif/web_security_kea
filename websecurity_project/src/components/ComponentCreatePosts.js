@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { connect } from "react-redux";
+import { actionCreatePosts } from '../actions/postActions';
 
 let fileReader;
 
@@ -28,22 +30,27 @@ class ComponentCreatePosts extends Component {
             }
             filereader.readAsText(file);
         }
+        axios.post("http://localhost:9090/book", {file})
+        .then(responese => console.log("resonse file", responese))
+        .catch(err => console.log("error file", err))
+        // console.log("file before post: ", {file});
     }
     setTextValue = (ev) => {
         let inputName = ev.target.name;
         let inputValue = ev.target.value;
         this.setState({[inputName]: inputValue})
     }
-    makePostReques = () => {
-        let { title, description, author, cover, file } = this.state;
-        axios.post("http://localhost:8080/post", {
-            title,
-            description, 
-            author,
-            cover,
-            file
-        }).then(res => console.log("post success: ", res))
-          .catch(error => console.log("post error: ", error));
+    makePostReques = (ev) => {
+        this.props.onCreatePosts(this.state);
+    //     let { title, description, author, cover, file } = this.state;
+    //     axios.post("http://localhost:8080/post", {
+    //         title,
+    //         description, 
+    //         author,
+    //         cover,
+    //         file
+    //     }).then(res => console.log("post success: ", res))
+    //       .catch(error => console.log("post error: ", error));
     }
   render() {
     return (
@@ -107,4 +114,12 @@ class ComponentCreatePosts extends Component {
   }
 }
 
-export default ComponentCreatePosts;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onCreatePosts: post => {
+            dispatch(actionCreatePosts(post))
+        }
+    }
+}
+
+export default connect(null, mapDispatchToProps)(ComponentCreatePosts);

@@ -376,6 +376,59 @@ html {
       height: 3.5rem;
       border-radius: 0.45rem; }
 
+.userStatus {
+  position: absolute;
+  right: 14rem;
+  cursor: pointer;
+  background-color: #0058a2;
+  color: #ffffff;
+  border: none;
+  border-radius: 0.45rem;
+  transition: all 0.22s ease-in-out;
+  padding: 0.45rem 0.95rem 0.65rem 0.95rem; }
+  .userStatus:hover {
+    background-color: dodgerblue; }
+
+.userStatusInput {
+  margin-right: 0.45rem;
+  padding: 0.45rem 0.95rem 0.45rem 0.95rem;
+  border-radius: 0.45rem;
+  border: 1.4px solid lightgrey; }
+
+.wrapperUserStatus {
+  position: fixed;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  border-radius: 0.45rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  padding: 4.5rem; }
+  .wrapperUserStatus .buttonAcceptStatus {
+    cursor: pointer;
+    padding: 0.45rem 0.95rem 0.45rem 0.95rem;
+    background-color: #0058a2;
+    transition: all 0.22s ease-in-out;
+    color: #ffffff;
+    border: none;
+    border-radius: 0.45rem; }
+    .wrapperUserStatus .buttonAcceptStatus:hover {
+      background-color: dodgerblue; }
+  .wrapperUserStatus .closeUserStatus {
+    width: 2.2rem;
+    height: 2.2rem;
+    position: absolute;
+    cursor: pointer;
+    top: 0.45rem;
+    right: 0.45rem;
+    transition: all 0.22s ease-in-out;
+    border-radius: 0.45rem; }
+    .wrapperUserStatus .closeUserStatus:hover {
+      background-color: #2e3131;
+      fill: #ffffff;
+      border-radius: 0.45rem;
+      padding: 0.45rem; }
+
 .page__profile {
   width: 100%;
   height: auto;

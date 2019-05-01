@@ -7,12 +7,14 @@ class ComponentProfileHeader extends Component {
     super(props)
     this.state = {
       editFileCover: "",
-      acceptCoverState: false
+      acceptCoverState: false,
+      userStatusInput: false
     }
     this.getEditCover = this.getEditCover.bind(this);
     this.toggleAcceptCover = this.toggleAcceptCover.bind(this);
     this.openFileInput = this.openFileInput.bind(this);
     this.acceptEditCover = this.acceptEditCover.bind(this);
+    this.toggleUserStatus = this.toggleUserStatus.bind(this);
   }
   getEditCover = (ev) => {
     const file = ev.target.files[0];
@@ -43,6 +45,10 @@ class ComponentProfileHeader extends Component {
     // if(this.state.editFileCover) {
       this.toggleAcceptCover();
     // }
+  }
+
+  toggleUserStatus = () => {
+    this.setState((prevState) => ({userStatusInput: !prevState.userStatusInput}))
   }
   render() {
     let { handleChatState } = this.props;
@@ -95,6 +101,18 @@ class ComponentProfileHeader extends Component {
                 >
                 Chats
                 </button>
+                <button className="userStatus" onClick={this.toggleUserStatus}>User status</button>
+                {
+                  this.state.userStatusInput
+                  &&
+                  <div className="wrapperUserStatus">
+                    <input type="text" placeholder="write a simple user status" className="userStatusInput" />
+                    <button className="buttonAcceptStatus">Accept</button>
+                    <svg className="closeUserStatus" onClick={this.toggleUserStatus}>
+                      <use href="./image/sprite.svg#icon-cross"></use>
+                    </svg>
+                  </div>
+                }
             </div>
         </div>
         {/* componentProfileHeader */}

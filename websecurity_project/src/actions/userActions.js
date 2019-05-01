@@ -2,7 +2,8 @@ import {
     REGISTER_USER,
     LOGIN_USER,
     FETCH_USER,
-    EDIT_PROFILE
+    EDIT_PROFILE,
+    CREATE_STATUS
 } from "./actionsVariables";
 import axios from "axios";
 
@@ -47,15 +48,35 @@ export const loginUser = (datas) => ({
 export const actionLoginUser = ({email, password}) => {
     return (dispatch) => {
         return axios.post(`${authUrl}/login`, {email, password})
-            .then(response => {
-                console.log(response)
-                dispatch(loginUser)
-            })
-            .catch(error => {
-                throw(error)
-            })
+                .then(response => {
+                    console.log(response)
+                    dispatch(loginUser(response.data))
+                })
+                .catch(error => {
+                    throw(error)
+                })
     }
 }
+
+// create status
+// *************
+export const createStatus = (status) => ({
+    type: CREATE_STATUS,
+    status
+});
+
+export const actionCreateStatus = ({status}) => {
+    return (dispatch) => {
+        return axios.post("http://localhost:8080/thoughts", {status})
+                    .then(response => {
+                        console.log(response)
+                        dispatch(createStatus(response.data))
+                    })
+                    .catch(error => {
+                        throw(error)
+                    })
+    }
+};
 
 // Initial add or/and Edit profile
 // *******************************
