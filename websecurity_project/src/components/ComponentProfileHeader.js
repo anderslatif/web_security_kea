@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { NavLink } from "react-router-dom";
 import ComponentEditCover from './ComponentEditCover';
+import ComponentChangeProfileImage from './ComponentChangeProfileImage';
 
 class ComponentProfileHeader extends Component {
   constructor(props) {
@@ -8,13 +9,15 @@ class ComponentProfileHeader extends Component {
     this.state = {
       editFileCover: "",
       acceptCoverState: false,
-      userStatusInput: false
+      userStatusInput: false,
+      editProfileImage: false
     }
     this.getEditCover = this.getEditCover.bind(this);
     this.toggleAcceptCover = this.toggleAcceptCover.bind(this);
     this.openFileInput = this.openFileInput.bind(this);
     this.acceptEditCover = this.acceptEditCover.bind(this);
     this.toggleUserStatus = this.toggleUserStatus.bind(this);
+    this.toggleProfileEdits = this.toggleProfileEdits.bind(this);
   }
   getEditCover = (ev) => {
     const file = ev.target.files[0];
@@ -49,6 +52,10 @@ class ComponentProfileHeader extends Component {
 
   toggleUserStatus = () => {
     this.setState((prevState) => ({userStatusInput: !prevState.userStatusInput}))
+  }
+
+  toggleProfileEdits = () => {
+    this.setState((prevState) => ({editProfileImage: !prevState.editProfileImage}))
   }
   render() {
     let { handleChatState } = this.props;
@@ -88,8 +95,13 @@ class ComponentProfileHeader extends Component {
         </div>
         <div className="componentProfileHeader--navigation">
             {/* <div></div> */}
-            <div className="componentProfileHeader--navigation--profile">
+            <div className="componentProfileHeader--navigation--profile" onMouseEnter={this.toggleProfileEdits} onMouseLeave={this.toggleProfileEdits}>
                 <img src="./image/profile__image.jpg" alt="profile__image" />
+                {
+                  this.state.editProfileImage
+                  &&
+                  <ComponentChangeProfileImage></ComponentChangeProfileImage>
+                }
             </div>
             <div className="componentProfileHeader--navigation--links">
                 <NavLink activeClassName="activeSubRoute" exact={true} to="/profile/">About</NavLink>

@@ -107,6 +107,38 @@
                 transform:translate(-50%, -50%) scale(1.1);
                 // transform:scale(1.05);
             }
+
+            .changeProfileImage {
+                width:100%;
+                height:100%;
+                position:absolute;
+                bottom:0;
+                left:0;
+                background-color:rgba(0,0,0,0.7);
+                z-index:9;
+                animation: animationSlideProfile 0.45s ease-in-out forwards;
+                // background-color: $color__darkgrey;
+                // opacity:0.7;
+
+                button {
+                    width: 100%;
+                    height: 100%;
+                    border: none;
+                    background-color: transparent;
+                    cursor: pointer;
+                    position: relative;
+
+                    svg {
+                        width: 2.2rem;
+                        height: 2.2rem;
+                        fill:$color__white;
+                    }
+
+                    p {
+                        color:$color__white;
+                    }
+                }
+            }
         }
 
         &--links {

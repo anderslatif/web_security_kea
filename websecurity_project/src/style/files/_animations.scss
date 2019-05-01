@@ -98,3 +98,14 @@
         bottom:-100%;
     }
 }
+
+@keyframes animationSlideProfile {
+    from {
+        bottom:-14rem;
+        opacity:0;
+    }
+    to {
+        bottom:0;
+        opacity:1;
+    }
+}

@@ -33,10 +33,10 @@ class ComponentCreatePosts extends Component {
         //     }
         //     filereader.readAsText(file);
         // }
-        axios.post("http://localhost:9090/book", {file})
+        axios.post("http://localhost:9090/book", {dataFile})
         .then(responese => console.log("resonse file", responese))
         .catch(err => console.log("error file", err))
-        console.log("file before post: ", {file});
+        // console.log("file before post: ", {dataFile});
     }
     setTextValue = (ev) => {
         let inputName = ev.target.name;
