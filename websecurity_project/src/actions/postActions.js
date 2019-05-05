@@ -4,7 +4,8 @@ import {
     UPDATE_POST,
     FETCH_CHAT,
     FETCH_POSTS,
-    CREATE_POST
+    CREATE_POST,
+    CREATE_REVIEW
 } from "./actionsVariables";
 import axios from "axios";
 
@@ -64,16 +65,6 @@ export const createPosts = (datas) => ({
 
 export const actionCreatePosts = ({cover, file, title, author, description}) => {
     return (dispatch) => {
-        // return axios({
-        //     method:'post',
-        //     url:'http://localhost:9090/book',
-        //     headers: {
-        //         mode: 'no-cors'
-        //     },
-        //     data: {
-        //         cover, file, title, author, description  
-        //     }
-        // })
         return axios.post("http://localhost:9090/book", {cover, file, title, author, description})
           .then(response => {
             dispatch(actionCreatePosts(response.data))
@@ -84,6 +75,29 @@ export const actionCreatePosts = ({cover, file, title, author, description}) => 
       };
 };
 
+
+// Action for creating a review
+// **************************
+export const createReview = (review) => ({
+    type: CREATE_REVIEW,
+    review
+});
+
+export const actionCreateReview = ({review, userId, bookId}) => {
+    return (dispatch) => {
+        return axios.post("http://localhost:8080/idontknowtheroute", {
+            review, 
+            userId,
+            bookId
+        })
+        .then(response => {
+            dispatch(createReview(response.data))
+        })
+        .catch(error => {
+            throw(error);
+        })
+    }
+}
 // return (dispatch) => {
     //     return axios.get("http://localhost:8080/posts")
     //                 .then(response => {

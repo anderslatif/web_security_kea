@@ -3,7 +3,8 @@ import {
     LOGIN_USER,
     FETCH_USER,
     EDIT_PROFILE,
-    CREATE_STATUS
+    CREATE_STATUS,
+    PROFILE_IMAGE
 } from "./actionsVariables";
 import axios from "axios";
 
@@ -77,6 +78,26 @@ export const actionCreateStatus = ({status}) => {
                     })
     }
 };
+
+// profile image
+// *************
+export const createProfileImage = (profile) => ({
+    type: PROFILE_IMAGE,
+    profile
+});
+
+export const actionCreateProfileImage = (profile) => {
+    return (dispatch) => {
+        return axios.post("http://localhost:8080/idontknowtheroute", {profile})
+                    .then(response => {
+                        console.log(response);
+                        dispatch(createProfileImage(response.data));
+                    })
+                    .catch(error => {
+                        throw(error);
+                    })
+    }
+}
 
 // Initial add or/and Edit profile
 // *******************************

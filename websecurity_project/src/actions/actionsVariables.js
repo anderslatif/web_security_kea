@@ -17,6 +17,9 @@ export const EDIT_PROFILE = "EDIT_PROFILE";
 // Variable for: creating a user status
 export const CREATE_STATUS = "CREATE_STATUS";
 
+// Variable for: creating profile image
+export const PROFILE_IMAGE = "PROFILE_IMAGE";
+
 // *****************
 // Posts constants
 // ******************
@@ -38,6 +41,9 @@ export const FETCH_CHAT = "FETCH_CHAT";
 
 // Variable for: creting a post
 export const CREATE_POST = "CREATE_POST";
+
+// Variable for: creating a review
+export const CREATE_REVIEW = "CREATE_REVIEW";
 
 // ****************
 // Personal posts actions variables exports

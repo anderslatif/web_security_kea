@@ -6,7 +6,7 @@ import {
 // import { ADD_POST } from "../actions/actionsVariables";
 // import { REGISTER_USER } from "../actions/actionsVariables";
 // import { LOGIN_USER } from "../actions/actionsVariables";
-import { FETCH_USER, REGISTER_USER, LOGIN_USER, UPDATE_POST, EDIT_PROFILE } from "../actions/actionsVariables"; 
+import { FETCH_USER, REGISTER_USER, LOGIN_USER, UPDATE_POST, EDIT_PROFILE, PROFILE_IMAGE } from "../actions/actionsVariables"; 
 
 const usersReducerDefaultReducer = {
     id:"userid1",
@@ -64,6 +64,8 @@ export default (state = usersReducerDefaultReducer, action) => {
             // ];
         case FETCH_USER:
             return action.user;
+        case PROFILE_IMAGE:
+            return [...state, action.profile]
         default:
             return state;
     }

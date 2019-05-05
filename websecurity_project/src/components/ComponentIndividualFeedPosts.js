@@ -4,13 +4,43 @@ import { Link } from "react-router-dom";
 class ComponentIndividualFeedPosts extends Component {
     constructor(props) {
         super(props)
-        this.state = {
-
-        }
+        // this.state = {
+        //     review: "",
+        //     bookId: "",
+        //     userId: ""
+        // }
+        // this.getReviewDatas = this.getReviewDatas.bind(this);
+        // this.submitReviewDatas = this.submitReviewDatas.bind(this);
     }
     componentDidMount() {
         // console.log(this.props.post.book);
     }
+    // getReviewDatas = (ev) => {
+    //     let reviewValue = ev.target.value;
+    //     let bookId = ev.target.getAttribute("bookId");
+    //     let userId = ev.target.getAttribute("userId");
+    //     this.setState(() => {
+    //         return {
+    //             review: reviewValue,
+    //             bookId,
+    //             userId
+    //         }
+    //     })
+    //     // this.setState({review: reviewValue})
+    // }
+    // submitReviewDatas = (ev) => {
+    //     ev.preventDefault();
+    //     let { review, bookId, userId } = this.state;
+    //     const datas = {
+    //         review: review,
+    //         bookId: bookId,
+    //         userId: userId
+    //         // userId: userId
+    //         // bookId: bookId,
+    //     }
+    //     console.log(datas);
+    //     ev.target.elements.review.value = "";
+    // }
     render(props) {
         let { post } = this.props;
         let book = post.book;
@@ -60,7 +90,15 @@ class ComponentIndividualFeedPosts extends Component {
                         </div>
                     </div>
                     <div className="feedpost__reviews">
-                        <textarea value="Add Reviews" onChange={() => {}}>Add Comment</textarea>
+                        <form onSubmit={this.props.submitReviewDatas}>
+                            <input 
+                                value={this.props.stateValue.review} 
+                                bookId={book.id}
+                                userId={user.id}
+                                onChange={this.props.getReviewDatas} 
+                                name="review"
+                            />
+                        </form>
                     </div>
                     <div className="feedpost__readbooks">
                         <Link to="/profile/posts/books">Read Book</Link>

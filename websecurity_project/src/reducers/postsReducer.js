@@ -7,7 +7,8 @@ import {
     REMOVE_POSTS,
     UPDATE_POST, 
     FETCH_POSTS,
-    CREATE_POST
+    CREATE_POST,
+    CREATE_REVIEW
 } from "../actions/actionsVariables";
 import moment from "moment";
 
@@ -64,6 +65,8 @@ export default (state = postsReducerDefaultState, action) => {
             return action.posts;
         case UPDATE_POST:
             return true;
+        case CREATE_REVIEW:
+            return [...state, action.review]
         default:
             return state;
         }

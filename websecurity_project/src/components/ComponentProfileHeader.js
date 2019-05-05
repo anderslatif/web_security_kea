@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { NavLink } from "react-router-dom";
 import ComponentEditCover from './ComponentEditCover';
 import ComponentChangeProfileImage from './ComponentChangeProfileImage';
+import ComponentProfileImageApproval from './ComponentProfileImageApproval';
+import { connect } from "react-redux";
+import { actionCreateProfileImage, actionCreateStatus } from '../actions/userActions';
 
 class ComponentProfileHeader extends Component {
   constructor(props) {
@@ -10,7 +13,10 @@ class ComponentProfileHeader extends Component {
       editFileCover: "",
       acceptCoverState: false,
       userStatusInput: false,
-      editProfileImage: false
+      editProfileImage: false,
+      profileFileImage: "",
+      imageApproval: false,
+      usersThought: ""
     }
     this.getEditCover = this.getEditCover.bind(this);
     this.toggleAcceptCover = this.toggleAcceptCover.bind(this);
@@ -18,6 +24,11 @@ class ComponentProfileHeader extends Component {
     this.acceptEditCover = this.acceptEditCover.bind(this);
     this.toggleUserStatus = this.toggleUserStatus.bind(this);
     this.toggleProfileEdits = this.toggleProfileEdits.bind(this);
+    this.getProfileFileImage = this.getProfileFileImage.bind(this);
+    this.toggleImageApproval = this.toggleImageApproval.bind(this);
+    this.submitProfileImge = this.submitProfileImge.bind(this);
+    this.getThought = this.getThought.bind(this);
+    this.submitThought = this.submitThought.bind(this);
   }
   getEditCover = (ev) => {
     const file = ev.target.files[0];
@@ -56,6 +67,27 @@ class ComponentProfileHeader extends Component {
 
   toggleProfileEdits = () => {
     this.setState((prevState) => ({editProfileImage: !prevState.editProfileImage}))
+  }
+
+  getProfileFileImage = (ev) => {
+    this.setState({profileFileImage: ev.target.files[0]})
+    this.setState((prevState) => ({imageApproval: !prevState.imageApproval}))
+  }
+  
+  toggleImageApproval = () => {
+    this.setState((prevState) => ({imageApproval: !prevState.imageApproval}))
+  }
+
+  submitProfileImge = () => {
+    this.props.onCreateProfile(this.state.profileFileImage);
+  }
+
+  getThought = (ev) => {
+    this.setState({usersThought: ev.target.value})
+  }
+
+  submitThought = () => {
+    this.props.onCreateThought(this.state.usersThought)
   }
   render() {
     let { handleChatState } = this.props;
@@ -100,7 +132,12 @@ class ComponentProfileHeader extends Component {
                 {
                   this.state.editProfileImage
                   &&
-                  <ComponentChangeProfileImage></ComponentChangeProfileImage>
+                  <ComponentChangeProfileImage getProfileFileImage={this.getProfileFileImage}></ComponentChangeProfileImage>
+                }
+                {
+                  (this.state.profileFileImage && this.state.imageApproval)
+                  &&
+                  <ComponentProfileImageApproval toggleImageApproval={this.toggleImageApproval}></ComponentProfileImageApproval>
                 }
             </div>
             <div className="componentProfileHeader--navigation--links">
@@ -118,8 +155,14 @@ class ComponentProfileHeader extends Component {
                   this.state.userStatusInput
                   &&
                   <div className="wrapperUserStatus">
-                    <input type="text" placeholder="write a simple user status" className="userStatusInput" />
-                    <button className="buttonAcceptStatus">Accept</button>
+                    <input 
+                      type="text" 
+                      placeholder="write a simple user status" 
+                      className="userStatusInput" 
+                      value={this.state.usersThoughts} 
+                      onChange={this.getThought} 
+                    />
+                    <button className="buttonAcceptStatus" onClick={this.submitThought}>Accept</button>
                     <svg className="closeUserStatus" onClick={this.toggleUserStatus}>
                       <use href="./image/sprite.svg#icon-cross"></use>
                     </svg>
@@ -133,4 +176,15 @@ class ComponentProfileHeader extends Component {
   }
 }
 
-export default ComponentProfileHeader;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onCreateProfile: profile => {
+      dispatch(actionCreateProfileImage(profile))
+    },
+    onCreateThought: thought => {
+      dispatch(actionCreateStatus(thought))
+    }
+  }
+}
+
+export default connect(null, mapDispatchToProps)(ComponentProfileHeader);

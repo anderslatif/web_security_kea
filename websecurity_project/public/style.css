@@ -543,6 +543,25 @@ html {
             fill: #ffffff; }
           .componentProfileHeader--navigation--profile .changeProfileImage button p {
             color: #ffffff; }
+      .componentProfileHeader--navigation--profile .componentProfileImageApproval {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: 9;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); }
+        .componentProfileHeader--navigation--profile .componentProfileImageApproval__approve {
+          height: 100%;
+          background-color: #03c9a9;
+          cursor: pointer;
+          border: none;
+          color: #ffffff; }
+        .componentProfileHeader--navigation--profile .componentProfileImageApproval__reject {
+          height: 100%;
+          background-color: #f03434;
+          cursor: pointer;
+          border: none;
+          color: #ffffff; }
     .componentProfileHeader--navigation--links {
       display: flex;
       flex-direction: row;
@@ -1603,10 +1622,11 @@ html {
   height: 6.5rem;
   display: grid;
   align-items: center; }
-  .feedpost__reviews textarea {
+  .feedpost__reviews input {
     width: 100%;
+    height: 4.5rem;
     border: none;
-    font-weight: 200; }
+    border-bottom: 1.4px solid lightgrey; }
 
 .feedpost__readbooks {
   height: 3.5rem;
