@@ -105,10 +105,12 @@ app.use(session({
 const postroute = require('./routes/postroute');
 const registrationroute = require('./routes/registrationroute');
 const resetpasswordroute = require('./routes/resetpasswordroute');
+const thoughtsroute = require('./routes/thoughtsroute');
 
 app.use(postroute);
 app.use(registrationroute);
 app.use(resetpasswordroute);
+app.use(thoughtsroute);
 
 app.get('/', (req, res) => {
    res.send('Welcome to the awesome book api. Feel right at home exploring.');
