@@ -34,7 +34,7 @@ class ComponentCreatePosts extends Component {
         //     }
         //     filereader.readAsText(file);
         // }
-        axios.post(`${process.env.ADDRESS}:9090/book`, { dataFile })
+        axios.post(`${process.env.Address ? process.env.Address : "pedros.tech"}:9090/book`, { dataFile })
         .then(responese => console.log('resonse file', responese))
         .catch(err => console.log('error file', err));
         // console.log("file before post: ", {dataFile});

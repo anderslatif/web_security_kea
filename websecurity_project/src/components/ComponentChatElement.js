@@ -2,7 +2,7 @@ import React, { Component, useState } from 'react';
 import ComponentIndividualChatMessage from './ComponentIndividualChatMessage';
 import io from 'socket.io-client';
 
-const socket = io(`${process.env.ADDRESS}:8080`);
+const socket = io(`${process.env.Address ? process.env.Address : "pedros.tech"}:8080`);
 // import React, { useState, useEffect } from 'react';
 
 const testChatMessages = [
