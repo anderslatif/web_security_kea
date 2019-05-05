@@ -123,7 +123,7 @@ class ComponentProfileHeader extends Component {
                   onChange={this.getEditCover}
                   style={{display: "none"}}
                 />
-            </button>
+            </button> 
         </div>
         <div className="componentProfileHeader--navigation">
             {/* <div></div> */}
