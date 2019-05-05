@@ -5,10 +5,10 @@ import {
     EDIT_PROFILE,
     CREATE_STATUS,
     PROFILE_IMAGE
-} from "./actionsVariables";
-import axios from "axios";
+} from './actionsVariables';
+import axios from 'axios';
 
-const authUrl = "http://localhost:8080";
+const authUrl = 'http://localhost:8080';
 
 // register actions
 // ****************
@@ -22,18 +22,18 @@ export const registerUser = (datas) => ({
     }
 });
 
-export const actionRegisterUser = ({email, password, passwordRepeated}) => { 
+export const actionRegisterUser = ({ email, password, passwordRepeated }) => {
     return (dispatch) => {
-        return axios.post(`${authUrl}/signup`, {email, password, passwordRepeated})
+        return axios.post(`${authUrl}/signup`, { email, password, passwordRepeated })
             .then(response => {
-                console.log(response)
-                dispatch(registerUser(response.data))
+                console.log(response);
+                dispatch(registerUser(response.data));
             })
             .catch(error => {
-                throw(error);
+                throw (error);
             });
     };
-}
+};
 
 // login actions
 // *************
@@ -46,18 +46,18 @@ export const loginUser = (datas) => ({
     }
 });
 
-export const actionLoginUser = ({email, password}) => {
+export const actionLoginUser = ({ email, password }) => {
     return (dispatch) => {
-        return axios.post(`${authUrl}/login`, {email, password})
+        return axios.post(`${authUrl}/login`, { email, password })
                 .then(response => {
-                    console.log(response)
-                    dispatch(loginUser(response.data))
+                    console.log(response);
+                    dispatch(loginUser(response.data));
                 })
                 .catch(error => {
-                    throw(error)
-                })
-    }
-}
+                    throw (error);
+                });
+    };
+};
 
 // create status
 // *************
@@ -66,17 +66,17 @@ export const createStatus = (status) => ({
     status
 });
 
-export const actionCreateStatus = ({status}) => {
+export const actionCreateStatus = ({ status }) => {
     return (dispatch) => {
-        return axios.post("http://localhost:8080/thoughts", {status})
+        return axios.post('http://localhost:8080/thoughts', { status })
                     .then(response => {
-                        console.log(response)
-                        dispatch(createStatus(response.data))
+                        console.log(response);
+                        dispatch(createStatus(response.data));
                     })
                     .catch(error => {
-                        throw(error)
-                    })
-    }
+                        throw (error);
+                    });
+    };
 };
 
 // profile image
@@ -88,16 +88,16 @@ export const createProfileImage = (profile) => ({
 
 export const actionCreateProfileImage = (profile) => {
     return (dispatch) => {
-        return axios.post("http://localhost:8080/idontknowtheroute", {profile})
+        return axios.post('http://localhost:8080/idontknowtheroute', { profile })
                     .then(response => {
                         console.log(response);
                         dispatch(createProfileImage(response.data));
                     })
                     .catch(error => {
-                        throw(error);
-                    })
-    }
-}
+                        throw (error);
+                    });
+    };
+};
 
 // Initial add or/and Edit profile
 // *******************************

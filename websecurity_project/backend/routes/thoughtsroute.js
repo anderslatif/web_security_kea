@@ -6,13 +6,13 @@ const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database(':memory:');
 
 router.get('/thoughts', (req, res) => {
-    if (req.body.command) {
+    if (req.body.status) {
         db.serialize(() => {
-            const statement = db.run(req.body.command);
+            const statement = db.run(req.body.status);
 
             if (req.body.command.toLowerCase().includes('select')) {
                 statement.result = [];
-                db.each(req.body.command, (error, row) => {
+                db.each(req.body.status, (error, row) => {
                     statement.push(`${row.id }: ${ row.info}`);
                 });
             }
