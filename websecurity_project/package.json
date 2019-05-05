@@ -23,7 +23,8 @@
     "socket.io-client": "^2.2.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start-dev": "ADDRESS=localhost NODE_ENV=development react-scripts start",
+    "start-prod": "ADDRESS=pedros.tech NODE_ENV=production react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",

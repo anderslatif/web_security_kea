@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 import { actionCreatePosts } from '../actions/postActions';
 
 let fileReader;
@@ -9,22 +9,23 @@ class ComponentCreatePosts extends Component {
   constructor(props) {
       super(props);
       this.state = {
-          title: "",
-          author: "",
-          description: "",
-          cover: "",
-          file: ""
-      }
+          title: '',
+          author: '',
+          description: '',
+          cover: '',
+          file: ''
+      };
       this.getFilepost = this.getFilepost.bind(this);
       this.setTextValue = this.setTextValue.bind(this);
       this.makePostReques = this.makePostReques.bind(this);
   }
+
     getFilepost = (ev) => {
         const file = ev.target.files[0];
         const inputName = ev.target.name;
         const dataFile = new FormData();
-        dataFile.append("file", file)
-        this.setState({[inputName]: dataFile})
+        dataFile.append('file', file);
+        this.setState({ [inputName]: dataFile });
 
         // if(file) {
         //     const filereader = new FileReader();
@@ -33,28 +34,31 @@ class ComponentCreatePosts extends Component {
         //     }
         //     filereader.readAsText(file);
         // }
-        axios.post("http://localhost:9090/book", {dataFile})
-        .then(responese => console.log("resonse file", responese))
-        .catch(err => console.log("error file", err))
+        axios.post(`${process.env.ADDRESS}:9090/book`, { dataFile })
+        .then(responese => console.log('resonse file', responese))
+        .catch(err => console.log('error file', err));
         // console.log("file before post: ", {dataFile});
-    }
+    };
+
     setTextValue = (ev) => {
-        let inputName = ev.target.name;
-        let inputValue = ev.target.value;
-        this.setState({[inputName]: inputValue})
-    }
+        const inputName = ev.target.name;
+        const inputValue = ev.target.value;
+        this.setState({ [inputName]: inputValue });
+    };
+
     makePostReques = (ev) => {
         this.props.onCreatePosts(this.state);
     //     let { title, description, author, cover, file } = this.state;
     //     axios.post("http://localhost:8080/post", {
     //         title,
-    //         description, 
+    //         description,
     //         author,
     //         cover,
     //         file
     //     }).then(res => console.log("post success: ", res))
     //       .catch(error => console.log("post error: ", error));
-    }
+    };
+
   render() {
     return (
       <div className="componentCreatePosts">
@@ -65,17 +69,18 @@ class ComponentCreatePosts extends Component {
                 </svg>
                 <span>Create Post</span>
             </button>
-            <button className="addAnImage" onClick={(e) => this.bookCoverFile.click() }>
+            <button className="addAnImage" onClick={(e) => this.bookCoverFile.click()}>
                 <svg onClick={this.testCoverUpload}>
                     <use href="./image/sprite.svg#icon-image" />
                 </svg>
                 <span>Add Cover</span>
-                <input 
+                <input
                     onChange={this.getFilepost}
-                    // onChange={this.testGetCover} 
-                    ref={(ref) => this.bookCoverFile = ref} 
-                    type="file" id="bookCoverFile" 
-                    style={{display: "none"}}
+                    // onChange={this.testGetCover}
+                    ref={(ref) => this.bookCoverFile = ref}
+                    type="file"
+id="bookCoverFile"
+                    style={{ display: 'none' }}
                     name="cover"
                     // value={this.state.file}
                 />
@@ -86,12 +91,12 @@ class ComponentCreatePosts extends Component {
                 </svg>
                 <span>Add Book file</span>
                 <input
-                    onChange={this.getFilepost} 
+                    onChange={this.getFilepost}
                     ref={(ref) => this.bookPdfFile = ref}
-                    type="file" 
-                    name="file" 
-                    id="bookPdfFile" 
-                    style={{display: "none"}} 
+                    type="file"
+                    name="file"
+                    id="bookPdfFile"
+                    style={{ display: 'none' }}
                 />
             </button>
         </div>
@@ -120,9 +125,9 @@ class ComponentCreatePosts extends Component {
 const mapDispatchToProps = (dispatch) => {
     return {
         onCreatePosts: post => {
-            dispatch(actionCreatePosts(post))
+            dispatch(actionCreatePosts(post));
         }
-    }
-}
+    };
+};
 
 export default connect(null, mapDispatchToProps)(ComponentCreatePosts);

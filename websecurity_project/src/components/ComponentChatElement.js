@@ -1,45 +1,45 @@
-import React, { Component, useState } from "react";
-import ComponentIndividualChatMessage from "./ComponentIndividualChatMessage";
+import React, { Component, useState } from 'react';
+import ComponentIndividualChatMessage from './ComponentIndividualChatMessage';
 import io from 'socket.io-client';
 
-const socket = io('localhost:8080');
+const socket = io(`${process.env.ADDRESS}:8080`);
 // import React, { useState, useEffect } from 'react';
 
 const testChatMessages = [
     {
         id: 1,
-        message: "test a",
+        message: 'test a',
         senderId: 1
     },
     {
         id: 2,
-        message: "test b",
+        message: 'test b',
         senderId: 2
     },
     {
         id: 3,
-        message: "test c newer",
+        message: 'test c newer',
         senderId: 3
     },
     {
         id: 4,
-        message: "test d",
+        message: 'test d',
         senderId: 4
     },
     {
         id: 5,
-        message: "test e new",
+        message: 'test e new',
         senderId: 5
     }
 ];
 
 function ComponentChatElement(props) {
-    const [input, setInput] = useState("");
+    const [input, setInput] = useState('');
     const [messages, setMessages] = useState([]);
 
     // useEffect(() => {
-        socket.on("send-message", data => {
-            setMessages([...messages, data.msg]); 
+        socket.on('send-message', data => {
+            setMessages([...messages, data.msg]);
         });
     // });
 
@@ -48,11 +48,12 @@ function ComponentChatElement(props) {
             {messages.map((element, index) => {
                 return <p key={index}>{element}</p>;
             })}
-            <input placeholder="Type the message here" value={input} onChange={(event) => setInput(event.target.value)}></input>
+            <input placeholder="Type the message here" value={input} onChange={(event) => setInput(event.target.value)} />
             <button onClick={() => {
-                socket.emit("receive-message", {msg: input});   
+                socket.emit('receive-message', { msg: input });
                 // setMessages([...messages, input]);
-            }}>Send</button>
+            }}>Send
+            </button>
         </React.Fragment>
     );
 }
@@ -79,12 +80,12 @@ function ComponentChatElement(props) {
 //     }
 //     componentDidMount() {
 //         socket.on("send-message", data => {
-//             this.setMessages([...this.state.messages, data.msg]); 
+//             this.setMessages([...this.state.messages, data.msg]);
 //         });
 //     }
 //     // componentDidMount() {
 //     //     socket.on("send-message", data => {
-//     //         setMessages([...this.state.messages, data.msg]); 
+//     //         setMessages([...this.state.messages, data.msg]);
 //     //     });
 //     // }
 //     render() {

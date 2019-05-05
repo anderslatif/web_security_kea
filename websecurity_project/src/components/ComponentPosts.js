@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import ComponentPostsElement from "./ComponentPostsElement";
-import axios from "axios";
-import { fetchPosts } from "../actions/postActions";
-import { dispatch } from "redux";
-import { connect } from "react-redux";
+import React, { Component } from 'react';
+import ComponentPostsElement from './ComponentPostsElement';
+import axios from 'axios';
+import { fetchPosts } from '../actions/postActions';
+import { dispatch } from 'redux';
+import { connect } from 'react-redux';
 
 // const postTests = [
 //     {
@@ -49,14 +49,15 @@ class PageProfilePosts extends Component {
         super(props);
         this.state = {
             // testPosts: postTests
-        }
+        };
     }
+
     componentDidMount() {
         // console.log(axios)
         // store.dispatch(fetchPosts);
-        axios.get("http://localhost:8080/posts/all")
-                    .then(res => console.log("9999 posts: ", res))
-                    .catch((error) => console.log("fetch error: ", error));
+        axios.get(`${process.env.ADDRESS}:8080/posts/all`)
+                    .then(res => console.log('9999 posts: ', res))
+                    .catch((error) => console.log('fetch error: ', error));
         // localhost/8080:post
         // axios.get('/posts')
         // .then(function (response) {
@@ -71,14 +72,15 @@ class PageProfilePosts extends Component {
         //     // always executed
         // });
     }
+
     render(props) {
-        return(
+        return (
             <div className="componentPosts">
                 {/* ComponentPosts */}
 
                 {
                     this.props.personalPosts.map((post, index) => {
-                        return <ComponentPostsElement key={index} post={post}/>
+                        return <ComponentPostsElement key={index} post={post} />;
                     })
                 }
             </div>

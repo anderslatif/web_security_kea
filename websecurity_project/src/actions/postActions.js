@@ -6,16 +6,16 @@ import {
     FETCH_POSTS,
     CREATE_POST,
     CREATE_REVIEW
-} from "./actionsVariables";
-import axios from "axios";
+} from './actionsVariables';
+import axios from 'axios';
 
 
-export const removePosts = ({id}) => ({
+export const removePosts = ({ id }) => ({
     type: REMOVE_POSTS,
     id
 });
 
-export const updatePost = (id, {title, author, cover, file, description}) => ({
+export const updatePost = (id, { title, author, cover, file, description }) => ({
     type: UPDATE_POST,
     id,
     title,
@@ -39,14 +39,13 @@ export const fetchPosts = (posts) => ({
 export const fetchAllPosts = () => {
     return async (dispatch) => {
         try {
-            const response = await axios.get("http://localhost:8080/posts");
+            const response = await axios.get(`${process.env.ADDRESS}:8080/posts`);
             console.log(response.data);
             dispatch(fetchPosts(response.data));
-        }
-        catch (error) {
+        } catch (error) {
             throw (error);
         }
-    }
+    };
 };
 
 
@@ -63,14 +62,14 @@ export const createPosts = (datas) => ({
     }
 });
 
-export const actionCreatePosts = ({cover, file, title, author, description}) => {
+export const actionCreatePosts = ({ cover, file, title, author, description }) => {
     return (dispatch) => {
-        return axios.post("http://localhost:9090/book", {cover, file, title, author, description})
+        return axios.post(`${process.env.ADDRESS}:9090/book`, { cover, file, title, author, description })
           .then(response => {
-            dispatch(actionCreatePosts(response.data))
+            dispatch(actionCreatePosts(response.data));
           })
           .catch(error => {
-            throw(error);
+            throw (error);
           });
       };
 };
@@ -83,21 +82,21 @@ export const createReview = (review) => ({
     review
 });
 
-export const actionCreateReview = ({review, userId, bookId}) => {
+export const actionCreateReview = ({ review, userId, bookId }) => {
     return (dispatch) => {
-        return axios.post("http://localhost:8080/idontknowtheroute", {
-            review, 
+        return axios.post(`${process.env.ADDRESS}:8080/idontknowtheroute`, {
+            review,
             userId,
             bookId
         })
         .then(response => {
-            dispatch(createReview(response.data))
+            dispatch(createReview(response.data));
         })
         .catch(error => {
-            throw(error);
-        })
-    }
-}
+            throw (error);
+        });
+    };
+};
 // return (dispatch) => {
     //     return axios.get("http://localhost:8080/posts")
     //                 .then(response => {
@@ -108,7 +107,7 @@ export const actionCreateReview = ({review, userId, bookId}) => {
             //                     throw(error);
             //                 });
             // }
-            
+
 // export const addPost = ({id, title, author, cover, file}) => ({
 //     type: ADD_POST,
 //     post: {

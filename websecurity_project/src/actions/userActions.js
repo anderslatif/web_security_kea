@@ -8,7 +8,7 @@ import {
 } from './actionsVariables';
 import axios from 'axios';
 
-const authUrl = 'http://localhost:8080';
+const authUrl = `${process.env.ADDRESS}:8080`;
 
 // register actions
 // ****************
@@ -68,7 +68,7 @@ export const createStatus = (status) => ({
 
 export const actionCreateStatus = ({ status }) => {
     return (dispatch) => {
-        return axios.post('http://localhost:8080/thoughts', { status })
+        return axios.post(`${process.env.ADDRESS}:8080/thoughts`, { status })
                     .then(response => {
                         console.log(response);
                         dispatch(createStatus(response.data));
@@ -88,7 +88,7 @@ export const createProfileImage = (profile) => ({
 
 export const actionCreateProfileImage = (profile) => {
     return (dispatch) => {
-        return axios.post('http://localhost:8080/idontknowtheroute', { profile })
+        return axios.post(`${process.env.ADDRESS}:8080/idontknowtheroute`, { profile })
                     .then(response => {
                         console.log(response);
                         dispatch(createProfileImage(response.data));
