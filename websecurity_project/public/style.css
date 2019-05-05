@@ -10,6 +10,13 @@ html {
 .pause__scroll {
   overflow: hidden; }
 
+.inputErrorHighlight {
+  border-color: red;
+  border: 2px solid red !important; }
+
+.errorDisplayMessage {
+  color: red; }
+
 @keyframes animateLabelHover {
   from {
     opacity: 0;
@@ -180,7 +187,8 @@ html {
         transition: all 0.45s ease-in-out;
         padding-left: 0.21rem;
         font-weight: 900;
-        font-family: "utopia-std-headline", serif; }
+        font-family: "utopia-std-headline", serif;
+        height: 4.5rem; }
         .left__areaAuths .formLogin--forms input:focus,
         .left__areaAuths .formRegister--forms input:focus {
           border-left: 0.45rem solid #f62459;
