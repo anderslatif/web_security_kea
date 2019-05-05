@@ -12,3 +12,12 @@ html {
 .pause__scroll {
     overflow:hidden;
 }
+
+.inputErrorHighlight {
+    border-color:red;
+    border:2px solid red!important;
+}
+
+.errorDisplayMessage {
+    color:red;
+}
