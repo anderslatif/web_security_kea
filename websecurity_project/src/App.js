@@ -23,7 +23,6 @@ const Jsx = () => (
 
 class App extends Component {
   render() {
-    console.log("(********* ", process.env);
     return (
       <div className="App">
       {/* <AppRouter></AppRouter> */}
