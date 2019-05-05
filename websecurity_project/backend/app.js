@@ -85,7 +85,7 @@ mongoose.connect('mongodb://localhost:27017/books', { useNewUrlParser: true });
 const db = mongoose.connection;
 
 // handle mongo error
-db.on('error', console.error.bind(console, 'connection error:'));
+db.on('error', helperFunctions.logToFile('MongoFailed', 'mongo-errors.txt'));
 db.once('open', () => {
     // we're connected!
 });

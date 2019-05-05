@@ -30,7 +30,7 @@ dummyUser.userRole = userRoles.scriptKiddie;
 
         // todo implement the function below
         if (!helperFunctions.isValidEmail(req.body.email)) {
-            helperFunctions.logToFile('Someone is trying to login without having a valid email', 'instrusions.txt');
+            helperFunctions.logToFile('Someone is trying to login without having a valid email', 'intrusions.txt');
         } else {
             User.find({ email: requestedUser.email }).exec((error, user) => {
                 if (error) {
