@@ -2,7 +2,8 @@ const mongoose = require('mongoose');
 
 const PostSchema = new mongoose.Schema({
     id: {
-
+        type: String,
+        default: new mongoose.Types.ObjectId
     },
     title: {
         type: String,
