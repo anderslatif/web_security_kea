@@ -14,6 +14,7 @@ const userRoles = Object.freeze({
 dummyUser.userRole = userRoles.scriptKiddie;
 
     router.post('/signup', (req, res) => {
+    console.log("signuptest", req.body);
     const { email, password, passwordRepeated } = req.body;
     if (email && password && passwordRepeated) {
         if (password !== passwordRepeated) {
@@ -67,6 +68,7 @@ dummyUser.userRole = userRoles.scriptKiddie;
 });
 
 router.post('/login', (req, res) => {
+    console.log("login answer: ", req.body)
     if (req.body.email && req.body.password) {
         const requestedUser = {
             email: req.body.email,

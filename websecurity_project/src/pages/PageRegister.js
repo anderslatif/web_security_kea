@@ -11,6 +11,10 @@ const emailRegex = RegExp(
   /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 );
 
+const sqlPrevent = (string) => {
+  return string.replace(/&/, "&amp").replace(/</, "&lt")
+}
+
 // const formValid = error => {
 //     let valid = true;
 
@@ -41,27 +45,27 @@ class PageRegister extends Component {
         passwordRepeated: ""
       }
     }
-    this.onChangeStoreRegisterDatas = this.onChangeStoreRegisterDatas.bind(this);
-    this.handleSubmitRegister = this.handleSubmitRegister.bind(this)
+    // this.onChangeStoreRegisterDatas = this.onChangeStoreRegisterDatas.bind(this);
+    // this.handleSubmitRegister = this.handleSubmitRegister.bind(this)
     // this.onSubmitStoreDatas = this.onSubmitStoreDatas.bind(this);
   }
 
-  onChangeStoreRegisterDatas = (ev) => {
-    let inputRegisterName = ev.target.name;
-    let inputRegisterValue = ev.target.value;
-    this.setState({[inputRegisterName]: inputRegisterValue})
-  }
+  // onChangeStoreRegisterDatas = (ev) => {
+  //   let inputRegisterName = ev.target.name;
+  //   let inputRegisterValue = ev.target.value;
+  //   this.setState({[inputRegisterName]: inputRegisterValue})
+  // }
   
-  handleSubmitRegister = (ev) => {
-    ev.preventDefault();
-    let { email, password, passwordRepeated } = this.state; 
-    let register = {
-      email: email,
-      password: password,
-      passwordRepeated: passwordRepeated
-    }
-    this.props.onRegisterUser(register);
-  }
+  // handleSubmitRegister = (ev) => {
+  //   ev.preventDefault();
+  //   let { email, password, passwordRepeated } = this.state; 
+  //   let register = {
+  //     email: email,
+  //     password: password,
+  //     passwordRepeated: passwordRepeated
+  //   }
+  //   this.props.onRegisterUser(register);
+  // }
 
   handleSubmit = ev => {
     ev.preventDefault();
@@ -73,7 +77,14 @@ class PageRegister extends Component {
         password: password,
         passwordRepeated: passwordRepeated
       }
-      this.props.onRegisterUser(register);
+      // this.props.onRegisterUser(register);
+      // axios({
+      //   method
+      // })
+      // axios.post("http://localhost:8080/signup", register)
+      //       .then(result => {console.log("success register: ", result.data))
+      //       .catch(error => console.log("error: ", error))
+      // axios.post("http://localhost:8080/signup", {register: "user"}).then(response => console.log(response)).catch(error => console.log(error))
       // console.log(`
       //   email: ${this.state.email} \n 
       //   password: ${this.state.password} \n 

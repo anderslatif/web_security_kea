@@ -4,6 +4,7 @@ import Tilt from 'react-tilt';
 import { loginAuthAction } from "../actions/authActions";
 import { connect } from "react-redux";
 import axios from "axios";
+import { actionLoginUser } from '../actions/userActions';
 
 class PageLogin extends Component {
     constructor(props) {
@@ -24,7 +25,12 @@ class PageLogin extends Component {
 
     onSubmitStoreDatas = (ev) => {
         ev.preventDefault();
-        console.log(this.state)
+        const login = {
+            email: this.state.emailLogin,
+            password: this.state.passwordLogin
+        }
+        this.props.onLoginUser(login)
+        // console.log(this.state)
     }
     // componentDidMount() {
     //     axios.post("http://localhost:8080/login", {
@@ -88,9 +94,16 @@ class PageLogin extends Component {
 }
 }
 
+const mapDispatchToProps = dispatch => {
+    return {
+      onLoginUser: user => {
+        dispatch(actionLoginUser(user))
+      }
+    }
+  }
 // const mapStateToProps = (state) => {
 //     return {
 //         login: state.login
 //     }
 // }
-export default PageLogin;
+export default connect(null, mapDispatchToProps)(PageLogin);

@@ -57,7 +57,10 @@ export default (state = usersReducerDefaultReducer, action) => {
                 action.user
             ];
         case LOGIN_USER:
-            return true;
+            return [
+                ...state,
+                action.user
+            ];
         case EDIT_PROFILE:
             return true;
             // return [

@@ -20,7 +20,7 @@ class AppRouter extends Component {
                     <div>
                         {/* <Widget /> */}
                         <Switch>
-                            {/* <Redirect exact={true} from="/" to="/login" /> */}
+                            <Redirect exact={true} from="/" to="/login" />
                             <Route path="/login" component={PageLogin} />
                             <Route path="/register" component={PageRegister} />
                             {/* <Route exact={true} path="/profile/about" component={PageProfileAbout} /> */}
