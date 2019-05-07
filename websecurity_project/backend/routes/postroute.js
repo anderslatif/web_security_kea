@@ -37,7 +37,7 @@ router.get('/posts/:userid', (req, res) => {
 router.post('/post', async (req, res) => {
     if (req.body.title && req.body.author && req.body.description) {
         // TODO sanitize input
-        const { title, description, author } = req.body;
+        const { title, description, author, book, cover } = req.body;
 
         const coverJson = null;
         const bookJson = null;
@@ -48,8 +48,8 @@ router.post('/post', async (req, res) => {
             description,
             author,
             bookOwner: req.session.userid,
-            cover: coverJson,
-            file: bookJson
+            cover,
+            file
         });
 
         // TODO Validate the response from the file micro service
