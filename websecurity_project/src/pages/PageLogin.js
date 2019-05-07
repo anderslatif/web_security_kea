@@ -42,7 +42,19 @@ class PageLogin extends Component {
     testEmail = () => {
         
     }
-    render() {
+    // componentDidUpdate() {
+    //     console.log(this.props.isLoggedIn)
+    // }
+    componentDidUpdate() {
+        console.log(this.props.isLoggedIn)
+        function requireAuth(nextState, replace) {
+            if (this.props.isLoggedIn) {
+                this.props.location.pathname('/profile')
+                // browserHistory.push("/profile")
+            }
+          }
+    }
+    render(props) {
     return (
         <div className="page__login">
             <div className="page__login--wrapper">
@@ -53,6 +65,7 @@ class PageLogin extends Component {
                     <div className="left__areaAuths--informations">
                         <h2>Get your <span>Book</span></h2>
                         <p>Login to access the Bookz streaming system</p>
+                        {this.props.isLoggedIn}
                     </div>
                     <form className="formLogin" onSubmit={this.onSubmitStoreDatas}>
                         <div className="formLogin--forms">
@@ -100,10 +113,16 @@ const mapDispatchToProps = dispatch => {
         dispatch(actionLoginUser(user))
       }
     }
-  }
+}
+
+const mapStateToProps = (state) => {
+    return {
+        isLoggedIn: state.user.isLoggedIn
+    }
+}
 // const mapStateToProps = (state) => {
 //     return {
 //         login: state.login
 //     }
 // }
-export default connect(null, mapDispatchToProps)(PageLogin);
+export default connect(mapStateToProps, mapDispatchToProps)(PageLogin);

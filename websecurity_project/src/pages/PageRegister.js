@@ -79,12 +79,12 @@ class PageRegister extends Component {
       }
 
       
-      // this.props.onRegisterUser(register);
+      this.props.onRegisterUser(register);
       // axios({
       //   method
       // })
       // axios.post("http://localhost:8080/signup", register)
-      //       .then(result => {console.log("success register: ", result.data))
+      //       .then(result => console.log("success register: ", result.data))
       //       .catch(error => console.log("error: ", error))
       // axios.post("http://localhost:8080/signup", {register: "user"}).then(response => console.log(response)).catch(error => console.log(error))
       // console.log(`

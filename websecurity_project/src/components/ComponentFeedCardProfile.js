@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 class ComponentFeedCardProfile extends Component {
   render(props) {
     let { id, name, image, country } = this.props.user;
-    let postsNumber = this.props.user.books.length;
+    let postsNumber = 9;
+    // let postsNumber = this.props.user.books.length;
     return (
       <div className="componentFeedCardProfile">
         <div className="componentFeedCardProfile--wrapper">

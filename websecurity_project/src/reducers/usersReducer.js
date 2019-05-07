@@ -8,7 +8,9 @@ import {
 // import { LOGIN_USER } from "../actions/actionsVariables";
 import { FETCH_USER, REGISTER_USER, LOGIN_USER, UPDATE_POST, EDIT_PROFILE, PROFILE_IMAGE } from "../actions/actionsVariables"; 
 
-const usersReducerDefaultReducer = [];
+const usersReducerDefaultReducer = {
+    isLoggedIn: false
+};
 
 // const usersReducerDefaultReducer = {
 //     id:"userid1",
@@ -57,10 +59,10 @@ export default (state = usersReducerDefaultReducer, action) => {
                 action.user
             ];
         case LOGIN_USER:
-            return [
+            return {
                 ...state,
-                action.user
-            ];
+                isLoggedIn: action.isLoggedIn
+            };
         case EDIT_PROFILE:
             return true;
             // return [

@@ -15,6 +15,7 @@ const store = configureStore();
 // console.log(state);
 // console.log(store.getState());
 console.log(store.getState())
+// const unsubscribe = store.subscribe(() => {store.getState()})
 const Jsx = () => (
   <Provider store={store}>
     <AppRouter></AppRouter>

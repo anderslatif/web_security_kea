@@ -52,7 +52,7 @@ class ComponentIndividualFeedPosts extends Component {
                     <div className="feedpost__header">
                         <div className="feedpost__header--user">
                             <div className="imgFeedUsers">
-                                <img src={user.user_profile} alt="image__profile" />
+                                <img src="{user.user_profile}" alt="image__profile" />
                             </div>
                             <div className="datesFeedUsers">
                                 <h2>{user.username}</h2>

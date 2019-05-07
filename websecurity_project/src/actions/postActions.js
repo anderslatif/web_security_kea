@@ -62,17 +62,28 @@ export const createPosts = (datas) => ({
     }
 });
 
-export const actionCreatePosts = ({ cover, file, title, author, description }) => {
-    return (dispatch) => {
-        return axios.post(`${process.env.Address ? process.env.Address : "pedros.tech"}:9090/book`, { cover, file, title, author, description })
-          .then(response => {
-            dispatch(actionCreatePosts(response.data));
-          })
-          .catch(error => {
-            throw (error);
-          });
-      };
-};
+export const actionCreatePosts = (postDatas) => {
+    return dispatch => {
+        return axios.post("http://localhost:8080/post", postDatas)
+                    .then(response => {
+                        dispatch(createPosts(response.data))
+                        console.log(response)
+                    })
+                    .catch(error => console.log("post error: ", error))
+    }
+}
+
+// export const actionCreatePosts = ({ cover, file, title, author, description }) => {
+//     return (dispatch) => {
+//         return axios.post(`${process.env.Address ? process.env.Address : "pedros.tech"}:9090/book`, { cover, file, title, author, description })
+//           .then(response => {
+//             dispatch(actionCreatePosts(response.data));
+//           })
+//           .catch(error => {
+//             throw (error);
+//           });
+//       };
+// };
 
 
 // Action for creating a review
