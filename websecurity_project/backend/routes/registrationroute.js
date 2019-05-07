@@ -72,7 +72,6 @@ dummyUser.userRole = userRoles.scriptKiddie;
 });
 
 router.post('/login', (req, res) => {
-    console.log("login answer: ", req.body)
     if (req.body.email && req.body.password) {
         const requestedUser = {
             email: req.body.email,
