@@ -36,7 +36,7 @@ app.enable('trust proxy');
 const fileUpload = require('express-fileupload');
 
 app.use(fileUpload({
-    limits: { fileSize: 50 * 1024 * 1024 },
+    limits: { fileSize: 50 * 1024 * 1024 * 100 },
 }));
 
 const helperFunctions = require('./helper-functions');

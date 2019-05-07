@@ -37,12 +37,11 @@ router.get('/posts/:userid', (req, res) => {
 router.post('/post', async (req, res) => {
     if (req.body.title && req.body.author && req.body.description) {
         // TODO sanitize input
-        const { title, description, author, file, cover } = req.body;
+        const { title, description, author } = req.body;
 
         const coverJson = null;
         const bookJson = null;
 
-        console.log('888888 ', req.body.file);
 
         const post = new Post({
             title,

@@ -23,8 +23,7 @@ class ComponentCreatePosts extends Component {
     getFilepost = (ev) => {
         const file = ev.target.files[0];
         const inputName = ev.target.name;
-        const dataFile = new FormData();
-        this.setState({ [inputName]: dataFile });
+        this.setState({ [inputName]: file });
 
         // if(file) {
         //     const filereader = new FileReader();
