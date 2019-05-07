@@ -8,7 +8,7 @@ import {
 } from './actionsVariables';
 import axios from 'axios';
 
-const authUrl = `${process.env.Address ? process.env.Address : "pedros.tech"}:8080`;
+const authUrl = 'localhost:8080';
 
 // register actions
 // ****************
@@ -22,9 +22,9 @@ export const registerUser = (datas) => ({
     }
 });
 
-export const actionRegisterUser = ({ email, password, passwordRepeated }) => {
+export const actionRegisterUser = (data) => {
     return (dispatch) => {
-        return axios.post(`${authUrl}/signup`, { email, password, passwordRepeated })
+        return axios.post(`${authUrl}/signup`, data)
             .then(response => {
                 console.log(response);
                 dispatch(registerUser(response.data));
@@ -68,7 +68,7 @@ export const createStatus = (status) => ({
 
 export const actionCreateStatus = ({ status }) => {
     return (dispatch) => {
-        return axios.post(`${process.env.Address ? process.env.Address : "pedros.tech"}:8080/thoughts`, { status })
+        return axios.post(`${process.env.Address ? process.env.Address : 'pedros.tech'}:8080/thoughts`, { status })
                     .then(response => {
                         console.log(response);
                         dispatch(createStatus(response.data));
@@ -88,7 +88,7 @@ export const createProfileImage = (profile) => ({
 
 export const actionCreateProfileImage = (profile) => {
     return (dispatch) => {
-        return axios.post(`${process.env.Address ? process.env.Address : "pedros.tech"}:8080/idontknowtheroute`, { profile })
+        return axios.post(`${process.env.Address ? process.env.Address : 'pedros.tech'}:8080/idontknowtheroute`, { profile })
                     .then(response => {
                         console.log(response);
                         dispatch(createProfileImage(response.data));

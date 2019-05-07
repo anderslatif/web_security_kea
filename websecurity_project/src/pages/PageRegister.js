@@ -51,10 +51,10 @@ class PageRegister extends Component {
     let inputRegisterValue = ev.target.value;
     this.setState({[inputRegisterName]: inputRegisterValue})
   }
-  
+
   handleSubmitRegister = (ev) => {
     ev.preventDefault();
-    let { email, password, passwordRepeated } = this.state; 
+    let { email, password, passwordRepeated } = this.state;
     let register = {
       email: email,
       password: password,
@@ -66,8 +66,8 @@ class PageRegister extends Component {
   handleSubmit = ev => {
     ev.preventDefault();
 
-    if(this.formValid(this.state)) {
-      let { email, password, passwordRepeated } = this.state; 
+    if (this.formValid(this.state)) {
+      let { email, password, passwordRepeated } = this.state;
       let register = {
         email: email,
         password: password,
@@ -75,8 +75,8 @@ class PageRegister extends Component {
       }
       this.props.onRegisterUser(register);
       // console.log(`
-      //   email: ${this.state.email} \n 
-      //   password: ${this.state.password} \n 
+      //   email: ${this.state.email} \n
+      //   password: ${this.state.password} \n
       //   passwordRepeated: ${this.state.passwordRepeated}
       // `)
     } else {
@@ -99,13 +99,13 @@ class PageRegister extends Component {
         break;
         case "password":
           error.password = value.length < 9
-          ? "minimum 9 characters required" 
-          : "" 
+          ? "minimum 9 characters required"
+          : ""
         break;
         case "passwordRepeated":
           error.passwordRepeated = value.length < 9
-          ? "minimum 9 characters required" 
-          : "" 
+          ? "minimum 9 characters required"
+          : ""
         break;
     }
 
@@ -130,7 +130,7 @@ class PageRegister extends Component {
   //   let formValid = true;
   //   let inputType = ev.target.name;
   //   if (/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(this.state.email)) {
-  //      /* return true */ 
+  //      /* return true */
   //      console.log("correct__email")
   //   } else {
   //     console.log("incorrect__email")
@@ -150,7 +150,7 @@ class PageRegister extends Component {
   //        formIsValid = false;
   //        errors["email"] = "Email is not valid";
   //      }
-  //   }  
+  //   }
 
   //   this.setState({errors: errors});
   //   return formIsValid;
@@ -170,37 +170,37 @@ class PageRegister extends Component {
                     </div>
                     <form className="formRegister" onSubmit={this.handleSubmit}>
                         <div className="formRegister--forms">
-                            <input 
-                              type="text" 
-                              placeholder="Your Email" 
-                              name="email" 
-                              value={this.state.registerEmail} 
+                            <input
+                              type="text"
+                              placeholder="Your Email"
+                              name="email"
+                              value={this.state.registerEmail}
                               onChange={this.handleChange}
-                              className={error.email.length > 0 ? "inputErrorHighlight" : null} 
+                              className={error.email.length > 0 ? "inputErrorHighlight" : null}
                             />
                             {
                               error.email.length > 0 &&
                               <p className="errorDisplayMessage">{error.email}</p>
                             }
-                            <input 
-                              type="password" 
-                              placeholder="Your Password" 
-                              name="password" 
-                              value={this.state.registerPassword} 
+                            <input
+                              type="password"
+                              placeholder="Your Password"
+                              name="password"
+                              value={this.state.registerPassword}
                               onChange={this.handleChange}
-                              className={error.password.length > 0 ? "inputErrorHighlight" : null} 
+                              className={error.password.length > 0 ? "inputErrorHighlight" : null}
                             />
                             {
                               error.password.length > 0 &&
                               <p className="errorDisplayMessage">{error.password}</p>
                             }
-                            <input 
-                              type="password" 
-                              placeholder="Repeat Password" 
-                              name="passwordRepeated" 
-                              value={this.state.registerRepeatPassword} 
+                            <input
+                              type="password"
+                              placeholder="Repeat Password"
+                              name="passwordRepeated"
+                              value={this.state.registerRepeatPassword}
                               onChange={this.handleChange}
-                              className={error.passwordRepeated.length > 0 ? "inputErrorHighlight" : null}  
+                              className={error.passwordRepeated.length > 0 ? "inputErrorHighlight" : null}
                             />
                             {
                               error.passwordRepeated.length > 0 &&
@@ -221,9 +221,9 @@ class PageRegister extends Component {
                     </form>
                     <div className="left__areaAuths--terms-and-conditions">
                         <p>
-                            Please have a look over 
+                            Please have a look over
                             <Link to="/terms-and-conditions">Terms and Conditions</Link>
-                            and 
+                            and
                             <Link to="/privacy-policy">Privacy Policy</Link>
                         </p>
                         <Link to="/login" className="login__links">Login</Link>
