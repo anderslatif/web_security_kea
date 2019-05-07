@@ -7,13 +7,11 @@ const upload = multer({ dest: `${__dirname }/files/` });
 const helperFunctions = require('./helper-functions');
 const tls = require('tls');
 const fs = require('fs');
-const cors = require("cors");
+const cors = require('cors');
 
 const privateKey = fs.readFileSync('server.key').toString();
 const certificate = fs.readFileSync('server.cert').toString();
 const credentials = { key: privateKey, cert: certificate };
-
-app.use(cors())
 
 // var allowCrossDomain = function(req, res, next) {
 //     res.header('Access-Control-Allow-Origin', "*");
@@ -26,12 +24,14 @@ app.use(cors())
 
 app.post('/cover', upload.single('cover'), (req, res) => {
     try {
+        console.log('888888888', req);
         // req.file is the `cover` file
         // req.body will hold the text fields, if there were any
         res.send(req.file);
     } catch (e) {
         helperFunctions.logToFile('Problem in the /cover file micro service: ', 'backend-errors.txt');
         helperFunctions.logToFile('', 'backend-errors.txt');
+        res.send('error');
     }
 });
 
@@ -44,6 +44,7 @@ app.post('/book', upload.single('file'), (req, res) => {
     } catch (e) {
         helperFunctions.logToFile('Problem in the /book file micro service: ', 'backend-errors.txt');
         helperFunctions.logToFile('', 'backend-errors.txt');
+        res.send('error');
     }
 });
 

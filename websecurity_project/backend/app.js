@@ -33,6 +33,12 @@ const rateLimit = require('express-rate-limit');
 
 app.enable('trust proxy');
 
+const fileUpload = require('express-fileupload');
+
+app.use(fileUpload({
+    limits: { fileSize: 50 * 1024 * 1024 },
+}));
+
 const helperFunctions = require('./helper-functions');
 
 const basicLimiter = rateLimit({
