@@ -168,6 +168,13 @@ class PageRegister extends Component {
   //   this.setState({errors: errors});
   //   return formIsValid;
   // }
+  componentDidUpdate() {
+    console.log(this.props.isRegistered)
+    if (this.props.isRegistered) {
+        this.props.history.push('/login')
+        // browserHistory.push("/profile")
+    }
+}
     render() {
       let { error } = this.state;
       return (
@@ -264,4 +271,10 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(null, mapDispatchToProps)(PageRegister);
+const mapStateToProps = state => {
+  return {
+    isRegistered: state.isRegistered
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PageRegister);

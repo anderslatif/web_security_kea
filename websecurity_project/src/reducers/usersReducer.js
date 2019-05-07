@@ -9,7 +9,8 @@ import {
 import { FETCH_USER, REGISTER_USER, LOGIN_USER, UPDATE_POST, EDIT_PROFILE, PROFILE_IMAGE } from "../actions/actionsVariables"; 
 
 const usersReducerDefaultReducer = {
-    isLoggedIn: false
+    isLoggedIn: false,
+    isRegistered: false
 };
 
 // const usersReducerDefaultReducer = {
@@ -55,7 +56,8 @@ export default (state = usersReducerDefaultReducer, action) => {
     switch(action.type) {
         case REGISTER_USER:
             return {
-                ...state
+                ...state,
+                isRegistered: action.isRegistered
             };
         case LOGIN_USER:
             return {

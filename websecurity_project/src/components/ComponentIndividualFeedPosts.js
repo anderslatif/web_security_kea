@@ -55,24 +55,24 @@ class ComponentIndividualFeedPosts extends Component {
                                 <img src="{user.user_profile}" alt="image__profile" />
                             </div>
                             <div className="datesFeedUsers">
-                                <h2>{user.username}</h2>
-                                <p>{user.location}</p>
+                                <h2>{"user.username"}</h2>
+                                <p>{"user.location"}</p>
                             </div>
                         </div>
                         <div className="feedpost__header--timestamp">
-                            <p>{book.postDate}</p>
+                            <p>{"book.postDate"}</p>
                         </div>
                     </div>
                     <div className="feedpost__description">
-                        <p>{book.postDescription}</p>
+                        <p>{"book.postDescription"}</p>
                     </div>
                     <div className="feedpost__content">
-                        <img src={book.cover} alt="book__cover" />
+                        <img src="{book.cover}" alt="book__cover" />
                     </div>
                     <div className="feedpost__datas">
                         <div className="feedpost__datas--information">
-                            <h2>{book.title}</h2>
-                            <p>{book.author}</p>
+                            <h2>{"book.title"}</h2>
+                            <p>{"book.author"}</p>
                         </div>
                     </div>
                     <div className="feedpost__like-comment">
@@ -93,8 +93,8 @@ class ComponentIndividualFeedPosts extends Component {
                         <form onSubmit={this.props.submitReviewDatas}>
                             <input 
                                 value={this.props.stateValue.review} 
-                                bookId={book.id}
-                                userId={user.id}
+                                // bookId={book.id}
+                                // userId={user.id}
                                 onChange={this.props.getReviewDatas} 
                                 name="review"
                             />

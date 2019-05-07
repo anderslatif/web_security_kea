@@ -16,19 +16,26 @@ const authUrl = 'localhost:8080';
 
 // }
 
-export const registerUser = (datas) => ({
+export const registerUser = (datas, isRegistered) => ({
     type: REGISTER_USER,
     user: {
         email: datas.email,
         password: datas.password,
         passwordRepeated: datas.passwordRepeated
-    }
+    },
+    isRegistered: isRegistered
 });
 
 export const actionRegisterUser = (datas) => {
     return dispatch => {
         return axios.post("http://localhost:8080/signup", datas)
-        .then(response => dispatch(registerUser(response.data)))
+        .then(response => {
+            dispatch(registerUser(response.data, response.data.result))
+            console.log(response)
+            // if(response.data.result) {
+            //     this.props.history.push('/profile')
+            // }
+        })
         .catch(error => console.log("register error: ", error))
     }
     
