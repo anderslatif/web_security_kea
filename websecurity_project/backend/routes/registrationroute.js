@@ -4,6 +4,7 @@ const router = express.Router();
 const User = require('../models/User');
 const Post = require('../models/Post');
 const bcrypt = require('bcryptjs');
+const salt = bcrypt.genSaltSync(10);
 const helperFunctions = require('../helper-functions');
 const dummyUser = require('./dummy-user');
 
@@ -40,7 +41,7 @@ dummyUser.userRole = userRoles.scriptKiddie;
                     helperFunctions.logToFile(`User is trying to sign up with an existing user: ${user.email}`, 'intrusions.txt');
                     res.send('User already exists');
                 } else {
-                    bcrypt.hash(requestedUser.password, 10, (error, hash) => {
+                    bcrypt.hash(requestedUser.password, salt, (error, hash) => {
                         if (error) {
                             helperFunctions.logToFile(`Error hashing the password: ${ error}`, 'backend-errors.txt');
                         }

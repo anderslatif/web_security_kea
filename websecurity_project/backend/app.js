@@ -113,7 +113,6 @@ app.use(resetpasswordroute);
 app.use(thoughtsroute);
 
 app.get('/', (req, res) => {
-    console.log("was called");
    res.send('Welcome to the awesome book api. Feel right at home exploring.');
 });
 

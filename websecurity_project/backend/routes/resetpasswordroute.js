@@ -5,6 +5,7 @@ const helperFunctions = require('../helper-functions');
 const User = require('../models/User');
 const ResetPassword = require('../models/ResetPassword');
 const bcrypt = require('bcryptjs');
+const salt = bcrypt.genSaltSync(10);
 const crypto = require('crypto');
 
 router.post('/reset-password', (req, res) => {
@@ -32,7 +33,7 @@ router.post('/reset-password', (req, res) => {
                     }).then((resetPassword) => {
                         const token = crypto.randomBytes(32).toString('hex');
 
-                        bcrypt.hash(token, 10, (error, hash) => {
+                        bcrypt.hash(token, salt, (error, hash) => {
                             if (error) {
                                 helperFunctions.logToFile(`Error hashing the password: ${ error}`, 'backend-errors.txt');
                             }
