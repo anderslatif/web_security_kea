@@ -23,7 +23,7 @@ module.exports = {
 
     // email-log.txt
     // email-errors.txt
-    fs.writeFile(path.join(__dirname, '..', '..', '..', file), log, (err) => {
+    fs.writeFile(path.join(__dirname, '..', '..', '..', 'logs', file), log, (err) => {
       if (err) {
         console.log(err);
         // return logToFile("Failed writing to log files: " + err, "backend-errors.txt");
