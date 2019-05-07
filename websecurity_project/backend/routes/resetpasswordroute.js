@@ -4,7 +4,7 @@ const router = express.Router();
 const helperFunctions = require('../helper-functions');
 const User = require('../models/User');
 const ResetPassword = require('../models/ResetPassword');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const crypto = require('crypto');
 
 router.post('/reset-password', (req, res) => {
