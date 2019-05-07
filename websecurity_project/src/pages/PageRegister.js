@@ -77,6 +77,8 @@ class PageRegister extends Component {
         password: password,
         passwordRepeated: passwordRepeated
       }
+
+      
       // this.props.onRegisterUser(register);
       // axios({
       //   method
