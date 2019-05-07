@@ -23,20 +23,17 @@ class ComponentCreatePosts extends Component {
     getFilepost = (ev) => {
         const file = ev.target.files[0];
         const inputName = ev.target.name;
-        this.setState({ [inputName]: file });
 
-        // if(file) {
-        //     const filereader = new FileReader();
-        //     filereader.onload = (e) => {
-        //         this.setState({[inputName]: e.target.result})
-        //     }
-        //     filereader.readAsText(file);
-        // }
-
-
-        // axios.post(`${process.env.Address ? process.env.Address : "pedros.tech"}:9090/book`, { dataFile })
-        // .then(responese => console.log('resonse file', responese))
-        // .catch(err => console.log('error file', err));
+        const dataFile = new FormData();
+        dataFile.append('file', file, file.name);
+        axios.post('http://localhost:9090/book', dataFile)
+        .then(response => {
+            this.setState({
+                [inputName]: file,
+                [`${inputName}path`]: response.path
+            });
+        })
+        .catch(err => console.log('error file', err));
 
 
         // console.log("file before post: ", {dataFile});
