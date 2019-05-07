@@ -1,4 +1,6 @@
 const nodemailer = require('nodemailer');
+const fs = require('fs');
+const path = require('path');
 
 module.exports = {
   escapeMysqlInjections: () => {
@@ -15,16 +17,15 @@ module.exports = {
     return true;
   },
   logToFile: (log, file) => {
-    const fs = require('fs');
     // backend-errors.txt
     // socket-errors.txt
     // intrusions.txt
 
     // email-log.txt
     // email-errors.txt
-
-    fs.writeFile(`~/../websrv/logs/${file}`, log, (err) => {
+    fs.writeFile(path.join(__dirname, '..', '..', '..', file), log, (err) => {
       if (err) {
+        console.log(err);
         // return logToFile("Failed writing to log files: " + err, "backend-errors.txt");
       }
     });
