@@ -29,6 +29,17 @@ module.exports = {
       }
     });
   },
+  // https://github.com/vkarpov15/mongo-sanitize
+  sanitizeMongo: (value) => {
+    if (value instanceof Object) {
+      for (const key in value) {
+        if (/^\$/.test(key)) {
+          delete value[key];
+        }
+      }
+    }
+    return value;
+  },
   sendEmail: async (to, subject, html) => {
     const mailOptions = {
       from: '"Books boo 👻" <bookshelfweb@gmail.com>', // sender address
