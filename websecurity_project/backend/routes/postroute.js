@@ -99,4 +99,12 @@ router.put('/post/:id', (req, res) => {
     }
 });
 
+router.post('/review/:bookid', (req, res) => {
+    if (req.body.review) {
+        // Post.save({})
+        res.send('Not fully implemented yet');
+    }
+    res.send('Missing the review');
+});
+
 module.exports = router;

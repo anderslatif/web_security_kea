@@ -64,7 +64,7 @@ export const createPosts = (datas) => ({
 
 export const actionCreatePosts = (postDatas) => {
     return dispatch => {
-        return axios.post("http://localhost:8080/post", postDatas)
+        return axios.post("http://localhost:8080/post", postDatas.file)
                     .then(response => {
                         dispatch(createPosts(response.data))
                         console.log(response)
