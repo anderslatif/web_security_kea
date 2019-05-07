@@ -54,10 +54,9 @@ const usersReducerDefaultReducer = {
 export default (state = usersReducerDefaultReducer, action) => {
     switch(action.type) {
         case REGISTER_USER:
-            return [
-                ...state, 
-                action.user
-            ];
+            return {
+                ...state
+            };
         case LOGIN_USER:
             return {
                 ...state,

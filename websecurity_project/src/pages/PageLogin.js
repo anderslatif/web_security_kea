@@ -47,12 +47,10 @@ class PageLogin extends Component {
     // }
     componentDidUpdate() {
         console.log(this.props.isLoggedIn)
-        function requireAuth(nextState, replace) {
-            if (this.props.isLoggedIn) {
-                this.props.location.pathname('/profile')
-                // browserHistory.push("/profile")
-            }
-          }
+        if (this.props.isLoggedIn) {
+            this.props.history.push('/profile')
+            // browserHistory.push("/profile")
+        }
     }
     render(props) {
     return (
