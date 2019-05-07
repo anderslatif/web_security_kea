@@ -35,21 +35,14 @@ router.get('/posts/:userid', (req, res) => {
 
 
 router.post('/post', async (req, res) => {
-    // todo check for fields
     if (req.body.title && req.body.author && req.body.description) {
         // TODO sanitize input
         const { title, description, author, file, cover } = req.body;
 
-        let coverJson = null;
-        let bookJson = null;
+        const coverJson = null;
+        const bookJson = null;
 
-        if (file || cover) {
-            console.log('0000 ', req.body);
-           /* const resultCoverPromise = await fetch('http://localhost:9090/cover', { method: 'POST', body: cover });
-            const resultBookPromise = await fetch('http://localhost:9090/book', { method: 'POST', body: { file } });
-            coverJson = await resultCoverPromise.json();
-            bookJson = await resultBookPromise.json(); */
-        }
+        console.log('888888 ', req.body.file);
 
         const post = new Post({
             title,
@@ -70,8 +63,7 @@ router.post('/post', async (req, res) => {
             res.send({ result: post });
         });
     } else {
-        helperFunctions.logToFile("Someone is trying to POST a post and doesn't have the required fields", 'intrusions.txt');
-        res.status(200).send();
+        res.send('Missing fields');
     }
 });
 
