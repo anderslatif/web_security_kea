@@ -39,7 +39,7 @@ export const fetchPosts = (posts) => ({
 export const fetchAllPosts = () => {
     return async (dispatch) => {
         try {
-            const response = await axios.get(`${process.env.ADDRESS}:8080/posts`);
+            const response = await axios.get(`${process.env.Address ? process.env.Address : "pedros.tech"}:8080/posts`);
             console.log(response.data);
             dispatch(fetchPosts(response.data));
         } catch (error) {
@@ -64,7 +64,7 @@ export const createPosts = (datas) => ({
 
 export const actionCreatePosts = ({ cover, file, title, author, description }) => {
     return (dispatch) => {
-        return axios.post(`${process.env.ADDRESS}:9090/book`, { cover, file, title, author, description })
+        return axios.post(`${process.env.Address ? process.env.Address : "pedros.tech"}:9090/book`, { cover, file, title, author, description })
           .then(response => {
             dispatch(actionCreatePosts(response.data));
           })
@@ -84,7 +84,7 @@ export const createReview = (review) => ({
 
 export const actionCreateReview = ({ review, userId, bookId }) => {
     return (dispatch) => {
-        return axios.post(`${process.env.ADDRESS}:8080/idontknowtheroute`, {
+        return axios.post(`${process.env.Address ? process.env.Address : "pedros.tech"}:8080/idontknowtheroute`, {
             review,
             userId,
             bookId

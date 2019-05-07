@@ -3,7 +3,9 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
 const Post = require('../models/Post');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
+
+const salt = bcrypt.genSaltSync(10);
 const helperFunctions = require('../helper-functions');
 const dummyUser = require('./dummy-user');
 
@@ -41,7 +43,7 @@ dummyUser.userRole = userRoles.scriptKiddie;
                     helperFunctions.logToFile(`User is trying to sign up with an existing user: ${user.email}`, 'intrusions.txt');
                     res.send('User already exists');
                 } else {
-                    bcrypt.hash(requestedUser.password, 10, (error, hash) => {
+                    bcrypt.hash(requestedUser.password, salt, (error, hash) => {
                         if (error) {
                             helperFunctions.logToFile(`Error hashing the password: ${ error}`, 'backend-errors.txt');
                         }
@@ -50,6 +52,8 @@ dummyUser.userRole = userRoles.scriptKiddie;
                         requestedUser.userRole = userRoles.user;
 
                         new User(requestedUser).save(error => {
+                            console.log(error);
+
                             if (error) {
                                 helperFunctions.logToFile(`MongoFailed${ error}`, 'mongo-errors.txt');
                             } else {
@@ -63,7 +67,7 @@ dummyUser.userRole = userRoles.scriptKiddie;
         }
     } else {
         // "Someone is trying to use this route without knowing exactly what fields are required
-        res.status(200).send();
+        res.send('Missing Required fields');
     }
 });
 
@@ -72,7 +76,6 @@ router.post('/login', (req, res) => {
     if (req.body.email && req.body.password) {
         const requestedUser = {
             email: req.body.email,
-            // password: req.body.password,
         };
 
         User.find(requestedUser).exec((error, foundUsers) => {
@@ -95,7 +98,7 @@ router.post('/login', (req, res) => {
         });
     } else {
         // "Someone is trying to use this route without knowing exactly what fields are required
-        res.status(200).send();
+        res.send('Missing Required fields');
     }
 });
 
@@ -141,7 +144,7 @@ router.get('/logout', (req, res) => {
             if (error) {
                 helperFunctions.logToFile(`Error destroying the session: ${ error}`, 'backend-errors.txt');
             }
-            res.status(200).send('OK');
+            res.status(500).send();
         });
     }
 });

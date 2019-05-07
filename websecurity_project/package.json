@@ -23,8 +23,13 @@
     "socket.io-client": "^2.2.0"
   },
   "scripts": {
+<<<<<<< HEAD
     "start": "react-scripts start",
     "build": "ADDRESS=pedros.tech NODE_ENV=production react-scripts build",
+=======
+    "start": "NODE_ENV=development react-scripts start",
+    "build": "NODE_ENV=production react-scripts build",
+>>>>>>> 77a33eb74e68c1e0593f08fed089fd69c59da093
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "compile:sass": "node-sass src/style/style.scss public/style.css -w"

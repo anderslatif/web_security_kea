@@ -23,7 +23,7 @@ module.exports = {
     // email-log.txt
     // email-errors.txt
 
-    fs.writeFile(`~/../websrv/logs/${ file}`, log, (err) => {
+    fs.writeFile(`~/../websrv/logs/${file}`, log, (err) => {
       if (err) {
         // return logToFile("Failed writing to log files: " + err, "backend-errors.txt");
       }

@@ -4,7 +4,7 @@ import { Provider } from "react-redux";
 import configureStore from "./store/configureStore";
 import { fetchAllPosts } from "./actions/postActions";
 // import store from "./store/configureStore";
-
+require('dotenv').config();
 const store = configureStore();
 // store.dispatch(fetchAllPosts());
 // import logo from './logo.svg';
@@ -14,7 +14,6 @@ const store = configureStore();
 
 // console.log(state);
 // console.log(store.getState());
-console.log(store.getState())
 console.log(store.getState())
 const Jsx = () => (
   <Provider store={store}>
