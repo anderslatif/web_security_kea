@@ -26,7 +26,7 @@ class ComponentCreatePosts extends Component {
 
         const dataFile = new FormData();
         dataFile.append('file', file, file.name);
-        axios.post('http://localhost:9090/book', dataFile)
+        axios.post('http://localhost:9090/file', dataFile)
         .then(response => {
             this.setState({
                 [inputName]: file,
