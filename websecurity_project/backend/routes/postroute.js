@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 const Post = require('../models/Post');
 const helperFunctions = require('../helper-functions');
-const fetch = require('node-fetch');
+const mongoose = require('mongoose');
 
 router.get('/posts', (req, res) => {
     if (req.session.userId) {
@@ -39,9 +39,6 @@ router.post('/post', async (req, res) => {
         // TODO sanitize input
         const { title, description, author, book, cover } = req.body;
 
-        const coverJson = null;
-        const bookJson = null;
-
 
         const post = new Post({
             title,
@@ -49,10 +46,9 @@ router.post('/post', async (req, res) => {
             author,
             bookOwner: req.session.userid,
             cover,
-            file
+            book,
+            reviews: []
         });
-
-        // TODO Validate the response from the file micro service
 
         post.save(error => {
             if (error) {
@@ -99,12 +95,21 @@ router.put('/post/:id', (req, res) => {
     }
 });
 
-router.post('/review/:bookid', (req, res) => {
-    if (req.body.review) {
-        // Post.save({})
-        res.send('Not fully implemented yet');
+router.post('/review/:postId', (req, res) => {
+    if (req.session.userId) {
+        if (req.body.review) {
+            Post.update({ _id: req.params.postId }, { $push: { reviews: { review: req.body.review } } }, (error, review) => {
+                if (error) {
+                    helperFunctions.logToFile(`MongoFailed${error}`, 'mongo-errors.txt');
+                }
+                res.send({ review });
+            });
+        } else {
+            res.send('Missing the review');
+        }
+    } else {
+        res.send('Not logged in');
     }
-    res.send('Missing the review');
 });
 
 module.exports = router;

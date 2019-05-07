@@ -22,6 +22,7 @@ const PostSchema = new mongoose.Schema({
     description: {
         type: String
     },
+    reviews: [],
     postDate: {
         type: Date,
         default: Date.now

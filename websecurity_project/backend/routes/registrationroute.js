@@ -16,7 +16,7 @@ const userRoles = Object.freeze({
 dummyUser.userRole = userRoles.scriptKiddie;
 
     router.post('/signup', (req, res) => {
-    console.log("signuptest", req.body);
+    console.log('signuptest', req.body);
     const { email, password, passwordRepeated } = req.body;
     if (email && password && passwordRepeated) {
         if (password !== passwordRepeated) {
@@ -120,7 +120,7 @@ router.get('/profile', (req, res) => {
                     Post.find({ id: { $eq: user._id } }).exec((err, posts) => {
                         if (err) {
                             helperFunctions.logToFile(`MongoFailed${ error}`, 'mongo-errors.txt');
-                            res.send();
+                            res.status(500).send();
                         }
                         const result = { email, country, socialNetwork };
                         result.postsNumber = posts.length;
@@ -135,6 +135,20 @@ router.get('/profile', (req, res) => {
         helperFunctions.logToFile('Someone is trying to access a profile Page while not being logged in', 'intrusions.txt');
         res.send('You are not logged in');
     }
+});
+
+router.put('/profile', (req, res) => {
+    // upsert true creates the object if it doesn't exist
+    if (req.session.userId) {
+        User.findOneAndUpdate({ _id: req.session.id }, req.body, { upsert: false }, (error, user) => {
+            if (error) {
+                helperFunctions.logToFile(`MongoFailed${ error}`, 'mongo-errors.txt');
+                res.status(500).send();
+            }
+            res.send('Successfully updated the user');
+        });
+    }
+    res.send('Not logged in');
 });
 
 router.get('/logout', (req, res) => {
