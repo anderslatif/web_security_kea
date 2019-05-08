@@ -16,7 +16,7 @@ require('dotenv').config();
 const credentials = { key: privateKey, cert: certificate };
 
 // const server = tls.createServer(credentials).listen(8080, '0.0.0.0');
-const server = require('http').createServer(app).listen(8080, 'pedros.tech');
+const server = require('http').createServer(app).listen(8080, '0.0.0.0');
 const io = require('socket.io')(server);
 const bodyParser = require('body-parser');
 
