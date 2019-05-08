@@ -26,7 +26,7 @@ class ComponentCreatePosts extends Component {
 
         const dataFile = new FormData();
         dataFile.append('file', file, file.name);
-        axios.post('http://localhost:9090/file', dataFile)
+        axios.post('https://localhost:9090/file', dataFile)
         .then(response => {
             this.setState({
                 [inputName]: file,
@@ -48,7 +48,7 @@ class ComponentCreatePosts extends Component {
     makePostReques = (ev) => {
         this.props.onCreatePosts(this.state);
     //     let { title, description, author, cover, file } = this.state;
-    //     axios.post("http://localhost:8080/post", {
+    //     axios.post("https://localhost:8080/post", {
     //         title,
     //         description,
     //         author,

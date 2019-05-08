@@ -28,7 +28,7 @@ export const registerUser = (datas, isRegistered) => ({
 
 export const actionRegisterUser = (datas) => {
     return dispatch => {
-        return axios.post("http://localhost:8080/signup", datas)
+        return axios.post("https://localhost:8080/signup", datas)
         .then(response => {
             dispatch(registerUser(response.data, response.data.result))
             console.log(response)
@@ -38,22 +38,22 @@ export const actionRegisterUser = (datas) => {
         })
         .catch(error => console.log("register error: ", error))
     }
-    
+
     // return (dispatch) => {
-    //     return fetch("http://localhost:8080/signup", {  
-    //         method: 'POST',  
-    //         headers: {  
-    //             'Access-Control-Allow-Origin':'*' 
-    //         },  
+    //     return fetch("https://localhost:8080/signup", {
+    //         method: 'POST',
+    //         headers: {
+    //             'Access-Control-Allow-Origin':'*'
+    //         },
     //         body: JSON.stringify({...datas})
     //     })
-    //     .then(function (datas) {  
-    //       console.log('Request success: ', datas);  
+    //     .then(function (datas) {
+    //       console.log('Request success: ', datas);
     //       dispatch(registerUser(datas.body));
     //       //console.log(response);
-    //     })  
-    //     .catch(function (error) {  
-    //       console.log('Request failure: ', error);  
+    //     })
+    //     .catch(function (error) {
+    //       console.log('Request failure: ', error);
     //     });
         // return axios.post(`${authUrl}/signup`, data)
         //     .then(response => {
@@ -80,7 +80,7 @@ export const loginUser = (datas, isLoggedIn) => ({
 
 export const actionLoginUser = (datas) => {
     return dispatch => {
-        return axios.post("http://localhost:8080/login", datas)
+        return axios.post("https://localhost:8080/login", datas)
         .then(response => {
             dispatch(loginUser(response, response.data.result))
             console.log(response.data.result)
@@ -88,20 +88,20 @@ export const actionLoginUser = (datas) => {
         .catch(error => console.log("login error: ", error))
     }
     // return (dispatch) => {
-    //     return fetch("http://localhost:8080/login", {  
-    //         method: 'POST',  
-    //         headers: {  
-    //             'Access-Control-Allow-Origin':'*' 
-    //         },  
+    //     return fetch("https://localhost:8080/login", {
+    //         method: 'POST',
+    //         headers: {
+    //             'Access-Control-Allow-Origin':'*'
+    //         },
     //         body: JSON.stringify(datas)
     //     })
-    //     .then(function (datas) {  
-    //       console.log('Request success: ', datas);  
+    //     .then(function (datas) {
+    //       console.log('Request success: ', datas);
     //       dispatch(loginUser(datas.body));
     //       //console.log(response);
-    //     })  
-    //     .catch(function (error) {  
-    //       console.log('Request failure: ', error);  
+    //     })
+    //     .catch(function (error) {
+    //       console.log('Request failure: ', error);
     //     });
     // };
     //     return axios.post(`${authUrl}/login`, { email, password })
@@ -188,7 +188,7 @@ export const actionCreateProfileImage = (profile) => {
 // export const fetchLoggedUser = () => {
 //     return async (dispatch) => {
 //         try {
-//             const response = await axios.get("http://localhost:8080/profile");
+//             const response = await axios.get("https://localhost:8080/profile");
 //             console.log(response.data);
 //             dispatch(fetchUser(response.data));
 //         }

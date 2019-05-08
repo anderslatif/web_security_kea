@@ -55,10 +55,10 @@ class PageRegister extends Component {
   //   let inputRegisterValue = ev.target.value;
   //   this.setState({[inputRegisterName]: inputRegisterValue})
   // }
-  
+
   // handleSubmitRegister = (ev) => {
   //   ev.preventDefault();
-  //   let { email, password, passwordRepeated } = this.state; 
+  //   let { email, password, passwordRepeated } = this.state;
   //   let register = {
   //     email: email,
   //     password: password,
@@ -78,15 +78,15 @@ class PageRegister extends Component {
         passwordRepeated: passwordRepeated
       }
 
-      
+
       this.props.onRegisterUser(register);
       // axios({
       //   method
       // })
-      // axios.post("http://localhost:8080/signup", register)
+      // axios.post("https://localhost:8080/signup", register)
       //       .then(result => console.log("success register: ", result.data))
       //       .catch(error => console.log("error: ", error))
-      // axios.post("http://localhost:8080/signup", {register: "user"}).then(response => console.log(response)).catch(error => console.log(error))
+      // axios.post("https://localhost:8080/signup", {register: "user"}).then(response => console.log(response)).catch(error => console.log(error))
       // console.log(`
       //   email: ${this.state.email} \n
       //   password: ${this.state.password} \n
