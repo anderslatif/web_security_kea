@@ -106,7 +106,7 @@ app.use(session({
 }));
 
 const corsMiddleware = (req, res, next) => {
-    res.header('Access-Control-Allow-Origin', 'http://pedros.tech:8080');
+    res.header('Access-Control-Allow-Origin', 'http://pedros.tech');
     res.header('Access-Control-Allow-Methods', 'OPTIONS, GET, PUT, PATCH, POST, DELETE');
     res.header('Access-Control-Allow-Headers', 'Content-Type, X-Requested-With, Authorization');
 
