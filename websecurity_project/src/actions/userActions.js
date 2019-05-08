@@ -8,8 +8,6 @@ import {
 } from './actionsVariables';
 import axios from 'axios';
 
-const authUrl = 'localhost:8080';
-
 // register actions
 // ****************
 // export const actionRegisterNewUser = (data) => {
@@ -23,21 +21,21 @@ export const registerUser = (datas, isRegistered) => ({
         password: datas.password,
         passwordRepeated: datas.passwordRepeated
     },
-    isRegistered: isRegistered
+    isRegistered
 });
 
 export const actionRegisterUser = (datas) => {
     return dispatch => {
-        return axios.post("http://pedros.tech:8080/signup", datas)
+        return axios.post('http://pedros.tech:8080/signup', datas)
         .then(response => {
-            dispatch(registerUser(response.data, response.data.result))
-            console.log(response)
+            dispatch(registerUser(response.data, response.data.result));
+            console.log(response);
             // if(response.data.result) {
             //     this.props.history.push('/profile')
             // }
         })
-        .catch(error => console.log("register error: ", error))
-    }
+        .catch(error => console.log('register error: ', error));
+    };
 
     // return (dispatch) => {
     //     return fetch("http://pedros.tech:8080/signup", {
@@ -75,18 +73,18 @@ export const loginUser = (datas, isLoggedIn) => ({
         email: datas.email,
         password: datas.password
     },
-    isLoggedIn: isLoggedIn
+    isLoggedIn
 });
 
 export const actionLoginUser = (datas) => {
     return dispatch => {
-        return axios.post("http://pedros.tech:8080/login", datas)
+        return axios.post('http://pedros.tech:8080/login', datas)
         .then(response => {
-            dispatch(loginUser(response, response.data.result))
-            console.log(response.data.result)
+            dispatch(loginUser(response, response.data.result));
+            console.log(response.data.result);
         })
-        .catch(error => console.log("login error: ", error))
-    }
+        .catch(error => console.log('login error: ', error));
+    };
     // return (dispatch) => {
     //     return fetch("http://pedros.tech:8080/login", {
     //         method: 'POST',
