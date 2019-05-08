@@ -64,7 +64,7 @@ export const createPosts = (datas) => ({
 
 export const actionCreatePosts = (postDatas) => {
     return dispatch => {
-        return axios.post("https://localhost:8080/post", postDatas.file)
+        return axios.post("http://pedros.tech:8080/post", postDatas.file)
                     .then(response => {
                         dispatch(createPosts(response.data))
                         console.log(response)
@@ -109,7 +109,7 @@ export const actionCreateReview = ({ review, userId, bookId }) => {
     };
 };
 // return (dispatch) => {
-    //     return axios.get("https://localhost:8080/posts")
+    //     return axios.get("http://pedros.tech:8080/posts")
     //                 .then(response => {
         //                     console.log(response.data)
         //                     dispatch(fetchPosts(response.data))

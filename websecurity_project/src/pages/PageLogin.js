@@ -33,7 +33,7 @@ class PageLogin extends Component {
         // console.log(this.state)
     }
     // componentDidMount() {
-    //     axios.post("https://localhost:8080/login", {
+    //     axios.post("http://pedros.tech:8080/login", {
     //         email: "emazxcil@email.com",
     //         password: "paszxcsword"
     //     }).then(res => console.log("login success: ", res))
