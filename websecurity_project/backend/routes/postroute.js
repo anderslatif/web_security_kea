@@ -3,7 +3,6 @@ const express = require('express');
 const router = express.Router();
 const Post = require('../models/Post');
 const helperFunctions = require('../helper-functions');
-const mongoose = require('mongoose');
 
 router.get('/posts', (req, res) => {
     if (req.session.userId) {
