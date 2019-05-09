@@ -15,8 +15,8 @@ require('dotenv').config();
 
 const credentials = { key: privateKey, cert: certificate };
 
-// const server = tls.createServer(credentials).listen(8080);
-const server = require('http').createServer(app).listen(8080);
+// const server = tls.createServer(credentials).listen(8080, '0.0.0.0');
+const server = require('http').createServer(app).listen(8080, '0.0.0.0');
 const io = require('socket.io')(server);
 const bodyParser = require('body-parser');
 
@@ -32,6 +32,12 @@ app.use(morgan('combined', ':remote-addr - :remote-user [:date] ":method :url HT
 const rateLimit = require('express-rate-limit');
 
 app.enable('trust proxy');
+
+const fileUpload = require('express-fileupload');
+
+app.use(fileUpload({
+    limits: { fileSize: 50 * 1024 * 1024 * 100 },
+}));
 
 const helperFunctions = require('./helper-functions');
 
@@ -98,6 +104,23 @@ app.use(session({
         mongooseConnection: db
     })
 }));
+
+const corsMiddleware = (req, res, next) => {
+    res.header('Access-Control-Allow-Origin', 'http://pedros.tech');
+    res.header('Access-Control-Allow-Methods', 'OPTIONS, GET, PUT, PATCH, POST, DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, X-Requested-With, Authorization');
+
+    console.log("testtesttest")
+
+    if (req.method == 'OPTIONS') {
+        console.log("OPTIONS")
+        res.sendStatus(200);
+    } else {
+        next();
+    }
+};
+
+app.use(corsMiddleware);
 
 // ----------------------- routes ----------------------
 

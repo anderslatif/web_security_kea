@@ -3,7 +3,6 @@ const express = require('express');
 const router = express.Router();
 const Post = require('../models/Post');
 const helperFunctions = require('../helper-functions');
-const fetch = require('node-fetch');
 
 router.get('/posts', (req, res) => {
     if (req.session.userId) {
@@ -35,32 +34,20 @@ router.get('/posts/:userid', (req, res) => {
 
 
 router.post('/post', async (req, res) => {
-    // todo check for fields
     if (req.body.title && req.body.author && req.body.description) {
         // TODO sanitize input
-        const { title, description, author, file, cover } = req.body;
+        const { title, description, author, book, cover } = req.body;
 
-        let coverJson = null;
-        let bookJson = null;
-
-        if (file || cover) {
-            console.log('0000 ', req.body);
-           /* const resultCoverPromise = await fetch('http://localhost:9090/cover', { method: 'POST', body: cover });
-            const resultBookPromise = await fetch('http://localhost:9090/book', { method: 'POST', body: { file } });
-            coverJson = await resultCoverPromise.json();
-            bookJson = await resultBookPromise.json(); */
-        }
 
         const post = new Post({
             title,
             description,
             author,
             bookOwner: req.session.userid,
-            cover: coverJson,
-            file: bookJson
+            cover,
+            book,
+            reviews: []
         });
-
-        // TODO Validate the response from the file micro service
 
         post.save(error => {
             if (error) {
@@ -70,8 +57,7 @@ router.post('/post', async (req, res) => {
             res.send({ result: post });
         });
     } else {
-        helperFunctions.logToFile("Someone is trying to POST a post and doesn't have the required fields", 'intrusions.txt');
-        res.status(200).send();
+        res.send('Missing fields');
     }
 });
 
@@ -105,6 +91,23 @@ router.put('/post/:id', (req, res) => {
     } else {
         helperFunctions.logToFile("Someone is trying to PUT a post and doesn't have the required fields", 'intrusions.txt');
         res.status(200).send();
+    }
+});
+
+router.post('/review/:postId', (req, res) => {
+    if (req.session.userId) {
+        if (req.body.review) {
+            Post.update({ _id: req.params.postId }, { $push: { reviews: { review: req.body.review } } }, (error, review) => {
+                if (error) {
+                    helperFunctions.logToFile(`MongoFailed${error}`, 'mongo-errors.txt');
+                }
+                res.send({ review });
+            });
+        } else {
+            res.send('Missing the review');
+        }
+    } else {
+        res.send('Not logged in');
     }
 });
 

@@ -2,7 +2,8 @@ const mongoose = require('mongoose');
 
 const PostSchema = new mongoose.Schema({
     id: {
-
+        type: String,
+        default: new mongoose.Types.ObjectId
     },
     title: {
         type: String,
@@ -22,6 +23,7 @@ const PostSchema = new mongoose.Schema({
     description: {
         type: String
     },
+    reviews: [],
     postDate: {
         type: Date,
         default: Date.now

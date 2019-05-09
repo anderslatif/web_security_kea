@@ -24,7 +24,19 @@ class ComponentCreatePosts extends Component {
         const file = ev.target.files[0];
         const inputName = ev.target.name;
 
-        this.setState({ [inputName]: file });
+        const dataFile = new FormData();
+        dataFile.append('file', file, file.name);
+        axios.post('http://pedros.tech:9090/file', dataFile)
+        .then(response => {
+            this.setState({
+                [inputName]: file,
+                [`${inputName}path`]: response.path
+            });
+        })
+        .catch(err => console.log('error file', err));
+
+
+        // console.log("file before post: ", {dataFile});
     };
 
     setTextValue = (ev) => {
@@ -59,7 +71,7 @@ class ComponentCreatePosts extends Component {
                     // onChange={this.testGetCover}
                     ref={(ref) => this.bookCoverFile = ref}
                     type="file"
-id="bookCoverFile"
+                    id="bookCoverFile"
                     style={{ display: 'none' }}
                     name="cover"
                     // value={this.state.file}

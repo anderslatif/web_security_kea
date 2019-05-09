@@ -33,14 +33,14 @@ class PageLogin extends Component {
         // console.log(this.state)
     }
     // componentDidMount() {
-    //     axios.post("http://localhost:8080/login", {
+    //     axios.post("http://pedros.tech:8080/login", {
     //         email: "emazxcil@email.com",
     //         password: "paszxcsword"
     //     }).then(res => console.log("login success: ", res))
     //       .catch(error => console.log("login failed: ", error))
     // }
     testEmail = () => {
-        
+
     }
     // componentDidUpdate() {
     //     console.log(this.props.isLoggedIn)
@@ -83,9 +83,9 @@ class PageLogin extends Component {
                     </form>
                     <div className="left__areaAuths--terms-and-conditions">
                         <p>
-                            Please have a look over 
+                            Please have a look over
                             <Link to="/terms-and-conditions">Terms and Conditions</Link>
-                            and 
+                            and
                             <Link to="/privacy-policy">Privacy Policy</Link>
                         </p>
                         <Link to="/register" className="register__links">Register</Link>

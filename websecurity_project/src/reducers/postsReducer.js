@@ -1,11 +1,11 @@
 import {
     addPost
 } from "../actions/authActions";
-import axios from "axios"; 
+import axios from "axios";
 import {
-    ADD_POST, 
+    ADD_POST,
     REMOVE_POSTS,
-    UPDATE_POST, 
+    UPDATE_POST,
     FETCH_POSTS,
     CREATE_POST,
     CREATE_REVIEW
@@ -71,15 +71,15 @@ export default (state = postsReducerDefaultState, action) => {
             return state;
         }
     };
-    
+
     // case REMOVE_POSTS:
     //     return state.filter(({id}) => {
     //         return id === action.id
     //     });
-    
+
     // case ADD_POST:
-    //     return axios.post("https://localhost:8080/post", {
-                    
+    //     return axios.post("http://pedros.tech:8080/post", {
+
     //             })
     //             .then((res) => console.log(res))
     //             .catch((error) => console.log(error));
