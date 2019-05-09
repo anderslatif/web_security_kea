@@ -51,19 +51,19 @@ class PageBook extends Component {
   
   changePages = (ev) => {
     const pressedKey = ev.keyCode;
-    console.log(pressedKey)
+    // console.log(pressedKey)
     if(pressedKey === "37") {
-      console.log("left");
+      // console.log("left");
       this.changePage(-1);
     } else if(pressedKey === "39") {
-      console.log("right");
+      // console.log("right");
       this.changePage(1);
     }
   }
 
   switchPages = (ev) => {
     if(ev.keyCode === "37") {
-      console.log("left");
+      // console.log("left");
       this.changePage(-1);
     }
   }

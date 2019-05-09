@@ -46,7 +46,7 @@ class PageLogin extends Component {
     //     console.log(this.props.isLoggedIn)
     // }
     componentDidUpdate() {
-        console.log(this.props.isLoggedIn)
+        // console.log(this.props.isLoggedIn)
         if (this.props.isLoggedIn) {
             this.props.history.push('/profile')
             // browserHistory.push("/profile")

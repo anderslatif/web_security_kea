@@ -39,7 +39,7 @@ class ComponentFeedPosts extends Component {
             // userId: userId
             // bookId: bookId,
         }
-        console.log(datas);
+        // console.log(datas);
         this.props.onCreateReview(datas);
         ev.target.elements.review.value = "";
     }

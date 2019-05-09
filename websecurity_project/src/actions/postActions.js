@@ -40,7 +40,7 @@ export const fetchAllPosts = () => {
     return async (dispatch) => {
         try {
             const response = await axios.get(`${process.env.Address ? process.env.Address : "pedros.tech"}:8080/posts`);
-            console.log(response.data);
+            // console.log(response.data);
             dispatch(fetchPosts(response.data));
         } catch (error) {
             throw (error);
@@ -67,7 +67,7 @@ export const actionCreatePosts = (postDatas) => {
         return axios.post("http://localhost:8080/post", postDatas)
                     .then(response => {
                         dispatch(createPosts(response.data))
-                        console.log(response)
+                        // console.log(response)
                     })
                     .catch(error => console.log("post error: ", error))
     }

@@ -4,7 +4,8 @@ import {
     FETCH_USER,
     EDIT_PROFILE,
     CREATE_STATUS,
-    PROFILE_IMAGE
+    PROFILE_IMAGE,
+    CREATE_PROFILE
 } from './actionsVariables';
 import axios from 'axios';
 
@@ -83,7 +84,7 @@ export const actionLoginUser = (datas) => {
         return axios.post("http://localhost:8080/login", datas)
         .then(response => {
             dispatch(loginUser(response, response.data.result))
-            console.log(response.data.result)
+            // console.log(response.data.result)
         })
         .catch(error => console.log("login error: ", error))
     }
@@ -126,7 +127,7 @@ export const actionCreateStatus = ({ status }) => {
     return (dispatch) => {
         return axios.post(`${process.env.Address ? process.env.Address : 'pedros.tech'}:8080/thoughts`, { status })
                     .then(response => {
-                        console.log(response);
+                        // console.log(response);
                         dispatch(createStatus(response.data));
                     })
                     .catch(error => {
@@ -146,13 +147,32 @@ export const actionCreateProfileImage = (profile) => {
     return (dispatch) => {
         return axios.post(`${process.env.Address ? process.env.Address : 'pedros.tech'}:8080/idontknowtheroute`, { profile })
                     .then(response => {
-                        console.log(response);
+                        // console.log(response);
                         dispatch(createProfileImage(response.data));
                     })
                     .catch(error => {
                         throw (error);
                     });
     };
+};
+
+// create profile
+// ***************
+
+export const createProfileDatas = (profile) => ({
+    type: CREATE_PROFILE,
+    profile
+});
+
+export const actionCreateProfileDatas = (profile) => {
+    return (dispatch) => {
+        return axios.post("http://localhost:8080/profile", profile)
+                    .then(response => {
+                        // console.log(response)
+                        dispatch(createProfileDatas(response.data))
+                    })
+                    .catch(error => console.log(error))
+    }
 };
 
 // Initial add or/and Edit profile

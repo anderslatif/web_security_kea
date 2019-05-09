@@ -35,17 +35,15 @@ class ComponentAbout extends Component {
           </div>
           <div className="about__contentDivision">
             <div className="about__fullNameSubsection">
-              <button className="addFullNameContent">
+              <button className="addFullNameContent" onClick={this.props.handleAddProfile}>
                 <svg className="addFullName">
                   <use href="./image/sprite.svg#icon-plus-circle"></use>
                 </svg>
                 <p>Add Fullname</p>
               </button>
-              {/* <input type="text" />
-              <button>approve</button> */}
             </div>
             <div className="about__addressSubsection">
-              <button className="addAddressContent">
+              <button className="addAddressContent" onClick={this.props.handleAddProfile}>
                 <svg className="addAddress">
                   <use href="./image/sprite.svg#icon-plus-circle"></use>
                 </svg>
@@ -53,7 +51,7 @@ class ComponentAbout extends Component {
               </button>
             </div>
             <div className="about__emailAddressSubsection">
-              <button className="addEmailAddressContent">
+              <button className="addEmailAddressContent" onClick={this.props.handleAddProfile}>
                 <svg className="addEmailAddress">
                   <use href="./image/sprite.svg#icon-plus-circle"></use>
                 </svg>
@@ -61,7 +59,7 @@ class ComponentAbout extends Component {
               </button>
             </div>
             <div className="about__socialNetworkSubsection">
-              <button className="addSocialNetworkContent">
+              <button className="addSocialNetworkContent" onClick={this.props.handleAddProfile}>
                 <svg className="addSocialNetwork">
                   <use href="./image/sprite.svg#icon-plus-circle"></use>
                 </svg>

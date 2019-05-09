@@ -44,17 +44,44 @@ function ComponentChatElement(props) {
     // });
 
     return (
-        <React.Fragment>
+        <div className="componentChatElement">
+            <div className="chat__header">
+                <button>
+                    <svg>
+                        <use href="./image/sprite.svg#icon-maximize"></use>
+                    </svg>
+                </button>
+                <h2>BookShelf Chat</h2>
+                <button onClick={() => {}}>
+                    <svg>
+                        <use href="./image/sprite.svg#icon-cross"></use>
+                    </svg>
+                </button>
+        </div>
+        <div className="chat__content">
             {messages.map((element, index) => {
                 return <p key={index}>{element}</p>;
             })}
+        </div>
+        <div className="chat__input">
+           <form className="chat__input--sendmessage">
+{/* //                         <textarea onChange={this.setInput}></textarea> */}
             <input placeholder="Type the message here" value={input} onChange={(event) => setInput(event.target.value)} />
-            <button onClick={() => {
+                    <button onClick={() => {socket.emit("receive-message", {msg: input})}}>
+                        <svg>
+                            <use href="./image/sprite.svg#icon-send"></use>
+                        </svg>
+                    </button>
+                    {/* <textarea value={true} onChange={() => {}}></textarea> */}
+                </form>
+            </div>
+            {/* <button onClick={() => {
                 socket.emit('receive-message', { msg: input });
                 // setMessages([...messages, input]);
             }}>Send
-            </button>
-        </React.Fragment>
+            </button> */}
+        </div>
+
     );
 }
 

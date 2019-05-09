@@ -23,25 +23,8 @@ class ComponentCreatePosts extends Component {
     getFilepost = (ev) => {
         const file = ev.target.files[0];
         const inputName = ev.target.name;
-        const dataFile = new FormData();
-        dataFile.append('file', file);
-        this.setState({ [inputName]: dataFile });
 
-        // if(file) {
-        //     const filereader = new FileReader();
-        //     filereader.onload = (e) => {
-        //         this.setState({[inputName]: e.target.result})
-        //     }
-        //     filereader.readAsText(file);
-        // }
-
-
-        // axios.post(`${process.env.Address ? process.env.Address : "pedros.tech"}:9090/book`, { dataFile })
-        // .then(responese => console.log('resonse file', responese))
-        // .catch(err => console.log('error file', err));
-
-
-        // console.log("file before post: ", {dataFile});
+        this.setState({ [inputName]: file });
     };
 
     setTextValue = (ev) => {
@@ -51,16 +34,9 @@ class ComponentCreatePosts extends Component {
     };
 
     makePostReques = (ev) => {
-        this.props.onCreatePosts(this.state);
-    //     let { title, description, author, cover, file } = this.state;
-    //     axios.post("http://localhost:8080/post", {
-    //         title,
-    //         description,
-    //         author,
-    //         cover,
-    //         file
-    //     }).then(res => console.log("post success: ", res))
-    //       .catch(error => console.log("post error: ", error));
+        const data = new FormData() 
+        data.append('file', this.state.file)
+        this.props.onCreatePosts({...this.state, file: data});
     };
 
   render() {

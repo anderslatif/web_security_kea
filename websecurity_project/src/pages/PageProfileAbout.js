@@ -5,17 +5,20 @@ import ComponentAbout from "../components/ComponentAbout";
 import ComponentEditProfile from "../components/ComponentEditProfile";
 import ComponentChatElement from "../components/ComponentChatElement";
 import axios from "axios";
+import ComponentAddPersonalDatas from "../components/ComponentAddPersonalDatas";
 
 class PageProfileAbout extends Component {
     constructor(props) {
         super(props);
         this.state = {
             editProfile: false,
-            chatState: true
+            chatState: true,
+            addProfileDatas: false
         }
         this.handleEditProfile = this.handleEditProfile.bind(this);
         this.handleChatState = this.handleChatState.bind(this);
         this.handleChatStateSlide = this.handleChatStateSlide.bind(this);
+        this.handleAddProfile = this.handleAddProfile.bind(this);
     }
 
     handleEditProfile = () => {
@@ -29,6 +32,10 @@ class PageProfileAbout extends Component {
     handleChatStateSlide = () => {
         document.querySelector(".componentChatElement").className = "slideChatLists";
         setTimeout(this.handleChatState, 1400);
+    }
+
+    handleAddProfile = (ev) => {
+        this.setState((prevState) => ({addProfileDatas: !prevState.addProfileDatas}))
     }
     componentDidUpdate() {
         // if(this.state.editProfile) {
@@ -62,13 +69,14 @@ class PageProfileAbout extends Component {
                 </div>
                 <ComponentAbout 
                     handleEditProfile={this.handleEditProfile}
+                    handleAddProfile={this.handleAddProfile}
                     >
                 </ComponentAbout>
-                {
+                {/* {
                     this.state.chatState
                     &&
                     <ComponentChatElement handleChatState={this.handleChatState} handleChatStateSlide={this.handleChatStateSlide} />
-                }
+                } */}
                 {
                     this.state.editProfile
                     &&
@@ -76,6 +84,12 @@ class PageProfileAbout extends Component {
                         handleEditProfile={this.handleEditProfile}
                     >
                     </ComponentEditProfile>
+                }
+                {
+                    this.state.addProfileDatas
+                    &&
+                    <ComponentAddPersonalDatas handleAddProfile={this.handleAddProfile}>
+                    </ComponentAddPersonalDatas>
                 }
                 {/* PageProfileAbout */}
             </div>

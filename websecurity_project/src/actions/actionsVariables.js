@@ -20,6 +20,9 @@ export const CREATE_STATUS = "CREATE_STATUS";
 // Variable for: creating profile image
 export const PROFILE_IMAGE = "PROFILE_IMAGE";
 
+// Variable for: creating a profile
+export const CREATE_PROFILE = "CREATE_PROFILE";
+
 // *****************
 // Posts constants
 // ******************

@@ -10,7 +10,6 @@ class ComponentEditCover extends Component {
                 <div className="componentEditCover--wrapper">
                     <div className="cover__preview">
                         <img src="" alt="image__preview" />
-                        {/* <img src={this.state.preview} alt="image__preview" /> */}
                     </div>
                     <div className="cover__input">
                         <input type="file" />

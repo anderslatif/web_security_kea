@@ -1840,14 +1840,14 @@ html {
       position: relative;
       width: 100%;
       height: 100%; }
-      .componentChatElement .chat__input--sendmessage textarea,
-      .slideChatLists .chat__input--sendmessage textarea {
+      .componentChatElement .chat__input--sendmessage input,
+      .slideChatLists .chat__input--sendmessage input {
         width: 100%;
         height: 100%;
         border: none;
         padding-right: 4.5rem; }
-        .componentChatElement .chat__input--sendmessage textarea::-webkit-scrollbar,
-        .slideChatLists .chat__input--sendmessage textarea::-webkit-scrollbar {
+        .componentChatElement .chat__input--sendmessage input::-webkit-scrollbar,
+        .slideChatLists .chat__input--sendmessage input::-webkit-scrollbar {
           display: none; }
       .componentChatElement .chat__input--sendmessage button,
       .slideChatLists .chat__input--sendmessage button {
@@ -1931,3 +1931,81 @@ html {
       transition: all 0.22s ease-in-out; }
       .pageNotFound--redirect a:hover {
         color: #9abced; }
+
+.componentAddPersonalDatas {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 99;
+  top: 0;
+  left: 0;
+  overflow: hidden; }
+  .componentAddPersonalDatas--wrapper {
+    width: 35vw;
+    background-color: #f7f7f7;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 0.45rem; }
+
+.addDatasHeader {
+  width: 100%;
+  height: 9.5rem;
+  background-color: #c8c9cc;
+  border-radius: 0.45rem 0.45rem 0 0;
+  display: grid;
+  grid-template-columns: 4.5rem 1fr;
+  grid-column-gap: 1.45rem;
+  align-items: center; }
+  .addDatasHeader svg {
+    width: 3.5rem;
+    height: 3.5rem;
+    fill: #0058a2; }
+  .addDatasHeader p {
+    font-size: 1.4rem; }
+
+.addDatasContent {
+  padding: 0.45rem; }
+  .addDatasContent--inputGroup label {
+    margin-bottom: 1.4rem;
+    font-size: 1.4rem; }
+  .addDatasContent--inputGroup input {
+    width: 100%;
+    display: block;
+    height: 4.5rem;
+    margin-top: 1.45rem; }
+
+.addDatasClose {
+  width: 2.2rem;
+  height: 2.2rem;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  border-radius: 0.45rem;
+  transition: all 0.22s ease-in-out;
+  position: absolute;
+  right: 0.45rem;
+  top: 0.45rem; }
+  .addDatasClose svg {
+    width: 100%;
+    height: 100%; }
+  .addDatasClose:hover {
+    background-color: #2e3131;
+    padding: 0.22rem; }
+  .addDatasClose:hover svg {
+    fill: #ffffff; }
+
+.submitAddProfile {
+  width: 12rem;
+  height: 4.5rem;
+  border: none;
+  border-radius: 0.45rem;
+  background-color: #0058a2;
+  color: #ffffff;
+  transition: all 0.22s ease-in-out;
+  cursor: pointer;
+  margin-top: 0.45rem; }
+  .submitAddProfile:hover {
+    background-color: dodgerblue; }
