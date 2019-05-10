@@ -128,7 +128,7 @@ class ComponentProfileHeader extends Component {
         <div className="componentProfileHeader--navigation">
             {/* <div></div> */}
             <div className="componentProfileHeader--navigation--profile" onMouseEnter={this.toggleProfileEdits} onMouseLeave={this.toggleProfileEdits}>
-                <img src="./image/profile__image.jpg" alt="profile__image" />
+                <img src="" alt="profile__image" />
                 {
                   this.state.editProfileImage
                   &&
@@ -148,7 +148,7 @@ class ComponentProfileHeader extends Component {
                   className="toggleChatElement"
                   onClick={handleChatState}
                 >
-                Chats
+                Chat
                 </button>
                 <button className="userStatus" onClick={this.toggleUserStatus}>User status</button>
                 {

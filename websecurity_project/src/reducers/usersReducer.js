@@ -1,8 +1,8 @@
 import axios from "axios";
-import {
-    fetchInitialDatas,
-    addPost
-} from "../actions/authActions";
+// import {
+//     fetchInitialDatas,
+//     addPost
+// } from "../actions/authActions";
 // import { ADD_POST } from "../actions/actionsVariables";
 // import { REGISTER_USER } from "../actions/actionsVariables";
 // import { LOGIN_USER } from "../actions/actionsVariables";

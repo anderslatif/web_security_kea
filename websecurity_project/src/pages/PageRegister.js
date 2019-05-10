@@ -122,7 +122,7 @@ class PageRegister extends Component {
         break;
     }
 
-    this.setState({error, [name]: value}, () => console.log(this.state))
+    this.setState({error, [name]: value}, () => console.log(""))
   }
 
   formValid = ({ error, ...rest }) => {

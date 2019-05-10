@@ -95,7 +95,7 @@ class ComponentCreatePosts extends Component {
         <div className="componentCreatePosts__innercontent">
             <div className="componentCreatePosts__innercontent--wrapper">
                 <div className="imgUsers">
-                    <img src="./image/profile__image.jpg" alt="profile__image" />
+                    <img src="" alt="profile__image" />
                 </div>
                 <div className="bookDatas">
                     <label>Add Title</label>

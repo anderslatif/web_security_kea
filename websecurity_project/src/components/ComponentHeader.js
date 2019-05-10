@@ -25,7 +25,7 @@ class ComponentHeader extends Component {
                 </div>
                 <div className="right__header--profile">
                     <Link to="/profile">
-                        <img src="./image/profile__image.jpg" alt="profile__image" />
+                        <img src="" alt="profile__image" />
                     </Link>
                 </div>
             </div>
