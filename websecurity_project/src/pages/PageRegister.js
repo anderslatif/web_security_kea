@@ -83,10 +83,10 @@ class PageRegister extends Component {
       // axios({
       //   method
       // })
-      // axios.post("http://pedros.tech:8080/signup", register)
+      // axios.post("https://pedros.tech:8080/signup", register)
       //       .then(result => console.log("success register: ", result.data))
       //       .catch(error => console.log("error: ", error))
-      // axios.post("http://pedros.tech:8080/signup", {register: "user"}).then(response => console.log(response)).catch(error => console.log(error))
+      // axios.post("https://pedros.tech:8080/signup", {register: "user"}).then(response => console.log(response)).catch(error => console.log(error))
       // console.log(`
       //   email: ${this.state.email} \n
       //   password: ${this.state.password} \n

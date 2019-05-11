@@ -27,7 +27,7 @@ export const registerUser = (datas, isRegistered) => ({
 
 export const actionRegisterUser = (datas) => {
     return dispatch => {
-        return axios.post('http://pedros.tech:8080/signup', datas)
+        return axios.post('https://pedros.tech:8080/signup', datas)
         .then(response => {
             dispatch(registerUser(response.data, response.data.result));
             console.log(response);
@@ -39,7 +39,7 @@ export const actionRegisterUser = (datas) => {
     };
 
     // return (dispatch) => {
-    //     return fetch("http://pedros.tech:8080/signup", {
+    //     return fetch("https://pedros.tech:8080/signup", {
     //         method: 'POST',
     //         headers: {
     //             'Access-Control-Allow-Origin':'*'
@@ -79,15 +79,15 @@ export const loginUser = (datas, isLoggedIn) => ({
 
 export const actionLoginUser = (datas) => {
     return dispatch => {
-        return axios.post('http://pedros.tech:8080/login', datas)
+        return axios.post('https://pedros.tech:8080/login', datas)
         .then(response => {
-            dispatch(loginUser(response, response.data.result))
+            dispatch(loginUser(response, response.data.result));
             // console.log(response.data.result)
         })
         .catch(error => console.log('login error: ', error));
     };
     // return (dispatch) => {
-    //     return fetch("http://pedros.tech:8080/login", {
+    //     return fetch("https://pedros.tech:8080/login", {
     //         method: 'POST',
     //         headers: {
     //             'Access-Control-Allow-Origin':'*'
@@ -123,7 +123,7 @@ export const createStatus = (status) => ({
 
 export const actionCreateStatus = ({ status }) => {
     return (dispatch) => {
-        return axios.post(`${process.env.Address ? process.env.Address : 'pedros.tech'}:8080/thoughts`, { status })
+        return axios.post('https://pedros.tech:8080/thoughts', { status })
                     .then(response => {
                         // console.log(response);
                         dispatch(createStatus(response.data));
@@ -143,7 +143,7 @@ export const createProfileImage = (profile) => ({
 
 export const actionCreateProfileImage = (profile) => {
     return (dispatch) => {
-        return axios.post(`${process.env.Address ? process.env.Address : 'pedros.tech'}:8080/idontknowtheroute`, { profile })
+        return axios.put('https://pedros.tech:8080/profile', { profile })
                     .then(response => {
                         // console.log(response);
                         dispatch(createProfileImage(response.data));
@@ -164,13 +164,13 @@ export const createProfileDatas = (profile) => ({
 
 export const actionCreateProfileDatas = (profile) => {
     return (dispatch) => {
-        return axios.post("http://localhost:8080/profile", profile)
+        return axios.post('http://localhost:8080/profile', profile)
                     .then(response => {
                         // console.log(response)
-                        dispatch(createProfileDatas(response.data))
+                        dispatch(createProfileDatas(response.data));
                     })
-                    .catch(error => console.log(error))
-    }
+                    .catch(error => console.log(error));
+    };
 };
 
 // Initial add or/and Edit profile
@@ -206,7 +206,7 @@ export const actionCreateProfileDatas = (profile) => {
 // export const fetchLoggedUser = () => {
 //     return async (dispatch) => {
 //         try {
-//             const response = await axios.get("http://pedros.tech:8080/profile");
+//             const response = await axios.get("https://pedros.tech:8080/profile");
 //             console.log(response.data);
 //             dispatch(fetchUser(response.data));
 //         }
