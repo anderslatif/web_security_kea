@@ -15,8 +15,7 @@ const userRoles = Object.freeze({
 });
 dummyUser.userRole = userRoles.scriptKiddie;
 
-    router.post('/signup', (req, res) => {
-    console.log('signuptest', req.body);
+router.post('/signup', (req, res) => {
     const { email, password, passwordRepeated } = req.body;
     if (email && password && passwordRepeated) {
         if (password !== passwordRepeated) {
