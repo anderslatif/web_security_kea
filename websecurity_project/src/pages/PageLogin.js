@@ -31,6 +31,17 @@ class PageLogin extends Component {
         }
         this.props.onLoginUser(login)
     }
+<<<<<<< HEAD
+=======
+    // componentDidMount() {
+    //     axios.post("https://pedros.tech:8080/login", {
+    //         email: "emazxcil@email.com",
+    //         password: "paszxcsword"
+    //     }).then(res => console.log("login success: ", res))
+    //       .catch(error => console.log("login failed: ", error))
+    // }
+    testEmail = () => {
+>>>>>>> 078e0cafe45c48a7fe6a3b6fab82451ed7075306
 
     componentDidUpdate() {
         if (this.props.isLoggedIn) {

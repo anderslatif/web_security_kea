@@ -40,7 +40,7 @@ export const fetchPosts = (posts) => ({
 export const fetchAllPosts = () => {
     return async (dispatch) => {
         try {
-            const response = await axios.get(`${process.env.Address ? process.env.Address : "pedros.tech"}:8080/posts`);
+            const response = await axios.get('https://pedros.tech:8080/posts');
             // console.log(response.data);
             dispatch(fetchPosts(response.data));
         } catch (error) {
@@ -65,15 +65,19 @@ export const createPosts = (datas) => ({
 
 export const actionCreatePosts = (postDatas) => {
     return dispatch => {
+<<<<<<< HEAD
         // http://pedros.tech:8080/post
         return axios.post("http://localhost:8080/post", postDatas.file)
+=======
+        return axios.post('https://pedros.tech:8080/post', postDatas.file)
+>>>>>>> 078e0cafe45c48a7fe6a3b6fab82451ed7075306
                     .then(response => {
-                        dispatch(createPosts(response.data))
+                        dispatch(createPosts(response.data));
                         // console.log(response)
                     })
-                    .catch(error => console.log("post error: ", error))
-    }
-}
+                    .catch(error => console.log('post error: ', error));
+    };
+};
 
 // fetch all the personal posts
 // ****************************
@@ -110,7 +114,7 @@ export const createReview = (review) => ({
 
 export const actionCreateReview = ({ review, userId, bookId }) => {
     return (dispatch) => {
-        return axios.post(`${process.env.Address ? process.env.Address : "pedros.tech"}:8080/idontknowtheroute`, {
+        return axios.post('https://pedros.tech:8080/review', {
             review,
             userId,
             bookId
@@ -124,7 +128,7 @@ export const actionCreateReview = ({ review, userId, bookId }) => {
     };
 };
 // return (dispatch) => {
-    //     return axios.get("http://pedros.tech:8080/posts")
+    //     return axios.get("https://pedros.tech:8080/posts")
     //                 .then(response => {
         //                     console.log(response.data)
         //                     dispatch(fetchPosts(response.data))

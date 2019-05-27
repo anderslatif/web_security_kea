@@ -78,7 +78,7 @@ export default (state = postsReducerDefaultState, action) => {
     //     });
 
     // case ADD_POST:
-    //     return axios.post("http://pedros.tech:8080/post", {
+    //     return axios.post("https://pedros.tech:8080/post", {
 
     //             })
     //             .then((res) => console.log(res))

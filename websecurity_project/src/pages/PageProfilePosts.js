@@ -10,7 +10,13 @@ class PageProfilePosts extends Component {
         super(props);
     }
     componentDidMount() {
+<<<<<<< HEAD
 
+=======
+        // axios.get("https://pedros.tech:8080/posts")
+        //             .then(res => console.log("9999 posts: ", res))
+        //             .catch((error) => console.log(error));
+>>>>>>> 078e0cafe45c48a7fe6a3b6fab82451ed7075306
     }
     render(props) {
         return(

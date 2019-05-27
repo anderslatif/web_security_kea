@@ -113,6 +113,7 @@ app.use(session({
 }));
 
 const corsMiddleware = (req, res, next) => {
+<<<<<<< HEAD
     // res.header('Access-Control-Allow-Origin', 'http://pedros.tech');
     // res.header('Access-Control-Allow-Methods', 'OPTIONS, GET, PUT, PATCH, POST, DELETE');
     // res.header('Access-Control-Allow-Headers', 'Content-Type, X-Requested-With, Authorization');
@@ -124,6 +125,13 @@ const corsMiddleware = (req, res, next) => {
 
     if (req.method == 'OPTIONS') {
         console.log("OPTIONS")
+=======
+    res.header('Access-Control-Allow-Origin', 'https://pedros.tech');
+    res.header('Access-Control-Allow-Methods', 'OPTIONS, GET, PUT, PATCH, POST, DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, X-Requested-With, Authorization');
+
+    if (req.method === 'OPTIONS') {
+>>>>>>> 078e0cafe45c48a7fe6a3b6fab82451ed7075306
         res.sendStatus(200);
     } else {
         next();

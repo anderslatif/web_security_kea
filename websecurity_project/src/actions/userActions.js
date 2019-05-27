@@ -29,13 +29,46 @@ export const registerUser = (datas, isRegistered) => ({
 
 export const actionRegisterUser = (datas) => {
     return dispatch => {
+<<<<<<< HEAD
         // https://pedros.tech:8080/signup
         return axios.post('http://localhost:8080/signup', datas)
+=======
+        return axios.post('https://pedros.tech:8080/signup', datas)
+>>>>>>> 078e0cafe45c48a7fe6a3b6fab82451ed7075306
         .then(response => {
             dispatch(registerUser(response, response.data));
         })
         .catch(error => console.log('register error: ', error));
     };
+<<<<<<< HEAD
+=======
+
+    // return (dispatch) => {
+    //     return fetch("https://pedros.tech:8080/signup", {
+    //         method: 'POST',
+    //         headers: {
+    //             'Access-Control-Allow-Origin':'*'
+    //         },
+    //         body: JSON.stringify({...datas})
+    //     })
+    //     .then(function (datas) {
+    //       console.log('Request success: ', datas);
+    //       dispatch(registerUser(datas.body));
+    //       //console.log(response);
+    //     })
+    //     .catch(function (error) {
+    //       console.log('Request failure: ', error);
+    //     });
+        // return axios.post(`${authUrl}/signup`, data)
+        //     .then(response => {
+        //         console.log(response);
+        //         dispatch(registerUser(response.data));
+        //     })
+        //     .catch(error => {
+        //         throw (error);
+        //     });
+    // };
+>>>>>>> 078e0cafe45c48a7fe6a3b6fab82451ed7075306
 };
 
 // fetch profile
@@ -76,6 +109,7 @@ export const loginUser = (datas, isLoggedIn) => ({
 
 export const actionLoginUser = (datas) => {
     return dispatch => {
+<<<<<<< HEAD
         // http://pedros.tech:8080/login
         return axios.post('http://localhost:8080/login', datas)
         .then(response => {
@@ -84,6 +118,41 @@ export const actionLoginUser = (datas) => {
         })
         .catch(error => console.log('login error: ', error));
     };
+=======
+        return axios.post('https://pedros.tech:8080/login', datas)
+        .then(response => {
+            dispatch(loginUser(response, response.data.result));
+            // console.log(response.data.result)
+        })
+        .catch(error => console.log('login error: ', error));
+    };
+    // return (dispatch) => {
+    //     return fetch("https://pedros.tech:8080/login", {
+    //         method: 'POST',
+    //         headers: {
+    //             'Access-Control-Allow-Origin':'*'
+    //         },
+    //         body: JSON.stringify(datas)
+    //     })
+    //     .then(function (datas) {
+    //       console.log('Request success: ', datas);
+    //       dispatch(loginUser(datas.body));
+    //       //console.log(response);
+    //     })
+    //     .catch(function (error) {
+    //       console.log('Request failure: ', error);
+    //     });
+    // };
+    //     return axios.post(`${authUrl}/login`, { email, password })
+    //             .then(response => {
+    //                 console.log(response);
+    //                 dispatch(loginUser(response.data));
+    //             })
+    //             .catch(error => {
+    //                 throw (error);
+    //             });
+    // };
+>>>>>>> 078e0cafe45c48a7fe6a3b6fab82451ed7075306
 };
 
 // signout users
@@ -110,8 +179,12 @@ export const createStatus = (status) => ({
 
 export const actionCreateStatus = (status) => {
     return (dispatch) => {
+<<<<<<< HEAD
         // `${process.env.Address ? process.env.Address : 'pedros.tech'}:8080/thoughts`
         return axios.post("http://localhost:8080/thoughts", status)
+=======
+        return axios.post('https://pedros.tech:8080/thoughts', { status })
+>>>>>>> 078e0cafe45c48a7fe6a3b6fab82451ed7075306
                     .then(response => {
                         dispatch(createStatus(response));
                         console.log(response);
@@ -131,7 +204,7 @@ export const createProfileImage = (profile) => ({
 
 export const actionCreateProfileImage = (profile) => {
     return (dispatch) => {
-        return axios.post(`${process.env.Address ? process.env.Address : 'pedros.tech'}:8080/idontknowtheroute`, { profile })
+        return axios.put('https://pedros.tech:8080/profile', { profile })
                     .then(response => {
                         // console.log(response);
                         dispatch(createProfileImage(response.data));
@@ -157,13 +230,18 @@ export const createProfileDatas = (profile) => ({
 
 export const actionCreateProfileDatas = (profile) => {
     return (dispatch) => {
-        return axios.post("http://localhost:8080/profile", profile)
+        return axios.post('http://localhost:8080/profile', profile)
                     .then(response => {
+<<<<<<< HEAD
                         dispatch(createProfileDatas(response))
                         console.log(response)
+=======
+                        // console.log(response)
+                        dispatch(createProfileDatas(response.data));
+>>>>>>> 078e0cafe45c48a7fe6a3b6fab82451ed7075306
                     })
-                    .catch(error => console.log(error))
-    }
+                    .catch(error => console.log(error));
+    };
 };
 
 
@@ -200,7 +278,7 @@ export const actionCreateProfileDatas = (profile) => {
 // export const fetchLoggedUser = () => {
 //     return async (dispatch) => {
 //         try {
-//             const response = await axios.get("http://pedros.tech:8080/profile");
+//             const response = await axios.get("https://pedros.tech:8080/profile");
 //             console.log(response.data);
 //             dispatch(fetchUser(response.data));
 //         }

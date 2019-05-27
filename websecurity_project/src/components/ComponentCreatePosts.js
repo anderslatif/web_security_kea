@@ -59,8 +59,12 @@ class ComponentCreatePosts extends Component {
 
         const dataFile = new FormData();
         dataFile.append('file', file, file.name);
+<<<<<<< HEAD
         // http://pedros.tech:9090/file
         axios.post('http://localhost:9090/file', dataFile)
+=======
+        axios.post('https://pedros.tech:9090/file', dataFile)
+>>>>>>> 078e0cafe45c48a7fe6a3b6fab82451ed7075306
         .then(response => {
             this.setState({
                 [inputName]: file,
@@ -80,7 +84,7 @@ class ComponentCreatePosts extends Component {
     };
 
     makePostReques = (ev) => {
-        const data = new FormData() 
+        const data = new FormData()
         data.append('file', this.state.file)
         this.props.onCreatePosts({...this.state, file: data});
     };
