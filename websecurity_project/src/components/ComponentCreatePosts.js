@@ -20,13 +20,47 @@ class ComponentCreatePosts extends Component {
       this.makePostReques = this.makePostReques.bind(this);
   }
 
+//   test start
+  getBookFiles = (ev) => {
+      const fileName = ev.target.name;
+      const fileValue = ev.target.files[0];
+
+      this.setState({[fileName]: fileValue});
+      console.log(fileName, fileValue);
+  }
+
+  postBookFiles = () => {
+      let {
+          title,
+          author,
+          description
+      } = this.state;
+      const cover = new FormData();
+      cover.append('cover', this.state.cover);
+
+      const file = new FormData(); 
+      file.append('file', this.state.file);
+
+      axios.post("http://localhost:9090/file", {
+                title: title,
+                author: author,
+                description: description,
+                file: file
+            })
+            .then(response => console.log("testupload__response", response))
+            .catch(error => console.log("testerror", error))
+      console.log(file, cover);
+  }
+//   test finish
+
     getFilepost = (ev) => {
         const file = ev.target.files[0];
         const inputName = ev.target.name;
 
         const dataFile = new FormData();
         dataFile.append('file', file, file.name);
-        axios.post('http://pedros.tech:9090/file', dataFile)
+        // http://pedros.tech:9090/file
+        axios.post('http://localhost:9090/file', dataFile)
         .then(response => {
             this.setState({
                 [inputName]: file,
@@ -55,7 +89,7 @@ class ComponentCreatePosts extends Component {
     return (
       <div className="componentCreatePosts">
         <div className="componentCreatePosts__innernavigation">
-            <button className="makeAPost" onClick={this.makePostReques}>
+            <button className="makeAPost" onClick={this.postBookFiles}>
                 <svg>
                     <use href="./image/sprite.svg#icon-edit" />
                 </svg>
@@ -67,7 +101,8 @@ class ComponentCreatePosts extends Component {
                 </svg>
                 <span>Add Cover</span>
                 <input
-                    onChange={this.getFilepost}
+                    onChange={this.getBookFiles}
+                    // onChange={this.getFilepost}
                     // onChange={this.testGetCover}
                     ref={(ref) => this.bookCoverFile = ref}
                     type="file"
@@ -83,10 +118,12 @@ class ComponentCreatePosts extends Component {
                 </svg>
                 <span>Add Book file</span>
                 <input
-                    onChange={this.getFilepost}
+                    onChange={this.getBookFiles}
+                    // onChange={this.getFilepost}
                     ref={(ref) => this.bookPdfFile = ref}
                     type="file"
-                    name="file"
+                    name="book"
+                    // name="file"
                     id="bookPdfFile"
                     style={{ display: 'none' }}
                 />
@@ -95,7 +132,9 @@ class ComponentCreatePosts extends Component {
         <div className="componentCreatePosts__innercontent">
             <div className="componentCreatePosts__innercontent--wrapper">
                 <div className="imgUsers">
-                    <img src="" alt="profile__image" />
+                    <img src={
+                      this.props.profileImage ? this.props.profileImage : "http://www.printpixelz.com/images/product/book-square-front-printpixelz.jpg"
+                    } alt="profile__image" />
                 </div>
                 <div className="bookDatas">
                     <label>Add Title</label>
@@ -119,7 +158,13 @@ const mapDispatchToProps = (dispatch) => {
         onCreatePosts: post => {
             dispatch(actionCreatePosts(post));
         }
-    };
+    }
 };
 
-export default connect(null, mapDispatchToProps)(ComponentCreatePosts);
+const mapStateToProps = state => {
+    return {
+        profileImage: state.profileImage
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ComponentCreatePosts);

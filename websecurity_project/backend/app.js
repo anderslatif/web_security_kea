@@ -5,6 +5,13 @@ const cors = require('cors');
 
 app.use(cors());
 
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+  
+
 const fs = require('fs');
 const tls = require('tls');
 
@@ -106,10 +113,13 @@ app.use(session({
 }));
 
 const corsMiddleware = (req, res, next) => {
-    res.header('Access-Control-Allow-Origin', 'http://pedros.tech');
-    res.header('Access-Control-Allow-Methods', 'OPTIONS, GET, PUT, PATCH, POST, DELETE');
-    res.header('Access-Control-Allow-Headers', 'Content-Type, X-Requested-With, Authorization');
+    // res.header('Access-Control-Allow-Origin', 'http://pedros.tech');
+    // res.header('Access-Control-Allow-Methods', 'OPTIONS, GET, PUT, PATCH, POST, DELETE');
+    // res.header('Access-Control-Allow-Headers', 'Content-Type, X-Requested-With, Authorization');
 
+    // res.header("Access-Control-Allow-Origin", "*");
+    // res.header('Access-Control-Allow-Methods', 'OPTIONS, GET, PUT, PATCH, POST, DELETE');
+    // res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     console.log("testtesttest")
 
     if (req.method == 'OPTIONS') {

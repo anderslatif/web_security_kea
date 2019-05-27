@@ -5,7 +5,9 @@ import {
     EDIT_PROFILE,
     CREATE_STATUS,
     PROFILE_IMAGE,
-    CREATE_PROFILE
+    CREATE_PROFILE,
+    SIGN_OUT,
+    FETCH_PROFILE
 } from './actionsVariables';
 import axios from 'axios';
 
@@ -27,43 +29,38 @@ export const registerUser = (datas, isRegistered) => ({
 
 export const actionRegisterUser = (datas) => {
     return dispatch => {
-        return axios.post('http://pedros.tech:8080/signup', datas)
+        // https://pedros.tech:8080/signup
+        return axios.post('http://localhost:8080/signup', datas)
         .then(response => {
-            dispatch(registerUser(response.data, response.data.result));
-            console.log(response);
-            // if(response.data.result) {
-            //     this.props.history.push('/profile')
-            // }
+            dispatch(registerUser(response, response.data));
         })
         .catch(error => console.log('register error: ', error));
     };
-
-    // return (dispatch) => {
-    //     return fetch("http://pedros.tech:8080/signup", {
-    //         method: 'POST',
-    //         headers: {
-    //             'Access-Control-Allow-Origin':'*'
-    //         },
-    //         body: JSON.stringify({...datas})
-    //     })
-    //     .then(function (datas) {
-    //       console.log('Request success: ', datas);
-    //       dispatch(registerUser(datas.body));
-    //       //console.log(response);
-    //     })
-    //     .catch(function (error) {
-    //       console.log('Request failure: ', error);
-    //     });
-        // return axios.post(`${authUrl}/signup`, data)
-        //     .then(response => {
-        //         console.log(response);
-        //         dispatch(registerUser(response.data));
-        //     })
-        //     .catch(error => {
-        //         throw (error);
-        //     });
-    // };
 };
+
+// fetch profile
+// ***************
+
+export const fetchProfileDatas = (profile) => ({
+    type: FETCH_PROFILE,
+    profile: {
+        email: profile.email,
+        country: profile.country,
+        socialNetwork: profile.socialNetwork
+    }
+})
+
+export const actionFetchProfileDatas = (profile) => {
+    return dispatch => {
+        return axios.get("http://localhost:8080/profile", profile)
+                    .then(response => {
+                        dispatch(fetchProfileDatas(response))
+                        console.log(response)
+                    })
+                    .catch(error => console.log("fetch__profile: ", error))
+    }
+}
+
 
 // login actions
 // *************
@@ -79,40 +76,30 @@ export const loginUser = (datas, isLoggedIn) => ({
 
 export const actionLoginUser = (datas) => {
     return dispatch => {
-        return axios.post('http://pedros.tech:8080/login', datas)
+        // http://pedros.tech:8080/login
+        return axios.post('http://localhost:8080/login', datas)
         .then(response => {
-            dispatch(loginUser(response, response.data.result))
-            // console.log(response.data.result)
+            dispatch(loginUser(response, response.data))
+            console.log(response)
         })
         .catch(error => console.log('login error: ', error));
     };
-    // return (dispatch) => {
-    //     return fetch("http://pedros.tech:8080/login", {
-    //         method: 'POST',
-    //         headers: {
-    //             'Access-Control-Allow-Origin':'*'
-    //         },
-    //         body: JSON.stringify(datas)
-    //     })
-    //     .then(function (datas) {
-    //       console.log('Request success: ', datas);
-    //       dispatch(loginUser(datas.body));
-    //       //console.log(response);
-    //     })
-    //     .catch(function (error) {
-    //       console.log('Request failure: ', error);
-    //     });
-    // };
-    //     return axios.post(`${authUrl}/login`, { email, password })
-    //             .then(response => {
-    //                 console.log(response);
-    //                 dispatch(loginUser(response.data));
-    //             })
-    //             .catch(error => {
-    //                 throw (error);
-    //             });
-    // };
 };
+
+// signout users
+// *************
+
+export const signOut = () => ({
+    type: SIGN_OUT
+});
+
+export const actionSignOut = () => {
+    return dispatch => {
+        return axios.get('http://localhost:8080/logout')
+                    .then(response => console.log("signup__success", response))
+                    .catch(error => console.log("signout__error", error))
+    }
+}
 
 // create status
 // *************
@@ -121,15 +108,16 @@ export const createStatus = (status) => ({
     status
 });
 
-export const actionCreateStatus = ({ status }) => {
+export const actionCreateStatus = (status) => {
     return (dispatch) => {
-        return axios.post(`${process.env.Address ? process.env.Address : 'pedros.tech'}:8080/thoughts`, { status })
+        // `${process.env.Address ? process.env.Address : 'pedros.tech'}:8080/thoughts`
+        return axios.post("http://localhost:8080/thoughts", status)
                     .then(response => {
-                        // console.log(response);
-                        dispatch(createStatus(response.data));
+                        dispatch(createStatus(response));
+                        console.log(response);
                     })
                     .catch(error => {
-                        throw (error);
+                        console.log("thoughts__error: ", error);
                     });
     };
 };
@@ -159,19 +147,25 @@ export const actionCreateProfileImage = (profile) => {
 
 export const createProfileDatas = (profile) => ({
     type: CREATE_PROFILE,
-    profile
+    profile: {
+        email: profile.email,
+        country: profile.country,
+        socialNetwork: profile.socialNetwork               
+    }
+    // profile
 });
 
 export const actionCreateProfileDatas = (profile) => {
     return (dispatch) => {
         return axios.post("http://localhost:8080/profile", profile)
                     .then(response => {
-                        // console.log(response)
-                        dispatch(createProfileDatas(response.data))
+                        dispatch(createProfileDatas(response))
+                        console.log(response)
                     })
                     .catch(error => console.log(error))
     }
 };
+
 
 // Initial add or/and Edit profile
 // *******************************

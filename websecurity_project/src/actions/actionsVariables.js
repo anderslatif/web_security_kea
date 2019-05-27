@@ -23,6 +23,12 @@ export const PROFILE_IMAGE = "PROFILE_IMAGE";
 // Variable for: creating a profile
 export const CREATE_PROFILE = "CREATE_PROFILE";
 
+// Variable for: signing out users
+export const SIGN_OUT = "SIGN_OUT";
+
+// Variable for: fetchin the users
+export const FETCH_PROFILE = "FETCH_PROFILE";
+
 // *****************
 // Posts constants
 // ******************

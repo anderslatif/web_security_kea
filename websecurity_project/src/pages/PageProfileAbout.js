@@ -6,6 +6,7 @@ import ComponentEditProfile from "../components/ComponentEditProfile";
 import ComponentChatElement from "../components/ComponentChatElement";
 import axios from "axios";
 import ComponentAddPersonalDatas from "../components/ComponentAddPersonalDatas";
+import { connect } from "react-redux";
 
 class PageProfileAbout extends Component {
     constructor(props) {
@@ -37,28 +38,7 @@ class PageProfileAbout extends Component {
     handleAddProfile = (ev) => {
         this.setState((prevState) => ({addProfileDatas: !prevState.addProfileDatas}))
     }
-    componentDidUpdate() {
-        // if(this.state.editProfile) {
-        //     document.querySelector("body").classList.add("pause__scroll"); 
-        // }
-        
-        // if(this.state.editProfile === false) {
-        //     document.querySelector("body").classList.add("scroll"); 
-        // }
-    }
     componentDidMount() {
-        // axios.get('/user?ID=12345')
-        //     .then(function (response) {
-        //         // handle success
-        //         console.log(response);
-        //     })
-        //     .catch(function (error) {
-        //         // handle error
-        //         console.log(error);
-        //     })
-        //     .then(function () {
-        //         // always executed
-        //     });
     }
     render() {
         return(

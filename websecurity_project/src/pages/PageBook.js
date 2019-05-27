@@ -5,7 +5,7 @@ import ComponentBookInformation from '../components/ComponentBookInformation';
 import ComponentReviews from '../components/ComponentReviews';
 import PageLoader from '../components/PageLoader';
 import { NavLink } from "react-router-dom";
-
+import { connect } from "react-redux";
 // const styleBlackHeader = {
 //     color:"white",
 //     backgroundColor:"black"
@@ -82,9 +82,11 @@ class PageBook extends Component {
       this.setState({loader: false})
     }, 2200)
   }
-  render() {
+  render(props) {
     const { numPages, pageNumber } = this.state;
-
+    const activeBooks = this.props.personalPosts.filter((book) => {
+      return book.id === this.props.match.params.bookid
+    })
     return (
       <div className="page__book">
       {
@@ -106,7 +108,10 @@ class PageBook extends Component {
           {
             this.state.bookReviewsPanel
             &&
-            <ComponentReviews closeReviewComponent={this.closeReviewComponent} />
+            <ComponentReviews 
+              closeReviewComponent={this.closeReviewComponent}
+              reviews={activeBooks.reviews} 
+            />
           }
         </div>
         <div className="page__book--content--document"
@@ -130,4 +135,10 @@ class PageBook extends Component {
   }
 }
 
-export default PageBook;
+const mapStateToProps = state => {
+  return {
+    personalPosts: state.personalPosts
+  }
+}
+
+export default connect(mapStateToProps)(PageBook);

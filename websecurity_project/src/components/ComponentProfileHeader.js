@@ -128,7 +128,9 @@ class ComponentProfileHeader extends Component {
         <div className="componentProfileHeader--navigation">
             {/* <div></div> */}
             <div className="componentProfileHeader--navigation--profile" onMouseEnter={this.toggleProfileEdits} onMouseLeave={this.toggleProfileEdits}>
-                <img src="" alt="profile__image" />
+                <img src={
+                  this.props.profileImage ? this.props.profileImage : "http://www.printpixelz.com/images/product/book-square-front-printpixelz.jpg"
+                } alt="profile__image" />
                 {
                   this.state.editProfileImage
                   &&
@@ -187,4 +189,10 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(null, mapDispatchToProps)(ComponentProfileHeader);
+const mapStateToProps = state => {
+  return {
+    profileImage: state.profileImage
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ComponentProfileHeader);

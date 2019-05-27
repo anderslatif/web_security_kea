@@ -10,19 +10,16 @@ class PageProfilePosts extends Component {
         super(props);
     }
     componentDidMount() {
-        // axios.get("http://pedros.tech:8080/posts")
-        //             .then(res => console.log("9999 posts: ", res))
-        //             .catch((error) => console.log(error));
+
     }
     render(props) {
-        // console.log(props.personalPosts)
         return(
             <div className="pageProfilePosts">
                 <ComponentHeader></ComponentHeader>
                 <div className="page__profile--content">
                     <ComponentProfileHeader></ComponentProfileHeader>
                 </div>
-                <ComponentPosts personalPosts={this.props.personalPosts}/>
+                <ComponentPosts personalPosts={this.props.personalPosts} />
                 {/* PageProfilePosts */}
             </div>
         );

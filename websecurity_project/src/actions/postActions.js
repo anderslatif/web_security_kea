@@ -5,7 +5,8 @@ import {
     FETCH_CHAT,
     FETCH_POSTS,
     CREATE_POST,
-    CREATE_REVIEW
+    CREATE_REVIEW,
+    FETCH_PERSONAL_POSTS
 } from './actionsVariables';
 import axios from 'axios';
 
@@ -64,12 +65,26 @@ export const createPosts = (datas) => ({
 
 export const actionCreatePosts = (postDatas) => {
     return dispatch => {
-        return axios.post("http://pedros.tech:8080/post", postDatas.file)
+        // http://pedros.tech:8080/post
+        return axios.post("http://localhost:8080/post", postDatas.file)
                     .then(response => {
                         dispatch(createPosts(response.data))
                         // console.log(response)
                     })
                     .catch(error => console.log("post error: ", error))
+    }
+}
+
+// fetch all the personal posts
+// ****************************
+
+export const fetchProfilePosts = (profile) => ({
+    type: FETCH_PERSONAL_POSTS
+})
+
+export const actionFetchProfilePosts = profile => {
+    return dispatch => {
+        // return axios.get()
     }
 }
 

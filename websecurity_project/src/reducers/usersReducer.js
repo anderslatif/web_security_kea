@@ -6,12 +6,22 @@ import axios from "axios";
 // import { ADD_POST } from "../actions/actionsVariables";
 // import { REGISTER_USER } from "../actions/actionsVariables";
 // import { LOGIN_USER } from "../actions/actionsVariables";
-import { FETCH_USER, REGISTER_USER, LOGIN_USER, UPDATE_POST, EDIT_PROFILE, PROFILE_IMAGE } from "../actions/actionsVariables"; 
+import {
+    FETCH_USER,
+    REGISTER_USER,
+    LOGIN_USER, 
+    UPDATE_POST, 
+    EDIT_PROFILE, 
+    PROFILE_IMAGE,
+    SIGN_OUT,
+    FETCH_PROFILE
+} from "../actions/actionsVariables"; 
 
-const usersReducerDefaultReducer = {
-    isLoggedIn: false,
-    isRegistered: false
-};
+// const usersReducerDefaultReducer = {
+//     isLoggedIn: false,
+//     isRegistered: false
+// };
+
 
 // const usersReducerDefaultReducer = {
 //     id:"userid1",
@@ -52,7 +62,16 @@ const usersReducerDefaultReducer = {
 //     ]
 // };
 
-export default (state = usersReducerDefaultReducer, action) => {
+const userReducerDefaultReducer = {
+    email: "qwert",
+    country: "",
+    socialNetwork: "",
+    profileImage: "",
+    isLoggedIn: false,
+    isRegister: false
+}
+
+export default (state = userReducerDefaultReducer, action) => {
     switch(action.type) {
         case REGISTER_USER:
             return {
@@ -64,14 +83,15 @@ export default (state = usersReducerDefaultReducer, action) => {
                 ...state,
                 isLoggedIn: action.isLoggedIn
             };
+        case SIGN_OUT:
+            return {...state}
         case EDIT_PROFILE:
             return true;
-            // return [
-            //     ...state, 
-            //     action.edits
-            // ];
-        case FETCH_USER:
-            return action.user;
+        case FETCH_PROFILE:
+            return {...state}
+                // profile: action.profile
+                // profile: action.profile
+            
         case PROFILE_IMAGE:
             return [...state, action.profile]
         default:

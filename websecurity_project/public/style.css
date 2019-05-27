@@ -375,6 +375,17 @@ html {
   display: flex;
   flex-direction: row;
   align-items: center; }
+  .right__header--signout button {
+    padding: 0.35rem 0.45rem 0.35rem 0.45rem;
+    border-radius: 0.45rem;
+    border: none;
+    background-color: dodgerblue;
+    color: #ffffff;
+    font-size: 1.4rem;
+    cursor: pointer;
+    transition: all 0.22s ease-in-out; }
+    .right__header--signout button:hover {
+      background-color: #0079ef; }
   .right__header--notifications {
     margin-right: 1.4rem; }
     .right__header--notifications svg {

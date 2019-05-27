@@ -9,6 +9,12 @@ const tls = require('tls');
 const fs = require('fs');
 const cors = require('cors');
 
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+s});
+
 const privateKey = fs.readFileSync('server.key').toString();
 const certificate = fs.readFileSync('server.cert').toString();
 const credentials = { key: privateKey, cert: certificate };

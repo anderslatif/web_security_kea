@@ -17,19 +17,8 @@ class ComponentPostsElement extends Component {
                         <h2>{post.title}</h2>
                         <p>{post.author}</p>
                         <span>{post.rating}</span>
-                        <NavLink to="/profile/posts/books">Read</NavLink>
-                        {/* <button>Read</button> */}
+                        <NavLink to={`/profile/posts/${post.id}`}>Read</NavLink>
                     </div>
-                    {/* <div className="componentPostsElement--wrapper--cover">
-                        <img src={post.cover} />
-                    </div>
-                    <div className="componentPostsElement--wrapper--information">
-                        <p>{post.title}</p>
-                        <span>{post.author}</span>
-                    </div>
-                    <div className="componentPostsElement--wrapper--rating">
-                        <p>{post.rating}</p>
-                    </div> */}
                 </div>
                 {/* ComponentPostsElement */}
             </div>

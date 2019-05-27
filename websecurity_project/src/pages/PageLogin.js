@@ -30,26 +30,11 @@ class PageLogin extends Component {
             password: this.state.passwordLogin
         }
         this.props.onLoginUser(login)
-        // console.log(this.state)
     }
-    // componentDidMount() {
-    //     axios.post("http://pedros.tech:8080/login", {
-    //         email: "emazxcil@email.com",
-    //         password: "paszxcsword"
-    //     }).then(res => console.log("login success: ", res))
-    //       .catch(error => console.log("login failed: ", error))
-    // }
-    testEmail = () => {
 
-    }
-    // componentDidUpdate() {
-    //     console.log(this.props.isLoggedIn)
-    // }
     componentDidUpdate() {
-        // console.log(this.props.isLoggedIn)
         if (this.props.isLoggedIn) {
             this.props.history.push('/profile')
-            // browserHistory.push("/profile")
         }
     }
     render(props) {
@@ -63,7 +48,7 @@ class PageLogin extends Component {
                     <div className="left__areaAuths--informations">
                         <h2>Get your <span>Book</span></h2>
                         <p>Login to access the Bookz streaming system</p>
-                        {this.props.isLoggedIn}
+                        {/* {this.props.isLoggedIn} */}
                     </div>
                     <form className="formLogin" onSubmit={this.onSubmitStoreDatas}>
                         <div className="formLogin--forms">

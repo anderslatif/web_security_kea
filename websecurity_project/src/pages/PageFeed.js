@@ -7,16 +7,19 @@ import ComponentFeedPosts from "../components/ComponentFeedPosts";
 import { connect } from "react-redux";
 
 class PageFeed extends Component {
-  render() {
-    let { posts, user } = this.props;
+  render(props) {
+    // let { posts, user, personalPosts } = this.props;
     return (
       <div className="page__feed">
         <ComponentHeader />
         <div className="page__feed--wrapper">
-            <ComponentFeedCardProfile user={user} />
+            <ComponentFeedCardProfile 
+              user={this.props.user} 
+              personalPosts={this.props.personalPosts}
+              />
             <div className="feed__areas">
                 <ComponentCreatePosts />
-                <ComponentFeedPosts posts={posts} />
+                <ComponentFeedPosts posts={this.props.posts} />
                 {/* <div style={{height:"1000rem"}}></div> */}
             </div>
             <div>
@@ -32,7 +35,8 @@ class PageFeed extends Component {
 const mapStateToProps = (state) => {
   return {
     posts: state.posts,
-    user: state.user
+    user: state.user,
+    personalPosts: state.personalPosts
   }
 }
 

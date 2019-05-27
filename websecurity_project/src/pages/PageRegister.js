@@ -13,7 +13,7 @@ const emailRegex = RegExp(
 
 const sqlPrevent = (string) => {
   return string.replace(/&/, "&amp").replace(/</, "&lt")
-}
+};
 
 // const formValid = error => {
 //     let valid = true;
@@ -45,9 +45,6 @@ class PageRegister extends Component {
         passwordRepeated: ""
       }
     }
-    // this.onChangeStoreRegisterDatas = this.onChangeStoreRegisterDatas.bind(this);
-    // this.handleSubmitRegister = this.handleSubmitRegister.bind(this)
-    // this.onSubmitStoreDatas = this.onSubmitStoreDatas.bind(this);
   }
 
   // onChangeStoreRegisterDatas = (ev) => {
@@ -80,18 +77,11 @@ class PageRegister extends Component {
 
 
       this.props.onRegisterUser(register);
-      // axios({
-      //   method
-      // })
-      // axios.post("http://pedros.tech:8080/signup", register)
-      //       .then(result => console.log("success register: ", result.data))
-      //       .catch(error => console.log("error: ", error))
-      // axios.post("http://pedros.tech:8080/signup", {register: "user"}).then(response => console.log(response)).catch(error => console.log(error))
-      // console.log(`
-      //   email: ${this.state.email} \n
-      //   password: ${this.state.password} \n
-      //   passwordRepeated: ${this.state.passwordRepeated}
-      // `)
+      console.log(this.props.isRegistered);
+      // if(this.props.isRegistered === true) {
+      //   // this.props.history.push('/login')
+      //   console.log(this.props.isRegistered)
+      // }
     } else {
       console.error("display error")
     }
@@ -139,35 +129,7 @@ class PageRegister extends Component {
     });
     return valid;
   }
-  // validateFormRegister = (ev) => {
-  //   let formValid = true;
-  //   let inputType = ev.target.name;
-  //   if (/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(this.state.email)) {
-  //      /* return true */
-  //      console.log("correct__email")
-  //   } else {
-  //     console.log("incorrect__email")
-  //   }
-  // }
-    //Email
-    // if(inputType === "email" && !inputType){
-    //   formValid = false;
-      // this.setState({errors[email]: "empty email"})
-  //  }
 
-  //  if(typeof fields["email"] !== "undefined"){
-  //     let lastAtPos = fields["email"].lastIndexOf('@');
-  //     let lastDotPos = fields["email"].lastIndexOf('.');
-
-  //     if (!(lastAtPos < lastDotPos && lastAtPos > 0 && fields["email"].indexOf('@@') == -1 && lastDotPos > 2 && (fields["email"].length - lastDotPos) > 2)) {
-  //        formIsValid = false;
-  //        errors["email"] = "Email is not valid";
-  //      }
-  //   }
-
-  //   this.setState({errors: errors});
-  //   return formIsValid;
-  // }
   componentDidUpdate() {
     console.log(this.props.isRegistered)
     if (this.props.isRegistered) {
@@ -222,6 +184,7 @@ class PageRegister extends Component {
                               onChange={this.handleChange}
                               className={error.passwordRepeated.length > 0 ? "inputErrorHighlight" : null}
                             />
+                            {/* {this.props.user.isRegistered} */}
                             {
                               error.passwordRepeated.length > 0 &&
                               <p className="errorDisplayMessage">{error.passwordRepeated}</p>
@@ -273,7 +236,7 @@ const mapDispatchToProps = dispatch => {
 
 const mapStateToProps = state => {
   return {
-    isRegistered: state.isRegistered
+    isRegistered: state.user.isRegistered
   }
 }
 

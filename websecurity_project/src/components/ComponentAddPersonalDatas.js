@@ -18,7 +18,12 @@ class ComponentAddPersonalDatas extends Component {
         this.setState({[name]:value})
     }
     sendDataRequest = () => {
-        this.props.onCreateProfile(this.state)
+        let datas = {
+            country: this.state.country,
+            email: this.state.emailAddress,
+            socialNetwork: this.state.socialNetwork
+        }
+        this.props.onCreateProfile(datas)
     }
     render(props) {
         return(

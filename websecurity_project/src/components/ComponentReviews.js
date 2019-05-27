@@ -43,6 +43,7 @@ const testReviewsLists = [
 class ComponentReviews extends Component {
   render(props) {
     let { closeReviewComponent } = this.props;
+    let { reviews } = this.props;
     return (
       <div className="component__reviews">
         <button className="close__reviews" onClick={closeReviewComponent}>
@@ -57,7 +58,7 @@ class ComponentReviews extends Component {
           </div>
           <div className="reviews__content">
             {
-              testReviewsLists.map((review) => {
+              reviews.map((review) => {
                 return <ComponentIndividualReview key={review.reviewId} review={review} />
               })
             }

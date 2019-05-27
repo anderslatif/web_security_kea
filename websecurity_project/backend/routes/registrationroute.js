@@ -58,7 +58,7 @@ dummyUser.userRole = userRoles.scriptKiddie;
                                 helperFunctions.logToFile(`MongoFailed${ error}`, 'mongo-errors.txt');
                             } else {
                                 req.session.userId = user._id;
-                                res.send('signed up');
+                                res.send(true);
                             }
                         });
                     });
