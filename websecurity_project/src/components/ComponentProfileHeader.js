@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink } from "react-router-dom";
-import ComponentEditCover from './ComponentEditCover';
+// import ComponentEditCover from './ComponentEditCover';
 import ComponentChangeProfileImage from './ComponentChangeProfileImage';
 import ComponentProfileImageApproval from './ComponentProfileImageApproval';
 import { connect } from "react-redux";
@@ -32,7 +32,7 @@ class ComponentProfileHeader extends Component {
   }
   getEditCover = (ev) => {
     const file = ev.target.files[0];
-    const inputName = ev.target.name;
+    // const inputName = ev.target.name;
 
     if(file) {
         const filereader = new FileReader();

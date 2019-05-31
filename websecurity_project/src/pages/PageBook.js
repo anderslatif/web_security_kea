@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ComponentHeader from "../components/ComponentHeader";
+// import ComponentHeader from "../components/ComponentHeader";
 import ComponentIndividualBooks from '../components/ComponentIndividualBooks';
 import ComponentBookInformation from '../components/ComponentBookInformation';
 import ComponentReviews from '../components/ComponentReviews';
@@ -83,7 +83,7 @@ class PageBook extends Component {
     }, 2200)
   }
   render(props) {
-    const { numPages, pageNumber } = this.state;
+    // const { numPages, pageNumber } = this.state;
     const activeBooks = this.props.personalPosts.filter((book) => {
       return book.id === this.props.match.params.bookid
     })

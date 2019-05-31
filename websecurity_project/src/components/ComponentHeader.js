@@ -4,9 +4,9 @@ import { connect } from "react-redux";
 import { actionSignOut } from "../actions/userActions";
 
 class ComponentHeader extends Component {
-  constructor(props) {
-      super(props)
-  }
+//   constructor(props) {
+//       super(props)
+//   }
   signOutAction = () => {
       this.props.onSignOut();
   }

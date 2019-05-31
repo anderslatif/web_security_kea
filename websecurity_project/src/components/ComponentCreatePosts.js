@@ -3,7 +3,7 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import { actionCreatePosts } from '../actions/postActions';
 
-let fileReader;
+// let fileReader;
 
 class ComponentCreatePosts extends Component {
   constructor(props) {
@@ -59,12 +59,8 @@ class ComponentCreatePosts extends Component {
 
         const dataFile = new FormData();
         dataFile.append('file', file, file.name);
-<<<<<<< HEAD
         // http://pedros.tech:9090/file
         axios.post('http://localhost:9090/file', dataFile)
-=======
-        axios.post('https://pedros.tech:9090/file', dataFile)
->>>>>>> 078e0cafe45c48a7fe6a3b6fab82451ed7075306
         .then(response => {
             this.setState({
                 [inputName]: file,

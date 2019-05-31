@@ -1,5 +1,5 @@
 import {
-    ADD_POST,
+    // ADD_POST,
     REMOVE_POSTS,
     UPDATE_POST,
     FETCH_CHAT,
@@ -65,12 +65,8 @@ export const createPosts = (datas) => ({
 
 export const actionCreatePosts = (postDatas) => {
     return dispatch => {
-<<<<<<< HEAD
         // http://pedros.tech:8080/post
         return axios.post("http://localhost:8080/post", postDatas.file)
-=======
-        return axios.post('https://pedros.tech:8080/post', postDatas.file)
->>>>>>> 078e0cafe45c48a7fe6a3b6fab82451ed7075306
                     .then(response => {
                         dispatch(createPosts(response.data));
                         // console.log(response)

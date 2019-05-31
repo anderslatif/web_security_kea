@@ -1,52 +1,85 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import Tilt from 'react-tilt';
-import { loginAuthAction } from "../actions/authActions";
+// import { loginAuthAction } from "../actions/authActions";
 import { connect } from "react-redux";
-import axios from "axios";
+// import axios from "axios";
 import { actionLoginUser } from '../actions/userActions';
+
+const emailRegex = RegExp(
+    /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+);
+  
+const sqlPrevent = (string) => {
+    return string.replace(/&/, "&amp").replace(/</, "&lt")
+};
 
 class PageLogin extends Component {
     constructor(props) {
         super(props)
         this.state = {
             emailLogin: "",
-            passwordLogin: ""
+            passwordLogin: "",
+            error: {
+                emailLogin: "",
+                passwordLogin: ""
+            }
         }
         this.onChangeStoreDatas = this.onChangeStoreDatas.bind(this);
         this.onSubmitStoreDatas = this.onSubmitStoreDatas.bind(this);
     }
 
     onChangeStoreDatas = (ev) => {
-        let inputType = ev.target.name;
-        let inputValue = ev.target.value;
-        this.setState({[inputType]:inputValue});
+        const { name, value } = ev.target;
+        let error = this.state.error;
+
+        switch(name) {
+            case "emailLogin":
+              error.emailLogin = emailRegex.test(value)
+              ? ""
+              : "invalid email address";
+              break;
+            case "passwordLogin":
+              error.passwordLogin = value.length < 9
+              ? "minimum 9 characters required"
+              : ""
+            break;
+        }
+
+        this.setState({[name]: value});
     }
 
     onSubmitStoreDatas = (ev) => {
         ev.preventDefault();
-        const login = {
-            email: this.state.emailLogin,
-            password: this.state.passwordLogin
+        if (this.formValid(this.state)) {
+            const login = {
+                email: this.state.emailLogin,
+                password: this.state.passwordLogin
+            }
+
+            this.props.onLoginUser(login)
         }
-        this.props.onLoginUser(login)
     }
-<<<<<<< HEAD
-=======
-    // componentDidMount() {
-    //     axios.post("https://pedros.tech:8080/login", {
-    //         email: "emazxcil@email.com",
-    //         password: "paszxcsword"
-    //     }).then(res => console.log("login success: ", res))
-    //       .catch(error => console.log("login failed: ", error))
-    // }
-    testEmail = () => {
->>>>>>> 078e0cafe45c48a7fe6a3b6fab82451ed7075306
+
+    formValid = ({ error, ...rest }) => {
+        let valid = true;
+    
+      // validate form error being empty
+        Object.values(this.state.error).forEach(val => {
+          val.length > 0 && (valid = false);
+        });
+    
+        // validate the form was filled out
+        Object.values(rest).forEach(val => {
+          val === null && (valid = false);
+        });
+        return valid;
+    }
 
     componentDidUpdate() {
-        if (this.props.isLoggedIn) {
-            this.props.history.push('/profile')
-        }
+        // if (this.props.isLoggedIn) {
+        //     this.props.history.push('/profile')
+        // }
     }
     render(props) {
     return (

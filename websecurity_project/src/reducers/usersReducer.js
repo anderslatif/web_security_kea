@@ -1,4 +1,4 @@
-import axios from "axios";
+// import axios from "axios";
 // import {
 //     fetchInitialDatas,
 //     addPost
@@ -7,10 +7,10 @@ import axios from "axios";
 // import { REGISTER_USER } from "../actions/actionsVariables";
 // import { LOGIN_USER } from "../actions/actionsVariables";
 import {
-    FETCH_USER,
+    // FETCH_USER,
     REGISTER_USER,
     LOGIN_USER, 
-    UPDATE_POST, 
+    // UPDATE_POST, 
     EDIT_PROFILE, 
     PROFILE_IMAGE,
     SIGN_OUT,

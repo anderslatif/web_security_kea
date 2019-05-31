@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 class ComponentFeedCardProfile extends Component {
   render(props) {
-    let { id, name, country, profileImage } = this.props;
+    let { name, country, profileImage } = this.props;
     let { personalPosts } = this.props;
     let postsNumber = personalPosts.length;
     // let postsNumber = this.props.user.books.length;

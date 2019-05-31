@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import Tilt from 'react-tilt';
-import axios from 'axios';
 import { connect } from "react-redux";
 import { actionRegisterUser } from "../actions/userActions";
-// import { ErrorEmptyInput } from "../frontend__errors/errorsComponents";
-// import { connect } from "redux";
 
 const emailRegex = RegExp(
   /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
@@ -14,23 +11,6 @@ const emailRegex = RegExp(
 const sqlPrevent = (string) => {
   return string.replace(/&/, "&amp").replace(/</, "&lt")
 };
-
-// const formValid = error => {
-//     let valid = true;
-
-//   // validate form error being empty
-//   Object.values(this.state.error).forEach(val => {
-//     val.length > 0 && (valid = false);
-//   });
-
-//   // validate the form was filled out
-//   Object.values(this.state.error).forEach(val => {
-//     val === null && (valid = false);
-//   });
-
-
-//     return valid;
-// }
 
 class PageRegister extends Component {
   constructor(props) {
@@ -77,26 +57,11 @@ class PageRegister extends Component {
 
 
       this.props.onRegisterUser(register);
-<<<<<<< HEAD
       console.log(this.props.isRegistered);
       // if(this.props.isRegistered === true) {
       //   // this.props.history.push('/login')
       //   console.log(this.props.isRegistered)
       // }
-=======
-      // axios({
-      //   method
-      // })
-      // axios.post("https://pedros.tech:8080/signup", register)
-      //       .then(result => console.log("success register: ", result.data))
-      //       .catch(error => console.log("error: ", error))
-      // axios.post("https://pedros.tech:8080/signup", {register: "user"}).then(response => console.log(response)).catch(error => console.log(error))
-      // console.log(`
-      //   email: ${this.state.email} \n
-      //   password: ${this.state.password} \n
-      //   passwordRepeated: ${this.state.passwordRepeated}
-      // `)
->>>>>>> 078e0cafe45c48a7fe6a3b6fab82451ed7075306
     } else {
       console.error("display error")
     }

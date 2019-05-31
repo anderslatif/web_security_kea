@@ -2,16 +2,16 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
 class ComponentIndividualFeedPosts extends Component {
-    constructor(props) {
-        super(props)
-        // this.state = {
-        //     review: "",
-        //     bookId: "",
-        //     userId: ""
-        // }
-        // this.getReviewDatas = this.getReviewDatas.bind(this);
-        // this.submitReviewDatas = this.submitReviewDatas.bind(this);
-    }
+    // constructor(props) {
+    //     super(props)
+    //     // this.state = {
+    //     //     review: "",
+    //     //     bookId: "",
+    //     //     userId: ""
+    //     // }
+    //     // this.getReviewDatas = this.getReviewDatas.bind(this);
+    //     // this.submitReviewDatas = this.submitReviewDatas.bind(this);
+    // }
     componentDidMount() {
         // console.log(this.props.post.book);
     }
@@ -42,9 +42,14 @@ class ComponentIndividualFeedPosts extends Component {
     //     ev.target.elements.review.value = "";
     // }
     render(props) {
-        let { post } = this.props;
-        let book = post.book;
-        let user = post.user;
+        // let { post } = this.props;
+        
+        
+        // let book = post.book;
+        // let user = post.user;
+
+
+
         // const convertedTimeStamp = book.postDate
         return(
             <div className="componentIndividualFeedPosts">

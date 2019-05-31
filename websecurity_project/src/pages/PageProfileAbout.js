@@ -3,10 +3,10 @@ import ComponentHeader from "../components/ComponentHeader";
 import ComponentProfileHeader from "../components/ComponentProfileHeader";
 import ComponentAbout from "../components/ComponentAbout";
 import ComponentEditProfile from "../components/ComponentEditProfile";
-import ComponentChatElement from "../components/ComponentChatElement";
-import axios from "axios";
+// import ComponentChatElement from "../components/ComponentChatElement";
+// import axios from "axios";
 import ComponentAddPersonalDatas from "../components/ComponentAddPersonalDatas";
-import { connect } from "react-redux";
+// import { connect } from "react-redux";
 
 class PageProfileAbout extends Component {
     constructor(props) {

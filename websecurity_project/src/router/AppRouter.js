@@ -7,7 +7,7 @@ import PageProfileAbout from "../pages/PageProfileAbout";
 import PageProfilePosts from "../pages/PageProfilePosts";
 import PageBook from "../pages/PageBook";
 import PageChat from "../pages/PageChat";
-import { Widget, addResponseMessage } from "react-chat-widget";
+// import { Widget, addResponseMessage } from "react-chat-widget";
 import PageFeed from "../pages/PageFeed";
 import PageNotFound from "../pages/PageNotFound";
 // import { Provider } from "react-redux";

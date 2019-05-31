@@ -1,37 +1,37 @@
-import React, { Component, useState } from 'react';
-import ComponentIndividualChatMessage from './ComponentIndividualChatMessage';
+import React, { useState } from 'react';
+// import ComponentIndividualChatMessage from './ComponentIndividualChatMessage';
 import io from 'socket.io-client';
 
 const socket = io('https://pedros.tech:8080');
 // import React, { useState, useEffect } from 'react';
 
-const testChatMessages = [
-    {
-        id: 1,
-        message: 'test a',
-        senderId: 1
-    },
-    {
-        id: 2,
-        message: 'test b',
-        senderId: 2
-    },
-    {
-        id: 3,
-        message: 'test c newer',
-        senderId: 3
-    },
-    {
-        id: 4,
-        message: 'test d',
-        senderId: 4
-    },
-    {
-        id: 5,
-        message: 'test e new',
-        senderId: 5
-    }
-];
+// const testChatMessages = [
+//     {
+//         id: 1,
+//         message: 'test a',
+//         senderId: 1
+//     },
+//     {
+//         id: 2,
+//         message: 'test b',
+//         senderId: 2
+//     },
+//     {
+//         id: 3,
+//         message: 'test c newer',
+//         senderId: 3
+//     },
+//     {
+//         id: 4,
+//         message: 'test d',
+//         senderId: 4
+//     },
+//     {
+//         id: 5,
+//         message: 'test e new',
+//         senderId: 5
+//     }
+// ];
 
 function ComponentChatElement(props) {
     const [input, setInput] = useState('');

@@ -4,9 +4,9 @@ import samplePDF from '../dreamcatcher.pdf';
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 class ComponentIndividualBooks extends Component {
-  constructor(props) {
-    super(props)
-  }
+  // constructor(props) {
+  //   super(props)
+  // }
 
   componentDidMount() {
     window.onkeydown = this.props.switchPages;
@@ -18,7 +18,7 @@ class ComponentIndividualBooks extends Component {
         nextPage,
         previousPage,
         onDocumentLoadSuccess,
-        changePages
+        // changePages
     } = this.props;
     return (
       <div className="componentIndividualBooks">

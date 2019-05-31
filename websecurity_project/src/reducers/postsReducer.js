@@ -1,16 +1,16 @@
 // import {
 //     addPost
 // } from "../actions/authActions";
-import axios from "axios";
+// import axios from "axios";
 import {
-    ADD_POST,
-    REMOVE_POSTS,
+    // ADD_POST,
+    // REMOVE_POSTS,
     UPDATE_POST,
     FETCH_POSTS,
     CREATE_POST,
     CREATE_REVIEW
 } from "../actions/actionsVariables";
-import moment from "moment";
+// import moment from "moment";
 
 
 // const postsReducerDefaultState = {

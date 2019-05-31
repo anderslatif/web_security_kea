@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import ComponentIndividualFeedPosts from "./ComponentIndividualFeedPosts";
-import moment from "moment";
+// import moment from "moment";
 import { connect } from "react-redux";
 import { actionCreateReview } from "../actions/postActions";
 
