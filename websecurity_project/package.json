@@ -1,7 +1,7 @@
 {
   "name": "websecurity_project",
   "version": "0.1.0",
-  "homepage": "https://pedros.tech",
+  "homepage": "http://pedros.tech",
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
@@ -27,7 +27,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "compile:sass": "node-sass src/style/style.scss public/style.css -w"
+    "compile:sass": "node-sass src/style/style.scss public/style.css -w",
+    "run-prod": "PORT=80 react-scripts start"
   },
   "eslintConfig": {
     "extends": "react-app"
