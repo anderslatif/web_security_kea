@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { actionCreatePosts } from '../actions/postActions';
+import { actionCreatePosts, actionCreatePostsFiles } from '../actions/postActions';
 
 // let fileReader;
 
@@ -83,6 +83,7 @@ class ComponentCreatePosts extends Component {
         const data = new FormData()
         data.append('file', this.state.file)
         this.props.onCreatePosts({...this.state, file: data});
+        this.props.actionCreatePostsFiles(this.state.cover)
     };
 
   render() {
@@ -157,6 +158,9 @@ const mapDispatchToProps = (dispatch) => {
     return {
         onCreatePosts: post => {
             dispatch(actionCreatePosts(post));
+        },
+        actionCreatePostsFiles: post => {
+            dispatch(actionCreatePostsFiles(post))
         }
     }
 };

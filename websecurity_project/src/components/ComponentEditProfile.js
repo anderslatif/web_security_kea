@@ -1,4 +1,6 @@
-import React, { Component } from 'react'
+/*eslint-disable*/
+import React, { Component } from 'react';
+import { connect } from "react-redux";
 
 class ComponentEditProfile extends Component {
   constructor(props) {
@@ -16,6 +18,18 @@ class ComponentEditProfile extends Component {
     let valueContent = ev.target.value;
     this.setState({[valueType]: valueContent});
   }
+
+//   submitCreateProfile = () => {
+//       const profile = {
+//           email: this.state.email,
+//           socialNetwork: this.state.socialNetwork,
+//           country: this.state.country
+//       }
+//       this.props.actionCreateProfileDatas(profile, this.props.userId);
+//   }
+//   componentDidMount() {
+//       console.log("user______id: ", this.props.userId)
+//   }
   render(props) {
     let { handleEditProfile } = this.props;
     return (
@@ -96,4 +110,18 @@ class ComponentEditProfile extends Component {
   }
 }
 
-export default ComponentEditProfile;
+const mapDispatchToProps = dispatch => {
+    return {
+        onPostProfile: (profile) => {
+            dispatch(actionCreateProfileDatas(profile))
+        }
+    }
+}
+
+const mapStateToProps = state => {
+    return {
+        userId: state.user.userId
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ComponentEditProfile);

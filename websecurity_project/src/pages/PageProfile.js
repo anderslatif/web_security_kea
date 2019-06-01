@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import React, { Component } from 'react'
 import ComponentHeader from '../components/ComponentHeader';
 import ComponentProfileHeader from '../components/ComponentProfileHeader';

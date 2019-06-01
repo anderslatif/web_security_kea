@@ -1,3 +1,4 @@
+/*eslint-disable*/
 const express = require('express');
 
 const router = express.Router();
@@ -17,6 +18,7 @@ dummyUser.userRole = userRoles.scriptKiddie;
 
 router.post('/signup', (req, res) => {
     const { email, password, passwordRepeated } = req.body;
+    console.log(req.body);
     if (email && password && passwordRepeated) {
         if (password !== passwordRepeated) {
             res.send('Password and repeated password are not the same');
@@ -68,9 +70,15 @@ router.post('/signup', (req, res) => {
         // "Someone is trying to use this route without knowing exactly what fields are required
         res.send('Missing Required fields');
     }
+}); 
+
+router.post('/testroute', (req, res) => {
+    console.log("hello", req.body)
+    res.send(req.body);
 });
 
 router.post('/login', (req, res) => {
+    console.log(req.body);
     if (req.body.email && req.body.password) {
         const requestedUser = {
             email: req.body.email,
@@ -87,7 +95,11 @@ router.post('/login', (req, res) => {
                     }
                     if (result === true) {
                         req.session.userId = foundUsers[0]._id;
-                        res.send({ result: true });
+                        req.session.save(error => {
+                            console.log("session____error: ", error);
+                            console.log("session data", req.session)
+                            res.send({ result: true, userId: foundUsers[0]._id });
+                        })
                     } else {
                         helperFunctions.logToFile('Someone is trying to guess the password', 'intrusions.txt');
                     }
@@ -100,9 +112,11 @@ router.post('/login', (req, res) => {
     }
 });
 
-router.get('/profile', (req, res) => {
-    if (req.session.userId) {
-        User.findById(req.session.userId)
+router.post('/profile', (req, res) => {
+    // console.log('session__id: ', req.session.userId)
+    // if (req.session.userId) {
+        if(req.body.userId) {
+        User.findById(req.body.userId)
         .exec((error, user) => {
             if (error) {
                 helperFunctions.logToFile(`MongoFailed${ error}`, 'mongo-errors.txt');
@@ -115,13 +129,13 @@ router.get('/profile', (req, res) => {
                     res.send(dummyUser);
                 } else if (user) {
                     // remove password from user
-                    const { email, country, socialNetwork } = user;
+                    const { id, email, country, socialNetwork } = user;
                     Post.find({ id: { $eq: user._id } }).exec((err, posts) => {
                         if (err) {
                             helperFunctions.logToFile(`MongoFailed${ error}`, 'mongo-errors.txt');
                             res.status(500).send();
                         }
-                        const result = { email, country, socialNetwork };
+                        const result = { id, email, country, socialNetwork };
                         result.postsNumber = posts.length;
                         res.send(result);
                     });
@@ -129,11 +143,14 @@ router.get('/profile', (req, res) => {
                     helperFunctions.logToFile('Someone is trying to access a profile Page while not existing in the db', 'intrusions.txt');
                     res.send(dummyUser);
                 }
-        });
-    } else {
-        helperFunctions.logToFile('Someone is trying to access a profile Page while not being logged in', 'intrusions.txt');
-        res.send('You are not logged in');
-    }
+            });
+        } else {
+            res.send("missing user id")
+        }
+    // } else {
+    //     helperFunctions.logToFile('Someone is trying to access a profile Page while not being logged in', 'intrusions.txt');
+    //     res.send('You are not logged in');
+    // }
 });
 
 router.put('/profile', (req, res) => {

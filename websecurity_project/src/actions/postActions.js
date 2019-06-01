@@ -6,7 +6,8 @@ import {
     FETCH_POSTS,
     CREATE_POST,
     CREATE_REVIEW,
-    FETCH_PERSONAL_POSTS
+    FETCH_PERSONAL_POSTS,
+    CREATE_POST_FILE
 } from './actionsVariables';
 import axios from 'axios';
 
@@ -40,7 +41,8 @@ export const fetchPosts = (posts) => ({
 export const fetchAllPosts = () => {
     return async (dispatch) => {
         try {
-            const response = await axios.get('https://pedros.tech:8080/posts');
+            // https://pedros.tech:8080/posts
+            const response = await axios.get('http://localhost:8085/posts');
             // console.log(response.data);
             dispatch(fetchPosts(response.data));
         } catch (error) {
@@ -63,10 +65,16 @@ export const createPosts = (datas) => ({
     }
 });
 
+// export const actionCreatePosts = (postDatas) => {
+//     return dispatch => {
+//         return axios.post("http://localhost:8085/file")
+//     }
+// }
+
 export const actionCreatePosts = (postDatas) => {
     return dispatch => {
         // http://pedros.tech:8080/post
-        return axios.post("http://localhost:8080/post", postDatas.file)
+        return axios.post("http://localhost:8085/post", postDatas.file)
                     .then(response => {
                         dispatch(createPosts(response.data));
                         // console.log(response)
@@ -75,18 +83,38 @@ export const actionCreatePosts = (postDatas) => {
     };
 };
 
+// upload files 
+export const createPostsFiles = (datas) => ({
+    type: CREATE_POST_FILE,
+    post: {
+        cover: datas.cover
+        // file: datas.file
+    }
+});
+
+export const actionCreatePostsFiles = (postDatas) => {
+    return dispatch => {
+        return axios.post("http://localhost:9090/file", postDatas)
+                    .then(response => {
+                        dispatch(createPostsFiles(response.data))
+                        console.log(response)
+                    })
+                    .catch(error => console.log("post_files_error: ", error))
+    }
+}
+
 // fetch all the personal posts
 // ****************************
 
-export const fetchProfilePosts = (profile) => ({
-    type: FETCH_PERSONAL_POSTS
-})
+// export const fetchProfilePosts = (profile) => ({
+//     type: FETCH_PERSONAL_POSTS
+// })
 
-export const actionFetchProfilePosts = profile => {
-    return dispatch => {
-        // return axios.get()
-    }
-}
+// export const actionFetchProfilePosts = profile => {
+//     return dispatch => {
+//         // return axios.get()
+//     }
+// }
 
 // export const actionCreatePosts = ({ cover, file, title, author, description }) => {
 //     return (dispatch) => {

@@ -1,3 +1,4 @@
+/*eslint-disable*/
 // *****************
 // User constants
 // ******************
@@ -39,6 +40,9 @@ export const FETCH_POSTS = "FETCH_POSTS";
 //Variable for: creating a new post
 export const ADD_POST = "ADD_POST";
 
+//Variable for: creating book files
+export const CREATE_POST_FILE = "CREATE_POST_FILE";
+
 //Variable for: removing a post
 export  const REMOVE_POSTS = "REMOVE_POST";
 
@@ -59,3 +63,23 @@ export const CREATE_REVIEW = "CREATE_REVIEW";
 // ****************
 
 export const FETCH_PERSONAL_POSTS = "FETCH_PERSONAL_POSTS";
+
+export const userConstants = {
+    REGISTER_REQUEST: 'USERS_REGISTER_REQUEST',
+    REGISTER_SUCCESS: 'USERS_REGISTER_SUCCESS',
+    REGISTER_FAILURE: 'USERS_REGISTER_FAILURE',
+
+    LOGIN_REQUEST: 'USERS_LOGIN_REQUEST',
+    LOGIN_SUCCESS: 'USERS_LOGIN_SUCCESS',
+    LOGIN_FAILURE: 'USERS_LOGIN_FAILURE',
+    
+    LOGOUT: 'USERS_LOGOUT',
+
+    GETALL_REQUEST: 'USERS_GETALL_REQUEST',
+    GETALL_SUCCESS: 'USERS_GETALL_SUCCESS',
+    GETALL_FAILURE: 'USERS_GETALL_FAILURE',
+
+    DELETE_REQUEST: 'USERS_DELETE_REQUEST',
+    DELETE_SUCCESS: 'USERS_DELETE_SUCCESS',
+    DELETE_FAILURE: 'USERS_DELETE_FAILURE'    
+};

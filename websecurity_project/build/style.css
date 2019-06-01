@@ -1,0 +1,2022 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif; }
+
+html {
+  font-size: 62.5%; }
+
+.pause__scroll {
+  overflow: hidden; }
+
+.inputErrorHighlight {
+  border-color: red;
+  border: 2px solid red !important; }
+
+.errorDisplayMessage {
+  color: red; }
+
+@keyframes animateLabelHover {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) scale(0); }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) scale(1.1); } }
+
+@keyframes animateEditProfileBackground {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+@keyframes animateEditProfile {
+  0% {
+    opacity: 0; }
+  90% {
+    opacity: 0.5; }
+  100% {
+    opacity: 1; }
+  from {
+    width: 0;
+    height: 0;
+    opacity: 0; }
+  to {
+    width: 45rem;
+    height: 90vh;
+    opacity: 1; } }
+
+@keyframes animationSlideBookInformationIn {
+  from {
+    bottom: -100%;
+    opacity: 0; }
+  to {
+    bottom: 0;
+    opacity: 1; } }
+
+@keyframes animateButtonReviews {
+  from {
+    opacity: 0;
+    bottom: -2rem; }
+  to {
+    opacity: 1;
+    bottom: -4.5rem; } }
+
+@keyframes animationSlideReviews {
+  from {
+    left: -50%; }
+  to {
+    left: 0; } }
+
+@keyframes animationSlideBackReviewsComponentAreas {
+  from {
+    left: 0; }
+  to {
+    left: -50%; } }
+
+@keyframes animationChatSlide {
+  from {
+    bottom: -100%; }
+  to {
+    bottom: 0; } }
+
+@keyframes animationSlideChatLists {
+  from {
+    bottom: 0; }
+  to {
+    bottom: -100%; } }
+
+@keyframes animationSlideProfile {
+  from {
+    bottom: -14rem;
+    opacity: 0; }
+  to {
+    bottom: 0;
+    opacity: 1; } }
+
+.page__login,
+.page__register {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: #f7f7f7;
+  display: grid;
+  align-items: center;
+  justify-items: center; }
+  .page__login--wrapper,
+  .page__register--wrapper {
+    width: 70vw;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    border-radius: 0.45rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    background-color: #ffffff; }
+    @media (max-width: 900px) {
+      .page__login--wrapper,
+      .page__register--wrapper {
+        width: 80vw; } }
+    @media (max-width: 700px) {
+      .page__login--wrapper,
+      .page__register--wrapper {
+        width: 90vw; } }
+    @media (max-width: 545px) {
+      .page__login--wrapper,
+      .page__register--wrapper {
+        width: 100vw; } }
+    @media (max-width: 445px) {
+      .page__login--wrapper,
+      .page__register--wrapper {
+        width: 100vw;
+        height: 100vh;
+        grid-template-columns: 1fr;
+        align-items: center; } }
+
+.left__areaAuths {
+  height: 100%;
+  padding: 2.1rem 0 2.1rem 0; }
+  @media (max-width: 445px) {
+    .left__areaAuths {
+      height: auto; } }
+  .left__areaAuths--logos {
+    width: 80%;
+    margin: 0 auto;
+    height: 4.5rem; }
+    .left__areaAuths--logos a {
+      font-size: 1.9rem;
+      text-decoration: none;
+      font-weight: 900;
+      color: #000000;
+      font-family: "utopia-std-headline", serif; }
+  .left__areaAuths--informations {
+    width: 80%;
+    margin: 0 auto;
+    height: 6.5rem; }
+    .left__areaAuths--informations h2 {
+      font-size: 2.2rem;
+      color: darkgrey;
+      font-family: "utopia-std-headline", serif; }
+      .left__areaAuths--informations h2 span {
+        color: black; }
+    .left__areaAuths--informations p {
+      font-size: 1.4rem;
+      color: #000000;
+      font-family: "utopia-std-headline", serif;
+      margin-top: 0.70rem; }
+  .left__areaAuths .formLogin,
+  .left__areaAuths .formRegister {
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 3.2rem; }
+    .left__areaAuths .formLogin--forms,
+    .left__areaAuths .formRegister--forms {
+      height: 9.5rem;
+      display: grid;
+      grid-template-rows: repeat(2, 1fr);
+      grid-row-gap: 2px; }
+      .left__areaAuths .formLogin--forms input,
+      .left__areaAuths .formRegister--forms input {
+        width: 100%;
+        position: relative;
+        outline: none;
+        font-size: 1.4rem;
+        border-radius: 0.45rem;
+        border: 2px solid lightgrey;
+        transition: all 0.45s ease-in-out;
+        padding-left: 0.21rem;
+        font-weight: 900;
+        font-family: "utopia-std-headline", serif;
+        height: 4.5rem; }
+        .left__areaAuths .formLogin--forms input:focus,
+        .left__areaAuths .formRegister--forms input:focus {
+          border-left: 0.45rem solid #f62459;
+          padding-left: 0.45rem; }
+    .left__areaAuths .formLogin--remember-forget,
+    .left__areaAuths .formRegister--remember-forget {
+      width: 100%;
+      margin: 0 auto;
+      height: 4.5rem;
+      margin-top: 1.4rem;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center; }
+      .left__areaAuths .formLogin--remember-forget .formgroup__checkbox,
+      .left__areaAuths .formRegister--remember-forget .formgroup__checkbox {
+        display: grid;
+        align-items: center;
+        grid-template-columns: 2.1rem 1fr; }
+        .left__areaAuths .formLogin--remember-forget .formgroup__checkbox input[type="checkbox"],
+        .left__areaAuths .formRegister--remember-forget .formgroup__checkbox input[type="checkbox"] {
+          width: 1.4rem;
+          height: 1.4rem; }
+        .left__areaAuths .formLogin--remember-forget .formgroup__checkbox label,
+        .left__areaAuths .formRegister--remember-forget .formgroup__checkbox label {
+          font-size: 1.2rem;
+          font-weight: 445;
+          color: darkgrey;
+          font-family: "utopia-std-headline", serif; }
+      .left__areaAuths .formLogin--remember-forget a,
+      .left__areaAuths .formRegister--remember-forget a {
+        text-decoration: none;
+        font-size: 1.2rem;
+        color: dodgerblue;
+        font-weight: 445;
+        cursor: pointer; }
+        .left__areaAuths .formLogin--remember-forget a:hover,
+        .left__areaAuths .formRegister--remember-forget a:hover {
+          text-decoration: underline; }
+    .left__areaAuths .formLogin--submit,
+    .left__areaAuths .formRegister--submit {
+      width: 100%;
+      height: 4.5rem;
+      margin-top: 0.45rem; }
+      .left__areaAuths .formLogin--submit button,
+      .left__areaAuths .formRegister--submit button {
+        color: #ffffff;
+        background-color: #000000;
+        transition: all 0.21s ease-in-out;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        font-size: 1.4rem;
+        font-weight: 445;
+        text-transform: uppercase;
+        padding: 0.45rem 0.80rem 0.45rem 0.80rem;
+        border-radius: 0.45rem; }
+        .left__areaAuths .formLogin--submit button:hover,
+        .left__areaAuths .formRegister--submit button:hover {
+          background-color: #2e3131; }
+  .left__areaAuths--terms-and-conditions {
+    width: 80%;
+    margin: 0 auto;
+    height: 4.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; }
+    .left__areaAuths--terms-and-conditions p {
+      font-size: 1.2rem; }
+      .left__areaAuths--terms-and-conditions p a {
+        margin-left: 0.32rem;
+        margin-right: 0.32rem; }
+    .left__areaAuths--terms-and-conditions a.register__links,
+    .left__areaAuths--terms-and-conditions a.login__links {
+      text-decoration: none;
+      color: #ffffff;
+      background-color: #000000;
+      transition: all 0.21s ease-in-out;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      font-size: 1.4rem;
+      font-weight: 445;
+      text-transform: uppercase;
+      padding: 0.45rem 0.80rem 0.45rem 0.80rem;
+      border-radius: 0.45rem;
+      height: 3.2rem; }
+      .left__areaAuths--terms-and-conditions a.register__links:hover,
+      .left__areaAuths--terms-and-conditions a.login__links:hover {
+        background-color: #2e3131; }
+
+.right__areaAuths {
+  background-image: url("./image/authentications__background.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: grid;
+  align-items: center;
+  justify-items: center; }
+  @media (max-width: 445px) {
+    .right__areaAuths {
+      display: none; } }
+  .right__areaAuths--content {
+    width: 14rem;
+    height: 14rem; }
+    .right__areaAuths--content .Tilt {
+      width: 100% !important;
+      height: 100% !important;
+      background-color: rgba(255, 255, 255, 0.45);
+      display: grid;
+      align-items: center;
+      justify-items: center; }
+      .right__areaAuths--content .Tilt-inner {
+        display: grid;
+        align-items: center;
+        text-align: center;
+        font-size: 2.2rem;
+        font-weight: 900;
+        font-family: "utopia-std-headline", serif !important; }
+
+.formRegister {
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 3.2rem; }
+  .formRegister--forms {
+    height: 14rem !important;
+    display: grid;
+    grid-template-rows: repeat(3, 1fr) !important;
+    grid-row-gap: 2px; }
+    .formRegister--forms input {
+      width: 100%;
+      position: relative;
+      outline: none;
+      font-size: 1.4rem;
+      border-radius: 0.45rem;
+      border: 2px solid lightgrey;
+      transition: all 0.45s ease-in-out;
+      padding-left: 0.21rem;
+      font-weight: 900;
+      font-family: "utopia-std-headline", serif; }
+      .formRegister--forms input:focus {
+        border-left: 0.45rem solid #f62459;
+        padding-left: 0.45rem; }
+
+.component__header {
+  width: 100%;
+  height: 4.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  display: grid;
+  align-items: center;
+  background-color: #ffffff; }
+  .component__header--wrapper {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center; }
+
+.left__header {
+  display: flex;
+  flex-direction: row;
+  align-items: center; }
+  .left__header--logos {
+    margin-right: 1.4rem; }
+    .left__header--logos a {
+      font-size: 1.9rem;
+      text-decoration: none;
+      color: #2e3131;
+      font-weight: 900;
+      font-family: "utopia-std-headline", serif; }
+  .left__header .divider__element {
+    width: 2px;
+    height: 3.2rem;
+    background-color: #2e3131; }
+  .left__header--search {
+    margin-left: 1.4rem; }
+    .left__header--search svg {
+      width: 2.1rem;
+      height: 2.1rem;
+      cursor: pointer;
+      fill: #c8c9cc; }
+
+.right__header {
+  display: flex;
+  flex-direction: row;
+  align-items: center; }
+  .right__header--signout button {
+    padding: 0.35rem 0.45rem 0.35rem 0.45rem;
+    border-radius: 0.45rem;
+    border: none;
+    background-color: dodgerblue;
+    color: #ffffff;
+    font-size: 1.4rem;
+    cursor: pointer;
+    transition: all 0.22s ease-in-out; }
+    .right__header--signout button:hover {
+      background-color: #0079ef; }
+  .right__header--notifications {
+    margin-right: 1.4rem; }
+    .right__header--notifications svg {
+      width: 2.6rem;
+      height: 2.6rem;
+      cursor: pointer;
+      fill: #c8c9cc; }
+  .right__header--profile {
+    width: 3.5rem;
+    height: 3.5rem;
+    overflow: hidden;
+    border-radius: 50%;
+    position: relative; }
+    .right__header--profile a img {
+      width: 3.5rem;
+      height: 3.5rem;
+      border-radius: 0.45rem; }
+
+.userStatus {
+  position: absolute;
+  right: 14rem;
+  cursor: pointer;
+  background-color: #0058a2;
+  color: #ffffff;
+  border: none;
+  border-radius: 0.45rem;
+  transition: all 0.22s ease-in-out;
+  padding: 0.45rem 0.95rem 0.65rem 0.95rem; }
+  .userStatus:hover {
+    background-color: dodgerblue; }
+
+.userStatusInput {
+  margin-right: 0.45rem;
+  padding: 0.45rem 0.95rem 0.45rem 0.95rem;
+  border-radius: 0.45rem;
+  border: 1.4px solid lightgrey; }
+
+.wrapperUserStatus {
+  position: fixed;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  border-radius: 0.45rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  padding: 4.5rem; }
+  .wrapperUserStatus .buttonAcceptStatus {
+    cursor: pointer;
+    padding: 0.45rem 0.95rem 0.45rem 0.95rem;
+    background-color: #0058a2;
+    transition: all 0.22s ease-in-out;
+    color: #ffffff;
+    border: none;
+    border-radius: 0.45rem; }
+    .wrapperUserStatus .buttonAcceptStatus:hover {
+      background-color: dodgerblue; }
+  .wrapperUserStatus .closeUserStatus {
+    width: 2.2rem;
+    height: 2.2rem;
+    position: absolute;
+    cursor: pointer;
+    top: 0.45rem;
+    right: 0.45rem;
+    transition: all 0.22s ease-in-out;
+    border-radius: 0.45rem; }
+    .wrapperUserStatus .closeUserStatus:hover {
+      background-color: #2e3131;
+      fill: #ffffff;
+      border-radius: 0.45rem;
+      padding: 0.45rem; }
+
+.page__profile {
+  width: 100%;
+  height: auto;
+  min-height: 100vh;
+  background-color: #f7f7f7;
+  border-radius: 0.45rem; }
+  .page__profile--content {
+    width: 70%;
+    height: auto;
+    margin: 0 auto;
+    background-color: #ffffff;
+    margin-top: 3.2rem; }
+    @media (max-width: 900px) {
+      .page__profile--content {
+        width: 90%; } }
+
+.componentProfileHeader {
+  width: 100%;
+  height: 45vh;
+  overflow: hidden;
+  position: relative;
+  display: grid;
+  grid-template-rows: 1fr 6.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); }
+  .componentProfileHeader--cover {
+    width: 100%;
+    overflow: hidden;
+    position: relative; }
+    .componentProfileHeader--cover img {
+      width: 100%;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%); }
+    .componentProfileHeader--cover .selectEditCover {
+      border: none;
+      border-radius: 0.45rem;
+      width: 14rem;
+      height: 3.5rem;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      background-color: #2e3131;
+      opacity: 0.8;
+      position: absolute;
+      bottom: 1.4rem;
+      right: 1.4rem;
+      cursor: pointer;
+      padding-left: 0.45rem;
+      padding-right: 0.45rem;
+      transition: all 0.21s ease-in-out; }
+      .componentProfileHeader--cover .selectEditCover:hover {
+        background-color: black;
+        opacity: 0.9; }
+      .componentProfileHeader--cover .selectEditCover svg {
+        width: 2.1rem;
+        height: 2.1rem;
+        cursor: pointer;
+        fill: #ffffff;
+        margin-right: 0.70rem; }
+      .componentProfileHeader--cover .selectEditCover span {
+        color: #ffffff;
+        font-size: 1.4rem; }
+  .componentProfileHeader--navigation {
+    width: 90%;
+    margin: 0 auto;
+    display: grid;
+    align-items: center;
+    position: relative; }
+    .componentProfileHeader--navigation--profile {
+      width: 8.5rem;
+      height: 8.5rem;
+      border-radius: 50%;
+      overflow: hidden;
+      top: -4.25rem;
+      position: absolute;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); }
+      .componentProfileHeader--navigation--profile img {
+        width: 100%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(1.1); }
+      .componentProfileHeader--navigation--profile .changeProfileImage {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.7);
+        z-index: 9;
+        animation: animationSlideProfile 0.45s ease-in-out forwards; }
+        .componentProfileHeader--navigation--profile .changeProfileImage button {
+          width: 100%;
+          height: 100%;
+          border: none;
+          background-color: transparent;
+          cursor: pointer;
+          position: relative; }
+          .componentProfileHeader--navigation--profile .changeProfileImage button svg {
+            width: 2.2rem;
+            height: 2.2rem;
+            fill: #ffffff; }
+          .componentProfileHeader--navigation--profile .changeProfileImage button p {
+            color: #ffffff; }
+      .componentProfileHeader--navigation--profile .componentProfileImageApproval {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: 9;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); }
+        .componentProfileHeader--navigation--profile .componentProfileImageApproval__approve {
+          height: 100%;
+          background-color: #03c9a9;
+          cursor: pointer;
+          border: none;
+          color: #ffffff; }
+        .componentProfileHeader--navigation--profile .componentProfileImageApproval__reject {
+          height: 100%;
+          background-color: #f03434;
+          cursor: pointer;
+          border: none;
+          color: #ffffff; }
+    .componentProfileHeader--navigation--links {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin-left: 12rem;
+      display: grid;
+      grid-template-columns: auto auto auto auto; }
+      .componentProfileHeader--navigation--links a {
+        font-size: 1.7rem;
+        color: #5d6363;
+        text-decoration: none;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.21s ease-in-out;
+        position: relative;
+        text-align: center; }
+        .componentProfileHeader--navigation--links a:hover {
+          color: black; }
+      .componentProfileHeader--navigation--links .activeSubRoute {
+        font-size: 1.7rem;
+        color: black;
+        text-decoration: none;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.21s ease-in-out;
+        position: relative; }
+        .componentProfileHeader--navigation--links .activeSubRoute::after {
+          content: "";
+          position: absolute;
+          bottom: -2.25rem;
+          left: 0;
+          width: 100%;
+          height: 0.35rem;
+          border-radius: 0.32rem 0.32rem 0 0;
+          background-color: #f62459;
+          transition: all 0.21s ease-in-out;
+          opacity: 1; }
+
+.pageProfilePosts {
+  background-color: #f7f7f7; }
+
+.componentPosts {
+  width: 70%;
+  margin: 0 auto;
+  padding: 4.5rem 0 3.2rem 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 2.5rem; }
+  @media (max-width: 900px) {
+    .componentPosts {
+      width: 90%; } }
+  @media (max-width: 700px) {
+    .componentPosts {
+      grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 445px) {
+    .componentPosts {
+      grid-template-columns: 1fr; } }
+  .componentPosts .componentPostsElement {
+    height: 100%;
+    background-color: #ffffff;
+    border-radius: 0.90rem;
+    position: relative;
+    display: grid;
+    align-items: center;
+    justify-items: center; }
+    .componentPosts .componentPostsElement--wrapper {
+      width: 90%;
+      height: 90%;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 42% 1fr; }
+      .componentPosts .componentPostsElement--wrapper--cover {
+        overflow: hidden;
+        border-radius: 0.45rem; }
+        .componentPosts .componentPostsElement--wrapper--cover img {
+          width: 100%; }
+      .componentPosts .componentPostsElement--wrapper--information {
+        padding-left: 1.4rem;
+        padding-top: 3.2rem; }
+        .componentPosts .componentPostsElement--wrapper--information h2 {
+          font-family: "utopia-std-headline", serif;
+          text-transform: uppercase;
+          font-weight: 300;
+          margin-bottom: 0.45rem; }
+        .componentPosts .componentPostsElement--wrapper--information p {
+          font-size: 1.4rem;
+          margin-bottom: 0.45rem; }
+        .componentPosts .componentPostsElement--wrapper--information span {
+          display: block;
+          font-size: 1.4rem;
+          margin-bottom: 2.2rem; }
+        .componentPosts .componentPostsElement--wrapper--information a {
+          border: none;
+          padding: 0.45rem 1.4rem 0.45rem 1.4rem;
+          border-radius: 0.45rem;
+          color: #ffffff;
+          background-color: #0058a2;
+          cursor: pointer;
+          text-decoration: none;
+          font-weight: 900;
+          font-size: 1.4rem;
+          transition: all 0.22s ease-in-out; }
+          .componentPosts .componentPostsElement--wrapper--information a:hover {
+            background-color: dodgerblue; }
+
+.component__about {
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 3.2rem;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  background-color: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); }
+  .component__about--wrapper {
+    width: 90%;
+    padding-bottom: 2rem; }
+    .component__about--wrapper .about__titleDivision {
+      padding: 1.4rem 0 1.4rem 0;
+      border-bottom: 1.4px solid #f7f7f7;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between; }
+      .component__about--wrapper .about__titleDivision h2 {
+        font-family: "Roboto", sans-serif;
+        color: #2e3131;
+        font-weight: 900;
+        font-size: 2.1rem; }
+      .component__about--wrapper .about__titleDivision button {
+        position: relative;
+        background-color: transparent;
+        cursor: pointer;
+        border: none; }
+        .component__about--wrapper .about__titleDivision button::before {
+          content: "Edit";
+          width: 9rem;
+          position: absolute;
+          background-color: #2e3131;
+          border-radius: 0.45rem;
+          color: #ffffff;
+          top: -3.5rem;
+          left: 50%;
+          display: none;
+          transform: translateX(-50%);
+          transition: all 0.22s ease-in-out;
+          padding: 0.45rem 0 0.45rem 0; }
+        .component__about--wrapper .about__titleDivision button:hover::before {
+          display: block;
+          animation: animateLabelHover 0.22s ease-in-out forwards; }
+        .component__about--wrapper .about__titleDivision button svg {
+          width: 2.1rem;
+          height: 2.1rem;
+          fill: #2e3131;
+          cursor: pointer;
+          transition: all 0.22s ease-in-out;
+          position: relative; }
+          .component__about--wrapper .about__titleDivision button svg:hover {
+            background-color: #2e3131;
+            padding: 0.45rem;
+            border-radius: 0.45rem;
+            fill: #ffffff; }
+    .component__about--wrapper .about__contentDivision {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 0.95rem; }
+
+.about__fullNameSubsection,
+.about__addressSubsection,
+.about__emailAddressSubsection,
+.about__socialNetworkSubsection {
+  height: 12rem;
+  border-bottom: 1.4px solid lightgray;
+  display: grid;
+  align-items: center; }
+  .about__fullNameSubsection .addFullNameContent,
+  .about__fullNameSubsection .addAddressContent,
+  .about__fullNameSubsection .addEmailAddressContent,
+  .about__fullNameSubsection .addSocialNetworkContent,
+  .about__addressSubsection .addFullNameContent,
+  .about__addressSubsection .addAddressContent,
+  .about__addressSubsection .addEmailAddressContent,
+  .about__addressSubsection .addSocialNetworkContent,
+  .about__emailAddressSubsection .addFullNameContent,
+  .about__emailAddressSubsection .addAddressContent,
+  .about__emailAddressSubsection .addEmailAddressContent,
+  .about__emailAddressSubsection .addSocialNetworkContent,
+  .about__socialNetworkSubsection .addFullNameContent,
+  .about__socialNetworkSubsection .addAddressContent,
+  .about__socialNetworkSubsection .addEmailAddressContent,
+  .about__socialNetworkSubsection .addSocialNetworkContent {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    transition: all 0.22s ease-in-out; }
+    .about__fullNameSubsection .addFullNameContent .addFullName,
+    .about__fullNameSubsection .addFullNameContent .addAddress,
+    .about__fullNameSubsection .addFullNameContent .addEmailAddress,
+    .about__fullNameSubsection .addFullNameContent .addSocialNetwork,
+    .about__fullNameSubsection .addAddressContent .addFullName,
+    .about__fullNameSubsection .addAddressContent .addAddress,
+    .about__fullNameSubsection .addAddressContent .addEmailAddress,
+    .about__fullNameSubsection .addAddressContent .addSocialNetwork,
+    .about__fullNameSubsection .addEmailAddressContent .addFullName,
+    .about__fullNameSubsection .addEmailAddressContent .addAddress,
+    .about__fullNameSubsection .addEmailAddressContent .addEmailAddress,
+    .about__fullNameSubsection .addEmailAddressContent .addSocialNetwork,
+    .about__fullNameSubsection .addSocialNetworkContent .addFullName,
+    .about__fullNameSubsection .addSocialNetworkContent .addAddress,
+    .about__fullNameSubsection .addSocialNetworkContent .addEmailAddress,
+    .about__fullNameSubsection .addSocialNetworkContent .addSocialNetwork,
+    .about__addressSubsection .addFullNameContent .addFullName,
+    .about__addressSubsection .addFullNameContent .addAddress,
+    .about__addressSubsection .addFullNameContent .addEmailAddress,
+    .about__addressSubsection .addFullNameContent .addSocialNetwork,
+    .about__addressSubsection .addAddressContent .addFullName,
+    .about__addressSubsection .addAddressContent .addAddress,
+    .about__addressSubsection .addAddressContent .addEmailAddress,
+    .about__addressSubsection .addAddressContent .addSocialNetwork,
+    .about__addressSubsection .addEmailAddressContent .addFullName,
+    .about__addressSubsection .addEmailAddressContent .addAddress,
+    .about__addressSubsection .addEmailAddressContent .addEmailAddress,
+    .about__addressSubsection .addEmailAddressContent .addSocialNetwork,
+    .about__addressSubsection .addSocialNetworkContent .addFullName,
+    .about__addressSubsection .addSocialNetworkContent .addAddress,
+    .about__addressSubsection .addSocialNetworkContent .addEmailAddress,
+    .about__addressSubsection .addSocialNetworkContent .addSocialNetwork,
+    .about__emailAddressSubsection .addFullNameContent .addFullName,
+    .about__emailAddressSubsection .addFullNameContent .addAddress,
+    .about__emailAddressSubsection .addFullNameContent .addEmailAddress,
+    .about__emailAddressSubsection .addFullNameContent .addSocialNetwork,
+    .about__emailAddressSubsection .addAddressContent .addFullName,
+    .about__emailAddressSubsection .addAddressContent .addAddress,
+    .about__emailAddressSubsection .addAddressContent .addEmailAddress,
+    .about__emailAddressSubsection .addAddressContent .addSocialNetwork,
+    .about__emailAddressSubsection .addEmailAddressContent .addFullName,
+    .about__emailAddressSubsection .addEmailAddressContent .addAddress,
+    .about__emailAddressSubsection .addEmailAddressContent .addEmailAddress,
+    .about__emailAddressSubsection .addEmailAddressContent .addSocialNetwork,
+    .about__emailAddressSubsection .addSocialNetworkContent .addFullName,
+    .about__emailAddressSubsection .addSocialNetworkContent .addAddress,
+    .about__emailAddressSubsection .addSocialNetworkContent .addEmailAddress,
+    .about__emailAddressSubsection .addSocialNetworkContent .addSocialNetwork,
+    .about__socialNetworkSubsection .addFullNameContent .addFullName,
+    .about__socialNetworkSubsection .addFullNameContent .addAddress,
+    .about__socialNetworkSubsection .addFullNameContent .addEmailAddress,
+    .about__socialNetworkSubsection .addFullNameContent .addSocialNetwork,
+    .about__socialNetworkSubsection .addAddressContent .addFullName,
+    .about__socialNetworkSubsection .addAddressContent .addAddress,
+    .about__socialNetworkSubsection .addAddressContent .addEmailAddress,
+    .about__socialNetworkSubsection .addAddressContent .addSocialNetwork,
+    .about__socialNetworkSubsection .addEmailAddressContent .addFullName,
+    .about__socialNetworkSubsection .addEmailAddressContent .addAddress,
+    .about__socialNetworkSubsection .addEmailAddressContent .addEmailAddress,
+    .about__socialNetworkSubsection .addEmailAddressContent .addSocialNetwork,
+    .about__socialNetworkSubsection .addSocialNetworkContent .addFullName,
+    .about__socialNetworkSubsection .addSocialNetworkContent .addAddress,
+    .about__socialNetworkSubsection .addSocialNetworkContent .addEmailAddress,
+    .about__socialNetworkSubsection .addSocialNetworkContent .addSocialNetwork {
+      width: 4.5rem;
+      height: 4.5rem;
+      fill: lightgrey;
+      cursor: pointer;
+      margin-right: 0.95rem;
+      transition: all 0.22s ease-in-out; }
+    .about__fullNameSubsection .addFullNameContent p,
+    .about__fullNameSubsection .addAddressContent p,
+    .about__fullNameSubsection .addEmailAddressContent p,
+    .about__fullNameSubsection .addSocialNetworkContent p,
+    .about__addressSubsection .addFullNameContent p,
+    .about__addressSubsection .addAddressContent p,
+    .about__addressSubsection .addEmailAddressContent p,
+    .about__addressSubsection .addSocialNetworkContent p,
+    .about__emailAddressSubsection .addFullNameContent p,
+    .about__emailAddressSubsection .addAddressContent p,
+    .about__emailAddressSubsection .addEmailAddressContent p,
+    .about__emailAddressSubsection .addSocialNetworkContent p,
+    .about__socialNetworkSubsection .addFullNameContent p,
+    .about__socialNetworkSubsection .addAddressContent p,
+    .about__socialNetworkSubsection .addEmailAddressContent p,
+    .about__socialNetworkSubsection .addSocialNetworkContent p {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: lightgrey;
+      transition: all 0.22s ease-in-out; }
+    .about__fullNameSubsection .addFullNameContent:hover p,
+    .about__fullNameSubsection .addAddressContent:hover p,
+    .about__fullNameSubsection .addEmailAddressContent:hover p,
+    .about__fullNameSubsection .addSocialNetworkContent:hover p,
+    .about__addressSubsection .addFullNameContent:hover p,
+    .about__addressSubsection .addAddressContent:hover p,
+    .about__addressSubsection .addEmailAddressContent:hover p,
+    .about__addressSubsection .addSocialNetworkContent:hover p,
+    .about__emailAddressSubsection .addFullNameContent:hover p,
+    .about__emailAddressSubsection .addAddressContent:hover p,
+    .about__emailAddressSubsection .addEmailAddressContent:hover p,
+    .about__emailAddressSubsection .addSocialNetworkContent:hover p,
+    .about__socialNetworkSubsection .addFullNameContent:hover p,
+    .about__socialNetworkSubsection .addAddressContent:hover p,
+    .about__socialNetworkSubsection .addEmailAddressContent:hover p,
+    .about__socialNetworkSubsection .addSocialNetworkContent:hover p {
+      color: #2e3131; }
+    .about__fullNameSubsection .addFullNameContent:hover svg,
+    .about__fullNameSubsection .addAddressContent:hover svg,
+    .about__fullNameSubsection .addEmailAddressContent:hover svg,
+    .about__fullNameSubsection .addSocialNetworkContent:hover svg,
+    .about__addressSubsection .addFullNameContent:hover svg,
+    .about__addressSubsection .addAddressContent:hover svg,
+    .about__addressSubsection .addEmailAddressContent:hover svg,
+    .about__addressSubsection .addSocialNetworkContent:hover svg,
+    .about__emailAddressSubsection .addFullNameContent:hover svg,
+    .about__emailAddressSubsection .addAddressContent:hover svg,
+    .about__emailAddressSubsection .addEmailAddressContent:hover svg,
+    .about__emailAddressSubsection .addSocialNetworkContent:hover svg,
+    .about__socialNetworkSubsection .addFullNameContent:hover svg,
+    .about__socialNetworkSubsection .addAddressContent:hover svg,
+    .about__socialNetworkSubsection .addEmailAddressContent:hover svg,
+    .about__socialNetworkSubsection .addSocialNetworkContent:hover svg {
+      fill: #2e3131; }
+
+.toggleChatElement {
+  grid-column: 6/7;
+  cursor: pointer;
+  background-color: #0058a2;
+  color: #ffffff;
+  border: none;
+  border-radius: 0.45rem;
+  transition: all 0.22s ease-in-out;
+  padding: 0.45rem 0.35rem 0.65rem 0.35rem; }
+  .toggleChatElement:hover {
+    background-color: dodgerblue; }
+
+.page__book {
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 4.5rem 1fr; }
+  .page__book .redirectToPosts {
+    width: 4.5rem;
+    height: 4.5rem;
+    position: fixed;
+    right: 2.1rem;
+    top: 2.1rem;
+    cursor: pointer;
+    background-color: #ffffff;
+    border-radius: 50%;
+    z-index: 99;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    transition: all 0.22s ease-in-out;
+    border: 1.4px solid transparent; }
+    .page__book .redirectToPosts svg {
+      width: 2.2rem;
+      height: 2.2rem;
+      fill: #34383f;
+      transition: all 0.22s ease-in-out; }
+    .page__book .redirectToPosts:hover svg {
+      padding: 0.45rem;
+      fill: #ffffff; }
+    .page__book .redirectToPosts:hover {
+      background-color: #34383f;
+      border-color: #ffffff; }
+    .page__book .redirectToPosts::after {
+      content: "Return";
+      position: absolute;
+      bottom: -4.5rem;
+      left: 50%;
+      background-color: #ffffff;
+      color: #34383f;
+      font-family: "Roboto", sans-serif;
+      padding: 0.90rem 0.45rem 0.90rem 0.45rem;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      transform: translateX(-50%);
+      width: 7rem;
+      border-radius: 0.45rem;
+      display: none;
+      font-size: 1.4rem; }
+    .page__book .redirectToPosts:hover::after {
+      display: block;
+      animation: animateButtonReviews 0.45s ease-in-out forwards; }
+  .page__book--content {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 35% 1fr; }
+
+.page__book--content--cover {
+  height: 100vh;
+  background-color: #d03857; }
+
+.page__book--content--document {
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: #34383f; }
+  .page__book--content--document .componentIndividualBooks {
+    width: 90%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden; }
+
+.react-pdf__Document {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-around !important; }
+
+.react-pdf__Page__canvas {
+  height: 100vh !important; }
+
+.react-pdf__Page__textContent {
+  height: 100vh !important; }
+
+.component__reviews {
+  position: absolute;
+  left: -50%;
+  animation: animationSlideReviews 0.45s ease-in forwards; }
+
+.changeLeftPages {
+  position: absolute;
+  left: 7.5%;
+  top: 50%;
+  transform: translateX(-50%) rotate(-90deg);
+  height: 6.5rem;
+  width: 100%;
+  background-color: transparent;
+  transition: all 0.22s ease-in-out;
+  cursor: pointer;
+  border: none;
+  color: #ffffff;
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  font-weight: 200; }
+  .changeLeftPages:hover {
+    background-color: rgba(0, 0, 0, 0.9);
+    border-radius: 0.45rem; }
+
+.changeRightPages {
+  position: absolute;
+  left: 92.5%;
+  top: 50%;
+  transform: translateX(-50%) rotate(90deg);
+  height: 6.5rem;
+  width: 100%;
+  background-color: transparent;
+  transition: all 0.22s ease-in-out;
+  cursor: pointer;
+  border: none;
+  color: #ffffff;
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  font-weight: 200; }
+  .changeRightPages:hover {
+    background-color: rgba(0, 0, 0, 0.9);
+    border-radius: 0.45rem; }
+
+.component__editProfile {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  z-index: 999;
+  background-color: rgba(0, 0, 0, 0.5);
+  top: 0;
+  right: 0;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  animation: animateEditProfileBackground 0.45s ease-in-out forwards; }
+  .component__editProfile--wrapper {
+    width: 45rem;
+    height: 90vh;
+    background-color: #ffffff;
+    animation: animateEditProfile 0.45s ease-in-out forwards;
+    overflow: hidden;
+    border-radius: 0.35rem; }
+
+.edit__profileContent {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: 4.5rem 1fr; }
+  .edit__profileContent--header {
+    width: 100%;
+    height: 4.5rem;
+    background-color: #f7f7f7;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 0.45rem; }
+    .edit__profileContent--header svg {
+      width: 2.1rem;
+      height: 2.1rem;
+      cursor: pointer;
+      transition: all 0.22s ease-in-out;
+      fill: #2e3131;
+      margin-right: 0.45rem; }
+      .edit__profileContent--header svg:hover {
+        background-color: #2e3131;
+        fill: #ffffff;
+        padding: 0.45rem;
+        border-radius: 0.45rem; }
+  .edit__profileContent--content {
+    padding-left: 0.45rem;
+    overflow-y: scroll;
+    background-color: #ffffff; }
+    .edit__profileContent--content::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      background-color: #F5F5F5; }
+    .edit__profileContent--content::-webkit-scrollbar {
+      width: 12px;
+      background-color: #F5F5F5; }
+    .edit__profileContent--content::-webkit-scrollbar-thumb {
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      background-color: lightgrey; }
+    .edit__profileContent--content .contentEdit__subheader {
+      width: 100%;
+      padding-left: 0.45rem;
+      height: 9rem;
+      background-color: #4c5151;
+      display: flex;
+      flex-direction: row;
+      align-items: center; }
+      .edit__profileContent--content .contentEdit__subheader svg {
+        width: 9.5rem;
+        height: 9.5rem;
+        fill: #ffffff;
+        margin-right: 3.2rem; }
+      .edit__profileContent--content .contentEdit__subheader p {
+        color: #ffffff;
+        font-size: 1.4rem;
+        font-family: "Roboto", sans-serif;
+        font-weight: 300; }
+    .edit__profileContent--content .contentEdit__fullname,
+    .edit__profileContent--content .contentEdit__address,
+    .edit__profileContent--content .contentEdit__emailaddress,
+    .edit__profileContent--content .contentEdit__socialnetwork {
+      width: 100%;
+      height: 6.5rem;
+      background-color: #f7f7f7;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin-top: 0.45rem; }
+      .edit__profileContent--content .contentEdit__fullname svg,
+      .edit__profileContent--content .contentEdit__address svg,
+      .edit__profileContent--content .contentEdit__emailaddress svg,
+      .edit__profileContent--content .contentEdit__socialnetwork svg {
+        width: 3.5rem;
+        height: 3.5rem;
+        margin-right: 3.2rem;
+        fill: #2e3131; }
+      .edit__profileContent--content .contentEdit__fullname p,
+      .edit__profileContent--content .contentEdit__address p,
+      .edit__profileContent--content .contentEdit__emailaddress p,
+      .edit__profileContent--content .contentEdit__socialnetwork p {
+        font-size: 1.4rem;
+        font-weight: 200; }
+    .edit__profileContent--content .editFullNameWrapper,
+    .edit__profileContent--content .editAddressWrapper,
+    .edit__profileContent--content .editEmailAddressWrapper,
+    .edit__profileContent--content .editSocialMediaWrapper {
+      width: 100%;
+      height: 9.5rem;
+      display: grid;
+      align-items: center; }
+      .edit__profileContent--content .editFullNameWrapper label,
+      .edit__profileContent--content .editAddressWrapper label,
+      .edit__profileContent--content .editEmailAddressWrapper label,
+      .edit__profileContent--content .editSocialMediaWrapper label {
+        width: 12rem;
+        font-size: 1.4rem;
+        font-weight: 200; }
+      .edit__profileContent--content .editFullNameWrapper input,
+      .edit__profileContent--content .editAddressWrapper input,
+      .edit__profileContent--content .editEmailAddressWrapper input,
+      .edit__profileContent--content .editSocialMediaWrapper input {
+        width: 19rem;
+        height: 3.5rem;
+        border: 1.4px solid lightgray;
+        border-radius: 0.45rem; }
+
+.acceptEditCover {
+  width: 14rem;
+  height: 3.5rem;
+  border-radius: 0.45rem;
+  position: absolute;
+  z-index: 99;
+  right: 19rem;
+  bottom: 1.4rem;
+  background-color: #0058a2;
+  color: #ffffff;
+  transition: all 0.22s ease-in-out;
+  cursor: pointer;
+  border: none; }
+  .acceptEditCover:hover {
+    background-color: dodgerblue; }
+
+.componentBookInformation {
+  height: 100vh;
+  background-color: #e0e0e0; }
+  .componentBookInformation:hover .componentBookInformation--wrapper--datas {
+    animation: animationSlideBookInformationIn 0.45s ease-in-out forwards; }
+  .componentBookInformation--wrapper {
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    height: 100vh;
+    overflow-y: hidden; }
+    .componentBookInformation--wrapper--datas {
+      width: 100%;
+      position: absolute;
+      left: 0;
+      bottom: -100%;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2));
+      display: grid;
+      align-items: center;
+      transition: all 0.45s ease-in-out;
+      z-index: 9;
+      height: auto;
+      padding-top: 4.5rem;
+      padding-bottom: 4.5rem; }
+      .componentBookInformation--wrapper--datas .book__infos {
+        padding-left: 0.45rem;
+        padding-right: 0.45rem; }
+        .componentBookInformation--wrapper--datas .book__infos h2 {
+          font-size: 3.2rem;
+          font-family: "Goudy Bookletter 1911", serif;
+          color: #ffffff;
+          text-align: center; }
+        .componentBookInformation--wrapper--datas .book__infos--author {
+          font-size: 2.7rem;
+          color: #ffffff;
+          text-align: center;
+          font-family: "Goudy Bookletter 1911", serif; }
+        .componentBookInformation--wrapper--datas .book__infos--description {
+          font-size: 2.2rem;
+          color: #ffffff;
+          text-align: center;
+          font-family: "Goudy Bookletter 1911", serif;
+          font-weight: 200; }
+    .componentBookInformation--wrapper--cover {
+      width: 100%;
+      height: 100%;
+      display: grid;
+      align-items: center;
+      justify-items: center;
+      position: relative;
+      overflow: hidden; }
+      .componentBookInformation--wrapper--cover img {
+        height: 100vh; }
+  .componentBookInformation button {
+    width: 4.5rem;
+    height: 4.5rem;
+    position: absolute;
+    top: 2.1rem;
+    left: 2.1rem;
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+    background-color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border: 1.4px solid transparent; }
+    .componentBookInformation button::after {
+      content: "Reviews";
+      position: absolute;
+      bottom: -4.5rem;
+      left: 50%;
+      background-color: #2e3131;
+      color: #ffffff;
+      font-family: "Roboto", sans-serif;
+      padding: 0.90rem 0.45rem 0.90rem 0.45rem;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      transform: translateX(-50%);
+      width: 7rem;
+      border-radius: 0.45rem;
+      display: none; }
+    .componentBookInformation button:hover::after {
+      display: block;
+      animation: animateButtonReviews 0.45s ease-in-out forwards; }
+    .componentBookInformation button svg {
+      width: 2.2rem;
+      height: 2.2rem;
+      fill: #2e3131;
+      transition: all 0.21s ease-in-out; }
+    .componentBookInformation button:hover svg {
+      padding: 0.45rem;
+      fill: #ffffff; }
+    .componentBookInformation button:hover {
+      background-color: #2e3131;
+      border-color: #ffffff; }
+
+.component__reviews,
+.slideback__reviews {
+  width: 50%;
+  height: 100vh;
+  background-color: lightgrey;
+  z-index: 99;
+  position: absolute;
+  top: 0;
+  left: 0; }
+
+.page__loader {
+  width: 100%;
+  height: 100vh;
+  background-color: #ffffff;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  z-index: 99999;
+  position: fixed; }
+  .page__loader img {
+    width: 9rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); }
+
+.page__feed {
+  width: 100%;
+  height: 100vh;
+  background-color: #f7f7f7;
+  overflow: hidden; }
+  .page__feed--wrapper {
+    width: 80%;
+    margin: 0 auto;
+    border-radius: 0.45rem;
+    margin-top: 4.5rem;
+    display: grid;
+    grid-template-columns: 22rem 1fr 14rem;
+    grid-column-gap: 4.5rem;
+    height: 100%;
+    overflow: hidden; }
+    @media (max-width: 900px) {
+      .page__feed--wrapper {
+        width: 90%;
+        grid-column-gap: 2.2rem; } }
+
+.feed__areas {
+  overflow: scroll;
+  padding-bottom: 12.5rem; }
+  .feed__areas::-webkit-scrollbar {
+    display: none; }
+
+.componentFeedPosts {
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 4.5rem;
+  display: grid;
+  grid-template-rows: auto;
+  grid-row-gap: 3.5rem; }
+
+.componentCreatePosts {
+  width: 100%;
+  background-color: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  border-radius: 0.45rem;
+  display: grid;
+  grid-template-rows: 4.5rem 1fr;
+  padding-bottom: 2.2rem; }
+  .componentCreatePosts .componentCreatePosts__innernavigation {
+    width: 100%;
+    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-bottom: 1.4px solid lightgrey; }
+    .componentCreatePosts .componentCreatePosts__innernavigation button {
+      width: auto;
+      height: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      background-color: transparent;
+      cursor: pointer;
+      border: none;
+      transition: 0.22s ease-in-out;
+      padding: 0 2.2rem 0 2.2rem; }
+      .componentCreatePosts .componentCreatePosts__innernavigation button:hover {
+        background-color: #f7f7f7; }
+      .componentCreatePosts .componentCreatePosts__innernavigation button svg {
+        width: 2.2rem;
+        height: 2.2rem;
+        cursor: pointer;
+        fill: #0058a2; }
+      .componentCreatePosts .componentCreatePosts__innernavigation button span {
+        margin-left: 1.7rem; }
+  .componentCreatePosts .componentCreatePosts__innercontent {
+    display: flex;
+    align-items: center; }
+    .componentCreatePosts .componentCreatePosts__innercontent--wrapper {
+      padding-left: 2.2rem;
+      padding-right: 2.2rem;
+      display: grid;
+      grid-template-columns: 4.5rem 1fr;
+      grid-column-gap: 2.2rem;
+      margin: 0 auto;
+      width: 100%;
+      height: 80%;
+      align-items: center; }
+      .componentCreatePosts .componentCreatePosts__innercontent--wrapper .imgUsers {
+        width: 4.5rem;
+        height: 4.5rem;
+        overflow: hidden;
+        border-radius: 50%; }
+        .componentCreatePosts .componentCreatePosts__innercontent--wrapper .imgUsers img {
+          height: 100%; }
+      .componentCreatePosts .componentCreatePosts__innercontent--wrapper .bookDatas {
+        display: flex;
+        height: 90%;
+        flex-direction: column; }
+        .componentCreatePosts .componentCreatePosts__innercontent--wrapper .bookDatas label {
+          font-size: 1.4rem;
+          margin-top: 0.45rem; }
+        .componentCreatePosts .componentCreatePosts__innercontent--wrapper .bookDatas textarea {
+          display: flex;
+          align-items: center;
+          justify-items: center;
+          width: 100%;
+          border: none;
+          font-size: 1.4rem;
+          font-weight: 200;
+          font-family: "Roboto", sans-serif;
+          color: #2e3131;
+          border-bottom: 1.4px solid lightgrey; }
+        .componentCreatePosts .componentCreatePosts__innercontent--wrapper .bookDatas input {
+          width: 50%;
+          height: 3.5rem;
+          border: none;
+          display: block;
+          border-bottom: 1.4px solid lightgrey;
+          margin-top: 0.45rem; }
+
+.componentFeedCardProfile {
+  height: 28.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  display: grid;
+  align-items: center;
+  background-color: #ffffff; }
+  .componentFeedCardProfile--wrapper {
+    width: 80%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-rows: 1fr 6.5rem 4.5rem; }
+    .componentFeedCardProfile--wrapper .user__datas {
+      border-bottom: 1.4px solid lightgrey;
+      padding: 1.45rem 0 1.45rem 0; }
+      .componentFeedCardProfile--wrapper .user__datas--image {
+        width: 9.5rem;
+        height: 9.5rem;
+        margin: 0 auto;
+        border-radius: 50%;
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 0.45rem; }
+        .componentFeedCardProfile--wrapper .user__datas--image img {
+          height: 100%;
+          position: absolute;
+          top: 0;
+          left: 50%;
+          transform: translateX(-50%); }
+      .componentFeedCardProfile--wrapper .user__datas--username {
+        margin-bottom: 0.45rem;
+        font-weight: 900;
+        font-family: "Roboto", sans-serif;
+        font-size: 1.4rem;
+        text-align: center; }
+      .componentFeedCardProfile--wrapper .user__datas--country {
+        margin-bottom: 0.45rem;
+        font-weight: 200;
+        font-family: "Roboto", sans-serif;
+        font-size: 1.4rem;
+        text-align: center;
+        color: darkgrey; }
+    .componentFeedCardProfile--wrapper .profile__datas {
+      display: grid;
+      align-items: center;
+      justify-items: center;
+      border-bottom: 1.4px solid lightgrey; }
+      .componentFeedCardProfile--wrapper .profile__datas h2 {
+        font-size: 2rem;
+        font-weight: 900; }
+    .componentFeedCardProfile--wrapper .view__profile {
+      display: grid;
+      align-items: center;
+      justify-items: center; }
+      .componentFeedCardProfile--wrapper .view__profile a {
+        text-align: center;
+        font-size: 1.4rem;
+        color: #0058a2;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.22s ease-in-out; }
+        .componentFeedCardProfile--wrapper .view__profile a:hover {
+          color: #0071d0;
+          text-decoration: underline; }
+
+.componentFeedNavigation {
+  height: 9rem;
+  background-color: #ffffff;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); }
+  .componentFeedNavigation--wrapper {
+    width: 90%;
+    height: 90%;
+    display: grid;
+    align-items: center;
+    justify-items: center; }
+    .componentFeedNavigation--wrapper .feed__navigationWrapper {
+      border-bottom: 1.4px solid lightgrey;
+      display: grid;
+      align-items: center;
+      justify-items: center;
+      width: 100%;
+      padding-bottom: 0.45rem; }
+      .componentFeedNavigation--wrapper .feed__navigationWrapper a {
+        width: 100%;
+        font-size: 1.4rem;
+        text-decoration: none;
+        text-align: center;
+        cursor: pointer;
+        color: #0058a2;
+        transition: all 0.22s ease-in-out;
+        padding: 0.32rem 0.45rem 0.32rem 0.45rem; }
+        .componentFeedNavigation--wrapper .feed__navigationWrapper a:hover {
+          background-color: #0058a2;
+          color: #ffffff;
+          border-radius: 0.45rem;
+          width: 100%; }
+
+.componentIndividualFeedPosts {
+  height: auto;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  background-color: #ffffff; }
+  .componentIndividualFeedPosts--wrapper {
+    width: 90%;
+    padding: 0.95rem 0 0.45rem 0; }
+
+.feedpost__header {
+  width: 100%;
+  height: 4.5rem;
+  border-bottom: 1.4px solid lightgray;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center; }
+  .feedpost__header--user {
+    display: flex;
+    flex-direction: row; }
+    .feedpost__header--user .imgFeedUsers {
+      width: 3.5rem;
+      height: 3.5rem;
+      overflow: hidden;
+      position: relative;
+      border-radius: 50%;
+      margin-right: 2.2rem; }
+      .feedpost__header--user .imgFeedUsers img {
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%); }
+    .feedpost__header--user .datesFeedUsers h2 {
+      color: #2e3131;
+      font-size: 1.7rem; }
+    .feedpost__header--user .datesFeedUsers p {
+      color: darkgrey;
+      font-size: 1.7rem; }
+
+.feedpost__description {
+  width: 100%;
+  height: 6.5rem;
+  display: grid;
+  align-items: center; }
+  .feedpost__description p {
+    font-size: 1.4rem;
+    color: darkgrey; }
+
+.feedpost__content {
+  width: 100%;
+  height: 45rem;
+  overflow: hidden;
+  position: relative; }
+  .feedpost__content img {
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%); }
+
+.feedpost__datas {
+  width: 100%;
+  height: 6.5rem;
+  display: grid;
+  align-items: center; }
+  .feedpost__datas--information h2 {
+    color: #2e3131;
+    font-size: 1.4rem; }
+  .feedpost__datas--information p {
+    color: darkgrey;
+    font-size: 1.4rem; }
+
+.feedpost__like-comment {
+  width: 100%;
+  height: 4.5rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 1.4px solid lightgrey; }
+  .feedpost__like-comment .feedpost__likes {
+    width: 7rem;
+    display: flex;
+    flex-direction: row; }
+    .feedpost__like-comment .feedpost__likes svg {
+      width: 2.1rem;
+      height: 2.1rem;
+      fill: darkgrey;
+      cursor: pointer;
+      transition: all 0.22s ease-in-out; }
+      .feedpost__like-comment .feedpost__likes svg:hover {
+        fill: #0058a2; }
+    .feedpost__like-comment .feedpost__likes p {
+      font-size: 1.4rem;
+      color: darkgrey; }
+  .feedpost__like-comment .feedpost__comments {
+    width: 7rem;
+    display: flex;
+    flex-direction: row; }
+    .feedpost__like-comment .feedpost__comments svg {
+      width: 2.1rem;
+      height: 2.1rem;
+      fill: darkgrey;
+      cursor: pointer;
+      transition: all 0.22s ease-in-out; }
+      .feedpost__like-comment .feedpost__comments svg:hover {
+        fill: #0058a2; }
+    .feedpost__like-comment .feedpost__comments p {
+      font-size: 1.4rem;
+      color: darkgrey; }
+
+.feedpost__reviews {
+  width: 100%;
+  height: 6.5rem;
+  display: grid;
+  align-items: center; }
+  .feedpost__reviews input {
+    width: 100%;
+    height: 4.5rem;
+    border: none;
+    border-bottom: 1.4px solid lightgrey; }
+
+.feedpost__readbooks {
+  height: 3.5rem;
+  margin-top: 0.45rem;
+  margin-bottom: 0.45rem; }
+  .feedpost__readbooks a {
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    cursor: pointer;
+    color: #ffffff;
+    background-color: #0058a2;
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-family: "Roboto", sans-serif;
+    font-weight: 200;
+    font-size: 1.4rem;
+    border-radius: 0.45rem;
+    transition: all 0.22s ease-in-out; }
+    .feedpost__readbooks a:hover {
+      background-color: dodgerblue; }
+
+.component__reviews,
+.slideback__reviews {
+  width: 35%;
+  background-color: #f7f7f7; }
+  .component__reviews .close__reviews,
+  .slideback__reviews .close__reviews {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    right: 0.45rem;
+    top: 0.45rem; }
+    .component__reviews .close__reviews svg,
+    .slideback__reviews .close__reviews svg {
+      width: 2.2rem;
+      height: 2.2rem;
+      border-radius: 0.45rem;
+      transition: all 0.22s ease-in-out; }
+    .component__reviews .close__reviews:hover svg,
+    .slideback__reviews .close__reviews:hover svg {
+      padding: 0.45rem;
+      fill: #ffffff;
+      background-color: #2e3131; }
+  .component__reviews--wrapper,
+  .slideback__reviews--wrapper {
+    width: 80%;
+    margin: 0 auto;
+    height: 100%;
+    padding-top: 2.2rem;
+    padding-bottom: 2.2rem;
+    padding-left: 5%;
+    padding-right: 5%;
+    overflow-y: scroll; }
+    .component__reviews--wrapper::-webkit-scrollbar,
+    .slideback__reviews--wrapper::-webkit-scrollbar {
+      display: none; }
+    .component__reviews--wrapper .reviews__title,
+    .slideback__reviews--wrapper .reviews__title {
+      width: 100%;
+      height: 6.5rem;
+      margin-bottom: 2.2rem; }
+      .component__reviews--wrapper .reviews__title h2,
+      .slideback__reviews--wrapper .reviews__title h2 {
+        font-size: 1.9rem;
+        margin-bottom: 0.45rem;
+        font-weight: 900; }
+      .component__reviews--wrapper .reviews__title p,
+      .slideback__reviews--wrapper .reviews__title p {
+        font-size: 1.4rem;
+        font-weight: 200; }
+    .component__reviews--wrapper .reviews__content,
+    .slideback__reviews--wrapper .reviews__content {
+      width: 100%;
+      display: grid;
+      grid-template-rows: auto;
+      grid-row-gap: 2.2rem; }
+
+.slideback__reviews {
+  animation: animationSlideBackReviewsComponentAreas 0.22s ease-in-out forwards; }
+
+.componentIndividualReview {
+  position: relative;
+  width: 32rem;
+  min-height: 14rem;
+  height: auto;
+  background-color: #ffffff;
+  border-radius: 0.45rem;
+  display: grid;
+  align-items: center; }
+  .componentIndividualReview--image {
+    width: 4.5rem;
+    height: 4.5rem;
+    border-radius: 50%;
+    overflow: hidden;
+    position: absolute;
+    left: -2.25rem;
+    top: 5%; }
+    .componentIndividualReview--image img {
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%); }
+  .componentIndividualReview--content {
+    width: 70%;
+    height: 90%;
+    margin: 0 auto; }
+    .componentIndividualReview--content .reviewIndividual__username {
+      width: 100%;
+      height: 4.5rem;
+      display: grid;
+      align-items: center; }
+      .componentIndividualReview--content .reviewIndividual__username h2 {
+        font-size: 1.4rem; }
+    .componentIndividualReview--content .reviewIndividual__reviewDates {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin-bottom: 2.2rem; }
+      .componentIndividualReview--content .reviewIndividual__reviewDates svg {
+        width: 2.2rem;
+        height: 2.2rem;
+        fill: #0058a2;
+        margin-right: 0.45rem; }
+      .componentIndividualReview--content .reviewIndividual__reviewDates p {
+        font-size: 1.4rem;
+        font-weight: 200; }
+    .componentIndividualReview--content .reviewIndividual__reviewContent {
+      width: 100%; }
+      .componentIndividualReview--content .reviewIndividual__reviewContent p {
+        font-size: 1.4rem;
+        font-weight: 200; }
+
+.componentChatElement,
+.slideChatLists {
+  width: 32rem;
+  height: 42rem;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  transition: all 0.45s ease-in-out;
+  background-color: #ffffff;
+  display: grid;
+  grid-template-rows: 6.4rem 1fr 6.5rem;
+  border: 1.4px solid #0058a2;
+  animation: animationChatSlide 0.45s ease-in-out forwards; }
+  .componentChatElement .chat__header,
+  .slideChatLists .chat__header {
+    background: linear-gradient(to right bottom, #0058a2, #43C6AC);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23); }
+    .componentChatElement .chat__header button,
+    .slideChatLists .chat__header button {
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      transition: all 0.22s ease-in-out;
+      border-radius: 0.45rem;
+      display: grid;
+      align-items: center;
+      justify-items: center; }
+      .componentChatElement .chat__header button svg,
+      .slideChatLists .chat__header button svg {
+        width: 2.2rem;
+        height: 2.2rem;
+        fill: #ffffff; }
+      .componentChatElement .chat__header button:hover,
+      .slideChatLists .chat__header button:hover {
+        background-color: #ffffff; }
+      .componentChatElement .chat__header button:hover svg,
+      .slideChatLists .chat__header button:hover svg {
+        fill: #0058a2;
+        padding: 0.45rem; }
+    .componentChatElement .chat__header h2,
+    .slideChatLists .chat__header h2 {
+      color: #ffffff;
+      font-size: 1.4rem;
+      letter-spacing: 0.32rem;
+      font-weight: 200; }
+  .componentChatElement .chat__content,
+  .slideChatLists .chat__content {
+    padding-top: 0.45rem;
+    padding-bottom: 0.45rem;
+    overflow-y: scroll; }
+    .componentChatElement .chat__content::-webkit-scrollbar,
+    .slideChatLists .chat__content::-webkit-scrollbar {
+      display: none; }
+  .componentChatElement .chat__input,
+  .slideChatLists .chat__input {
+    border-top: 1.4px solid #0058a2; }
+    .componentChatElement .chat__input--sendmessage,
+    .slideChatLists .chat__input--sendmessage {
+      position: relative;
+      width: 100%;
+      height: 100%; }
+      .componentChatElement .chat__input--sendmessage input,
+      .slideChatLists .chat__input--sendmessage input {
+        width: 100%;
+        height: 100%;
+        border: none;
+        padding-right: 4.5rem; }
+        .componentChatElement .chat__input--sendmessage input::-webkit-scrollbar,
+        .slideChatLists .chat__input--sendmessage input::-webkit-scrollbar {
+          display: none; }
+      .componentChatElement .chat__input--sendmessage button,
+      .slideChatLists .chat__input--sendmessage button {
+        position: absolute;
+        right: 2.2rem;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        transition: all 0.22s ease-in-out;
+        border-radius: 0.45rem;
+        display: grid;
+        align-items: center;
+        justify-items: center; }
+        .componentChatElement .chat__input--sendmessage button svg,
+        .slideChatLists .chat__input--sendmessage button svg {
+          width: 2.2rem;
+          height: 2.2rem;
+          fill: #0058a2; }
+
+.slideChatLists {
+  animation: animationSlideChatLists 0.45s ease-in-out forwards; }
+
+.componentIndividualChatMessage {
+  width: auto;
+  max-width: 90%;
+  margin: 0 auto;
+  padding: 1.45rem 0.35rem 1.45rem 0.35rem;
+  background-color: #0058a2;
+  color: #ffffff;
+  border-radius: 0.45rem;
+  display: inline-block; }
+  .componentIndividualChatMessage:not(:first-child) {
+    margin-top: 0.45rem; }
+
+.pageNotFound {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background-image: url("./image/pagenotfound.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around; }
+  .pageNotFound--title {
+    margin: 0 auto; }
+    .pageNotFound--title h2 {
+      font-size: 9.5rem;
+      font-weight: 900;
+      font-family: "Roboto", sans-serif;
+      filter: contrast(5%);
+      text-align: center; }
+    .pageNotFound--title p {
+      font-size: 3.5rem;
+      font-weight: 200;
+      font-family: "Roboto", sans-serif;
+      color: #f7f7f7;
+      background-color: #2e3131;
+      padding: 0.45rem;
+      border-radius: 0.45rem; }
+  .pageNotFound--subtitle {
+    margin: 0 auto; }
+    .pageNotFound--subtitle p {
+      background-color: #2e3131;
+      margin-bottom: 0.45rem;
+      border-radius: 0.45rem;
+      padding: 0.45rem;
+      color: #f7f7f7;
+      font-size: 1.7rem;
+      text-align: center; }
+  .pageNotFound--redirect {
+    margin: 0 auto; }
+    .pageNotFound--redirect a {
+      text-align: center;
+      font-size: 1.7rem;
+      text-decoration: underline;
+      cursor: pointer;
+      color: #0058a2;
+      transition: all 0.22s ease-in-out; }
+      .pageNotFound--redirect a:hover {
+        color: #9abced; }
+
+.componentAddPersonalDatas {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 99;
+  top: 0;
+  left: 0;
+  overflow: hidden; }
+  .componentAddPersonalDatas--wrapper {
+    width: 35vw;
+    background-color: #f7f7f7;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 0.45rem; }
+
+.addDatasHeader {
+  width: 100%;
+  height: 9.5rem;
+  background-color: #c8c9cc;
+  border-radius: 0.45rem 0.45rem 0 0;
+  display: grid;
+  grid-template-columns: 4.5rem 1fr;
+  grid-column-gap: 1.45rem;
+  align-items: center; }
+  .addDatasHeader svg {
+    width: 3.5rem;
+    height: 3.5rem;
+    fill: #0058a2; }
+  .addDatasHeader p {
+    font-size: 1.4rem; }
+
+.addDatasContent {
+  padding: 0.45rem; }
+  .addDatasContent--inputGroup label {
+    margin-bottom: 1.4rem;
+    font-size: 1.4rem; }
+  .addDatasContent--inputGroup input {
+    width: 100%;
+    display: block;
+    height: 4.5rem;
+    margin-top: 1.45rem; }
+
+.addDatasClose {
+  width: 2.2rem;
+  height: 2.2rem;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  border-radius: 0.45rem;
+  transition: all 0.22s ease-in-out;
+  position: absolute;
+  right: 0.45rem;
+  top: 0.45rem; }
+  .addDatasClose svg {
+    width: 100%;
+    height: 100%; }
+  .addDatasClose:hover {
+    background-color: #2e3131;
+    padding: 0.22rem; }
+  .addDatasClose:hover svg {
+    fill: #ffffff; }
+
+.submitAddProfile {
+  width: 12rem;
+  height: 4.5rem;
+  border: none;
+  border-radius: 0.45rem;
+  background-color: #0058a2;
+  color: #ffffff;
+  transition: all 0.22s ease-in-out;
+  cursor: pointer;
+  margin-top: 0.45rem; }
+  .submitAddProfile:hover {
+    background-color: dodgerblue; }

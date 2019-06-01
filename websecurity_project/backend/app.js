@@ -1,3 +1,4 @@
+/*eslint-disable*/
 const express = require('express');
 
 const app = express();
@@ -10,9 +11,9 @@ app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
-  
 
-const fs = require('fs');
+
+const fs = require('fs'); 
 const tls = require('tls');
 
 const privateKey = fs.readFileSync('server.key').toString();
@@ -23,7 +24,7 @@ require('dotenv').config();
 const credentials = { key: privateKey, cert: certificate };
 
 // const server = tls.createServer(credentials).listen(8080, '0.0.0.0');
-const server = require('http').createServer(app).listen(8022, '0.0.0.0');
+const server = require('http').createServer(app).listen(8085, '0.0.0.0');
 const io = require('socket.io')(server);
 const bodyParser = require('body-parser');
 
@@ -103,14 +104,22 @@ db.once('open', () => {
     // we're connected!
 });
 
+// app.use(session({
+//     secret: 'ThisIsMySecretHopeYouNeverGuessIt',
+//     resave: true,
+//     saveUninitialized: false,
+//     store: new MongoStore({
+//         mongooseConnection: db
+//     })
+//  }));
+
+app.set('trust proxy', 1) // trust first proxy
 app.use(session({
-    secret: 'ThisIsMySecretHopeYouNeverGuessIt',
-    resave: true,
-    saveUninitialized: false,
-    store: new MongoStore({
-        mongooseConnection: db
-    })
-}));
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false }
+}))
 
 const corsMiddleware = (req, res, next) => {
     // res.header('Access-Control-Allow-Origin', 'http://pedros.tech');

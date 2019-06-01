@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import {
     REGISTER_USER,
     LOGIN_USER,
@@ -10,12 +11,11 @@ import {
     FETCH_PROFILE
 } from './actionsVariables';
 import axios from 'axios';
+import { history } from "./history";
+import { userConstants } from './actionsVariables';
 
 // register actions
 // ****************
-// export const actionRegisterNewUser = (data) => {
-
-// }
 
 export const registerUser = (datas, isRegistered) => ({
     type: REGISTER_USER,
@@ -30,10 +30,10 @@ export const registerUser = (datas, isRegistered) => ({
 export const actionRegisterUser = (datas) => {
     return dispatch => {
         // https://pedros.tech:8080/signup
-        return axios.post('http://localhost:8080/signup', datas)
+        return axios.post('http://localhost:8085/signup', datas)
         .then(response => {
             dispatch(registerUser(response, response.data));
-            console.log(response)
+            console.log(response.data)
         })
         .catch(error => console.log('register error: ', error));
     };
@@ -42,21 +42,28 @@ export const actionRegisterUser = (datas) => {
 // fetch profile
 // ***************
 
-export const fetchProfileDatas = (profile) => ({
+export const fetchProfileDatas = (userId, datas) => ({
     type: FETCH_PROFILE,
-    profile: {
-        email: profile.email,
-        country: profile.country,
-        socialNetwork: profile.socialNetwork
+    userId, 
+    user: {
+        email: datas.email,
+        country: datas.country,
+        socialNetwork: datas.socialNetwork
+
     }
+    // profile: {
+    //     email: profile.email,
+    //     country: profile.country,
+    //     socialNetwork: profile.socialNetwork
+    // }
 })
 
-export const actionFetchProfileDatas = (profile) => {
+export const actionFetchProfileDatas = (userId) => {
     return dispatch => {
-        return axios.get("http://localhost:8080/profile", profile)
+        return axios.post("http://localhost:8085/profile", {userId: userId})
                     .then(response => {
-                        dispatch(fetchProfileDatas(response))
-                        console.log(response)
+                        dispatch(fetchProfileDatas(response.data, response.data))
+                        console.log("fetch_____profile: ", response.data)
                     })
                     .catch(error => console.log("fetch__profile: ", error))
     }
@@ -66,24 +73,28 @@ export const actionFetchProfileDatas = (profile) => {
 // login actions
 // *************
 
-export const loginUser = (datas, isLoggedIn) => ({
+export const loginUser = (datas, isLoggedIn, userId) => ({
     type: LOGIN_USER,
     user: {
         email: datas.email,
         password: datas.password
     },
-    isLoggedIn
+    isLoggedIn,
+    userId
 });
 
-export const actionLoginUser = (datas) => {
+export const actionLoginUser = (datas, isLoggedIn, userId) => {
     return dispatch => {
         // http://pedros.tech:8080/login
-        return axios.post('http://localhost:8080/login', datas)
-        .then(response => {
-            dispatch(loginUser(response, response.data))
-            console.log(response)
-        })
-        .catch(error => console.log('login error: ', error));
+        return axios.post('http://localhost:8085/login', datas, isLoggedIn, userId)
+                    .then(response => {
+                        dispatch(loginUser(response, response.data.result, response.data.userId))
+                        localStorage.setItem('userId', JSON.stringify(response.data.userId));
+                        // sessionStorage.setItem("userId", response.data.sessionId);
+                        // history.push('/profile', { userSession: response.data });
+                        console.log("response_____login: ", response)
+                    })
+                    .catch(error => console.log('login error: ', error));
     };
 };
 
@@ -96,8 +107,11 @@ export const signOut = () => ({
 
 export const actionSignOut = () => {
     return dispatch => {
-        return axios.get('http://localhost:8080/logout')
-                    .then(response => console.log("signup__success", response))
+        return axios.get('http://localhost:8085/logout')
+                    .then(response => {
+                        dispatch(signOut())
+                        console.log("signup__success", response)
+                    })
                     .catch(error => console.log("signout__error", error))
     }
 }
@@ -112,7 +126,7 @@ export const createStatus = (status) => ({
 export const actionCreateStatus = (status) => {
     return (dispatch) => {
         // `${process.env.Address ? process.env.Address : 'pedros.tech'}:8080/thoughts`
-        return axios.post("http://localhost:8080/thoughts", status)
+        return axios.post("http://localhost:8085/thoughts", status)
                     .then(response => {
                         dispatch(createStatus(response));
                         console.log(response);
@@ -132,9 +146,8 @@ export const createProfileImage = (profile) => ({
 
 export const actionCreateProfileImage = (profile) => {
     return (dispatch) => {
-        return axios.put('https://pedros.tech:8080/profile', { profile })
+        return axios.put('http://localhost:8085/profile', profile)
                     .then(response => {
-                        // console.log(response);
                         dispatch(createProfileImage(response.data));
                     })
                     .catch(error => {
@@ -146,21 +159,23 @@ export const actionCreateProfileImage = (profile) => {
 // create profile
 // ***************
 
-export const createProfileDatas = (profile) => ({
+export const createProfileDatas = (profile, userId) => ({
     type: CREATE_PROFILE,
     profile: {
         email: profile.email,
         country: profile.country,
         socialNetwork: profile.socialNetwork               
-    }
-    // profile
+    },
+    userId
 });
 
-export const actionCreateProfileDatas = (profile) => {
+export const actionCreateProfileDatas = (profile, userId) => {
     return (dispatch) => {
-        return axios.post('http://localhost:8080/profile', profile)
+        return axios.put('http://localhost:8085/profile', {
+            profile, userId
+        })
                     .then(response => {
-                        dispatch(createProfileDatas(response))
+                        dispatch(createProfileDatas(response, response.data.userId))
                         console.log(response)
                     })
                     .catch(error => console.log(error));
@@ -211,32 +226,20 @@ export const actionCreateProfileDatas = (profile) => {
 //     }
 // };
 
-// TO-DO:
-// Should return an user Object:
-// Example:
-// const regularUser = {
-//     user: {
-//         email,
-//         password,
-//         activationKey,
-//         username,
-//         country,
-//         socialNetwork
-//     },
-//     books: [
-//         {},{},{},{},{}
-//     ]
-// };
+// export const login = (username, password) {
+//     return dispatch => {
+//         dispatch(request({ username }));
 
-// const regularPosts = [
-//     {
-//         _id,
-//         title,
-//         author,
-//         cover,
-//         file, //(file__path)
-//         postDate,
-//         description,
-//         bookOwner: "_id123456789",
-//     }
-// ];
+//         userService.login(username, password)
+//             .then(
+//                 user => { 
+//                     dispatch(success(user));
+//                     history.push('/');
+//                 },
+//                 error => {
+//                     dispatch(failure(error.toString()));
+//                     dispatch(alertActions.error(error.toString()));
+//                 }
+//             );
+//     };
+// }

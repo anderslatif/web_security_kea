@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import React, { Component } from 'react';
 import { NavLink } from "react-router-dom";
 // import ComponentEditCover from './ComponentEditCover';
@@ -139,7 +140,7 @@ class ComponentProfileHeader extends Component {
                 {
                   (this.state.profileFileImage && this.state.imageApproval)
                   &&
-                  <ComponentProfileImageApproval toggleImageApproval={this.toggleImageApproval}></ComponentProfileImageApproval>
+                  <ComponentProfileImageApproval toggleImageApproval={this.toggleImageApproval} onClick={this.submitProfileImge}></ComponentProfileImageApproval>
                 }
             </div>
             <div className="componentProfileHeader--navigation--links">

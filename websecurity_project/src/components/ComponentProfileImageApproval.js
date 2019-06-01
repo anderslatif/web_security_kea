@@ -1,13 +1,14 @@
+/*eslint-disable*/
 import React, { Component } from 'react'
 
 class ComponentProfileImageApproval extends Component {
   render(props) {
-    let { toggleImageApproval } = this.props;
+    let { toggleImageApproval, submitProfileImge } = this.props;
     return (
       <div className="componentProfileImageApproval">
         <button 
             className="componentProfileImageApproval__approve"
-            onClick={() => {}}
+            onClick={submitProfileImge}
         >
         Yes
         </button>

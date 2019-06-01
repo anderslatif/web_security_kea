@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import Tilt from 'react-tilt';
@@ -77,9 +78,9 @@ class PageLogin extends Component {
     }
 
     componentDidUpdate() {
-        // if (this.props.isLoggedIn) {
-        //     this.props.history.push('/profile')
-        // }
+        if (this.props.isLoggedIn) {
+            this.props.history.push('/profile')
+        }
     }
     render(props) {
     return (
