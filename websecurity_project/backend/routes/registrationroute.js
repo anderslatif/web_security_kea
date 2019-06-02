@@ -155,7 +155,7 @@ router.post('/profile', (req, res) => {
 
 router.put('/profile', (req, res) => {
     // upsert true creates the object if it doesn't exist
-    if (req.session.userId) {
+    if (req.body.userId) {
         User.findOneAndUpdate({ _id: req.session.id }, req.body, { upsert: false }, (error, user) => {
             if (error) {
                 helperFunctions.logToFile(`MongoFailed${ error}`, 'mongo-errors.txt');

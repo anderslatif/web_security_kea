@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import React, { useState } from 'react';
 // import ComponentIndividualChatMessage from './ComponentIndividualChatMessage';
 import io from 'socket.io-client';

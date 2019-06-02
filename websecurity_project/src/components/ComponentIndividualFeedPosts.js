@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
@@ -42,6 +43,11 @@ class ComponentIndividualFeedPosts extends Component {
     //     ev.target.elements.review.value = "";
     // }
     render(props) {
+        let { post } = this.props;
+        let book = post.book;
+        let user = post.user;
+        // console.log("post______book: ", post.book)
+        console.log("post______user: ", post.user)
         // let { post } = this.props;
         
         
@@ -57,30 +63,30 @@ class ComponentIndividualFeedPosts extends Component {
                     <div className="feedpost__header">
                         <div className="feedpost__header--user">
                             <div className="imgFeedUsers">
-                                <img src="{user.user_profile}" alt="image__profile" />
+                                <img src={user.user_profile} alt="image__profile" />
                             </div>
                             <div className="datesFeedUsers">
-                                <h2>{"user.username"}</h2>
-                                <p>{"user.location"}</p>
+                                <h2>{post.user.username}</h2>
+                                <p>{user.location}</p>
                             </div>
                         </div>
                         <div className="feedpost__header--timestamp">
-                            <p>{"book.postDate"}</p>
+                            <p>{book.postDate}</p>
                         </div>
                     </div>
                     <div className="feedpost__description">
-                        <p>{"book.postDescription"}</p>
+                        <p>{book.postDescription}</p>
                     </div>
                     <div className="feedpost__content">
-                        <img src="{book.cover}" alt="book__cover" />
+                        <img src={book.cover} alt="book__cover" />
                     </div>
                     <div className="feedpost__datas">
                         <div className="feedpost__datas--information">
-                            <h2>{"book.title"}</h2>
-                            <p>{"book.author"}</p>
+                            <h2>{book.title}</h2>
+                            <p>{book.author}</p>
                         </div>
                     </div>
-                    <div className="feedpost__like-comment">
+                    {/* <div className="feedpost__like-comment">
                         <div className="feedpost__likes">
                             <svg>
                                 <use href="./image/sprite.svg#icon-favorite"></use>
@@ -93,7 +99,7 @@ class ComponentIndividualFeedPosts extends Component {
                             </svg>
                             <p>14</p>
                         </div>
-                    </div>
+                    </div> */}
                     <div className="feedpost__reviews">
                         <form onSubmit={this.props.submitReviewDatas}>
                             <input 

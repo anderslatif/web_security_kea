@@ -114,6 +114,9 @@ const mapDispatchToProps = dispatch => {
     return {
         onPostProfile: (profile) => {
             dispatch(actionCreateProfileDatas(profile))
+        },
+        onUpdateProfile: (profile, id) => {
+            dispatch(actionUpdateProfileDatas(profile, id))
         }
     }
 }

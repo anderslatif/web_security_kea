@@ -28,20 +28,7 @@ class ComponentAbout extends Component {
     this.setState({[valueType]: valueContent});
   }
   componentDidMount() {
-    // const userId = JSON.parse(localStorage.getItem('userId'));
     this.props.onFetchProfile(this.props.userId);
-    // console.log("logged")
-
-    // axios.post("http://localhost:8085/profile", {userId: userId})
-    //      .then(response => {
-    //          this.setState(() => {
-    //           fetchEmail: response
-    //           fetchSocialNetwork:
-    //           fetchCountry:
-    //          })
-    //          console.log(response)
-    //      })
-    //      .catch(error => console.log("fetch__profile: ", error))
   }
   render(props) {
     let { handleEditProfile } = this.props;

@@ -8,6 +8,7 @@ import ComponentEditProfile from "../components/ComponentEditProfile";
 // import axios from "axios";
 import ComponentAddPersonalDatas from "../components/ComponentAddPersonalDatas";
 // import { connect } from "react-redux";
+import Chat from "../components/Chat";
 
 class PageProfileAbout extends Component {
     constructor(props) {
@@ -72,6 +73,7 @@ class PageProfileAbout extends Component {
                     <ComponentAddPersonalDatas handleAddProfile={this.handleAddProfile}>
                     </ComponentAddPersonalDatas>
                 }
+                <Chat></Chat>
                 {/* PageProfileAbout */}
             </div>
         );

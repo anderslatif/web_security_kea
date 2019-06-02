@@ -51,11 +51,6 @@ export const fetchProfileDatas = (userId, datas) => ({
         socialNetwork: datas.socialNetwork
 
     }
-    // profile: {
-    //     email: profile.email,
-    //     country: profile.country,
-    //     socialNetwork: profile.socialNetwork
-    // }
 })
 
 export const actionFetchProfileDatas = (userId) => {
@@ -182,64 +177,25 @@ export const actionCreateProfileDatas = (profile, userId) => {
     };
 };
 
+export const updateProfileDatas = (profile, userId) => ({
+    type: "UPDATE_PROFILE",
+    profile: {
+        email: profile.email,
+        country: profile.country,
+        socialNetwork: profile.socialNetwork               
+    },
+    userId
+});
 
-// Initial add or/and Edit profile
-// *******************************
-// corect but commented uncomment later
-// **********************************
-// export const editProfile = (id, edits) => ({
-//     type: EDIT_PROFILE,
-//     id,
-//     edits
-// });
-
-// export const actionEditProfile = () => {
-//     return (dispatch) => {
-//         return axios.post(`${authUrl}/idontkmowtheroute`, {email, fullName, socialNetwork, country})
-//             .then(response => {
-//                 console.log(response)
-//                 dispatch(editProfile(response.data))
-//             })
-//             .catch(error => {
-//                 throw(error);
-//             });
-//     };
-// }
-
-// corect but commented uncomment later
-// **********************************
-// const fetchUser = (user) = ({
-//     type: FETCH_USER,
-//     user
-// });
-
-// export const fetchLoggedUser = () => {
-//     return async (dispatch) => {
-//         try {
-//             const response = await axios.get("https://pedros.tech:8080/profile");
-//             console.log(response.data);
-//             dispatch(fetchUser(response.data));
-//         }
-//         catch (error) {
-//             throw (error);
-//         }
-//     }
-// };
-
-// export const login = (username, password) {
-//     return dispatch => {
-//         dispatch(request({ username }));
-
-//         userService.login(username, password)
-//             .then(
-//                 user => { 
-//                     dispatch(success(user));
-//                     history.push('/');
-//                 },
-//                 error => {
-//                     dispatch(failure(error.toString()));
-//                     dispatch(alertActions.error(error.toString()));
-//                 }
-//             );
-//     };
-// }
+export const actionUpdateProfileDatas = (profile, userId) => {
+    return (dispatch) => {
+        return axios.put('http://localhost:8085/profile', {
+            profile, userId
+        })
+                    .then(response => {
+                        dispatch(updateProfileDatas(response, response.data.userId))
+                        console.log(response)
+                    })
+                    .catch(error => console.log(error));
+    };
+};

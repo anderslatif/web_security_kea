@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import React, { Component } from 'react';
 import ComponentPostsElement from './ComponentPostsElement';
 // import axios from 'axios';
