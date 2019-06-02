@@ -73,7 +73,7 @@ class PageProfileAbout extends Component {
                     <ComponentAddPersonalDatas handleAddProfile={this.handleAddProfile}>
                     </ComponentAddPersonalDatas>
                 }
-                <Chat></Chat>
+                {/* <Chat></Chat> */}
                 {/* PageProfileAbout */}
             </div>
         );

@@ -28,13 +28,15 @@ class ComponentAbout extends Component {
     this.setState({[valueType]: valueContent});
   }
   componentDidMount() {
-    this.props.onFetchProfile(this.props.userId);
+    const userId = JSON.parse(localStorage.getItem('userId'))
+    this.props.onFetchProfile(userId);
   }
   render(props) {
     let { handleEditProfile } = this.props;
     let {
       fullName,
-      address,
+      country,
+      // address,
       email,
       socialNetwork
     } = this.props;
@@ -66,9 +68,9 @@ class ComponentAbout extends Component {
               </div>
               <div className="about__addressSubsection">
                 {
-                address
+                country
                 ?
-                address
+                country
                 :
                 <button className="addAddressContent" onClick={this.props.handleAddProfile}>
                   <svg className="addAddress">
@@ -118,7 +120,7 @@ class ComponentAbout extends Component {
 const mapStateToProps = state => {
   return {
     // fullName: state.user.fullName,
-    address: state.user.address,
+    country: state.user.country,
     email: state.user.email,
     socialNetwork: state.user.socialNetwork,
     userId: state.user.userId

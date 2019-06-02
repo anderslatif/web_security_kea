@@ -21,19 +21,38 @@ class ComponentCreatePosts extends Component {
     //   this.makePostReques = this.makePostReques.bind(this);
   }
 
+
 //   test start
   getBookFiles = (ev) => {
       const fileName = ev.target.name;
       const fileValue = ev.target.files[0];
 
       this.setState({[fileName]: fileValue});
-      console.log(fileName, fileValue);
+      console.log(this.state);
   }
+
+//   postAll = () => {
+//       this.postFile();
+//       this.postBookFiles();
+//   }
+
+//   postFile = () => {
+//       const filedata = new FormData();
+//       filedata.append('file', this.state.cover)
+//       const items = JSON.parse(localStorage.getItem('userId'))
+//       const userId = items;
+
+//       let post = {
+//           cover: filedata
+//       }
+//       this.props.actionFilePosts(post, userId)
+//   }
 
   postBookFiles = () => {
     const filedata = new FormData();
     filedata.append('file', this.state.cover);
-
+    const items = JSON.parse(localStorage.getItem('userId'))
+    const userId = items;
     let posts = {
         title: this.state.title,
         author: this.state.author,
@@ -42,63 +61,14 @@ class ComponentCreatePosts extends Component {
         file: filedata
     }
     // //   posts = {...posts, file}
-      this.props.onCreatePosts(posts);
-    //   let {
-    //       title,
-    //       author,
-    //       description
-    //   } = this.state;
-    //   const cover = new FormData();
-    //   cover.append('cover', this.state.cover);
-
-    //   const file = new FormData(); 
-    //   file.append('file', this.state.file);
-
-    //   axios.post("http://localhost:9090/file", {
-    //             title: title,
-    //             author: author,
-    //             description: description,
-    //             file: file
-    //         })
-    //         .then(response => console.log("testupload__response", response))
-    //         .catch(error => console.log("testerror", error))
-    //   console.log(file, cover);
+      this.props.onCreatePosts(posts, userId);
   }
 //   test finish
-
-    // getFilepost = (ev) => {
-    //     const file = ev.target.files[0];
-    //     const inputName = ev.target.name;
-
-    //     const dataFile = new FormData();
-    //     dataFile.append('file', file, file.name);
-    //     // http://pedros.tech:9090/file
-    //     axios.post('http://localhost:9090/file', dataFile)
-    //     .then(response => {
-    //         this.setState({
-    //             [inputName]: file,
-    //             [`${inputName}path`]: response.path
-    //         });
-    //     })
-    //     .catch(err => console.log('error file', err));
-
-
-    //     // console.log("file before post: ", {dataFile});
-    // };
-
     setTextValue = (ev) => {
         const inputName = ev.target.name;
         const inputValue = ev.target.value;
         this.setState({ [inputName]: inputValue });
     };
-
-    makePostReques = (ev) => {
-        const data = new FormData()
-        data.append('file', this.state.file)
-        this.props.onCreatePosts({...this.state, file: data});
-        this.props.actionCreatePostsFiles(this.state.cover)
-    };
-
   render() {
     return (
       <div className="componentCreatePosts">
@@ -136,7 +106,7 @@ class ComponentCreatePosts extends Component {
                     // onChange={this.getFilepost}
                     ref={(ref) => this.bookPdfFile = ref}
                     type="file"
-                    name="cover"
+                    name="file"
                     // name="file"
                     id="bookPdfFile"
                     style={{ display: 'none' }}
@@ -171,6 +141,9 @@ const mapDispatchToProps = (dispatch) => {
     return {
         onCreatePosts: post => {
             dispatch(actionCreatePosts(post));
+        },
+        actionFilePosts: (file, userId) => {
+            dispatch(actionFilePosts(file, userId))
         }
         // actionCreatePostsFiles: post => {
         //     dispatch(actionCreatePostsFiles(post))

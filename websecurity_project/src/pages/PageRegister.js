@@ -28,23 +28,6 @@ class PageRegister extends Component {
     }
   }
 
-  // onChangeStoreRegisterDatas = (ev) => {
-  //   let inputRegisterName = ev.target.name;
-  //   let inputRegisterValue = ev.target.value;
-  //   this.setState({[inputRegisterName]: inputRegisterValue})
-  // }
-
-  // handleSubmitRegister = (ev) => {
-  //   ev.preventDefault();
-  //   let { email, password, passwordRepeated } = this.state;
-  //   let register = {
-  //     email: email,
-  //     password: password,
-  //     passwordRepeated: passwordRepeated
-  //   }
-  //   this.props.onRegisterUser(register);
-  // }
-
   handleSubmit = ev => {
     ev.preventDefault();
 
@@ -59,10 +42,6 @@ class PageRegister extends Component {
 
       this.props.onRegisterUser(register);
       console.log(this.props.isRegistered);
-      // if(this.props.isRegistered === true) {
-      //   // this.props.history.push('/login')
-      //   console.log(this.props.isRegistered)
-      // }
     } else {
       console.error("display error")
     }

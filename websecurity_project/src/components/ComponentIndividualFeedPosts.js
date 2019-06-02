@@ -3,60 +3,13 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
 class ComponentIndividualFeedPosts extends Component {
-    // constructor(props) {
-    //     super(props)
-    //     // this.state = {
-    //     //     review: "",
-    //     //     bookId: "",
-    //     //     userId: ""
-    //     // }
-    //     // this.getReviewDatas = this.getReviewDatas.bind(this);
-    //     // this.submitReviewDatas = this.submitReviewDatas.bind(this);
-    // }
     componentDidMount() {
-        // console.log(this.props.post.book);
     }
-    // getReviewDatas = (ev) => {
-    //     let reviewValue = ev.target.value;
-    //     let bookId = ev.target.getAttribute("bookId");
-    //     let userId = ev.target.getAttribute("userId");
-    //     this.setState(() => {
-    //         return {
-    //             review: reviewValue,
-    //             bookId,
-    //             userId
-    //         }
-    //     })
-    //     // this.setState({review: reviewValue})
-    // }
-    // submitReviewDatas = (ev) => {
-    //     ev.preventDefault();
-    //     let { review, bookId, userId } = this.state;
-    //     const datas = {
-    //         review: review,
-    //         bookId: bookId,
-    //         userId: userId
-    //         // userId: userId
-    //         // bookId: bookId,
-    //     }
-    //     console.log(datas);
-    //     ev.target.elements.review.value = "";
-    // }
     render(props) {
         let { post } = this.props;
         let book = post.book;
         let user = post.user;
-        // console.log("post______book: ", post.book)
         console.log("post______user: ", post.user)
-        // let { post } = this.props;
-        
-        
-        // let book = post.book;
-        // let user = post.user;
-
-
-
-        // const convertedTimeStamp = book.postDate
         return(
             <div className="componentIndividualFeedPosts">
                 <div className="componentIndividualFeedPosts--wrapper">
@@ -66,24 +19,50 @@ class ComponentIndividualFeedPosts extends Component {
                                 <img src={user.user_profile} alt="image__profile" />
                             </div>
                             <div className="datesFeedUsers">
-                                <h2>{post.user.username}</h2>
+                                <h2>
+                                    {
+                                        post.user_profile ? post.user_profile : "No username"
+                                    }
+                                    {/* {post.user.username} */}
+                                </h2>
                                 <p>{user.location}</p>
                             </div>
                         </div>
                         <div className="feedpost__header--timestamp">
-                            <p>{book.postDate}</p>
+                            <p>
+                                {
+                                    book.postDate ? book.postDate : "No timestamp"
+                                }
+                                {book.postDate}
+                            </p>
                         </div>
                     </div>
                     <div className="feedpost__description">
-                        <p>{book.postDescription}</p>
+                        <p>
+                            {
+                                book.postDescription ? book.postDescription : "No description"
+                            }
+                            {book.postDescription}
+                        </p>
                     </div>
                     <div className="feedpost__content">
-                        <img src={book.cover} alt="book__cover" />
+                        {/* <img src={book.cover} alt="book__cover" /> */}
+                        <img src={book.cover ? book.cover : "https://core.trac.wordpress.org/raw-attachment/ticket/45927/placeholder-image-portrait.png"} alt="book__cover" />
                     </div>
                     <div className="feedpost__datas">
                         <div className="feedpost__datas--information">
-                            <h2>{book.title}</h2>
-                            <p>{book.author}</p>
+                            <h2>
+                                {
+                                    book.title ? book.title : "No title"
+                                }
+                                {/* {book.title} */}
+                            </h2>
+                            <p>
+                                {
+                                    book.author ? book.author : "No author"
+                                }
+                                {/* {book.author} */}
+                            </p>
                         </div>
                     </div>
                     {/* <div className="feedpost__like-comment">

@@ -84,7 +84,9 @@ export const actionLoginUser = (datas, isLoggedIn, userId) => {
         return axios.post('http://localhost:8085/login', datas, isLoggedIn, userId)
                     .then(response => {
                         dispatch(loginUser(response, response.data.result, response.data.userId))
-                        localStorage.setItem('userId', JSON.stringify(response.data.userId));
+                        // const userId = JSON.parse(localStorage.getItem('userId'))
+                        localStorage.removeItem('userId');
+                        localStorage.setItem("userId", JSON.stringify(response.data.userId));
                         // sessionStorage.setItem("userId", response.data.sessionId);
                         // history.push('/profile', { userSession: response.data });
                         console.log("response_____login: ", response)

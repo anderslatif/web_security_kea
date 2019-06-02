@@ -54,28 +54,50 @@ export const actionfetchPostsAll = (userId) => {
 
 // Action for creating a post
 // **************************
-export const createPosts = (datas) => ({
+export const createPosts = (datas, userId) => ({
     type: CREATE_POST,
     post: {
-        // cover: datas.cover,
+        cover: datas.cover,
         file: datas.file,
         title: datas.title,
         author: datas.author,
         description: datas.description
-    }
+    },
+    userId
 });
 
-export const actionCreatePosts = (datas) => {
+export const actionCreatePosts = (dates, userId) => {
     return dispatch => {
         // http://pedros.tech:8080/post
-        return axios.post("http://localhost:9090/file", datas)
+        // return axios.post("http://localhost:9090/file", datas)
+            return axios.post("http://localhost:8085/post", dates, userId)
                     .then(response => {
-                        dispatch(createPosts(response));
+                        dispatch(createPosts(response, response.data.userId));
                         console.log(response)
                     })
                     .catch(error => console.log('post error: ', error));
     };
 };
+
+export const filePosts = (file, userId) => ({
+    type: "POST_FILE",
+    files: {
+        cover: file.cover,
+        // file: file.file
+    },
+    userId
+});
+
+export const actionFilePosts = (file, userId) => {
+    return dispatch => {
+        return axios.post("http://localhost:9090/file", file, userId)
+                    .then(response => {
+                        dispatch(filePosts(response, response.data.userId))
+                        console.log("postfile________success: ", response)
+                    })
+                    .catch(error => console.log("error_____postfile: ", errpr))
+    }
+}
 
 // Action for creating a review
 // **************************

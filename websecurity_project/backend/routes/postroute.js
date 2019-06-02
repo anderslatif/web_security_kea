@@ -45,7 +45,8 @@ router.post('/post', async (req, res) => {
             title,
             description,
             author,
-            bookOwner: req.session.userid,
+            bookOwner: req.body.userid,
+            // bookOwner: req.session.userid,
             cover,
             book,
             reviews: []

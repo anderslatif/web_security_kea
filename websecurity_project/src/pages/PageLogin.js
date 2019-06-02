@@ -83,6 +83,7 @@ class PageLogin extends Component {
         }
     }
     render(props) {
+    let { error } = this.state;
     return (
         <div className="page__login">
             <div className="page__login--wrapper">
@@ -97,8 +98,28 @@ class PageLogin extends Component {
                     </div>
                     <form className="formLogin" onSubmit={this.onSubmitStoreDatas}>
                         <div className="formLogin--forms">
-                            <input type="text" placeholder="Your Email" name="emailLogin" onChange={this.onChangeStoreDatas} />
-                            <input type="password" placeholder="Your Password" name="passwordLogin" onChange={this.onChangeStoreDatas} />
+                            <input 
+                                type="text" 
+                                placeholder="Your Email" 
+                                name="emailLogin" 
+                                onChange={this.onChangeStoreDatas}
+                                className={error.emailLogin.length > 0 ? "inputErrorHighlight" : null}
+                            />
+                            {
+                              error.emailLogin.length > 0 &&
+                              <p className="errorDisplayMessage">{error.emailLogin}</p>
+                            }
+                            <input 
+                                type="password" 
+                                placeholder="Your Password" 
+                                name="passwordLogin" 
+                                onChange={this.onChangeStoreDatas}
+                                className={error.passwordLogin.length > 0 ? "inputErrorHighlight" : null} 
+                            />
+                            {
+                              error.passwordLogin.length > 0 &&
+                              <p className="errorDisplayMessage">{error.passwordLogin}</p>
+                            }
                         </div>
                         <div className="formLogin--remember-forget">
                             <div className="formgroup__checkbox">

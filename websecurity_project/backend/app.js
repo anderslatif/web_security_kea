@@ -104,24 +104,31 @@ db.once('open', () => {
     // we're connected!
 });
 
-// app.use(session({
-//     secret: 'ThisIsMySecretHopeYouNeverGuessIt',
-//     resave: true,
-//     saveUninitialized: false,
-//     store: new MongoStore({
-//         mongooseConnection: db
-//     })
-//  }));
+app.use(session({
+    secret: 'ThisIsMySecretHopeYouNeverGuessIt',
+    resave: true,
+    saveUninitialized: false,
+    store: new MongoStore({
+        mongooseConnection: db
+    })
+ }));
 
 app.set('trust proxy', 1) // trust first proxy
 app.use(session({
   secret: 'keyboard cat',
   resave: false,
   saveUninitialized: true,
-  cookie: { secure: false }
+  cookie: {
+      secure: false,
+      httpOnly: false
+    }
 }))
 
+
 const corsMiddleware = (req, res, next) => {
+    // res.header('Access-Control-Allow-Origin', 'http://pedros.tech');
+    // res.header('Access-Control-Allow-Methods', 'OPTIONS, GET, PUT, PATCH, POST, DELETE');
+    // res.header('Access-Control-Allow-Headers', 'Content-Type, X-Requested-With, Authorization');
     // res.header('Access-Control-Allow-Origin', 'http://pedros.tech');
     // res.header('Access-Control-Allow-Methods', 'OPTIONS, GET, PUT, PATCH, POST, DELETE');
     // res.header('Access-Control-Allow-Headers', 'Content-Type, X-Requested-With, Authorization');
