@@ -38,7 +38,7 @@ class ComponentHeader extends Component {
                 <div className="right__header--profile">
                     <Link to="/profile">
                         <img src={
-                            this.props.profileImage ? this.props.profileImage : "http://www.printpixelz.com/images/product/book-square-front-printpixelz.jpg"
+                            this.props.profileImage ? this.props.profileImage : "https://image.flaticon.com/icons/svg/167/167755.svg"
                         } alt="profile__image" />
                     </Link>
                         {this.props.profileImage}

@@ -117,7 +117,7 @@ class ComponentCreatePosts extends Component {
             <div className="componentCreatePosts__innercontent--wrapper">
                 <div className="imgUsers">
                     <img src={
-                      this.props.profileImage ? this.props.profileImage : "http://www.printpixelz.com/images/product/book-square-front-printpixelz.jpg"
+                      this.props.profileImage ? this.props.profileImage : "https://image.flaticon.com/icons/svg/167/167755.svg"
                     } alt="profile__image" />
                 </div>
                 <div className="bookDatas">
