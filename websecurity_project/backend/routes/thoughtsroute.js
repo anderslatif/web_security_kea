@@ -2,9 +2,9 @@
 const express = require('express');
 
 const router = express.Router();
-// const sqlite3 = require('sqlite3').verbose();
+const sqlite3 = require('sqlite3').verbose();
 
-// const db = new sqlite3.Database(':memory:');
+const db = new sqlite3.Database(':memory:');
 
 router.get('/thoughts', (req, res) => {
     if (req.query.status) {
