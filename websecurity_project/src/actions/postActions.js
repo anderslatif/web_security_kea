@@ -43,7 +43,7 @@ export const fetchPostsAll = (posts) => ({
 
 export const actionfetchPostsAll = (userId) => {
     return (dispatch) => {
-        return axios.get('http://localhost:8085/posts')
+        return axios.get('https://pedros.tech:8080/posts')
                     .then(response => {
                         dispatch(fetchPostsAll(response.data))
                         console.log("fetch______posts: ", ...response.data)
@@ -69,8 +69,8 @@ export const createPosts = (datas, userId) => ({
 export const actionCreatePosts = (dates, userId) => {
     return dispatch => {
         // http://pedros.tech:8080/post
-        // return axios.post("http://localhost:9090/file", datas)
-            return axios.post("http://localhost:8085/post", dates, userId)
+        // return axios.post("https://pedros.tech:9090/file", datas)
+            return axios.post("https://pedros.tech:8080/post", dates, userId)
                     .then(response => {
                         dispatch(createPosts(response, response.data.userId));
                         console.log(response)
@@ -90,7 +90,7 @@ export const filePosts = (file, userId) => ({
 
 export const actionFilePosts = (file, userId) => {
     return dispatch => {
-        return axios.post("http://localhost:9090/file", file, userId)
+        return axios.post("https://pedros.tech:9090/file", file, userId)
                     .then(response => {
                         dispatch(filePosts(response, response.data.userId))
                         console.log("postfile________success: ", response)

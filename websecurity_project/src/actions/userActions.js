@@ -30,7 +30,7 @@ export const registerUser = (datas, isRegistered) => ({
 export const actionRegisterUser = (datas) => {
     return dispatch => {
         // https://pedros.tech:8080/signup
-        return axios.post('http://localhost:8085/signup', datas)
+        return axios.post('https://pedros.tech:8080/signup', datas)
         .then(response => {
             dispatch(registerUser(response, response.data));
             console.log(response.data)
@@ -55,7 +55,7 @@ export const fetchProfileDatas = (userId, datas) => ({
 
 export const actionFetchProfileDatas = (userId) => {
     return dispatch => {
-        return axios.post("http://localhost:8085/profile", {userId: userId})
+        return axios.post("https://pedros.tech:8080/profile", {userId: userId})
                     .then(response => {
                         dispatch(fetchProfileDatas(response.data, response.data))
                         console.log("fetch_____profile: ", response.data)
@@ -81,7 +81,7 @@ export const loginUser = (datas, isLoggedIn, userId) => ({
 export const actionLoginUser = (datas, isLoggedIn, userId) => {
     return dispatch => {
         // http://pedros.tech:8080/login
-        return axios.post('http://localhost:8085/login', datas, isLoggedIn, userId)
+        return axios.post('https://pedros.tech:8080/login', datas, isLoggedIn, userId)
                     .then(response => {
                         dispatch(loginUser(response, response.data.result, response.data.userId))
                         // const userId = JSON.parse(localStorage.getItem('userId'))
@@ -104,7 +104,7 @@ export const signOut = () => ({
 
 export const actionSignOut = () => {
     return dispatch => {
-        return axios.get('http://localhost:8085/logout')
+        return axios.get('https://pedros.tech:8080/logout')
                     .then(response => {
                         dispatch(signOut())
                         console.log("signup__success", response)
@@ -123,7 +123,7 @@ export const createStatus = (status) => ({
 export const actionCreateStatus = (status) => {
     return (dispatch) => {
         // `${process.env.Address ? process.env.Address : 'pedros.tech'}:8080/thoughts`
-        return axios.post("http://localhost:8085/thoughts", status)
+        return axios.post("https://pedros.tech:8080/thoughts", status)
                     .then(response => {
                         dispatch(createStatus(response));
                         console.log(response);
@@ -143,7 +143,7 @@ export const createProfileImage = (profile) => ({
 
 export const actionCreateProfileImage = (profile) => {
     return (dispatch) => {
-        return axios.put('http://localhost:8085/profile', profile)
+        return axios.put('https://pedros.tech:8080/profile', profile)
                     .then(response => {
                         dispatch(createProfileImage(response.data));
                     })
@@ -168,7 +168,7 @@ export const createProfileDatas = (profile, userId) => ({
 
 export const actionCreateProfileDatas = (profile, userId) => {
     return (dispatch) => {
-        return axios.put('http://localhost:8085/profile', {
+        return axios.put('https://pedros.tech:8080/profile', {
             profile, userId
         })
                     .then(response => {
@@ -191,7 +191,7 @@ export const updateProfileDatas = (profile, userId) => ({
 
 export const actionUpdateProfileDatas = (profile, userId) => {
     return (dispatch) => {
-        return axios.put('http://localhost:8085/profile', {
+        return axios.put('https://pedros.tech:8080/profile', {
             profile, userId
         })
                     .then(response => {

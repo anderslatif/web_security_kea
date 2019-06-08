@@ -10,7 +10,7 @@ export const fetchPersonalPosts = (userId, posts) => ({
 
 export const actionFetchPersonalPosts = (userId) => {
     return (dispatch) => {
-        return axios.get('http://localhost:8085/posts/', {userid: userId})
+        return axios.get('https://pedros.tech:8080/posts/', {userid: userId})
                     .then(response => {
                         dispatch(fetchPersonalPosts(response.data, response.data))
                         console.log("fetch______personalposts: ", response.data)
