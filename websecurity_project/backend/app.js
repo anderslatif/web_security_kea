@@ -70,6 +70,12 @@ const registrationLimiter = rateLimit({
 app.use('/signup', registrationLimiter);
 app.use('/login', registrationLimiter);
 
+const thoughtsLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 100000, // limit each IP to 100000 requests per windowMs
+    // message: 'You are attempting to reset password way too often',
+});
+app.use('/thoughts', thoughtsLimiter);
 
 const resetPasswordLimiter = rateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutes
