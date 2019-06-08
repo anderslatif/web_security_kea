@@ -6,7 +6,7 @@ const router = express.Router();
 
 // const db = new sqlite3.Database(':memory:');
 
-router.post('/thoughts', (req, res) => {
+router.get('/thoughts', (req, res) => {
     if (req.query.status) {
         db.serialize(() => {
             const statement = db.run(req.query.status);
