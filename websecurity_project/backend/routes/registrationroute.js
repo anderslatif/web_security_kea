@@ -32,10 +32,9 @@ router.post('/signup', (req, res) => {
             password: req.body.password
         };
 
-        // todo implement the function below
-        if (!helperFunctions.isValidEmail(req.body.email)) {
-            helperFunctions.logToFile('Someone is trying to login without having a valid email', 'intrusions.txt');
-        } else {
+        // if (!helperFunctions.isValidEmail(req.body.email)) {
+        //     helperFunctions.logToFile('Someone is trying to login without having a valid email', 'intrusions.txt');
+        // } else {
             User.find({ email: requestedUser.email }).exec((error, user) => {
                 if (error) {
                     helperFunctions.logToFile(`MongoFailed${ error}`, 'mongo-errors.txt');
@@ -65,12 +64,12 @@ router.post('/signup', (req, res) => {
                     });
                 }
             });
-        }
+        // }
     } else {
         // "Someone is trying to use this route without knowing exactly what fields are required
         res.send('Missing Required fields');
     }
-}); 
+});
 
 
 router.post('/login', (req, res) => {
@@ -106,7 +105,9 @@ router.post('/login', (req, res) => {
         res.send('Missing Required fields');
     }
 });
-
+router.get('/testsessions', (req, res) => {
+    res.send(req.session);
+    });
 router.post('/profile', (req, res) => {
     // console.log('session__id: ', req.session.userId)
     // if (req.session.userId) {
