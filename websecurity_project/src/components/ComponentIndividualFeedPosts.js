@@ -6,10 +6,8 @@ class ComponentIndividualFeedPosts extends Component {
     componentDidMount() {
     }
     render(props) {
-        let { post } = this.props;
+        let { post, user } = this.props;
         let book = post.book;
-        let user = post.user;
-        console.log("post______user: ", post.user)
         return(
             <div className="componentIndividualFeedPosts">
                 <div className="componentIndividualFeedPosts--wrapper">
@@ -21,7 +19,7 @@ class ComponentIndividualFeedPosts extends Component {
                             <div className="datesFeedUsers">
                                 <h2>
                                     {
-                                        post.user_profile ? post.user_profile : "No username"
+                                        user.user_profile ? user.user_profile : "No username"
                                     }
                                     {/* {post.user.username} */}
                                 </h2>

@@ -55,6 +55,7 @@ class ComponentFeedPosts extends Component {
                         return <ComponentIndividualFeedPosts 
                                     key={index} 
                                     post={post}
+                                    user={this.props.user}
                                     getReviewDatas={this.getReviewDatas}
                                     submitReviewDatas={this.submitReviewDatas}
                                     stateValue={this.state}
@@ -68,7 +69,8 @@ class ComponentFeedPosts extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        posts: state.posts
+        posts: state.posts,
+        user: state.user
     }
 }
 
