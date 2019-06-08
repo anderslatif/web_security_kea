@@ -6,18 +6,17 @@ const Post = require('../models/Post');
 const helperFunctions = require('../helper-functions');
 
 router.get('/posts', (req, res) => {
-    // if (req.session.userId) {
-        // if() {
+    if (req.session.userId) {
         Post.find().exec((error, foundPosts) => {
             if (error) {
                 helperFunctions.logToFile(`MongoFailed${ error}`, 'mongo-errors.txt');
             }
             res.send(foundPosts);
         });
-    // } else {
-    //     // fixme Someone is trying to use this route without knowing exactly what fields are required
-    //     res.status(200).send();
-    // }
+    } else {
+        // fixme Someone is trying to use this route without knowing exactly what fields are required
+        res.status(200).send();
+    }
 });
 
 router.get('/posts/:userid', (req, res) => {
