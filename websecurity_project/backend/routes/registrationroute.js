@@ -78,7 +78,6 @@ router.post('/testroute', (req, res) => {
 });
 
 router.post('/login', (req, res) => {
-    console.log(req.body);
     if (req.body.email && req.body.password) {
         const requestedUser = {
             email: req.body.email,
