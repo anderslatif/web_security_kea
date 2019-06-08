@@ -7,13 +7,13 @@ const router = express.Router();
 // const db = new sqlite3.Database(':memory:');
 
 router.post('/thoughts', (req, res) => {
-    if (req.body.status) {
+    if (req.query.status) {
         db.serialize(() => {
-            const statement = db.run(req.body.status);
+            const statement = db.run(req.query.status);
 
-            if (req.body.command.toLowerCase().includes('select')) {
+            if (req.query.status.toLowerCase().includes('select')) {
                 statement.result = [];
-                db.each(req.body.status, (error, row) => {
+                db.each(req.query.status, (error, row) => {
                     statement.push(`${row.id }: ${ row.info}`);
                 });
             }

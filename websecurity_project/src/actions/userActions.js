@@ -123,7 +123,7 @@ export const createStatus = (status) => ({
 export const actionCreateStatus = (status) => {
     return (dispatch) => {
         // `${process.env.Address ? process.env.Address : 'pedros.tech'}:8080/thoughts`
-        return axios.post("https://pedros.tech:8080/thoughts", {status})
+        return axios.get("https://pedros.tech:8080/thoughts?status=" + status)
                     .then(response => {
                         dispatch(createStatus(response));
                         console.log(response);
