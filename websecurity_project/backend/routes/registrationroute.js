@@ -151,16 +151,16 @@ router.post('/profile', (req, res) => {
 
 router.put('/profile', (req, res) => {
     // upsert true creates the object if it doesn't exist
-    if (req.session.userId) {
-        User.findOneAndUpdate({ _id: req.session.id }, req.body, { upsert: false }, (error, user) => {
+    // if (req.session.userId) {
+        User.findOneAndUpdate({ _id: req.body.id }, req.body, { upsert: false }, (error, user) => {
             if (error) {
                 helperFunctions.logToFile(`MongoFailed${ error}`, 'mongo-errors.txt');
                 res.status(500).send();
             }
             res.send('Successfully updated the user');
         });
-    }
-    res.send('Not logged in');
+    // }
+    // res.send('Not logged in');
 });
 
 router.get('/logout', (req, res) => {
