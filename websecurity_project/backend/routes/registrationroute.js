@@ -72,10 +72,6 @@ router.post('/signup', (req, res) => {
     }
 }); 
 
-router.post('/testroute', (req, res) => {
-    console.log("hello", req.body)
-    res.send(req.body);
-});
 
 router.post('/login', (req, res) => {
     if (req.body.email && req.body.password) {
@@ -154,7 +150,7 @@ router.post('/profile', (req, res) => {
 
 router.put('/profile', (req, res) => {
     // upsert true creates the object if it doesn't exist
-    if (req.body.userId) {
+    if (req.session.userId) {
         User.findOneAndUpdate({ _id: req.session.id }, req.body, { upsert: false }, (error, user) => {
             if (error) {
                 helperFunctions.logToFile(`MongoFailed${ error}`, 'mongo-errors.txt');
