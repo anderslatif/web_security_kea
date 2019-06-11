@@ -1,6 +1,7 @@
 /*eslint-disable*/
 import React, { Component } from 'react';
 import { connect } from "react-redux";
+import { actionUpdateProfileDatas } from '../actions/userActions';
 
 class ComponentEditProfile extends Component {
   constructor(props) {
@@ -19,17 +20,18 @@ class ComponentEditProfile extends Component {
     this.setState({[valueType]: valueContent});
   }
 
-//   submitCreateProfile = () => {
-//       const profile = {
-//           email: this.state.email,
-//           socialNetwork: this.state.socialNetwork,
-//           country: this.state.country
-//       }
-//       this.props.actionCreateProfileDatas(profile, this.props.userId);
-//   }
-//   componentDidMount() {
-//       console.log("user______id: ", this.props.userId)
-//   }
+  submitCreateProfile = () => {
+      const profile = {
+          email: this.state.email,
+          socialNetwork: this.state.socialNetwork,
+          country: this.state.country
+      }
+      const userId = JSON.parse(localStorage.getItem('userId'))
+      this.props.onUpdateProfile(profile, userId);
+  }
+  componentDidMount() {
+      console.log("user______id: ", this.props.userId)
+  }
   render(props) {
     let { handleEditProfile } = this.props;
     return (
@@ -100,7 +102,7 @@ class ComponentEditProfile extends Component {
                         </label>
                         <input type="text" value={this.state.socialNetwork} name="socialNetwork" onChange={this.setStateValue}/>    
                     </div>
-                    <button className="updateProfileSubmit--button">Update profile</button>
+                    <button className="updateProfileSubmit--button" onClick={this.submitCreateProfile}>Update profile</button>
                 </div>
             </div>
         </div>

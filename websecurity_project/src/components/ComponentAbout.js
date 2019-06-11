@@ -31,6 +31,10 @@ class ComponentAbout extends Component {
     const userId = JSON.parse(localStorage.getItem('userId'))
     this.props.onFetchProfile(userId);
   }
+  componentDidUpdate() {
+    const userId = JSON.parse(localStorage.getItem('userId'))
+    this.props.onFetchProfile(userId);
+  }
   render(props) {
     let { handleEditProfile } = this.props;
     let {
