@@ -3,15 +3,15 @@ import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import Tilt from 'react-tilt';
 // import { loginAuthAction } from "../actions/authActions";
-import { connect } from "react-redux";
 // import axios from "axios";
+import { connect } from "react-redux";
 import { actionLoginUser } from '../actions/userActions';
 
 const emailRegex = RegExp(
     /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 );
   
-const sqlPrevent = (string) => {
+const scriptPrevent = (string) => {
     return string.replace(/&/, "&amp").replace(/</, "&lt")
 };
 
@@ -57,7 +57,7 @@ class PageLogin extends Component {
                 email: this.state.emailLogin,
                 password: this.state.passwordLogin
             }
-
+            // scriptPrevent(login);
             this.props.onLoginUser(login)
         }
     }

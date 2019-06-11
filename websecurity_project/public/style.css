@@ -754,7 +754,8 @@ html {
   height: 12rem;
   border-bottom: 1.4px solid lightgray;
   display: grid;
-  align-items: center; }
+  align-items: center;
+  font-size: 1.4rem; }
   .about__fullNameSubsection .addFullNameContent,
   .about__fullNameSubsection .addAddressContent,
   .about__fullNameSubsection .addEmailAddressContent,

@@ -4,79 +4,63 @@ import { Link } from "react-router-dom";
 
 class ComponentIndividualFeedPosts extends Component {
     componentDidMount() {
+        console.log(this.props.posts)
     }
     render(props) {
-        let { post, user } = this.props;
-        let book = post.book;
+        // let { post, user } = this.props;
+        // let book = post.book;
+        let { posts } = this.props;
         return(
             <div className="componentIndividualFeedPosts">
                 <div className="componentIndividualFeedPosts--wrapper">
                     <div className="feedpost__header">
                         <div className="feedpost__header--user">
                             <div className="imgFeedUsers">
-                                <img src={user.user_profile} alt="image__profile" />
+                                {/* <img src={user.user_profile} alt="image__profile" /> */}
                             </div>
                             <div className="datesFeedUsers">
                                 <h2>
-                                    {
+                                    {/* {
                                         user.user_profile ? user.user_profile : "No username"
-                                    }
-                                    {/* {post.user.username} */}
+                                    } */}
                                 </h2>
-                                <p>{user.location}</p>
+                                {/* <p>{user.location}</p> */}
                             </div>
                         </div>
                         <div className="feedpost__header--timestamp">
                             <p>
                                 {
-                                    book.postDate ? book.postDate : "No timestamp"
+                                    this.props.posts.postDate ? posts.postDate : "No timestamp"
                                 }
-                                {book.postDate}
+                                {/* {this.props.posts.postDate} */}
                             </p>
                         </div>
                     </div>
                     <div className="feedpost__description">
                         <p>
                             {
-                                book.postDescription ? book.postDescription : "No description"
+                                this.props.posts.description ? posts.description : "No description"
                             }
-                            {book.postDescription}
                         </p>
                     </div>
                     <div className="feedpost__content">
                         {/* <img src={book.cover} alt="book__cover" /> */}
-                        <img src={book.cover ? book.cover : "https://core.trac.wordpress.org/raw-attachment/ticket/45927/placeholder-image-portrait.png"} alt="book__cover" />
+                        {/* <img src={book.cover ? book.cover : "https://core.trac.wordpress.org/raw-attachment/ticket/45927/placeholder-image-portrait.png"} alt="book__cover" /> */}
                     </div>
                     <div className="feedpost__datas">
                         <div className="feedpost__datas--information">
                             <h2>
                                 {
-                                    book.title ? book.title : "No title"
+                                    this.props.posts.title ? posts.title : "No title"
                                 }
-                                {/* {book.title} */}
                             </h2>
                             <p>
                                 {
-                                    book.author ? book.author : "No author"
+                                    this.props.posts.author ? posts.author : "No author"
                                 }
-                                {/* {book.author} */}
                             </p>
                         </div>
                     </div>
-                    {/* <div className="feedpost__like-comment">
-                        <div className="feedpost__likes">
-                            <svg>
-                                <use href="./image/sprite.svg#icon-favorite"></use>
-                            </svg>
-                            <p>14</p>
-                        </div>
-                        <div className="feedpost__comments">
-                            <svg>
-                                <use href="./image/sprite.svg#icon-message-square"></use>
-                            </svg>
-                            <p>14</p>
-                        </div>
-                    </div> */}
                     <div className="feedpost__reviews">
                         <form onSubmit={this.props.submitReviewDatas}>
                             <input 

@@ -10,6 +10,7 @@ class ComponentHeader extends Component {
   }
   signOutAction = () => {
       this.props.onSignOut();
+    //   localStorage.removeItem('userId');
   }
   render(props) {
     return (
