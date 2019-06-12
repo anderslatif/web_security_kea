@@ -6,10 +6,10 @@ import { connect } from "react-redux";
 import { actionRegisterUser } from "../actions/userActions";
 
 const emailRegex = RegExp(
-  /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+  /^[a-zA-Z0-9.!#%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 );
 
-const sqlPrevent = (string) => {
+const xssPrevent = (string) => {
   return string.replace(/&/, "&amp").replace(/</, "&lt")
 };
 
