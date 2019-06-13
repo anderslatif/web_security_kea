@@ -33,6 +33,7 @@ router.post('/signup', (req, res) => {
         // todo implement the function below
         if (!helperFunctions.isValidEmail(req.body.email)) {
             helperFunctions.logToFile('Someone is trying to login without having a valid email', 'intrusions.txt');
+            res.send();
         } else {
             User.find({ email: requestedUser.email }).exec((error, user) => {
                 if (error) {
@@ -68,6 +69,10 @@ router.post('/signup', (req, res) => {
         // "Someone is trying to use this route without knowing exactly what fields are required
         res.send('Missing Required fields');
     }
+});
+
+router.get('/testroute', (req, res) => {
+    res.send(req.session.userId);
 });
 
 router.post('/login', (req, res) => {

@@ -21,7 +21,6 @@ const credentials = { key: privateKey, cert: certificate };
 
 app.post('/file', upload.single('file'), (req, res) => {
     try {
-        console.log('888888888', req.file);
         // req.file is the `book` file
         // req.body will hold the text fields, if there were any
         res.send(req.file.path);
