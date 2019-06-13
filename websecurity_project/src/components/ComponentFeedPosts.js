@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import React, { Component } from "react";
 // import { Link } from "react-router-dom";
 import ComponentIndividualFeedPosts from "./ComponentIndividualFeedPosts";
@@ -44,32 +45,39 @@ class ComponentFeedPosts extends Component {
         ev.target.elements.review.value = "";
     }
     render(props) {
+        let { posts } = this.props;
+        console.log(posts)
         return(
             <div className="componentFeedPosts">
                 {/* ComponentFeedPosts */}
                 {
-                    this.props.posts 
-                    &&
-                    this.props.posts.map((post, index) => {
+                    posts 
+                    ?
+                    posts.map((posts, index) => {
                         return <ComponentIndividualFeedPosts 
                                     key={index} 
-                                    post={post}
+                                    // post={post}
+                                    user={this.props.user}
                                     getReviewDatas={this.getReviewDatas}
                                     submitReviewDatas={this.submitReviewDatas}
                                     stateValue={this.state}
+                                    posts={posts}
                                 />
                     })
+                    :
+                    "No posts"
                 }
             </div>
         );
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
-        posts: state.posts
-    }
-}
+// const mapStateToProps = (state) => {
+//     return {
+//         posts: state.posts,
+//         user: state.user
+//     }
+// }
 
 const mapDispatchToProps = (dispatch) => {
     return {
@@ -79,4 +87,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ComponentFeedPosts);
+export default connect(null, mapDispatchToProps)(ComponentFeedPosts);

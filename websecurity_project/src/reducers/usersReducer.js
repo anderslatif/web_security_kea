@@ -1,3 +1,4 @@
+/*eslint-disable*/
 // import axios from "axios";
 // import {
 //     fetchInitialDatas,
@@ -63,12 +64,13 @@ import {
 // };
 
 const userReducerDefaultReducer = {
-    email: "qwert",
+    email: "",
     country: "",
     socialNetwork: "",
     profileImage: "",
     isLoggedIn: false,
-    isRegister: false
+    isRegister: false,
+    userId: ""
 }
 
 export default (state = userReducerDefaultReducer, action) => {
@@ -81,14 +83,15 @@ export default (state = userReducerDefaultReducer, action) => {
         case LOGIN_USER:
             return {
                 ...state,
-                isLoggedIn: action.isLoggedIn
+                isLoggedIn: action.isLoggedIn,
+                userId: action.userId
             };
         case SIGN_OUT:
             return {...state}
         case EDIT_PROFILE:
             return true;
         case FETCH_PROFILE:
-            return {...state}
+            return {...state,  ...action.user}
                 // profile: action.profile
                 // profile: action.profile
             

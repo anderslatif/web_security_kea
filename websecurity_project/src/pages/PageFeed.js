@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import React, { Component } from 'react'
 import ComponentHeader from "../components/ComponentHeader";
 import ComponentCreatePosts from '../components/ComponentCreatePosts';
@@ -5,8 +6,15 @@ import ComponentFeedCardProfile from '../components/ComponentFeedCardProfile';
 import ComponentFeedNavigation from '../components/ComponentFeedNavigation';
 import ComponentFeedPosts from "../components/ComponentFeedPosts";
 import { connect } from "react-redux";
+import { actionfetchPostsAll } from "../actions/postActions";
 
 class PageFeed extends Component {
+  constructor(props) {
+    super(props)
+  }
+  componentDidMount() {
+    this.props.onFetchAllPosts()
+  }
   render(props) {
     // let { posts, user, personalPosts } = this.props;
     return (
@@ -40,4 +48,12 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(PageFeed);
+const mapDispatchToProps = dispatch => {
+  return {
+      onFetchAllPosts: (userId) => {
+        dispatch(actionfetchPostsAll())
+      }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PageFeed);

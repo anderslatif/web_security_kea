@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import React, { Component } from 'react'
 import { Document, Page, pdfjs } from "react-pdf";
 import samplePDF from '../dreamcatcher.pdf';

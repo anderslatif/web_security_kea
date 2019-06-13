@@ -1,3 +1,4 @@
+/*eslint-disable*/
 const express = require('express');
 
 const app = express();
@@ -8,7 +9,7 @@ const helperFunctions = require('./helper-functions');
 const tls = require('tls');
 const fs = require('fs');
 const cors = require('cors');
-
+app.use(cors());
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");

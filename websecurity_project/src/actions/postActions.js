@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import {
     // ADD_POST,
     REMOVE_POSTS,
@@ -6,7 +7,9 @@ import {
     FETCH_POSTS,
     CREATE_POST,
     CREATE_REVIEW,
-    FETCH_PERSONAL_POSTS
+    // FETCH_PERSONAL_POSTS,
+    CREATE_POST_FILE,
+    FETCH_POSTS_ALL
 } from './actionsVariables';
 import axios from 'axios';
 
@@ -30,29 +33,28 @@ export const fetchChat = () => ({
     type: FETCH_CHAT
 });
 
-// Action for fetching the all the posts (global ones from the feed)
-// *****************************************************************
-export const fetchPosts = (posts) => ({
-    type: FETCH_POSTS,
+// fetch all the global posts
+
+export const fetchPostsAll = (posts) => ({
+    type: FETCH_POSTS_ALL,
+    // userId,
     posts
 });
 
-export const fetchAllPosts = () => {
-    return async (dispatch) => {
-        try {
-            const response = await axios.get('https://pedros.tech:8080/posts');
-            // console.log(response.data);
-            dispatch(fetchPosts(response.data));
-        } catch (error) {
-            throw (error);
-        }
+export const actionfetchPostsAll = (userId) => {
+    return (dispatch) => {
+        return axios.get('https://pedros.tech:8080/posts')
+                    .then(response => {
+                        dispatch(fetchPostsAll(response.data))
+                        console.log("fetch______posts: ", ...response.data)
+                    })
+                    .catch(error => console.log(error));
     };
 };
 
-
 // Action for creating a post
 // **************************
-export const createPosts = (datas) => ({
+export const createPosts = (datas, userId) => ({
     type: CREATE_POST,
     post: {
         cover: datas.cover,
@@ -60,46 +62,42 @@ export const createPosts = (datas) => ({
         title: datas.title,
         author: datas.author,
         description: datas.description
-    }
+    },
+    userId
 });
 
-export const actionCreatePosts = (postDatas) => {
+export const actionCreatePosts = (dates, userId) => {
     return dispatch => {
         // http://pedros.tech:8080/post
-        return axios.post("http://localhost:8080/post", postDatas.file)
+        // return axios.post("https://pedros.tech:9090/file", datas)
+            return axios.post("https://pedros.tech:8080/post", dates, userId)
                     .then(response => {
-                        dispatch(createPosts(response.data));
-                        // console.log(response)
+                        dispatch(createPosts(response, response.data.userId));
+                        console.log(response)
                     })
                     .catch(error => console.log('post error: ', error));
     };
 };
 
-// fetch all the personal posts
-// ****************************
+export const filePosts = (file, userId) => ({
+    type: "POST_FILE",
+    files: {
+        cover: file.cover,
+        // file: file.file
+    },
+    userId
+});
 
-export const fetchProfilePosts = (profile) => ({
-    type: FETCH_PERSONAL_POSTS
-})
-
-export const actionFetchProfilePosts = profile => {
+export const actionFilePosts = (file, userId) => {
     return dispatch => {
-        // return axios.get()
+        return axios.post("https://pedros.tech:9090/file", file, userId)
+                    .then(response => {
+                        dispatch(filePosts(response, response.data.userId))
+                        console.log("postfile________success: ", response)
+                    })
+                    .catch(error => console.log("error_____postfile: ", errpr))
     }
 }
-
-// export const actionCreatePosts = ({ cover, file, title, author, description }) => {
-//     return (dispatch) => {
-//         return axios.post(`${process.env.Address ? process.env.Address : "pedros.tech"}:9090/book`, { cover, file, title, author, description })
-//           .then(response => {
-//             dispatch(actionCreatePosts(response.data));
-//           })
-//           .catch(error => {
-//             throw (error);
-//           });
-//       };
-// };
-
 
 // Action for creating a review
 // **************************
@@ -123,24 +121,3 @@ export const actionCreateReview = ({ review, userId, bookId }) => {
         });
     };
 };
-// return (dispatch) => {
-    //     return axios.get("https://pedros.tech:8080/posts")
-    //                 .then(response => {
-        //                     console.log(response.data)
-        //                     dispatch(fetchPosts(response.data))
-        //                 })
-        //                 .catch(error => {
-            //                     throw(error);
-            //                 });
-            // }
-
-// export const addPost = ({id, title, author, cover, file}) => ({
-//     type: ADD_POST,
-//     post: {
-//         id,
-//         title,
-//         author,
-//         cover,
-//         file
-//     }
-// });

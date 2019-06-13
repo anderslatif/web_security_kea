@@ -1,14 +1,16 @@
+/*eslint-disable*/
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { actionSignOut } from "../actions/userActions";
 
 class ComponentHeader extends Component {
-//   constructor(props) {
-//       super(props)
-//   }
+  constructor(props) {
+      super(props)
+  }
   signOutAction = () => {
       this.props.onSignOut();
+    //   localStorage.removeItem('userId');
   }
   render(props) {
     return (
@@ -37,7 +39,7 @@ class ComponentHeader extends Component {
                 <div className="right__header--profile">
                     <Link to="/profile">
                         <img src={
-                            this.props.profileImage ? this.props.profileImage : "http://www.printpixelz.com/images/product/book-square-front-printpixelz.jpg"
+                            this.props.profileImage ? this.props.profileImage : "https://image.flaticon.com/icons/svg/167/167755.svg"
                         } alt="profile__image" />
                     </Link>
                         {this.props.profileImage}

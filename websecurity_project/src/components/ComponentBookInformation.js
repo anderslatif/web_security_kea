@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import React, { Component } from 'react'
 /*
 Individual Book page ComponentBookinformation - it contains some data

@@ -1,16 +1,17 @@
+/*eslint-disable*/
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import Tilt from 'react-tilt';
 // import { loginAuthAction } from "../actions/authActions";
-import { connect } from "react-redux";
 // import axios from "axios";
+import { connect } from "react-redux";
 import { actionLoginUser } from '../actions/userActions';
 
 const emailRegex = RegExp(
-    /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+    /^[a-zA-Z0-9.!#%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 );
   
-const sqlPrevent = (string) => {
+const scriptPrevent = (string) => {
     return string.replace(/&/, "&amp").replace(/</, "&lt")
 };
 
@@ -56,7 +57,7 @@ class PageLogin extends Component {
                 email: this.state.emailLogin,
                 password: this.state.passwordLogin
             }
-
+            // scriptPrevent(login);
             this.props.onLoginUser(login)
         }
     }
@@ -77,11 +78,12 @@ class PageLogin extends Component {
     }
 
     componentDidUpdate() {
-        // if (this.props.isLoggedIn) {
-        //     this.props.history.push('/profile')
-        // }
+        if (this.props.isLoggedIn) {
+            this.props.history.push('/profile')
+        }
     }
     render(props) {
+    let { error } = this.state;
     return (
         <div className="page__login">
             <div className="page__login--wrapper">
@@ -96,8 +98,28 @@ class PageLogin extends Component {
                     </div>
                     <form className="formLogin" onSubmit={this.onSubmitStoreDatas}>
                         <div className="formLogin--forms">
-                            <input type="text" placeholder="Your Email" name="emailLogin" onChange={this.onChangeStoreDatas} />
-                            <input type="password" placeholder="Your Password" name="passwordLogin" onChange={this.onChangeStoreDatas} />
+                            <input 
+                                type="text" 
+                                placeholder="Your Email" 
+                                name="emailLogin" 
+                                onChange={this.onChangeStoreDatas}
+                                className={error.emailLogin.length > 0 ? "inputErrorHighlight" : null}
+                            />
+                            {
+                              error.emailLogin.length > 0 &&
+                              <p className="errorDisplayMessage">{error.emailLogin}</p>
+                            }
+                            <input 
+                                type="password" 
+                                placeholder="Your Password" 
+                                name="passwordLogin" 
+                                onChange={this.onChangeStoreDatas}
+                                className={error.passwordLogin.length > 0 ? "inputErrorHighlight" : null} 
+                            />
+                            {
+                              error.passwordLogin.length > 0 &&
+                              <p className="errorDisplayMessage">{error.passwordLogin}</p>
+                            }
                         </div>
                         <div className="formLogin--remember-forget">
                             <div className="formgroup__checkbox">

@@ -1,6 +1,8 @@
+/*eslint-disable*/
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { actionFetchProfileDatas } from "../actions/userActions";
+import axios from "axios";
 /*
 About page ComponentAbout - it contains areas to add the 4 types of 
 information about the logged in user
@@ -13,7 +15,10 @@ class ComponentAbout extends Component {
       fullName: "",
       country: "",
       email:"",
-      socialNetwork: ""
+      socialNetwork: "",
+      fetchEmail: "",
+      fetchSocialNetwork: "",
+      fetchCountry: ""
     }
     this.setStateValue = this.setStateValue.bind(this);
   }
@@ -23,14 +28,19 @@ class ComponentAbout extends Component {
     this.setState({[valueType]: valueContent});
   }
   componentDidMount() {
-    this.props.onFetchProfile();
-    console.log("logged")
+    const userId = JSON.parse(localStorage.getItem('userId'))
+    this.props.onFetchProfile(userId);
+  }
+  componentDidUpdate() {
+    const userId = JSON.parse(localStorage.getItem('userId'))
+    this.props.onFetchProfile(userId);
   }
   render(props) {
     let { handleEditProfile } = this.props;
     let {
       fullName,
-      address,
+      country,
+      // address,
       email,
       socialNetwork
     } = this.props;
@@ -46,65 +56,64 @@ class ComponentAbout extends Component {
             </button>
           </div>
           <div className="about__contentDivision">
-            {
-              fullName
-              ?
-              fullName
-              :
               <div className="about__fullNameSubsection">
+                {
+                  fullName
+                  ?
+                  fullName
+                  :
                 <button className="addFullNameContent" onClick={this.props.handleAddProfile}>
                   <svg className="addFullName">
                     <use href="./image/sprite.svg#icon-plus-circle"></use>
                   </svg>
                   <p>Add Fullname</p>
                 </button>
+                } 
               </div>
-            }
-
-            {
-              address
-              ?
-              address
-              :
               <div className="about__addressSubsection">
+                {
+                country
+                ?
+                country
+                :
                 <button className="addAddressContent" onClick={this.props.handleAddProfile}>
                   <svg className="addAddress">
                     <use href="./image/sprite.svg#icon-plus-circle"></use>
                   </svg>
                   <p>Add Address</p>
                 </button>
+                }
               </div>
-            }
 
-            {
-              email
-              ?
-              email
-              :
               <div className="about__emailAddressSubsection">
+              {
+                email
+                ?
+                email
+                :
                 <button className="addEmailAddressContent" onClick={this.props.handleAddProfile}>
                   <svg className="addEmailAddress">
                     <use href="./image/sprite.svg#icon-plus-circle"></use>
                   </svg>
                   <p>Add Email address</p>
                 </button>
+                }
               </div>
-            }
 
-            {
-              socialNetwork
-              ?
-              socialNetwork
-              :
               <div className="about__socialNetworkSubsection">
+                {
+                  socialNetwork
+                  ?
+                  socialNetwork
+                  :
                 <button className="addSocialNetworkContent" onClick={this.props.handleAddProfile}>
                   <svg className="addSocialNetwork">
                     <use href="./image/sprite.svg#icon-plus-circle"></use>
                   </svg>
                   <p>Add Social network</p>
                 </button>
+                }
               </div>
-            }
           </div>
         </div>
       </div>
@@ -114,17 +123,18 @@ class ComponentAbout extends Component {
 
 const mapStateToProps = state => {
   return {
-    fullName: state.user.fullName,
-    address: state.user.address,
+    // fullName: state.user.fullName,
+    country: state.user.country,
     email: state.user.email,
-    socialNetwork: state.user.socialNetwork
+    socialNetwork: state.user.socialNetwork,
+    userId: state.user.userId
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    onFetchProfile: () => {
-      dispatch(actionFetchProfileDatas())
+    onFetchProfile: (userId) => {
+      dispatch(actionFetchProfileDatas(userId))
     }
   }
 }

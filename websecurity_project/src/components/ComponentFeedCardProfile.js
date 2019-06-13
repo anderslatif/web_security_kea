@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 
@@ -13,7 +14,7 @@ class ComponentFeedCardProfile extends Component {
             <div className="user__datas">
                 <div className="user__datas--image">
                     <img src={
-                      profileImage ? profileImage : "http://www.printpixelz.com/images/product/book-square-front-printpixelz.jpg"
+                      profileImage ? profileImage : "https://image.flaticon.com/icons/svg/167/167755.svg"
                     } alt="profile__image" />
                 </div>
                 <p className="user__datas--username">{name}</p>

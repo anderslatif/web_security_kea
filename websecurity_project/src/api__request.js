@@ -1,8 +1,4 @@
-// this is what i want
-// ********************
-
-// this is the store structure =>
-
+/*eslint-disable*/
 const store = createStore(
     combineReducers({
       posts: postsReducer,

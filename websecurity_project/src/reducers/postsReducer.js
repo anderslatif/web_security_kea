@@ -8,7 +8,9 @@ import {
     UPDATE_POST,
     FETCH_POSTS,
     CREATE_POST,
-    CREATE_REVIEW
+    CREATE_REVIEW,
+    // FETCH_PERSONAL_POSTS,
+    FETCH_POSTS_ALL
 } from "../actions/actionsVariables";
 // import moment from "moment";
 
@@ -67,19 +69,11 @@ export default (state = postsReducerDefaultState, action) => {
             return true;
         case CREATE_REVIEW:
             return [...state, action.review]
+        case FETCH_POSTS_ALL:
+                return [...state, ...action.posts]
+        // case FETCH_PERSONAL_POSTS:
+        //     return [...state, action.posts]
         default:
             return state;
         }
     };
-
-    // case REMOVE_POSTS:
-    //     return state.filter(({id}) => {
-    //         return id === action.id
-    //     });
-
-    // case ADD_POST:
-    //     return axios.post("https://pedros.tech:8080/post", {
-
-    //             })
-    //             .then((res) => console.log(res))
-    //             .catch((error) => console.log(error));

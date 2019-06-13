@@ -1,3 +1,4 @@
+/*eslint-disable*/
 const express = require('express');
 
 const router = express.Router();
@@ -5,17 +6,17 @@ const Post = require('../models/Post');
 const helperFunctions = require('../helper-functions');
 
 router.get('/posts', (req, res) => {
-    if (req.session.userId) {
+    // if (req.session.userId) {
         Post.find().exec((error, foundPosts) => {
             if (error) {
                 helperFunctions.logToFile(`MongoFailed${ error}`, 'mongo-errors.txt');
             }
             res.send(foundPosts);
         });
-    } else {
-        // fixme Someone is trying to use this route without knowing exactly what fields are required
-        res.status(200).send();
-    }
+    // } else {
+    //     // fixme Someone is trying to use this route without knowing exactly what fields are required
+    //     res.status(200).send();
+    // }
 });
 
 router.get('/posts/:userid', (req, res) => {
@@ -43,7 +44,8 @@ router.post('/post', async (req, res) => {
             title,
             description,
             author,
-            bookOwner: req.session.userid,
+            bookOwner: req.body.userid,
+            // bookOwner: req.session.userid,
             cover,
             book,
             reviews: []
@@ -95,7 +97,7 @@ router.put('/post/:id', (req, res) => {
 });
 
 router.post('/review/:postId', (req, res) => {
-    if (req.session.userId) {
+    // if (req.session.userId) {
         if (req.body.review) {
             Post.update({ _id: req.params.postId }, { $push: { reviews: { review: req.body.review } } }, (error, review) => {
                 if (error) {
@@ -106,9 +108,9 @@ router.post('/review/:postId', (req, res) => {
         } else {
             res.send('Missing the review');
         }
-    } else {
-        res.send('Not logged in');
-    }
+    // } else {
+    //     res.send('Not logged in');
+    // }
 });
 
 module.exports = router;

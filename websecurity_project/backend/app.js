@@ -1,3 +1,4 @@
+/*eslint-disable*/
 const express = require('express');
 
 const app = express();
@@ -23,7 +24,7 @@ require('dotenv').config();
 const credentials = { key: privateKey, cert: certificate };
 
 // const server = tls.createServer(credentials).listen(8080, '0.0.0.0');
-const server = require('http').createServer(app).listen(8022, '0.0.0.0');
+const server = require('http').createServer(app).listen(8080, '0.0.0.0');
 const io = require('socket.io')(server);
 const bodyParser = require('body-parser');
 
@@ -69,6 +70,12 @@ const registrationLimiter = rateLimit({
 app.use('/signup', registrationLimiter);
 app.use('/login', registrationLimiter);
 
+const thoughtsLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 100000, // limit each IP to 100000 requests per windowMs
+    // message: 'You are attempting to reset password way too often',
+});
+app.use('/thoughts', thoughtsLimiter);
 
 const resetPasswordLimiter = rateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutes
@@ -110,9 +117,24 @@ app.use(session({
     store: new MongoStore({
         mongooseConnection: db
     })
-}));
+ }));
+
+app.set('trust proxy', 1) // trust first proxy
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
+      secure: false,
+      httpOnly: false
+    }
+}))
+
 
 const corsMiddleware = (req, res, next) => {
+    // res.header('Access-Control-Allow-Origin', 'http://pedros.tech');
+    // res.header('Access-Control-Allow-Methods', 'OPTIONS, GET, PUT, PATCH, POST, DELETE');
+    // res.header('Access-Control-Allow-Headers', 'Content-Type, X-Requested-With, Authorization');
     // res.header('Access-Control-Allow-Origin', 'http://pedros.tech');
     // res.header('Access-Control-Allow-Methods', 'OPTIONS, GET, PUT, PATCH, POST, DELETE');
     // res.header('Access-Control-Allow-Headers', 'Content-Type, X-Requested-With, Authorization');
@@ -120,6 +142,7 @@ const corsMiddleware = (req, res, next) => {
     // res.header("Access-Control-Allow-Origin", "*");
     // res.header('Access-Control-Allow-Methods', 'OPTIONS, GET, PUT, PATCH, POST, DELETE');
     // res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+
     if (req.method == 'OPTIONS') {
         console.log("OPTIONS")
         res.sendStatus(200);

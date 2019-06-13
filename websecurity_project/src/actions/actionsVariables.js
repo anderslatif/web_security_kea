@@ -1,3 +1,4 @@
+/*eslint-disable*/
 // *****************
 // User constants
 // ******************
@@ -39,6 +40,9 @@ export const FETCH_POSTS = "FETCH_POSTS";
 //Variable for: creating a new post
 export const ADD_POST = "ADD_POST";
 
+//Variable for: creating book files
+export const CREATE_POST_FILE = "CREATE_POST_FILE";
+
 //Variable for: removing a post
 export  const REMOVE_POSTS = "REMOVE_POST";
 
@@ -58,4 +62,8 @@ export const CREATE_REVIEW = "CREATE_REVIEW";
 // Personal posts actions variables exports
 // ****************
 
+// Variable for: fetching personal posts
 export const FETCH_PERSONAL_POSTS = "FETCH_PERSONAL_POSTS";
+
+// Variable for: fetching all postds
+export const FETCH_POSTS_ALL = "FETCH_POSTS_ALL";

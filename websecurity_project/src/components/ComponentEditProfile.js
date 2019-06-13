@@ -1,4 +1,7 @@
-import React, { Component } from 'react'
+/*eslint-disable*/
+import React, { Component } from 'react';
+import { connect } from "react-redux";
+import { actionUpdateProfileDatas } from '../actions/userActions';
 
 class ComponentEditProfile extends Component {
   constructor(props) {
@@ -15,6 +18,19 @@ class ComponentEditProfile extends Component {
     let valueType = ev.target.name;
     let valueContent = ev.target.value;
     this.setState({[valueType]: valueContent});
+  }
+
+  submitCreateProfile = () => {
+      const profile = {
+          email: this.state.email,
+          socialNetwork: this.state.socialNetwork,
+          country: this.state.country
+      }
+      const userId = JSON.parse(localStorage.getItem('userId'))
+      this.props.onUpdateProfile(profile, userId);
+  }
+  componentDidMount() {
+      console.log("user______id: ", this.props.userId)
   }
   render(props) {
     let { handleEditProfile } = this.props;
@@ -86,7 +102,7 @@ class ComponentEditProfile extends Component {
                         </label>
                         <input type="text" value={this.state.socialNetwork} name="socialNetwork" onChange={this.setStateValue}/>    
                     </div>
-                    <button className="updateProfileSubmit--button">Update profile</button>
+                    <button className="updateProfileSubmit--button" onClick={this.submitCreateProfile}>Update profile</button>
                 </div>
             </div>
         </div>
@@ -96,4 +112,21 @@ class ComponentEditProfile extends Component {
   }
 }
 
-export default ComponentEditProfile;
+const mapDispatchToProps = dispatch => {
+    return {
+        onPostProfile: (profile) => {
+            dispatch(actionCreateProfileDatas(profile))
+        },
+        onUpdateProfile: (profile, id) => {
+            dispatch(actionUpdateProfileDatas(profile, id))
+        }
+    }
+}
+
+const mapStateToProps = state => {
+    return {
+        userId: state.user.userId
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ComponentEditProfile);

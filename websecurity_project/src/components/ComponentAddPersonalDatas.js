@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { actionCreateProfileDatas } from "../actions/userActions";
@@ -17,13 +18,26 @@ class ComponentAddPersonalDatas extends Component {
         let name = ev.target.name;
         this.setState({[name]:value})
     }
-    sendDataRequest = () => {
-        let datas = {
-            country: this.state.country,
-            email: this.state.emailAddress,
-            socialNetwork: this.state.socialNetwork
+    // sendDataRequest = () => {
+    //     let datas = {
+    //         country: this.state.country,
+    //         email: this.state.emailAddress,
+    //         socialNetwork: this.state.socialNetwork
+    //     }
+    //     this.props.onCreateProfile(datas)
+    // }
+    submitCreateProfile = () => {
+        const profile = {
+            email: this.state.email,
+            socialNetwork: this.state.socialNetwork,
+            country: this.state.country
         }
-        this.props.onCreateProfile(datas)
+        const userId = JSON.parse(localStorage.getItem('userId'));
+        this.props.onPostProfile(profile, userId);
+    }
+    componentDidMount() {
+        const userId = JSON.parse(localStorage.getItem('userId'));
+        console.log("user______id: ", userId)
     }
     render(props) {
         return(
@@ -76,7 +90,7 @@ class ComponentAddPersonalDatas extends Component {
                                 onChange={this.getInputValue} 
                             />
                         </div>
-                        <button className="submitAddProfile" onClick={this.sendDataRequest}>Submit Profile</button>
+                        <button className="submitAddProfile" onClick={this.submitCreateProfile}>Submit Profile</button>
                     </div>
                     <button onClick={this.props.handleAddProfile} className="addDatasClose">
                         <svg>
@@ -89,12 +103,17 @@ class ComponentAddPersonalDatas extends Component {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
     return {
-        onCreateProfile: profile => {
-            dispatch(actionCreateProfileDatas(profile))
+        onPostProfile: (profile, userId) => {
+            dispatch(actionCreateProfileDatas(profile, userId))
         }
     }
 }
 
-export default connect(null, mapDispatchToProps)(ComponentAddPersonalDatas);
+const mapStateToProps = state => {
+    return {
+        userId: state.user.userId
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(ComponentAddPersonalDatas);
